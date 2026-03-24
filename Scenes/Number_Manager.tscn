@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx2yur6x5ubr2"]
+
+[ext_resource type="Script" path="res://Scripts/number_manager.gd" id="1_upw7k"]
+
+[node name="NumberManager" type="Node"]
+script = ExtResource("1_upw7k")

@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://sg4jyceuoumh"]
+
+[ext_resource type="Script" path="res://Scripts/rodneys_house.gd" id="1_ac3qp"]
+[ext_resource type="Texture2D" uid="uid://c1q5novnstiwk" path="res://Art/Beta/Places/Rodney_House.png" id="2_35nvi"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_c1u7p"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_wr7jl"]
+[ext_resource type="Shader" path="res://Elements/outdoors.gdshader" id="5_xwpvk"]
+[ext_resource type="Texture2D" uid="uid://dt03i6hlwu3my" path="res://Art/Beta/Places/Rodney_House_Light.png" id="6_251pc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8vr5"]
+shader = ExtResource("3_c1u7p")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7cvu7"]
+shader = ExtResource("5_xwpvk")
+shader_parameter/light_enabled = true
+shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/strength = 1.0
+shader_parameter/tint_intensity = 1.0
+shader_parameter/light_mask = ExtResource("6_251pc")
+
+[node name="Rodneys_House" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_ac3qp")
+
+[node name="Rodneys" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_35nvi")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_m8vr5")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_wr7jl")
+
+[node name="Light" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_7cvu7")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_251pc")
+
+[node name="Porch_Plant" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porch_Plant"]
+polygon = PackedVector2Array(796, 427, 828, 427, 839, 512, 821, 582, 837, 614, 824, 647, 762, 544, 770, 452)
+
+[node name="Hanging_Plant1" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hanging_Plant1"]
+polygon = PackedVector2Array(1114, 421, 1146, 422, 1184, 434, 1152, 479, 1103, 454)
+
+[node name="Hanging_Plant2" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hanging_Plant2"]
+polygon = PackedVector2Array(1234, 409, 1278, 406, 1290, 431, 1271, 468, 1234, 468, 1227, 436)
+
+[node name="To_Pioneer" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Pioneer"]
+polygon = PackedVector2Array(216, 844, 1702, 789, 1701, 980, 219, 979)
+
+[node name="Car" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Car"]
+polygon = PackedVector2Array(332, 533, 522, 530, 579, 605, 568, 704, 480, 776, 313, 772, 275, 663)
+
+[node name="Door" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door"]
+polygon = PackedVector2Array(901, 483, 989, 482, 987, 634, 900, 635)

@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs35bu1luwokj"]
+
+[ext_resource type="Script" path="res://Scripts/uncle_sams.gd" id="1_be127"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_adsa5"]
+[ext_resource type="Texture2D" uid="uid://klifsco0udqm" path="res://Art/Beta/Places/Uncle_Sams.png" id="3_nm5ii"]
+[ext_resource type="Texture2D" uid="uid://chcde1x708jfl" path="res://Art/Beta/Characters/Gina.png" id="3_p46se"]
+[ext_resource type="Script" path="res://Scripts/gina.gd" id="4_4mk2r"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_ne5oe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8rl4"]
+size = Vector2(1462, 314.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bx87n"]
+shader = ExtResource("3_adsa5")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[node name="Uncle_Sams" type="Control" groups=["World_Scenes"]]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_be127")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nm5ii")
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(-964, -534)
+
+[node name="CollisionShapeD2" type="CollisionShape2D" parent="Exit"]
+position = Vector2(967, 261)
+shape = SubResource("RectangleShape2D_g8rl4")
+
+[node name="Gina" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -408.0
+offset_top = -213.0
+offset_right = -54.0
+offset_bottom = 820.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_p46se")
+script = ExtResource("4_4mk2r")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_bx87n")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_ne5oe")

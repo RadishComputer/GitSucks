@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://hurlnq743vgc"]
+
+[ext_resource type="Script" path="res://falls.gd" id="1_qrvp3"]
+[ext_resource type="Texture2D" uid="uid://bdm73v0704xcu" path="res://Art/Beta/Places/Art_Snoqualme_Falls.png" id="2_r7yro"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_rrg5m"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_63dfa"]
+[ext_resource type="Shader" path="res://Elements/dim_lamp.gdshader" id="5_bvru6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yvkxc"]
+shader = ExtResource("3_rrg5m")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dx4ky"]
+shader = ExtResource("5_bvru6")
+shader_parameter/light_enabled = false
+shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
+shader_parameter/light_strength = 1.0
+
+[node name="Art_Falls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_qrvp3")
+
+[node name="Falls" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r7yro")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_yvkxc")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_63dfa")
+
+[node name="Lamp_Light" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_dx4ky")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_63dfa")
+
+[node name="Art" type="Area2D" parent="."]
+position = Vector2(973, 569)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Art"]
+polygon = PackedVector2Array(-268, -387, 228, -392, 232, 327, -273, 315)
+
+[node name="Back" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back"]
+position = Vector2(961, 541)
+polygon = PackedVector2Array(-743, -442, 740, -440, 739, 438, 250, 434, 247, -375, -264, -368, -269, 438, -742, 438)

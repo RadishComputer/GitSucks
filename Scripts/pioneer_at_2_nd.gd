@@ -1,0 +1,41 @@
+extends Control
+
+func _ready():
+	ClockManager.distance_from_church = 4
+	ClockManager.update_chime_volume()
+	ClockManager.update_clock_display()
+	update_time_of_day_shader()
+	#update_light_shader()
+	#update_street_lights_shader()
+	await get_tree().process_frame
+	ClockManager.check_and_play_chime()
+
+	$To_Pins.input_event.connect(on_exit.bind("res://Scenes/Pins_Desk.tscn", false))
+	$To_Main.input_event.connect(on_exit.bind("res://Scenes/Pioneer_At_Main.tscn", true))
+
+
+func on_exit(viewport, event, shape_idx, scene_path: String, advance_time: bool):
+	if InputManager.click_release(event):
+		ClockManager.next_scene_path = scene_path
+		if advance_time:
+			ClockManager.switch_scene(true)
+		else:
+			get_tree().change_scene_to_file(scene_path)
+		print("Going to %s" % scene_path)
+
+#Lights
+
+func update_time_of_day_shader():
+	var tint = ClockManager.get_time_of_day_tint()
+	var strength = ClockManager.get_time_of_day_strength()
+
+	$Time_of_Day.material.set_shader_parameter("tint_color", tint)
+	$Time_of_Day.material.set_shader_parameter("strength", strength)
+
+#func update_street_lights_shader():
+	#var enabled = ClockManager.street_lights()
+	#$Street_Lights.material.set_shader_parameter("light_enabled", enabled)
+
+#func update_light_shader():
+	#var enabled = KnowledgeManager.secretly_knows("Front_Lamp_On")
+	#$Light.material.set_shader_parameter("light_enabled", enabled)

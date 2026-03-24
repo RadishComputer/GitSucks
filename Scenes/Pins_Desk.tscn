@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfo8v12rqy586"]
+
+[ext_resource type="Script" path="res://Scripts/pins_desk.gd" id="1_uk3fd"]
+[ext_resource type="Texture2D" uid="uid://drwptoww87l3p" path="res://Art/Beta/Places/Pins_Desk.png" id="2_8vtge"]
+
+[node name="Pins_Desk" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_uk3fd")
+
+[node name="Pins_Desk" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8vtge")
+
+[node name="To_Arcade" type="Area2D" parent="."]
+position = Vector2(-750, -450)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Arcade"]
+position = Vector2(891, -12)
+polygon = PackedVector2Array(606, 15, 399, 301, 605, 607)
+
+[node name="To_Lanes" type="Area2D" parent="."]
+position = Vector2(-750, -450)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lanes"]
+position = Vector2(890, 410)
+polygon = PackedVector2Array(410, 190, 608, 189, 608, 491, 410, 489)
+
+[node name="To_Lockers" type="Area2D" parent="."]
+position = Vector2(-750, -450)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lockers"]
+position = Vector2(-34, -10)
+polygon = PackedVector2Array(41, 12, 227, 14, 227, 647, 37, 648)
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(-750, -450)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Exit"]
+position = Vector2(784, 528)
+polygon = PackedVector2Array(-776, 373, -784, 262, 505, 243, 509, 371)
+
+[node name="Phone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Phone"]
+polygon = PackedVector2Array(-752, 203, -575, 203, -572, 283, -752, 316)

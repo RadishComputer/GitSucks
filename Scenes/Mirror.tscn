@@ -1,0 +1,164 @@
+[gd_scene load_steps=13 format=3 uid="uid://w5crboqpjng"]
+
+[ext_resource type="Texture2D" uid="uid://cbac10s8xl6kh" path="res://Art/Beta/Places/Mirror.png" id="1_7g26r"]
+[ext_resource type="Script" path="res://Scripts/mirror.gd" id="1_js3f0"]
+[ext_resource type="Script" path="res://Scripts/summer.gd" id="2_3xkc3"]
+[ext_resource type="Texture2D" uid="uid://cnw63cyja8b3s" path="res://Art/Beta/Places/Teal.png" id="2_a4y37"]
+[ext_resource type="Texture2D" uid="uid://csiyxophd7v1x" path="res://Art/Beta/Characters/Summer_Menu.png" id="3_g4o6q"]
+[ext_resource type="Texture2D" uid="uid://caob1q5lpdeim" path="res://Art/Beta/Characters/Eye.png" id="4_1egvi"]
+[ext_resource type="Shader" path="res://Elements/dim_lamp.gdshader" id="5_1th8g"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="6_r0a8w"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="7_6fe1a"]
+[ext_resource type="Texture2D" uid="uid://busb6bqjo3crk" path="res://Art/Beta/Places/Mirror_Light.png" id="10_0mv6p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sjt7t"]
+shader = ExtResource("7_6fe1a")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ebsd"]
+shader = ExtResource("5_1th8g")
+shader_parameter/light_enabled = true
+shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
+shader_parameter/light_strength = 1.0
+shader_parameter/light_mask = ExtResource("10_0mv6p")
+
+[node name="Mirror" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_js3f0")
+
+[node name="Glass" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a4y37")
+
+[node name="Summer" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -738.0
+offset_top = -438.0
+offset_right = 738.0
+offset_bottom = 438.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_3xkc3")
+
+[node name="Summer" type="TextureRect" parent="Summer"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -437.5
+offset_top = -612.5
+offset_right = 437.5
+offset_bottom = 612.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_g4o6q")
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Eye1" type="Sprite2D" parent="Summer/Summer"]
+z_index = -1
+position = Vector2(441, 476)
+texture = ExtResource("4_1egvi")
+flip_h = true
+
+[node name="Eye2" type="Sprite2D" parent="Summer/Summer"]
+z_index = -1
+position = Vector2(512, 474)
+texture = ExtResource("4_1egvi")
+flip_h = true
+
+[node name="Dead_Zone" type="Node2D" parent="Summer"]
+position = Vector2(780, 297)
+
+[node name="Mirror" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_7g26r")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_sjt7t")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_r0a8w")
+
+[node name="Lamp_Light" type="TextureRect" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_4ebsd")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_0mv6p")
+
+[node name="Back" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back"]
+polygon = PackedVector2Array(-719, -424, 761, -421, 761, 462, 252, 463, 250, -317, -270, -312, -268, 460, -720, 463)

@@ -1,0 +1,934 @@
+[gd_scene load_steps=17 format=3 uid="uid://cwlu64m8u7a3g"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_fk34i"]
+[ext_resource type="Texture2D" uid="uid://uyuip3ractdl" path="res://Art/Beta/Places/Default_Backgroud.png" id="2_h62st"]
+[ext_resource type="Script" path="res://Scripts/summer.gd" id="3_no636"]
+[ext_resource type="Texture2D" uid="uid://dslbfl3i3a1jx" path="res://Art/Beta/Places/Menu.png" id="3_ygbhk"]
+[ext_resource type="Texture2D" uid="uid://csiyxophd7v1x" path="res://Art/Beta/Characters/Summer_Menu.png" id="4_tq8re"]
+[ext_resource type="Texture2D" uid="uid://caob1q5lpdeim" path="res://Art/Beta/Characters/Eye.png" id="5_1kt8u"]
+[ext_resource type="Script" path="res://Scripts/inventory_panel.gd" id="5_7vvl4"]
+[ext_resource type="Script" path="res://Scripts/records_panel.gd" id="6_ivjpd"]
+[ext_resource type="Script" path="res://Scripts/options.gd" id="7_1wx7o"]
+[ext_resource type="ButtonGroup" uid="uid://dmmkjlwna4ssv" path="res://Elements/menu_buttons.tres" id="7_bpcci"]
+[ext_resource type="StyleBox" uid="uid://b87bfasw85xbo" path="res://Elements/Diary_Button.tres" id="7_k4j2c"]
+[ext_resource type="Texture2D" uid="uid://bvfsmgk4seesf" path="res://Art/Beta/Places/Buttons.png" id="7_o0myf"]
+[ext_resource type="Texture2D" uid="uid://c7qblqsn6stnx" path="res://Art/Beta/Places/Screen.png" id="8_6q7tj"]
+[ext_resource type="Shader" path="res://Elements/overlay.gdshader" id="8_vtr3u"]
+[ext_resource type="Script" path="res://Scripts/phone_panel.gd" id="9_kl3vl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqvom"]
+shader = ExtResource("8_vtr3u")
+shader_parameter/grayscale_enabled = false
+shader_parameter/high_contrast_enabled = false
+shader_parameter/contrast_amount = 2.0
+
+[node name="Menu" type="Control" groups=["UI"]]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fk34i")
+
+[node name="Background" type="TextureRect" parent="."]
+process_mode = 3
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 16
+texture = ExtResource("2_h62st")
+stretch_mode = 1
+
+[node name="Center" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 760.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Clock" type="RichTextLabel" parent="Center"]
+process_mode = 3
+visible = false
+z_index = 8
+layout_mode = 2
+bbcode_enabled = true
+text = "TIME"
+fit_content = true
+
+[node name="Window" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 10
+visible = false
+
+[node name="Summer" type="Control" parent="Window"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -932.0
+offset_top = -704.0
+offset_right = -932.0
+offset_bottom = -704.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_no636")
+
+[node name="Summer" type="TextureRect" parent="Window/Summer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -10.0
+offset_right = 881.0
+offset_bottom = 1215.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_tq8re")
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Eye1" type="Sprite2D" parent="Window/Summer/Summer"]
+z_index = -1
+position = Vector2(441, 476)
+texture = ExtResource("5_1kt8u")
+flip_h = true
+
+[node name="Eye2" type="Sprite2D" parent="Window/Summer/Summer"]
+z_index = -1
+position = Vector2(512, 474)
+texture = ExtResource("5_1kt8u")
+flip_h = true
+
+[node name="Dead_Zone" type="Node2D" parent="Window/Summer"]
+position = Vector2(480, 474)
+
+[node name="Device" type="TextureRect" parent="Window"]
+process_mode = 3
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("3_ygbhk")
+
+[node name="Screen" type="TextureRect" parent="Window/Device"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.0
+offset_top = -360.0
+offset_right = 442.0
+offset_bottom = 390.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_6q7tj")
+
+[node name="Buttons" type="TextureRect" parent="Window"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 440.0
+offset_top = -375.0
+offset_right = 640.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_o0myf")
+
+[node name="Click_Muncher" type="TextureRect" parent="Window"]
+process_mode = 3
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+
+[node name="Items" type="Button" parent="Window"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 458.0
+offset_top = -360.0
+offset_right = 598.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/normal = ExtResource("7_k4j2c")
+toggle_mode = true
+button_group = ExtResource("7_bpcci")
+
+[node name="Diary" type="Button" parent="Window"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 458.0
+offset_top = -236.0
+offset_right = 598.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/normal = ExtResource("7_k4j2c")
+toggle_mode = true
+button_group = ExtResource("7_bpcci")
+
+[node name="Phone" type="Button" parent="Window"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 458.0
+offset_top = -124.0
+offset_right = 598.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/normal = ExtResource("7_k4j2c")
+toggle_mode = true
+button_group = ExtResource("7_bpcci")
+
+[node name="Cats" type="Button" parent="Window"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 452.0
+offset_top = -6.0
+offset_right = 592.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/normal = ExtResource("7_k4j2c")
+toggle_mode = true
+button_group = ExtResource("7_bpcci")
+
+[node name="Tapes" type="Button" parent="Window"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 454.0
+offset_top = 113.0
+offset_right = 594.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/normal = ExtResource("7_k4j2c")
+toggle_mode = true
+button_group = ExtResource("7_bpcci")
+
+[node name="Options" type="Button" parent="Window"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 454.0
+offset_top = 226.0
+offset_right = 594.0
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/normal = ExtResource("7_k4j2c")
+toggle_mode = true
+button_group = ExtResource("7_bpcci")
+
+[node name="InventoryPanel" type="Panel" parent="Window" groups=["UI"]]
+process_mode = 3
+z_index = 4
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("5_7vvl4")
+
+[node name="Details" type="RichTextLabel" parent="Window/InventoryPanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 540.0
+offset_right = 300.0
+offset_bottom = 600.0
+bbcode_enabled = true
+
+[node name="Tip" type="RichTextLabel" parent="Window/InventoryPanel"]
+z_index = 10
+layout_mode = 0
+offset_left = 300.0
+offset_top = 540.0
+offset_right = 580.0
+offset_bottom = 600.0
+bbcode_enabled = true
+
+[node name="GridContainer" type="GridContainer" parent="Window/InventoryPanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 562.0
+offset_bottom = 542.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_type_variation = &"InventoryGrid"
+columns = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Item_Slot1" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+z_index = 5
+clip_contents = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Item_Slot2" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 3
+
+[node name="Item_Slot3" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot4" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot5" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+stretch_mode = 0
+
+[node name="Item_Slot6" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot7" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot8" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot9" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot10" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot11" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot12" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot13" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot14" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot15" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot16" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="DiaryPanel" type="Panel" parent="Window" groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_ivjpd")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/DiaryPanel"]
+process_mode = 3
+clip_contents = false
+custom_minimum_size = Vector2(560, 560)
+layout_mode = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 580.0
+offset_bottom = 580.0
+horizontal_scroll_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Window/DiaryPanel/ScrollContainer"]
+process_mode = 3
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+tab_size = 1
+shortcut_keys_enabled = false
+
+[node name="PhonePanel" type="Panel" parent="Window" groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_kl3vl")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/PhonePanel"]
+process_mode = 3
+clip_contents = false
+custom_minimum_size = Vector2(560, 560)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 580.0
+offset_bottom = 580.0
+horizontal_scroll_mode = 0
+
+[node name="Number_List" type="RichTextLabel" parent="Window/PhonePanel/ScrollContainer"]
+process_mode = 3
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+tab_size = 1
+shortcut_keys_enabled = false
+
+[node name="CatsPanel" type="Panel" parent="Window" groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Window/CatsPanel"]
+process_mode = 3
+layout_mode = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 580.0
+offset_bottom = 580.0
+columns = 4
+
+[node name="TapesPanel" type="Panel" parent="Window" groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Window/TapesPanel"]
+process_mode = 3
+layout_mode = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 580.0
+offset_bottom = 580.0
+columns = 4
+
+[node name="OptionsPanel" type="Panel" parent="Window" groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_1wx7o")
+
+[node name="VBox" type="VBoxContainer" parent="Window/OptionsPanel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 580.0
+grow_horizontal = 2
+
+[node name="HBox1" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="Item_Mode" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox1"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Item Mode      "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Switch" type="Button" parent="Window/OptionsPanel/VBox/HBox1"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Switch"
+
+[node name="Hold" type="Button" parent="Window/OptionsPanel/VBox/HBox1"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Hold"
+
+[node name="HBox2" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="Menu Style" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox2"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Menu Style"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Plain" type="Button" parent="Window/OptionsPanel/VBox/HBox2"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Plain"
+
+[node name="Pure" type="Button" parent="Window/OptionsPanel/VBox/HBox2"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Pure"
+
+[node name="HBox3" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="Contrast" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox3"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "High Contrast"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Off" type="Button" parent="Window/OptionsPanel/VBox/HBox3"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Off"
+
+[node name="On" type="Button" parent="Window/OptionsPanel/VBox/HBox3"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "On"
+
+[node name="HBox4" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="Grayscale" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox4"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Grayscale"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Off" type="Button" parent="Window/OptionsPanel/VBox/HBox4"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Off"
+
+[node name="On" type="Button" parent="Window/OptionsPanel/VBox/HBox4"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "On"
+
+[node name="HBox5" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="Bounce" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox5"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Bounce
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Off" type="Button" parent="Window/OptionsPanel/VBox/HBox5"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Off"
+
+[node name="On" type="Button" parent="Window/OptionsPanel/VBox/HBox5"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "On"
+
+[node name="HBox6" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="Font_Size" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox6"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Font Size"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="S" type="Button" parent="Window/OptionsPanel/VBox/HBox6"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "S"
+
+[node name="M" type="Button" parent="Window/OptionsPanel/VBox/HBox6"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "M"
+
+[node name="L" type="Button" parent="Window/OptionsPanel/VBox/HBox6"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "L"
+
+[node name="HBoxD" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="Display" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBoxD"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Display   "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Display0" type="Button" parent="Window/OptionsPanel/VBox/HBoxD"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "480"
+
+[node name="Display1" type="Button" parent="Window/OptionsPanel/VBox/HBoxD"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "1080"
+
+[node name="Full" type="Button" parent="Window/OptionsPanel/VBox/HBoxD"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Full"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_lqvom")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="gui_input" from="Window/Click_Muncher" to="." method="_on_click_muncher_gui_input"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot1" to="Window/InventoryPanel" method="_on_item_slot_1_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot2" to="Window/InventoryPanel" method="_on_item_slot_2_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot3" to="Window/InventoryPanel" method="_on_item_slot_3_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot4" to="Window/InventoryPanel" method="_on_item_slot_4_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot5" to="Window/InventoryPanel" method="_on_item_slot_5_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot6" to="Window/InventoryPanel" method="_on_item_slot_6_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot7" to="Window/InventoryPanel" method="_on_item_slot_7_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot8" to="Window/InventoryPanel" method="_on_item_slot_8_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot9" to="Window/InventoryPanel" method="_on_item_slot_9_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot10" to="Window/InventoryPanel" method="_on_item_slot_10_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot11" to="Window/InventoryPanel" method="_on_item_slot_11_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot12" to="Window/InventoryPanel" method="_on_item_slot_12_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot13" to="Window/InventoryPanel" method="_on_item_slot_13_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot14" to="Window/InventoryPanel" method="_on_item_slot_14_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot15" to="Window/InventoryPanel" method="_on_item_slot_15_mouse_entered"]
+[connection signal="mouse_entered" from="Window/InventoryPanel/GridContainer/Item_Slot16" to="Window/InventoryPanel" method="_on_item_slot_16_mouse_entered"]

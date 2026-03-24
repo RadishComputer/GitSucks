@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://40xiddpww4dl"]
+
+[ext_resource type="Script" path="res://Scripts/pins_lockers.gd" id="1_kb0u3"]
+[ext_resource type="Texture2D" uid="uid://dcgbx7pmg4cr" path="res://Art/Beta/Places/Lockers.png" id="3_0sq1g"]
+
+[node name="Pins_Lockers" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_kb0u3")
+
+[node name="Lockers" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0sq1g")
+
+[node name="To_Laundry" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Laundry"]
+polygon = PackedVector2Array(-219, -228, -55, -223, -63, 148, -225, 208)
+
+[node name="To_Desk" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Desk"]
+polygon = PackedVector2Array(-740, 419, -493, 338, 740, 413, 742, 445, -743, 445)
+
+[node name="Side_Exit" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Side_Exit"]
+polygon = PackedVector2Array(91, -233, 291, -233, 291, 112, 81, 115)
+
+[node name="Window" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Window"]
+polygon = PackedVector2Array(386, -287, 699, -282, 694, -30, 386, -33)
+
+[node name="Bowling_Ball" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bowling_Ball"]
+polygon = PackedVector2Array(-384, -381, -297, -369, -301, -303, -398, -323)
+
+[node name="Towel" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Towel"]
+polygon = PackedVector2Array(76, 215, 234, 200, 199, 259, 199, 359, 102, 369, 29, 346)
+
+[node name="Bench" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bench"]
+polygon = PackedVector2Array(274, 131, 433, 132, 434, 152, 271, 295, 202, 295, 201, 257, 239, 197, 167, 204)
+
+[node name="Light" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Light"]
+polygon = PackedVector2Array(247, -439, 259, -439, 322, -326, 251, -293, 183, -321)

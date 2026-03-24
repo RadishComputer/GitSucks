@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2fldnbdffmyb"]
+
+[ext_resource type="Script" path="res://Scripts/pioneer_at_main.gd" id="1_m3qry"]
+[ext_resource type="Texture2D" uid="uid://dac1ls6bpuxbq" path="res://Art/Beta/Places/Pioneer_at_Main.png" id="2_tt77u"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_gl10k"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_ewpex"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmsby"]
+shader = ExtResource("3_gl10k")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[node name="Pioneer_At_Main" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_m3qry")
+
+[node name="Pioneer_At_Main" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tt77u")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_gmsby")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_ewpex")
+
+[node name="To_Lolas" type="Area2D" parent="."]
+position = Vector2(210, 90)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lolas"]
+position = Vector2(-714, -406)
+polygon = PackedVector2Array(209, 94, 330, 127, 322, 297, 209, 241)
+
+[node name="To_Cornicello" type="Area2D" parent="."]
+position = Vector2(210, 90)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Cornicello"]
+position = Vector2(-571, -540)
+polygon = PackedVector2Array(508, 286, 572, 284, 575, 430, 504, 439)
+
+[node name="To_Uncle_Sams" type="Area2D" parent="."]
+position = Vector2(210, 90)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Uncle_Sams"]
+position = Vector2(-984, -267)
+polygon = PackedVector2Array(38, 179, 242, 156, 253, 338, 37, 395)
+
+[node name="To_2nd" type="Area2D" parent="."]
+position = Vector2(210, 90)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_2nd"]
+position = Vector2(-382, -334)
+polygon = PackedVector2Array(452, 141, 405, 131, 397, 280, 448, 369)
+
+[node name="To_Caramel" type="Area2D" parent="."]
+position = Vector2(210, 90)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Caramel"]
+position = Vector2(-984, 0)
+polygon = PackedVector2Array(42, 171, 245, 108, 446, 248, 238, 342, 34, 345)

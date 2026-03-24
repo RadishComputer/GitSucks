@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdneag1j60m1c"]
+
+[ext_resource type="Script" path="res://Scripts/pins_arcade.gd" id="1_wlqnh"]
+[ext_resource type="Texture2D" uid="uid://5js3y8cr2at1" path="res://Art/Beta/Places/Arcade.png" id="3_1k14t"]
+
+[node name="Pins_Arcade" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_wlqnh")
+
+[node name="Pins_Arcade_Day" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1k14t")
+
+[node name="To_Desk" type="Area2D" parent="."]
+position = Vector2(-750, -456)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Desk"]
+position = Vector2(819, 32)
+polygon = PackedVector2Array(557, 50, 678, 46, 675, 431, 559, 433)
+
+[node name="To_QoE" type="Area2D" parent="."]
+position = Vector2(-750, -456)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_QoE"]
+position = Vector2(368, 113)
+polygon = PackedVector2Array(446, 60, 269, 94, 212, 176, 261, 315, 337, 380, 379, 553, 519, 516, 539, 333, 471, 286, 430, 160, 459, 122)
+
+[node name="To_SS" type="Area2D" parent="."]
+position = Vector2(-750, -456)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_SS"]
+position = Vector2(497, 169)
+polygon = PackedVector2Array(420, 58, 345, 69, 309, 107, 351, 226, 415, 273, 410, 422, 536, 397, 527, 268)
+
+[node name="To_TTO" type="Area2D" parent="."]
+position = Vector2(-750, -456)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_TTO"]
+position = Vector2(243, 246)
+polygon = PackedVector2Array(357, -76, 367, -17, 330, 43, 381, 188, 451, 252, 438, 464, 266, 517, 53, 479, -5, 24, 71, -38)
+
+[node name="To_TBM" type="Area2D" parent="."]
+position = Vector2(-750, -456)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_TBM"]
+position = Vector2(11, 142)
+polygon = PackedVector2Array(142, 61, 323, 52, 222, 126, 266, 555, -7, 591, -6, 300, 133, 241)
+
+[node name="To_AA" type="Area2D" parent="."]
+position = Vector2(-750, -456)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_AA"]
+position = Vector2(547, 80)
+polygon = PackedVector2Array(385, 72, 545, 73, 555, 393, 489, 391, 486, 354, 387, 160)

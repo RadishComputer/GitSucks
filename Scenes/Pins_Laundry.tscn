@@ -1,0 +1,126 @@
+[gd_scene load_steps=3 format=3 uid="uid://df86i203v2w64"]
+
+[ext_resource type="Script" path="res://Scripts/pins_laundry.gd" id="1_naauh"]
+[ext_resource type="Texture2D" uid="uid://xaaa2ij3in0q" path="res://Art/Beta/Places/Laundry.png" id="3_cyorv"]
+
+[node name="Pins_Laundry" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_naauh")
+
+[node name="Laundry" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cyorv")
+
+[node name="To_Lockers" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lockers"]
+polygon = PackedVector2Array(421, -218, 570, -213, 573, 103, 483, 199, 411, 155)
+
+[node name="Soap_Despenser" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Soap_Despenser"]
+polygon = PackedVector2Array(200, -197, 324, -192, 324, -2, 204, -2)
+
+[node name="Painting" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Painting"]
+polygon = PackedVector2Array(627, -309, 736, -306, 739, -2, 628, -35)
+
+[node name="Detergent" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Detergent"]
+polygon = PackedVector2Array(-672, 181, -633, 181, -563, 278, -597, 393, -713, 396, -714, 238)
+
+[node name="Basket" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basket"]
+polygon = PackedVector2Array(-286, 204, -95, 204, -116, 399, -274, 397)
+
+[node name="Seats" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Seats"]
+polygon = PackedVector2Array(593, 84, 737, 114, 737, 330, 466, 224)
+
+[node name="Washing_Machine" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Washing_Machine"]
+polygon = PackedVector2Array(-743, -298, 154, -297, 153, 156, -741, 160)
+
+[node name="Coin0" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin0"]
+polygon = PackedVector2Array(-622, -100, -597, -101, -596, -68, -622, -67)
+
+[node name="Coin1" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin1"]
+polygon = PackedVector2Array(-434, -94, -412, -92, -411, -64, -436, -64)
+
+[node name="Coin2" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin2"]
+polygon = PackedVector2Array(-245, -97, -223, -96, -223, -65, -249, -65)
+
+[node name="Coin3" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin3"]
+polygon = PackedVector2Array(-70, -90, -43, -88, -44, -59, -71, -59)
+
+[node name="Coin4" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin4"]
+polygon = PackedVector2Array(113, -88, 139, -88, 140, -58, 114, -60)
+
+[node name="Coin5" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin5"]
+polygon = PackedVector2Array(-618, -20, -593, -20, -596, 7, -620, 7)
+
+[node name="Coin6" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin6"]
+polygon = PackedVector2Array(-429, -19, -406, -20, -404, 9, -431, 9)
+
+[node name="Coin7" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin7"]
+polygon = PackedVector2Array(-249, -19, -225, -19, -223, 5, -249, 5)
+
+[node name="Coin8" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin8"]
+polygon = PackedVector2Array(-65, -20, -41, -20, -42, 7, -65, 6)
+
+[node name="Coin9" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin9"]
+polygon = PackedVector2Array(116, -15, 140, -15, 140, 9, 113, 9)
+
+[node name="Coin10" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin10"]
+polygon = PackedVector2Array(237, -47, 264, -48, 267, -25, 232, -26)
+
+[node name="Coin11" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin11"]
+polygon = PackedVector2Array(288, -47, 317, -48, 319, -28, 287, -29)

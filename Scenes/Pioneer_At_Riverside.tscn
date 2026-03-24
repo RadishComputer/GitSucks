@@ -1,0 +1,168 @@
+[gd_scene load_steps=13 format=3 uid="uid://bipa5wxi71qsw"]
+
+[ext_resource type="Script" path="res://Scripts/pioneer_at_riverside.gd" id="1_l0bu0"]
+[ext_resource type="Texture2D" uid="uid://62p4ycj26nyu" path="res://Art/Beta/Places/Pioneer_at_Riverside.png" id="2_sqgc4"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_4qxk5"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_pog73"]
+[ext_resource type="Shader" path="res://Elements/outdoors.gdshader" id="5_y38nx"]
+[ext_resource type="Texture2D" uid="uid://bqk2tpst56kkk" path="res://Art/Beta/Places/Pioneer_at_Riverside_Light.png" id="6_dx4t7"]
+[ext_resource type="Texture2D" uid="uid://38p5sy4xpv5n" path="res://Art/Beta/Places/Pioneer_at_Riverside_Street.png" id="7_2j82l"]
+[ext_resource type="Texture2D" uid="uid://de0q32nk02uo4" path="res://Art/Beta/Places/Pioneer_at_Riverside_Upstairs.png" id="8_k7v3t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sn42g"]
+shader = ExtResource("3_4qxk5")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpjtf"]
+shader = ExtResource("5_y38nx")
+shader_parameter/light_enabled = true
+shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/strength = 1.0
+shader_parameter/tint_intensity = 1.0
+shader_parameter/light_mask = ExtResource("6_dx4t7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r3b3g"]
+shader = ExtResource("5_y38nx")
+shader_parameter/light_enabled = true
+shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/strength = 1.0
+shader_parameter/tint_intensity = 1.0
+shader_parameter/light_mask = ExtResource("8_k7v3t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o7knq"]
+shader = ExtResource("5_y38nx")
+shader_parameter/light_enabled = true
+shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/strength = 1.0
+shader_parameter/tint_intensity = 1.0
+shader_parameter/light_mask = ExtResource("7_2j82l")
+
+[node name="Pioneer_At_Riverside" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_l0bu0")
+
+[node name="Pioneer_At_Riverside" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_sqgc4")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_sn42g")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_pog73")
+
+[node name="Light" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_lpjtf")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_dx4t7")
+
+[node name="Upstairs" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.222)
+material = SubResource("ShaderMaterial_r3b3g")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_k7v3t")
+
+[node name="Street_Lights" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_o7knq")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_2j82l")
+
+[node name="Door" type="Area2D" parent="."]
+position = Vector2(107, 60)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door"]
+position = Vector2(-341, -147)
+polygon = PackedVector2Array(467, 105, 528, 107, 524, 202, 465, 202)
+
+[node name="To_Caramel" type="Area2D" parent="."]
+position = Vector2(107, 60)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Caramel"]
+position = Vector2(-667, -246)
+polygon = PackedVector2Array(386, -1, 271, -1, 181, 68, 178, 271, 378, 282)
+
+[node name="Neighbors" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Neighbors"]
+polygon = PackedVector2Array(-740, -257, -578, -317, -381, -133, -383, 43, -498, 113, -740, 113)
+
+[node name="GPS" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GPS"]
+polygon = PackedVector2Array(39, -303, 522, -295, 562, -148, 551, 136, 294, 136, 296, 18, 230, 16, 228, 137, -9, 128, -4, -168)
+
+[node name="Mountains" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mountains"]
+polygon = PackedVector2Array(-304, -242, -201, -260, -143, -233, -77, -244, -33, -234, -33, -195, -289, -190)
+
+[node name="Tree" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tree"]
+polygon = PackedVector2Array(572, -292, 742, -400, 744, 147, 700, 139, 663, -93, 572, -144)

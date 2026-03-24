@@ -1,0 +1,199 @@
+[gd_scene load_steps=10 format=3 uid="uid://b85k3qan7gmui"]
+
+[ext_resource type="Script" path="res://Scripts/bear_room.gd" id="1_7fj42"]
+[ext_resource type="Texture2D" uid="uid://dlw35i6fvskrc" path="res://Art/Beta/Places/Bear_Room.png" id="2_rbgob"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_qc66t"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_87itd"]
+[ext_resource type="Shader" path="res://Elements/house_lamp.gdshader" id="5_vyor5"]
+[ext_resource type="Texture2D" uid="uid://onb04atxnnll" path="res://Art/Beta/Places/Bear_Room_Light2.png" id="6_3mrkq"]
+[ext_resource type="Script" path="res://Scripts/to_bear_door.gd" id="7_pvnoc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_agh41"]
+shader = ExtResource("3_qc66t")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1iply"]
+shader = ExtResource("5_vyor5")
+shader_parameter/light_enabled = true
+shader_parameter/light_color = Color(1, 0.95, 0.7, 1)
+shader_parameter/light_strength = 1.0
+shader_parameter/light_mask = ExtResource("6_3mrkq")
+
+[node name="Bear_Room" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+script = ExtResource("1_7fj42")
+
+[node name="Bear_Room" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_rbgob")
+expand_mode = 1
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_agh41")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_87itd")
+
+[node name="Lamp_Light" type="TextureRect" parent="."]
+z_index = 2
+texture_filter = 1
+material = SubResource("ShaderMaterial_1iply")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_3mrkq")
+
+[node name="Intro_Blocker" type="TextureRect" parent="."]
+process_mode = 3
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Under_Bed" type="Area2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Under_Bed"]
+polygon = PackedVector2Array(246, 278, 490, 271, 490, 345, 243, 349, 83, 98, 84, 51)
+
+[node name="Desk" type="Area2D" parent="."]
+position = Vector2(1, 2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Desk"]
+polygon = PackedVector2Array(-500, -132, -169, -130, -153, 119, -169, 119, -224, -55, -446, -51, -512, 126, -481, -57, -445, -71, -443, -108, -501, -108)
+
+[node name="Window" type="Area2D" parent="."]
+position = Vector2(-108, -60)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Window"]
+polygon = PackedVector2Array(-115, -379, 218, -379, 227, -104, 135, -106, 124, -139, 78, -139, 68, -106, -106, -110)
+
+[node name="Drawer1" type="Area2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Drawer1"]
+polygon = PackedVector2Array(-82, -37, 43, -38, 43, -2, -82, 1)
+
+[node name="Drawer2" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Drawer2"]
+polygon = PackedVector2Array(-82, 0, 44, -2, 42, 109, -82, 110)
+
+[node name="Book" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Book"]
+polygon = PackedVector2Array(-73, -76, -35, -76, -19, -63, 23, -65, 23, -53, -47, -51, -72, -66)
+
+[node name="Closet" type="Area2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Closet"]
+polygon = PackedVector2Array(499, -443, 492, 435, 740, 440, 741, -441)
+
+[node name="Bear1" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bear1"]
+polygon = PackedVector2Array(358, -439, 439, -439, 419, -346, 396, -333, 357, -353)
+
+[node name="Bear2" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bear2"]
+polygon = PackedVector2Array(440, -439, 495, -439, 497, -293, 420, -346)
+
+[node name="Bear3" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bear3"]
+polygon = PackedVector2Array(363, -316, 439, -308, 434, -219, 406, -194, 351, -216, 351, -250)
+
+[node name="Bear4" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bear4"]
+polygon = PackedVector2Array(447, -293, 496, -281, 495, -181, 454, -116, 423, -132, 422, -194, 444, -227)
+
+[node name="Suitcase" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Suitcase"]
+polygon = PackedVector2Array(-458, 14, -393, -9, -310, 24, -291, 82, -298, 132, -330, 157, -450, 157, -483, 130, -483, 130, -478, 48)
+
+[node name="Phone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Phone"]
+polygon = PackedVector2Array(-508, -92, -465, -105, -444, -93, -445, -70, -490, -52, -510, -74)
+
+[node name="Flower" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flower"]
+polygon = PackedVector2Array(-271, -337, -235, -338, -222, -278, -219, -162, -190, -130, -276, -131, -286, -320)
+
+[node name="Bed" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bed"]
+polygon = PackedVector2Array(85, -55, 139, -89, 327, -92, 491, 34, 491, 268, 246, 275, 77, 39)
+
+[node name="Lamp" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lamp"]
+polygon = PackedVector2Array(-29, -198, 15, -198, 36, -127, 18, -71, -19, -67, -37, -81, -48, -133)
+
+[node name="Door" type="Area2D" parent="."]
+position = Vector2(1, -3)
+script = ExtResource("7_pvnoc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door"]
+polygon = PackedVector2Array(-692, -386, -546, -352, -546, 138, -692, 310)

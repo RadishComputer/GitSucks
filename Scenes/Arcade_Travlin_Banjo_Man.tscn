@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvq7miawwqy0c"]
+
+[ext_resource type="Script" path="res://Scripts/travlin_banjo_man.gd" id="1_b2vv6"]
+[ext_resource type="Texture2D" uid="uid://bnh83dism3qp3" path="res://Art/Beta/Places/Travlin_Banjo_Man_A.png" id="3_e3v2j"]
+
+[node name="Travlin_Banjo_Man" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_b2vv6")
+
+[node name="Travlin_Banjo_Man" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_e3v2j")
+metadata/_edit_use_anchors_ = true
+
+[node name="To_Exit" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Exit"]
+polygon = PackedVector2Array(-742, -450, 744, -444, 744, 444, -740, 448)

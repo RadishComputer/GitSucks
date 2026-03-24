@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://db102bynh42m3"]
+
+[ext_resource type="Script" path="res://Scripts/pins_lanes.gd" id="1_ltwfl"]
+[ext_resource type="Texture2D" uid="uid://oi02yjo41cjf" path="res://Art/Beta/Places/Pins_Lanes.png" id="2_kk45r"]
+
+[node name="Pins_Lanes" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_ltwfl")
+
+[node name="Pins_Lanes" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kk45r")
+
+[node name="To_Pins_Desk" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Pins_Desk"]
+polygon = PackedVector2Array(753, -443, -739, -445, -744, 444, -6, -415, 749, 444)

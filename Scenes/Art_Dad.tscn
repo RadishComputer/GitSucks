@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://brmlxj3dw3d3g"]
+
+[ext_resource type="Script" path="res://art_dad.gd" id="1_ro7lq"]
+[ext_resource type="Texture2D" uid="uid://cgjl6pnervn2l" path="res://Art/Beta/Places/Art_Dad.png" id="2_xwvod"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_130xm"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_vb62e"]
+[ext_resource type="Shader" path="res://Elements/dim_lamp.gdshader" id="5_urchv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7fd4"]
+shader = ExtResource("3_130xm")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8gjxo"]
+shader = ExtResource("5_urchv")
+shader_parameter/light_enabled = false
+shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
+shader_parameter/light_strength = 1.0
+
+[node name="Art_Dad" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_ro7lq")
+
+[node name="Dad" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xwvod")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_y7fd4")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_vb62e")
+
+[node name="Lamp_Light" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_8gjxo")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_vb62e")
+
+[node name="Art" type="Area2D" parent="."]
+position = Vector2(973, 569)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Art"]
+polygon = PackedVector2Array(-236, -365, 264, -364, 276, 280, -227, 283)
+
+[node name="Back" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back"]
+position = Vector2(961, 541)
+polygon = PackedVector2Array(-743, -442, 740, -440, 739, 438, 297, 436, 283, -341, -236, -345, -221, 441, -742, 438)

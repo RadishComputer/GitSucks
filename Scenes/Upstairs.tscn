@@ -1,0 +1,184 @@
+[gd_scene load_steps=9 format=3 uid="uid://foawotab0dpq"]
+
+[ext_resource type="Script" path="res://Scripts/upstairs.gd" id="1_6urak"]
+[ext_resource type="Texture2D" uid="uid://dki5q4s30bcc3" path="res://Art/Beta/Places/Upstairs.png" id="2_vnfmh"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_n7yg8"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_io0k5"]
+[ext_resource type="Shader" path="res://Elements/dim_lamp.gdshader" id="5_ja6an"]
+[ext_resource type="Texture2D" uid="uid://dninqi0akguau" path="res://Art/Beta/Places/Upstairs_Light.png" id="6_dqo81"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j8ptw"]
+shader = ExtResource("3_n7yg8")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3k8p5"]
+shader = ExtResource("5_ja6an")
+shader_parameter/light_enabled = true
+shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
+shader_parameter/light_strength = 1.0
+shader_parameter/light_mask = ExtResource("6_dqo81")
+
+[node name="Upstairs" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_6urak")
+
+[node name="Upstairs" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vnfmh")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_j8ptw")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_io0k5")
+
+[node name="Lamp_Light" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_3k8p5")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_dqo81")
+
+[node name="Bear_Room" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bear_Room"]
+polygon = PackedVector2Array(200, -197, 243, -210, 246, 178, 202, 131)
+
+[node name="Down_Stairs" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Down_Stairs"]
+polygon = PackedVector2Array(31, 237, 270, 236, 351, 441, 12, 446)
+
+[node name="Lamp" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lamp"]
+polygon = PackedVector2Array(-686, -120, -484, -121, -485, 41, -541.243, 56.4, -539, 124, -557, 125, -552.059, 59.3615, -569, 64, -565, 145, -521, 205, -550, 248, -604, 250, -630, 196, -593, 147, -593, 63, -685, 50)
+
+[node name="Flower" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flower"]
+polygon = PackedVector2Array(-651, 72, -625, 85, -644, 234, -680, 229, -679, 127)
+
+[node name="Drawer" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Drawer"]
+polygon = PackedVector2Array(-612, 261, -505, 252, -427, 190, -429, 315, -496, 378, -616, 391)
+
+[node name="Mirror" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mirror"]
+polygon = PackedVector2Array(-516, -343, -347, -288, -350, 108, -518, 147, -518, 53, -481, 43, -482, -123, -518, -123)
+
+[node name="Bedroom" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bedroom"]
+polygon = PackedVector2Array(-262, -197, -217, -184, -221, 136, -265, 169)
+
+[node name="Window" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Window"]
+polygon = PackedVector2Array(-168, -189, 156, -187, 155, 33, -174, 33)
+
+[node name="Attic" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attic"]
+polygon = PackedVector2Array(-351, -440, -78, -439, -9, -311, -182, -308)
+
+[node name="Bridge" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bridge"]
+polygon = PackedVector2Array(-704, -312, -547, -288, -553, -172, -711, -168)
+
+[node name="Cactus" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cactus"]
+polygon = PackedVector2Array(-344, -193, -289, -178, -285, -83, -343, -75)
+
+[node name="Couple" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Couple"]
+polygon = PackedVector2Array(-345, -44, -286, -52, -288, 27, -347, 42)
+
+[node name="Abstract" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Abstract"]
+polygon = PackedVector2Array(261, -237, 299, -252, 304, -143, 263, -132)
+
+[node name="Tree" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tree"]
+polygon = PackedVector2Array(316, -277, 373, -304, 381, -167, 321, -153)
+
+[node name="Lavender" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lavender"]
+polygon = PackedVector2Array(398, -351, 489, -387, 500, -202, 400, -179)
+
+[node name="Rainier" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rainier"]
+polygon = PackedVector2Array(541, -443, 657, -443, 678, -352, 649, -249, 565, -229, 525, -277, 510, -376)
+
+[node name="Mom" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mom"]
+polygon = PackedVector2Array(255, -106, 308, -108, 309, 15, 263, 6)
+
+[node name="Babys_Breath" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Babys_Breath"]
+polygon = PackedVector2Array(332, -124, 454, -147, 456, 56, 330, 23)
+
+[node name="Falls" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Falls"]
+polygon = PackedVector2Array(490, -151, 649, -207, 652, 135, 490, 78)
+
+[node name="Someone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Someone"]
+polygon = PackedVector2Array(276, 41, 303, 44, 312, 99, 302, 137, 273, 131, 263, 81)
+
+[node name="Dad" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dad"]
+polygon = PackedVector2Array(366, 84, 469, 108, 477, 303, 372, 264)

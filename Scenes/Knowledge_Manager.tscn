@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfx3giwspwctl"]
+
+[ext_resource type="Script" path="res://Scripts/KnowledgeManager.gd" id="1_1bptt"]
+
+[node name="KnowledgeManager" type="Node2D"]
+script = ExtResource("1_1bptt")

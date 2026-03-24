@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://cru6lln4y0xkf"]
+
+[ext_resource type="Script" path="res://Scripts/art_bridge.gd" id="1_88ovo"]
+[ext_resource type="Texture2D" uid="uid://cgbt15u1tjtta" path="res://Art/Beta/Places/Art_Bridge.png" id="2_aceb7"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_a56l0"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_thwqc"]
+[ext_resource type="Shader" path="res://Elements/dim_lamp.gdshader" id="5_onxdt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2gk51"]
+shader = ExtResource("3_a56l0")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_guo8p"]
+shader = ExtResource("5_onxdt")
+shader_parameter/light_enabled = false
+shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
+shader_parameter/light_strength = 1.0
+
+[node name="Art_Bridge" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_88ovo")
+
+[node name="Bridge" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_aceb7")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_2gk51")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_thwqc")
+
+[node name="Lamp_Light" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_guo8p")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_thwqc")
+
+[node name="Art" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Art"]
+polygon = PackedVector2Array(-423, -298, 442, -300, 444, 327, -426, 325)
+
+[node name="Back" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back"]
+polygon = PackedVector2Array(-743, -442, 740, -440, 739, 438, 458, 438, 457, -314, -434, -305, -442, 443, -742, 438)

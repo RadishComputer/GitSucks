@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://jy17mybtkxb4"]
+
+[ext_resource type="Script" path="res://Scripts/art_abstract.gd" id="1_4i156"]
+[ext_resource type="Texture2D" uid="uid://shd1d8wcpnq4" path="res://Art/Beta/Places/Art_Abstract.png" id="2_0cun0"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_cj11d"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_83mp1"]
+[ext_resource type="Shader" path="res://Elements/dim_lamp.gdshader" id="5_fw7ah"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7p5fx"]
+shader = ExtResource("3_cj11d")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h013y"]
+shader = ExtResource("5_fw7ah")
+shader_parameter/light_enabled = false
+shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
+shader_parameter/light_strength = 1.0
+
+[node name="Art_Abstract" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_4i156")
+
+[node name="Abstract" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0cun0")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_7p5fx")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_83mp1")
+
+[node name="Lamp_Light" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_h013y")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_83mp1")
+
+[node name="Art" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Art"]
+polygon = PackedVector2Array(-260, -362, 261, -358, 260, 364, -267, 367)
+
+[node name="Back" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back"]
+polygon = PackedVector2Array(-743, -442, 740, -440, 739, 438, 266, 438, 268, -372, -272, -368, -270, 442, -742, 438)

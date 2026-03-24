@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://fco4i7tgmnbn"]
+
+[ext_resource type="Texture2D" uid="uid://c2aqefa6yij22" path="res://Art/Beta/Places/Cornicello.png" id="1_41hes"]
+[ext_resource type="Script" path="res://Scripts/cornicello.gd" id="1_iqflu"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_ljg5d"]
+[ext_resource type="Texture2D" uid="uid://dj4n0ee3dkf5f" path="res://Art/Beta/Characters/Maria.png" id="3_rc2dh"]
+[ext_resource type="Script" path="res://Scripts/maria.gd" id="4_2vqlv"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_p8rcl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryptw"]
+size = Vector2(267, 282.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5760o"]
+shader = ExtResource("3_ljg5d")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[node name="Cornicello" type="Control" groups=["World_Scenes"]]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_iqflu")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_41hes")
+
+[node name="Exit" type="Area2D" parent="."]
+
+[node name="CollisionShapeD2" type="CollisionShape2D" parent="Exit"]
+position = Vector2(-20, -160)
+shape = SubResource("RectangleShape2D_ryptw")
+
+[node name="Maria" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -482.0
+offset_top = -74.0
+offset_right = -77.0
+offset_bottom = 860.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_rc2dh")
+script = ExtResource("4_2vqlv")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_5760o")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_p8rcl")

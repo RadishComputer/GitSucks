@@ -1,0 +1,73 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Nothing to do Summer Vacation"
+run/main_scene="res://Scenes/Summery.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+
+[audio]
+
+buses/default_bus_layout="res://Sounds/default_bus_layout.tres"
+driver/driver="XAudio2"
+buses/channel_disable_threshold_db=-200.0
+buses/channel_disable_time=0.0
+
+[autoload]
+
+ItemManager="*res://Scenes/Item_Manager.tscn"
+ItemDatabase="*res://Scenes/Item_Database.tscn"
+Bouncer="*res://Scenes/Bouncer.tscn"
+GameState="*res://Scenes/Game_State.tscn"
+DialogManager="*res://Scenes/Dialog_Manager.tscn"
+PortraitManager="*res://Scenes/Portrait_Manager.tscn"
+ClockManager="*res://Scenes/Clock_Manager.tscn"
+NumberManager="*res://Scenes/Number_Manager.tscn"
+KnowledgeManager="*res://Scenes/Knowledge_Manager.tscn"
+InputManager="*res://Scenes/Input_Manager.tscn"
+SettingsManager="*res://Scenes/Settings_Manager.tscn"
+Menu="*res://Scenes/menu.tscn"
+PhoneAudio="*res://Scenes/Phone_Audio.tscn"
+PhoneBook="*res://Scenes/Phone_Book.tscn"
+SequenceMachine="*res://Scenes/Sequence_Machine.tscn"
+TextBox="*res://Scenes/TextBox.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/initial_position_type=0
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[global_group]
+
+UI=""
+
+[gui]
+
+theme/default_font_antialiasing=2
+
+[input]
+
+click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/screen_space_roughness_limiter/enabled=false

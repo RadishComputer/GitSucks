@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=3 uid="uid://bk2olw082cfkx"]
+
+[ext_resource type="Script" path="res://Scripts/summery.gd" id="1_xxhru"]
+[ext_resource type="Texture2D" uid="uid://bcrvk6d7vqhsu" path="res://Art/Beta/Items/Background_Black.png" id="2_m56c0"]
+[ext_resource type="Texture2D" uid="uid://uyuip3ractdl" path="res://Art/Beta/Places/Default_Backgroud.png" id="2_tvf4k"]
+[ext_resource type="Shader" path="res://Elements/iris_mask.gdshader" id="3_0udv7"]
+[ext_resource type="Texture2D" uid="uid://bbb2wsgyncopc" path="res://Art/Beta/Characters/Summer.png" id="4_xa1rc"]
+[ext_resource type="Texture2D" uid="uid://cj1hmgnu82yjm" path="res://Art/Beta/Characters/Summer_Shadow_Skew.png" id="6_lr0uh"]
+[ext_resource type="AudioStream" uid="uid://4srxbt1qv47k" path="res://Sounds/Light.wav" id="7_ttyvo"]
+[ext_resource type="AudioStream" uid="uid://cn5djsw4en14g" path="res://Sounds/Outro.wav" id="8_trjxg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j8f7h"]
+shader = ExtResource("3_0udv7")
+shader_parameter/radius = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8porc"]
+
+[node name="Summery" type="Control" groups=["UI"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xxhru")
+
+[node name="Black" type="TextureRect" parent="."]
+z_index = 8
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_m56c0")
+expand_mode = 1
+
+[node name="Blue" type="TextureRect" parent="."]
+z_index = 8
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tvf4k")
+
+[node name="IrisMask" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_j8f7h")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Self" type="TextureButton" parent="."]
+z_index = 9
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -425.0
+offset_top = -625.0
+offset_right = 425.0
+offset_bottom = 625.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_xa1rc")
+stretch_mode = 3
+
+[node name="Shadow" type="TextureButton" parent="Self"]
+modulate = Color(1, 1, 1, 0.5)
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -353.0
+offset_top = -482.0
+offset_right = 497.0
+offset_bottom = 768.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_lr0uh")
+
+[node name="NoteBox" type="Panel" parent="."]
+process_mode = 3
+z_index = 10
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -30.0
+offset_right = 300.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8porc")
+
+[node name="Center" type="VBoxContainer" parent="NoteBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Click_Hint" type="RichTextLabel" parent="NoteBox/Center"]
+process_mode = 3
+visible = false
+z_index = 10
+layout_mode = 2
+theme_type_variation = &"Choice"
+bbcode_enabled = true
+text = "[center]Click anywhere."
+fit_content = true
+scroll_active = false
+
+[node name="Light" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ttyvo")
+
+[node name="Outro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_trjxg")

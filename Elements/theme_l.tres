@@ -1,0 +1,22 @@
+[gd_resource type="Theme" format=3 uid="uid://lgqdqeskpsgs"]
+
+[resource]
+BiggerButton/base_type = &"Button"
+BiggerButton/font_sizes/font_size = 50
+BiggerLabel/base_type = &"RichTextLabel"
+BiggerLabel/font_sizes/bold_font_size = 50
+BiggerLabel/font_sizes/bold_italics_font_size = 50
+BiggerLabel/font_sizes/italics_font_size = 50
+BiggerLabel/font_sizes/mono_font_size = 50
+BiggerLabel/font_sizes/normal_font_size = 50
+Button/font_sizes/font_size = 40
+Choice/base_type = &"HBoxContainer"
+Choice/constants/separation = 80
+InventoryGrid/base_type = &"GridContainer"
+InventoryGrid/constants/v_separation = 0
+Label/font_sizes/font_size = 40
+RichTextLabel/font_sizes/bold_font_size = 40
+RichTextLabel/font_sizes/bold_italics_font_size = 40
+RichTextLabel/font_sizes/italics_font_size = 40
+RichTextLabel/font_sizes/mono_font_size = 40
+RichTextLabel/font_sizes/normal_font_size = 40

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://rvf1wk2qutk3"]
+
+[ext_resource type="Script" path="res://Scripts/phone_book.gd" id="1_l6dsb"]
+
+[node name="PhoneBook" type="Node"]
+script = ExtResource("1_l6dsb")

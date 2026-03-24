@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj2mt7t0om1ma"]
+
+[ext_resource type="Script" path="res://Scripts/phone_audio.gd" id="1_jy6hf"]
+
+[node name="Phone_Audio" type="AudioStreamPlayer"]
+script = ExtResource("1_jy6hf")

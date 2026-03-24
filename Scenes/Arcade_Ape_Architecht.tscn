@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfh2ojge7wx0m"]
+
+[ext_resource type="Script" path="res://Scripts/ape_architecht.gd" id="1_6etb8"]
+[ext_resource type="Texture2D" uid="uid://c4jeyg65lnqj2" path="res://Art/Beta/Places/Ape_Architect_A.png" id="3_3di5e"]
+
+[node name="Ape Architecht" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_6etb8")
+
+[node name="Apre_Architecht" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3di5e")
+metadata/_edit_use_anchors_ = true
+
+[node name="To_Exit" type="Area2D" parent="."]
+position = Vector2(-750, -450)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Exit"]
+polygon = PackedVector2Array(8, 10, 1498, 1, 1496, 890, 2, 895)

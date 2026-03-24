@@ -1,0 +1,184 @@
+[gd_scene load_steps=13 format=3 uid="uid://dtmrkiam8frhm"]
+
+[ext_resource type="Script" path="res://Scripts/front_room.gd" id="1_xd60o"]
+[ext_resource type="Texture2D" uid="uid://0lsvscmiprx3" path="res://Art/Beta/Places/Front_Room.png" id="2_3xhck"]
+[ext_resource type="Script" path="res://Scripts/television.gd" id="2_knsqa"]
+[ext_resource type="Texture2D" uid="uid://ch8jvqcrgwpf3" path="res://Art/Beta/TV/TV.png" id="2_o6wsr"]
+[ext_resource type="Texture2D" uid="uid://dym5b5kulrd1b" path="res://Art/Beta/Characters/Susan.png" id="3_ovrj4"]
+[ext_resource type="Script" path="res://Scripts/mom.gd" id="4_1dh57"]
+[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="5_dbj5x"]
+[ext_resource type="Texture2D" uid="uid://b1qrpfqipffn2" path="res://Art/Beta/Places/Front_Room_Mask.png" id="6_cn4d1"]
+[ext_resource type="Shader" path="res://Elements/house_lamp.gdshader" id="7_qlq52"]
+[ext_resource type="Texture2D" uid="uid://bu2hnqfw5rs7g" path="res://Art/Beta/Places/Front_Room_Light.png" id="8_dvboy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttdih"]
+shader = ExtResource("5_dbj5x")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7rut"]
+shader = ExtResource("7_qlq52")
+shader_parameter/light_enabled = false
+shader_parameter/light_color = Color(1, 0.95, 0.7, 1)
+shader_parameter/light_strength = 1.0
+shader_parameter/light_mask = ExtResource("8_dvboy")
+
+[node name="Front_Room" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_xd60o")
+
+[node name="Television" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_knsqa")
+
+[node name="Screen" type="TextureRect" parent="Television"]
+layout_mode = 0
+offset_left = 841.0
+offset_top = 477.0
+offset_right = 951.0
+offset_bottom = 562.0
+mouse_filter = 2
+texture = ExtResource("2_o6wsr")
+
+[node name="Front_Room" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3xhck")
+
+[node name="MomButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_top = -109.0
+offset_right = 779.0
+offset_bottom = 839.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_ovrj4")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_1dh57")
+
+[node name="Time_of_Day" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ttdih")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_cn4d1")
+
+[node name="Light" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_e7rut")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_dvboy")
+
+[node name="Stairs" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stairs"]
+position = Vector2(-493, 27)
+polygon = PackedVector2Array(16, -94, 159, -24, 151, 73, 10, 95)
+
+[node name="Front_Door" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Front_Door"]
+position = Vector2(-494, -48)
+polygon = PackedVector2Array(256, -136, 339, -116, 332, 91, 250, 61)
+
+[node name="Lamp" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lamp"]
+position = Vector2(-476, -170)
+polygon = PackedVector2Array(-263, -98, -197, -97, -130, 117, -231, 123, -230, 297, -182, 522, -265, 528)
+
+[node name="Phone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Phone"]
+polygon = PackedVector2Array(-587, -121, -507, -121, -508, 18, -587, 21)
+
+[node name="Dining_Room" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dining_Room"]
+polygon = PackedVector2Array(-411, -203, -310, -199, -316, 11, -415, -41)
+
+[node name="Umbrellas" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Umbrellas"]
+polygon = PackedVector2Array(-307, -68, -277, -72, -284, 21, -297, 26, -305, 20)
+
+[node name="TV" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TV"]
+polygon = PackedVector2Array(-116, -72, 8, -70, 6, -13, -18, -14, -22, 26, -116, 27)
+
+[node name="VCR" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VCR"]
+polygon = PackedVector2Array(-107, 35, -2, 38, -3, 60, -108, 58)
+
+[node name="Movies" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Movies"]
+polygon = PackedVector2Array(-116, 65, -1, 70, -1, 112, -107, 106)
+
+[node name="Window" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Window"]
+polygon = PackedVector2Array(97, -210, 420, -208, 420, 24, 95, -15)
+
+[node name="Pictures" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pictures"]
+polygon = PackedVector2Array(-473, -234, -414, -222, -422, -83, -478, -104)
+
+[node name="Dials" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dials"]
+polygon = PackedVector2Array(-17, -13, 6, -12, 3, 27, -21, 26)
