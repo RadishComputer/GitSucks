@@ -74,13 +74,16 @@ func front_door_clicked(viewport, event, shape_idx):
 
 func on_exit(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
-		ClockManager.next_scene_path = scene_path
-		if advance_time:
-			ClockManager.switch_scene(true)
+		if KnowledgeManager.secretly_knows("Food_Received"):
+			get_tree().change_scene_to_file("res://Scenes/demo_end.tscn")
 		else:
-			get_tree().change_scene_to_file(scene_path)
-		print("Going to %s" % scene_path)
-		ClockManager.set_front_lamp_default()
+			ClockManager.next_scene_path = scene_path
+			if advance_time:
+				ClockManager.switch_scene(true)
+			else:
+				get_tree().change_scene_to_file(scene_path)
+			print("Going to %s" % scene_path)
+			ClockManager.set_front_lamp_default()
 
 func update_time_of_day_shader():
 	var tint = ClockManager.get_time_of_day_tint()

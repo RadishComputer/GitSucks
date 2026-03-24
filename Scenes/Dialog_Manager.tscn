@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddb5vmwpp6t6v"]
+[gd_scene format=3 uid="uid://ddb5vmwpp6t6v"]
 
-[ext_resource type="Script" path="res://Scripts/DialogManager.gd" id="1_glbj5"]
+[ext_resource type="Script" uid="uid://d0hs27o361s3u" path="res://Scripts/DialogManager.gd" id="1_glbj5"]
 
-[node name="DialogManager" type="Node2D"]
+[node name="DialogManager" type="Node2D" unique_id=993108585]
 script = ExtResource("1_glbj5")

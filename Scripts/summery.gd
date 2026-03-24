@@ -11,7 +11,7 @@ var first_click = false
 var flashing = false
 
 func _ready():
-	DialogManager.reset_dialog_state()
+	GameGlue.DialogManager.reset_dialog_state()
 	await get_tree().process_frame
 
 	$IrisMask.material.set("shader_parameter/center", Vector2(0, -130))
@@ -29,7 +29,7 @@ func _ready():
 	await wait_for_click()
 
 	#Standup
-	await SequenceMachine.run_sequence([
+	await GameGlue.SequenceMachine.run_sequence([
 		"dialog:1019",
 		"action:finish_scene"
 	], self)
@@ -39,7 +39,7 @@ func finish_scene():
 	$IrisMask.z_index = 10
 	await iris_close()
 	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://Scenes/Bear_Room.tscn")
+	GameGlue.load_scene("res://Scenes/Bear_Room.tscn")
 
 func fade_out_overlay() -> void:
 	var tween = create_tween()
@@ -54,7 +54,7 @@ func iris_open():
 	$Self.visible = true
 	$IrisMask.visible = true
 	$IrisMask.material.set("shader_parameter/radius", 300)
-	Bouncer.bounce($Self)
+	GameGlue.Bouncer.bounce($Self)
 
 func iris_close():
 	var tween = create_tween()

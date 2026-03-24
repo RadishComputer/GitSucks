@@ -31,7 +31,7 @@ var portrait_bounce_amplitude = 10.0
 
 
 func _process(_delta: float) -> void:
-	if not SettingsManager.bounce_mode:
+	if not GameGlue.SettingsManager.bounce_mode:
 		return
 	if portrait_bounce_start_time < 0:
 		return
@@ -113,7 +113,7 @@ func apply_visuals(name: String, unused = ""):
 		current_target_portrait.visible = true
 		perception.visible = false
 
-		if SettingsManager.bounce_mode and name != previous:
+		if GameGlue.SettingsManager.bounce_mode and name != previous:
 			portrait_bounce_start_time = Time.get_ticks_msec() / 1000.0
 		else:
 			portrait_bounce_start_time = -1.0

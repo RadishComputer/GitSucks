@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://hurlnq743vgc"]
 
-[ext_resource type="Script" path="res://falls.gd" id="1_qrvp3"]
+[ext_resource type="Script" path="res://Scripts/falls.gd" id="1_qrvp3"]
 [ext_resource type="Texture2D" uid="uid://bdm73v0704xcu" path="res://Art/Beta/Places/Art_Snoqualme_Falls.png" id="2_r7yro"]
 [ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_rrg5m"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_63dfa"]

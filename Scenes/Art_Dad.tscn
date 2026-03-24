@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://brmlxj3dw3d3g"]
 
-[ext_resource type="Script" path="res://art_dad.gd" id="1_ro7lq"]
+[ext_resource type="Script" path="res://Scripts/art_dad.gd" id="1_ro7lq"]
 [ext_resource type="Texture2D" uid="uid://cgjl6pnervn2l" path="res://Art/Beta/Places/Art_Dad.png" id="2_xwvod"]
 [ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_130xm"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_vb62e"]

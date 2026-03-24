@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bk2olw082cfkx"]
+[gd_scene format=3 uid="uid://bk2olw082cfkx"]
 
-[ext_resource type="Script" path="res://Scripts/summery.gd" id="1_xxhru"]
+[ext_resource type="Script" uid="uid://bbc2nxkq4w5f4" path="res://Scripts/summery.gd" id="1_xxhru"]
 [ext_resource type="Texture2D" uid="uid://bcrvk6d7vqhsu" path="res://Art/Beta/Items/Background_Black.png" id="2_m56c0"]
 [ext_resource type="Texture2D" uid="uid://uyuip3ractdl" path="res://Art/Beta/Places/Default_Backgroud.png" id="2_tvf4k"]
-[ext_resource type="Shader" path="res://Elements/iris_mask.gdshader" id="3_0udv7"]
+[ext_resource type="Shader" uid="uid://dfxj4rqyi2jeg" path="res://Elements/iris_mask.gdshader" id="3_0udv7"]
 [ext_resource type="Texture2D" uid="uid://bbb2wsgyncopc" path="res://Art/Beta/Characters/Summer.png" id="4_xa1rc"]
 [ext_resource type="Texture2D" uid="uid://cj1hmgnu82yjm" path="res://Art/Beta/Characters/Summer_Shadow_Skew.png" id="6_lr0uh"]
 [ext_resource type="AudioStream" uid="uid://4srxbt1qv47k" path="res://Sounds/Light.wav" id="7_ttyvo"]
@@ -16,16 +16,17 @@ shader_parameter/center = Vector2(0.5, 0.5)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8porc"]
 
-[node name="Summery" type="Control" groups=["UI"]]
+[node name="Summery" type="Control" unique_id=1306683202 groups=["UI"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_xxhru")
 
-[node name="Black" type="TextureRect" parent="."]
+[node name="Black" type="TextureRect" parent="." unique_id=463739824]
 z_index = 8
 layout_mode = 1
 anchors_preset = 15
@@ -36,7 +37,7 @@ grow_vertical = 2
 texture = ExtResource("2_m56c0")
 expand_mode = 1
 
-[node name="Blue" type="TextureRect" parent="."]
+[node name="Blue" type="TextureRect" parent="." unique_id=1291676160]
 z_index = 8
 layout_mode = 1
 anchors_preset = 15
@@ -46,7 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_tvf4k")
 
-[node name="IrisMask" type="ColorRect" parent="."]
+[node name="IrisMask" type="ColorRect" parent="." unique_id=94861660]
 material = SubResource("ShaderMaterial_j8f7h")
 layout_mode = 1
 anchors_preset = 15
@@ -54,9 +55,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
-[node name="Self" type="TextureButton" parent="."]
+[node name="Self" type="TextureButton" parent="." unique_id=1848074770]
 z_index = 9
 layout_direction = 1
 layout_mode = 1
@@ -71,10 +73,11 @@ offset_right = 425.0
 offset_bottom = 625.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture_normal = ExtResource("4_xa1rc")
 stretch_mode = 3
 
-[node name="Shadow" type="TextureButton" parent="Self"]
+[node name="Shadow" type="TextureButton" parent="Self" unique_id=394566047]
 modulate = Color(1, 1, 1, 0.5)
 z_index = -1
 layout_mode = 1
@@ -89,9 +92,10 @@ offset_right = 497.0
 offset_bottom = 768.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture_normal = ExtResource("6_lr0uh")
 
-[node name="NoteBox" type="Panel" parent="."]
+[node name="NoteBox" type="Panel" parent="." unique_id=1845949022]
 process_mode = 3
 z_index = 10
 z_as_relative = false
@@ -109,7 +113,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8porc")
 
-[node name="Center" type="VBoxContainer" parent="NoteBox"]
+[node name="Center" type="VBoxContainer" parent="NoteBox" unique_id=891452559]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,7 +122,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Click_Hint" type="RichTextLabel" parent="NoteBox/Center"]
+[node name="Click_Hint" type="RichTextLabel" parent="NoteBox/Center" unique_id=1920205539]
 process_mode = 3
 visible = false
 z_index = 10
@@ -129,8 +133,8 @@ text = "[center]Click anywhere."
 fit_content = true
 scroll_active = false
 
-[node name="Light" type="AudioStreamPlayer" parent="."]
+[node name="Light" type="AudioStreamPlayer" parent="." unique_id=1641860665]
 stream = ExtResource("7_ttyvo")
 
-[node name="Outro" type="AudioStreamPlayer" parent="."]
+[node name="Outro" type="AudioStreamPlayer" parent="." unique_id=816724583]
 stream = ExtResource("8_trjxg")

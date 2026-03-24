@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Nothing to do Summer Vacation"
-run/main_scene="res://Scenes/Summery.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+run/main_scene="uid://bmkvaf4tfo7ob"
+config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [audio]
 
@@ -23,22 +27,7 @@ buses/channel_disable_time=0.0
 
 [autoload]
 
-ItemManager="*res://Scenes/Item_Manager.tscn"
-ItemDatabase="*res://Scenes/Item_Database.tscn"
-Bouncer="*res://Scenes/Bouncer.tscn"
-GameState="*res://Scenes/Game_State.tscn"
-DialogManager="*res://Scenes/Dialog_Manager.tscn"
-PortraitManager="*res://Scenes/Portrait_Manager.tscn"
-ClockManager="*res://Scenes/Clock_Manager.tscn"
-NumberManager="*res://Scenes/Number_Manager.tscn"
-KnowledgeManager="*res://Scenes/Knowledge_Manager.tscn"
-InputManager="*res://Scenes/Input_Manager.tscn"
-SettingsManager="*res://Scenes/Settings_Manager.tscn"
-Menu="*res://Scenes/menu.tscn"
-PhoneAudio="*res://Scenes/Phone_Audio.tscn"
-PhoneBook="*res://Scenes/Phone_Book.tscn"
-SequenceMachine="*res://Scenes/Sequence_Machine.tscn"
-TextBox="*res://Scenes/TextBox.tscn"
+GameGlue="*uid://bmkvaf4tfo7ob"
 
 [display]
 

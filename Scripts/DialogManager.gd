@@ -10,20 +10,19 @@ var dialog_finished_callback: Callable = Callable()
 var dialog_vars = {}
 
 func _ready():
-	load_csv("res://dialog/dialog.csv")
-	print("Loaded dialog keys: ", dialog_table["en"].keys())
+	var data: DialogData = load("res://Dialog/dialog_data.tres")
+	load_csv_from_text(data.csv_text)
 
 func reset_dialog_state():
 	dialog_active = false
 	current_id = ""
 	dialog_finished_callback = Callable()
-	TextBox.hide_dialog()
+	GameGlue.TextBox.hide_dialog()
 
-func load_csv(path: String):
+func load_csv_from_text(csv_text: String):
 	dialog_table.clear()
 
-	var file = FileAccess.open(path, FileAccess.READ)
-	var lines = file.get_as_text().split("\n")
+	var lines = csv_text.split("\n")
 
 	var header = []
 	var first = true
@@ -65,7 +64,6 @@ func load_csv(path: String):
 				raw_text = raw_text.substr(1, raw_text.length() - 2)
 				raw_text = raw_text.replace('""', '"')
 			raw_text = raw_text.replace("\\n", "\n")
-
 
 		var parsed_choices = ""
 		var parsed_next = ""
@@ -115,46 +113,46 @@ func condition_is_true(condition: String) -> bool:
 
 		if part.begins_with("knows:"):
 			var key = part.substr(6)
-			if not KnowledgeManager.secretly_knows(key):
+			if not GameGlue.KnowledgeManager.secretly_knows(key):
 				return false
 
 		elif part.begins_with("not_knows:"):
 			var key = part.substr(10)
-			if KnowledgeManager.secretly_knows(key):
+			if GameGlue.KnowledgeManager.secretly_knows(key):
 				return false
 
 		elif part.begins_with("has_type:"):
 			var t = part.substr(9)
-			if not ItemManager.inventory_has_type(t):
+			if not GameGlue.item.inventory_has_type(t):
 				return false
 
 		elif part.begins_with("not_has_type:"):
 			var t = part.substr(13)
-			if ItemManager.inventory_has_type(t):
+			if GameGlue.item.inventory_has_type(t):
 				return false
 
 		elif part.begins_with("has_money:"):
 			var amount = float(part.substr("has_money:".length()))
-			if ItemManager.cash < amount:
+			if GameGlue.item.cash < amount:
 				return false
 
 		elif part.begins_with("not_has_money:"):
 			var amount = float(part.substr("not_has_money:".length()))
-			if ItemManager.cash >= amount:
+			if GameGlue.item.cash >= amount:
 				return false
 
 		elif part.begins_with("can_afford:"):
 			var id = part.substr("can_afford:".length())
-			if ItemDatabase.items.has(id):
-				var price = float(ItemDatabase.items[id].get("value", 0.0))
-				if ItemManager.cash < price:
+			if GameGlue.ItemDatabase.items.has(id):
+				var price = float(GameGlue.ItemDatabase.items[id].get("value", 0.0))
+				if GameGlue.item.cash < price:
 					return false
 
 		elif part.begins_with("cannot_afford:"):
 			var id = part.substr("cannot_afford:".length())
-			if ItemDatabase.items.has(id):
-				var price = float(ItemDatabase.items[id].get("value", 0.0))
-				if ItemManager.cash >= price:
+			if GameGlue.ItemDatabase.items.has(id):
+				var price = float(GameGlue.ItemDatabase.items[id].get("value", 0.0))
+				if GameGlue.item.cash >= price:
 					return false
 
 
@@ -186,7 +184,7 @@ func parse_csv_line(line: String) -> Array:
 	cells.append(current)
 	return cells
 
-func get_line(id: String, substitutions := {}) -> String:
+func get_line(id: String, substitutions = {}) -> String:
 	var line = dialog_table.get(current_language, {}).get(id, "")
 	for k in substitutions:
 		line = line.replace("{" + k + "}", str(substitutions[k]))
@@ -196,9 +194,9 @@ func start_dialog(id: String, finished_callback: Callable):
 	dialog_finished_callback = finished_callback
 	dialog_active = true
 	current_id = id
-	TextBox.set_skin(false)
-	PortraitManager.set_mode("dialog")
-	PortraitManager.clear_portrait()
+	GameGlue.TextBox.set_skin(false)
+	GameGlue.PortraitManager.set_mode("dialog")
+	GameGlue.PortraitManager.clear_portrait()
 	show_current_line()
 
 func show_current_line():
@@ -222,13 +220,13 @@ func show_current_line():
 
 	text = substitutions(text)
 
-	PortraitManager.apply_visuals(
+	GameGlue.PortraitManager.apply_visuals(
 		entry.get("portrait", ""),
 		entry.get("perception", "")
 	)
 
-	TextBox.show_dialog_text(text, speaker)
-	TextBox.waiting_for_input = true
+	GameGlue.TextBox.show_dialog_text(text, speaker)
+	GameGlue.TextBox.waiting_for_input = true
 
 	if entry["choice"] != "":
 		var labels = entry["choice"].split("|")
@@ -246,7 +244,7 @@ func show_current_line():
 				current_id = next_id
 				show_current_line()
 
-		TextBox.show_choice_buttons(choice_map)
+		GameGlue.TextBox.show_choice_buttons(choice_map)
 		return
 
 	run_action(entry["action"])
@@ -258,8 +256,8 @@ func start_shop_dialog(id: String, finished_callback: Callable):
 	dialog_finished_callback = finished_callback
 	dialog_active = true
 	current_id = id
-	TextBox.set_skin(true)
-	PortraitManager.set_mode("shop")
+	GameGlue.TextBox.set_skin(true)
+	GameGlue.PortraitManager.set_mode("shop")
 	show_current_line()
 
 func run_action(action: String):
@@ -275,34 +273,34 @@ func run_action(action: String):
 	# Built-in mappings (mirror SequenceMachine)
 	match func_name:
 		"learn":
-			if arg: KnowledgeManager.learn(arg)
+			if arg: GameGlue.KnowledgeManager.learn(arg)
 			return
 		"secretly_learn":
-			if arg: KnowledgeManager.secretly_learn(arg)
+			if arg: GameGlue.KnowledgeManager.secretly_learn(arg)
 			return
 		"forget":
-			if arg: KnowledgeManager.forget(arg)
+			if arg: GameGlue.KnowledgeManager.forget(arg)
 			return
 		"secretly_forget":
-			if arg: KnowledgeManager.secretly_forget(arg)
+			if arg: GameGlue.KnowledgeManager.secretly_forget(arg)
 			return
 		"add_number":
-			if arg: NumberManager.add_number(arg)
+			if arg: GameGlue.NumberManager.add_number(arg)
 			return
 		"give_item":
-			if arg: ItemManager.add_item(arg)
+			if arg: GameGlue.ItemManager.add_item(arg)
 			return
 		"take_money":
-			if arg: ItemManager.spend_currency(float(arg))
+			if arg: GameGlue.ItemManager.spend_currency(float(arg))
 			return
 		"buy_item":
 			if arg:
 				var id = arg
-				if ItemDatabase.items.has(id):
-					var price = float(ItemDatabase.items[id].get("value", 0.0))
-					if ItemManager.cash >= price:
-						ItemManager.spend_currency(price)
-						ItemManager.add_item(id)
+				if GameGlue.ItemDatabase.items.has(id):
+					var price = float(GameGlue.ItemDatabase.items[id].get("value", 0.0))
+					if GameGlue.item.cash >= price:
+						GameGlue.item.spend_currency(price)
+						GameGlue.item.add_item(id)
 					else:
 						print("Not enough money to buy:", id)
 			return
@@ -323,15 +321,15 @@ func run_action(action: String):
 
 func substitutions(text: String) -> String:
 	var subs = {}
-	subs["requested_attribute"] = GameState.get_attribute_for_current_day()
+	subs["requested_attribute"] = GameGlue.GameState.get_attribute_for_current_day()
 
 	for k in subs:
 		text = text.replace("{" + k + "}", str(subs[k]))
 
 
-	if DialogManager.dialog_vars:
-		for k in DialogManager.dialog_vars.keys():
-			text = text.replace("{" + k + "}", str(DialogManager.dialog_vars[k]))
+	if GameGlue.DialogManager.dialog_vars:
+		for k in GameGlue.DialogManager.dialog_vars.keys():
+			text = text.replace("{" + k + "}", str(GameGlue.DialogManager.dialog_vars[k]))
 
 	#How to use {price:item_id}
 	var regex = RegEx.new()
@@ -341,9 +339,9 @@ func substitutions(text: String) -> String:
 	if result:
 		for match in result:
 			var item_id = match.get_string(1)
-			if ItemDatabase.items.has(item_id):
-				var price = float(ItemDatabase.items[item_id].get("value", 0.00))
-				var formatted = ItemManager.format_money(price)
+			if GameGlue.ItemDatabase.items.has(item_id):
+				var price = float(GameGlue.ItemDatabase.items[item_id].get("value", 0.00))
+				var formatted = GameGlue.item.format_money(price)
 				text = text.replace("{price:" + item_id + "}", formatted)
 
 	return text
@@ -385,8 +383,8 @@ func advance_dialog():
 
 func end_dialog():
 	dialog_active = false
-	TextBox.hide_dialog()
-	PortraitManager.clear_portrait()
+	GameGlue.TextBox.hide_dialog()
+	GameGlue.PortraitManager.clear_portrait()
 
 	if dialog_finished_callback.is_valid():
 		dialog_finished_callback.call()

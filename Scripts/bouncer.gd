@@ -10,7 +10,7 @@ var bounce_phase_speed = 10.0   # slower = one wobble
 var bounce_decay_power = 2.2    # stronger decay = kills 2nd wobble
 
 func _process(_delta):
-	if not SettingsManager.bounce_mode:
+	if not GameGlue.SettingsManager.bounce_mode:
 		return
 
 	var now = Time.get_ticks_msec() / 1000.0
@@ -43,7 +43,7 @@ func register_button(button: TextureButton):
 
 
 func bounce(button: TextureButton):
-	if not SettingsManager.bounce_mode:
+	if not GameGlue.SettingsManager.bounce_mode:
 		return
 
 	register_button(button)

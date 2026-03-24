@@ -296,4 +296,4 @@ func stop_howler_tone():
 #Call
 
 func start_phone_call(dialog_id):
-	DialogManager.start_dialog_at(str(dialog_id))
+	GameGlue.DialogManager.start_dialog_at(str(dialog_id))

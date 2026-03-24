@@ -15,3 +15,5 @@ dest_files=["res://Dialog/dialog.condition.translation", "res://Dialog/dialog.sp
 
 compress=true
 delimiter=0
+unescape_keys=false
+unescape_translations=true

@@ -32,18 +32,18 @@ func format_money(amount: float) -> String:
 #Item
 
 func item_has_attribute(id: String, attr: String):
-	if not ItemDatabase.items.has(id):
+	if not GameGlue.ItemDatabase.items.has(id):
 		return false
-	var attrs = ItemDatabase.items[id].get("attribute", [])
+	var attrs = GameGlue.ItemDatabase.items[id].get("attribute", [])
 	return attr in attrs
 
 func item_has_type(id: String, target_type: String):
-	if not ItemDatabase.items.has(id):
+	if not GameGlue.ItemDatabase.items.has(id):
 		return false
-	return ItemDatabase.items[id].get("type", "") == target_type
+	return GameGlue.ItemDatabase.items[id].get("type", "") == target_type
 
 func inventory_has_type(target_type: String) -> bool:
-	for id in ItemManager.slots:
+	for id in GameGlue.item.slots:
 		if id == "":
 			continue
 		if item_has_type(id, target_type):
@@ -51,7 +51,7 @@ func inventory_has_type(target_type: String) -> bool:
 	return false
 
 func add_item(id: String):
-	if not ItemDatabase.items.has(id):
+	if not GameGlue.ItemDatabase.items.has(id):
 		print("Unknown item:", id)
 		return
 	var empty_index = slots.find("")
@@ -69,7 +69,7 @@ func pick_up_item(index: int):
 	if slots[index] != "":
 		slots[cursor_slot] = slots[index]
 		slots[index] = ""
-		item_cursor.texture = ItemDatabase.get_item_texture(slots[cursor_slot])
+		item_cursor.texture = GameGlue.ItemDatabase.get_item_texture(slots[cursor_slot])
 		print("[DEBUG] pick_up_item → picked:", slots[cursor_slot], 
 			"cursor_slot:", cursor_slot, 
 			"cursor_visible:", item_cursor.visible)
@@ -96,13 +96,13 @@ func use_item(target: Node):
 	if item_id == "":
 		return false
 
-	if ItemDatabase.items.has(item_id) and target != null:
+	if GameGlue.ItemDatabase.items.has(item_id) and target != null:
 		emit_signal("item_used_on_target", target, item_id)
 
 	if slots.find(item_id) == -1:
 		slots[cursor_slot] = ""
 	else:
-		var origin = Menu.drag_origin_index
+		var origin = GameGlue.menu.drag_origin_index
 		if origin != -1:
 			slots[origin] = item_id
 		slots[cursor_slot] = ""
@@ -112,12 +112,12 @@ func use_item(target: Node):
 	return true
 
 func use_and_remove(target: Node, item_id: String):
-	if ItemDatabase.items.has(item_id):
+	if GameGlue.ItemDatabase.items.has(item_id):
 		emit_signal("item_used_on_target", target, item_id)
 		remove_item(item_id)
 
 func sell_item(id: String) -> float:
-	var item = ItemDatabase.items.get(id, null)
+	var item = GameGlue.ItemDatabase.items.get(id, null)
 	if item:
 		var value = float(item.get("value", 0.00))
 		remove_item(id)
@@ -161,7 +161,7 @@ func swap_or_move(old_index: int, new_index: int) -> Variant:
 func update_cursor_icon():
 	var id = slots[cursor_slot]
 	if id != "":
-		item_cursor.texture = ItemDatabase.get_item_texture(id)
+		item_cursor.texture = GameGlue.ItemDatabase.get_item_texture(id)
 		item_cursor.visible = true
 	else:
 		item_cursor.texture = null

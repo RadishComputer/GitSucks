@@ -88,6 +88,9 @@ var displayed_text: String = ""
 var start_time = Time.get_ticks_msec() / 1000.0
 
 func _ready():
+	await get_tree().process_frame
+	print("DialogPanel =", dialog_panel)
+
 	var current_highlighted_button: Button = null
 	var choice_arrow = $DialogBox/Choice_Arrow
 	var last_hovered_button: Button = null
@@ -213,7 +216,7 @@ func show_dialog_text(text: String, speaker: String = ""):
 
 func get_wrap_width() -> int:
 	if use_shop_skin:
-		match SettingsManager.text_size:
+		match GameGlue.SettingsManager.text_size:
 			"S":
 				return 50
 			"M":
@@ -223,7 +226,7 @@ func get_wrap_width() -> int:
 			_:
 				return 70
 	else:
-		match SettingsManager.text_size:
+		match GameGlue.SettingsManager.text_size:
 			"S":
 				return 100
 			"M":
@@ -247,7 +250,7 @@ func typewriter(text: String):
 		if skip_typewriter:
 			displayed_text = text
 
-			if SettingsManager.bounce_mode:
+			if GameGlue.SettingsManager.bounce_mode:
 				char_times.clear()
 				for j in range(text.length()):
 					char_times.append(Time.get_ticks_msec() / 1000.0)
@@ -284,7 +287,7 @@ func typewriter(text: String):
 			type_sound.play()
 
 		# Track bounce start time
-		if SettingsManager.bounce_mode:
+		if GameGlue.SettingsManager.bounce_mode:
 			char_times.append(Time.get_ticks_msec() / 1000.0)
 
 			var bbcode := ""
@@ -464,7 +467,7 @@ func front_blocker_click(event):
 				skip_typewriter = true
 			elif waiting_for_input:
 				waiting_for_input = false
-				DialogManager.advance_dialog()
+				GameGlue.DialogManager.advance_dialog()
 
 		Text_Mode.NOTE:
 			hide_note()

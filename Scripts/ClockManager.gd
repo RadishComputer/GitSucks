@@ -18,10 +18,10 @@ var time_event = {
 }
 
 func _ready():
-	KnowledgeManager.knowledge_learned.connect(on_knowledge_learned)
-	
+	GameGlue.KnowledgeManager.knowledge_learned.connect(on_knowledge_learned)
+
 	for i in range(1, 13):
-		var path = "res://Nothing to do Summer/Sounds/church_%d.mp3" % i
+		var path = "res://Sounds/church_%d.mp3" % i
 		chime_sounds[i] = load(path)
 	call_deferred("delayed_clock_update")
 
@@ -51,14 +51,14 @@ func switch_scene(advance_time = false):
 		hours = hours % 24
 		set_front_lamp_default()
 
-	if hours >= 12 and not KnowledgeManager.knows("Met_Dave") and time_trigger == "":
+	if hours >= 12 and not GameGlue.KnowledgeManager.knows("Met_Dave") and time_trigger == "":
 		hours = 12
 		minutes = 0
 		time_pause = true
 		time_trigger = "Met_Dave"
 		print("Time locked at 12:00 PM until Met_Dave is known.")
 
-	if hours >= 13 and not KnowledgeManager.knows("Food_Received") and time_trigger == "":
+	if hours >= 13 and not GameGlue.KnowledgeManager.knows("Food_Received") and time_trigger == "":
 		hours = 13
 		minutes = 0
 		time_pause = true
@@ -70,7 +70,8 @@ func switch_scene(advance_time = false):
 		check_time_event()
 
 	if next_scene_path != "":
-		get_tree().change_scene_to_file(next_scene_path)
+		#get_tree().change_scene_to_file(next_scene_path)
+		call_deferred("change_scene_safe", next_scene_path)
 		next_scene_path = ""
 
 	await get_tree().process_frame
@@ -209,9 +210,9 @@ func mom_downstairs():
 func set_front_lamp_default():
 	if mom_downstairs():
 		if front_lamp_default():
-			KnowledgeManager.secretly_learn("Front_Lamp_On")
+			GameGlue.KnowledgeManager.secretly_learn("Front_Lamp_On")
 		else:
-			KnowledgeManager.secretly_forget("Front_Lamp_On")
+			GameGlue.KnowledgeManager.secretly_forget("Front_Lamp_On")
 
 #Street Lights
 

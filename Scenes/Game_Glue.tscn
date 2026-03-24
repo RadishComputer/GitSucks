@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bmkvaf4tfo7ob"]
+
+[ext_resource type="Script" uid="uid://c101two1f75sy" path="res://Scripts/game_glue.gd" id="1_6ojyx"]
+
+[node name="GameGlue" type="Node" unique_id=1955828861]
+script = ExtResource("1_6ojyx")
+
+[node name="Back" type="Control" parent="." unique_id=1609370771]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Middle" type="Control" parent="." unique_id=1788280234]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Front" type="Control" parent="." unique_id=527582702]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

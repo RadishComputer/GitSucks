@@ -383,7 +383,7 @@ bbcode_enabled = true
 [node name="Tip" type="RichTextLabel" parent="Window/InventoryPanel"]
 z_index = 10
 layout_mode = 0
-offset_left = 300.0
+offset_left = 100.0
 offset_top = 540.0
 offset_right = 580.0
 offset_bottom = 600.0

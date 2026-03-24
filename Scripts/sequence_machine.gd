@@ -23,7 +23,7 @@ func run_sequence(steps: Array, target: Object = null):
 
 func run_next_step():
 	if index > 0 and sequence[index - 1].begins_with("dialog:"):
-		PortraitManager.apply_visuals("none", "none")
+		GameGlue.PortraitManager.apply_visuals("none", "none")
 	if index >= sequence.size():
 		running = false
 		print("SequenceMachine: no longer running")
@@ -35,18 +35,18 @@ func run_next_step():
 
 	if step.begins_with("dialog:"):
 		var id = step.substr(7)
-		DialogManager.start_dialog(id, Callable(self, "run_next_step"))
+		GameGlue.DialogManager.start_dialog(id, Callable(self, "run_next_step"))
 		return
 
 	if step.begins_with("note:"):
 		var text = step.substr(5)
 		print("→ SequenceMachine is trying to show note: ", text)
-		TextBox.show_note(text, Callable(self, "run_next_step"))
+		GameGlue.TextBox.show_note(text, Callable(self, "run_next_step"))
 		return
 
 	if step.begins_with("shopdialog:"):
 		var id = step.substr(11)
-		DialogManager.start_shop_dialog(id, Callable(self, "run_next_step"))
+		GameGlue.DialogManager.start_shop_dialog(id, Callable(self, "run_next_step"))
 		return
 
 	if step.begins_with("action:"):
@@ -60,15 +60,15 @@ func run_next_step():
 
 			match action_name:
 				"learn":
-					KnowledgeManager.learn(arg)
+					GameGlue.KnowledgeManager.learn(arg)
 				"secretly_learn":
-					KnowledgeManager.secretly_learn(arg)
+					GameGlue.KnowledgeManager.secretly_learn(arg)
 				"forget":
-					KnowledgeManager.forget(arg)
+					GameGlue.KnowledgeManager.forget(arg)
 				"secretly_forget":
-					KnowledgeManager.secretly_forget(arg)
+					GameGlue.KnowledgeManager.secretly_forget(arg)
 				"add_number":
-					NumberManager.add_number(arg)
+					GameGlue.NumberManager.add_number(arg)
 				_:
 					if action_target != null and action_target.has_method(action_name):
 						action_target.call(action_name, arg)

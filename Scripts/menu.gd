@@ -15,7 +15,7 @@ var tab_panels = {}
 func _ready():
 	setup_tabs()
 	setup_background()
-	SettingsManager.apply_text_theme()
+	GameGlue.SettingsManager.apply_text_theme()
 	$Window/InventoryPanel.slot_created.connect(on_slot_created)
 
 func setup_tabs():
@@ -48,8 +48,8 @@ func setup_background():
 ######
 
 func _input(event: InputEvent) -> void:
-	match TextBox.current_mode:
-		TextBox.Text_Mode.CHOICE:
+	match GameGlue.TextBox.current_mode:
+		GameGlue.TextBox.Text_Mode.CHOICE:
 			get_viewport().set_input_as_handled()
 			return
 
@@ -61,8 +61,8 @@ func _process(delta):
 	check_drag_state()
 
 func update_cursor():
-	if ItemManager.item_cursor and ItemManager.item_cursor.visible:
-		ItemManager.item_cursor.global_position = get_viewport().get_mouse_position()
+	if GameGlue.ItemManager.item_cursor and GameGlue.ItemManager.item_cursor.visible:
+		GameGlue.ItemManager.item_cursor.global_position = get_viewport().get_mouse_position()
 		
 func update_menu_visibility(delta):
 	if dragging and mouse_over_background:
@@ -75,7 +75,7 @@ func update_menu_visibility(delta):
 		hover_time = 0
 
 func on_background_gui_input(event: InputEvent):
-	if InputManager.click_release(event):
+	if GameGlue.input.click_release(event):
 		menu_visible = !menu_visible
 		if menu_visible:
 			$Window.visible = true
@@ -85,8 +85,8 @@ func on_background_gui_input(event: InputEvent):
 			get_tree().paused = false
 
 func _on_click_muncher_gui_input(event):
-	if SettingsManager.item_mode == SettingsManager.ItemMode.SWITCH:
-		if selected_item != "" and InputManager.click_release(event):
+	if GameGlue.SettingsManager.item_mode == GameGlue.SettingsManager.ItemMode.SWITCH:
+		if selected_item != "" and GameGlue.input.click_release(event):
 
 			var hovered = get_viewport().gui_get_hovered_control()
 			if hovered and hovered.has_meta("slot_index"):
@@ -106,30 +106,30 @@ func on_slot_created(index, btn):
 	#btn.mouse_filter = Control.MOUSE_FILTER_STOP
 
 func on_item_gui_input(event, slot_index, btn):
-	if SettingsManager.item_mode == SettingsManager.ItemMode.HOLD:
+	if GameGlue.SettingsManager.item_mode == GameGlue.SettingsManager.ItemMode.HOLD:
 		hold_mode_input(event, slot_index, btn)
 
 func on_item_pressed(slot_index, btn):
 	if dragging:
 		return
-	if SettingsManager.item_mode == SettingsManager.ItemMode.SWITCH:
+	if GameGlue.SettingsManager.item_mode == GameGlue.SettingsManager.ItemMode.SWITCH:
 		switch_mode_input(slot_index, btn)
 
 func hold_mode_input(event, slot_index, btn):
-	var item_id = ItemManager.slots[slot_index]
+	var item_id = GameGlue.item.slots[slot_index]
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and item_id != null and not dragging:
 			start_drag(slot_index, item_id)
 
 func switch_mode_input(slot_index, btn):
-	if ItemManager.slots[ItemManager.cursor_slot] == "":
-		var item_id = ItemManager.slots[slot_index]
+	if GameGlue.item.slots[GameGlue.item.cursor_slot] == "":
+		var item_id = GameGlue.item.slots[slot_index]
 		if item_id != "":
 			selected_item = item_id
 			drag_origin_index = slot_index
-			ItemManager.pick_up_item(slot_index)
+			GameGlue.item.pick_up_item(slot_index)
 	else:
-		ItemManager.drop_item(slot_index)
+		GameGlue.item.drop_item(slot_index)
 
 func return_item_to_inventory():
 	if selected_item == "":
@@ -137,13 +137,13 @@ func return_item_to_inventory():
 		return
 
 	if drag_origin_index != -1:
-		ItemManager.slots[drag_origin_index] = selected_item
-		ItemManager.slots[ItemManager.cursor_slot] = ItemManager.empty_slot
+		GameGlue.item.slots[drag_origin_index] = selected_item
+		GameGlue.item.slots[GameGlue.item.cursor_slot] = GameGlue.item.empty_slot
 	else:
-		ItemManager.slots[ItemManager.cursor_slot] = selected_item
+		GameGlue.item.slots[GameGlue.item.cursor_slot] = selected_item
 
-	ItemManager.update_cursor_icon()
-	ItemManager.emit_signal("inventory_updated")
+	GameGlue.item.update_cursor_icon()
+	GameGlue.item.emit_signal("inventory_updated")
 	end_selection()
 
 #Menu
@@ -156,13 +156,13 @@ func on_tab_pressed(tab_name: String):
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
 		print("Room root got click at", event.position)
-	if dragging and InputManager.drag_release(event):
+	if dragging and GameGlue.InputManager.drag_release(event):
 		print("[Menu] _unhandled_input → drag_release branch")
 		handle_drag_release()
-	elif InputManager.click_release(event):
+	elif GameGlue.InputManager.click_release(event):
 		print("[Menu] _unhandled_input → click_release branch")
 		handle_click_release()
-	elif InputManager.right_click_release(event):
+	elif GameGlue.InputManager.right_click_release(event):
 		print("[Menu] _unhandled_input → right_click branch")
 		handle_right_click_release()
 
@@ -170,19 +170,19 @@ func handle_release():
 	var hovered = get_viewport().gui_get_hovered_control()
 	if hovered and hovered.has_meta("slot_index"):
 		var target_index = hovered.get_meta("slot_index")
-		var target_item = ItemManager.slots[target_index]
+		var target_item = GameGlue.item.slots[target_index]
 
 		if target_item == "":
-			ItemManager.slots[target_index] = selected_item
-			ItemManager.emit_signal("inventory_updated")
+			GameGlue.item.slots[target_index] = selected_item
+			GameGlue.item.emit_signal("inventory_updated")
 		else:
-			var origin_item = ItemManager.slots[drag_origin_index]
-			ItemManager.slots[target_index] = selected_item
-			ItemManager.slots[drag_origin_index] = target_item
-			ItemManager.emit_signal("inventory_updated")
+			var origin_item = GameGlue.item.slots[drag_origin_index]
+			GameGlue.item.slots[target_index] = selected_item
+			GameGlue.item.slots[drag_origin_index] = target_item
+			GameGlue.item.emit_signal("inventory_updated")
 
-		ItemManager.slots[ItemManager.cursor_slot] = ""
-		ItemManager.update_cursor_icon()
+		GameGlue.item.slots[GameGlue.item.cursor_slot] = ""
+		GameGlue.item.update_cursor_icon()
 		end_selection()
 		return
 
@@ -198,7 +198,7 @@ func handle_release():
 	var result = space_state.intersect_point(params)
 	for r in result:
 		if r.collider and r.collider.is_in_group("targets"):
-			ItemManager.use_item(r.collider)
+			GameGlue.item.use_item(r.collider)
 			end_selection()
 			return
 
@@ -206,7 +206,7 @@ func handle_release():
 
 func handle_click_release():
 	print("[Menu] click_release detected")
-	if SettingsManager.item_mode != SettingsManager.ItemMode.SWITCH:
+	if GameGlue.SettingsManager.item_mode != GameGlue.SettingsManager.ItemMode.SWITCH:
 		return
 
 	if selected_item != "" and not mouse_over_background and not dragging:
@@ -237,17 +237,17 @@ func start_drag(slot_index: int, item_id: String):
 	print("[DEBUG] start_drag → slot:", slot_index, 
 		"item_id:", item_id, 
 		"selected_item:", selected_item, 
-		"cursor_slot:", ItemManager.slots[ItemManager.cursor_slot], 
-		"cursor_visible:", ItemManager.item_cursor.visible)
+		"cursor_slot:", GameGlue.item.slots[GameGlue.item.cursor_slot], 
+		"cursor_visible:", GameGlue.item.item_cursor.visible)
 	selected_item = item_id
 	drag_origin_index = slot_index
 	drag_consumed = false
 	dragging = true
 
-	ItemManager.slots[ItemManager.cursor_slot] = item_id
-	ItemManager.slots[slot_index] = ""
-	ItemManager.update_cursor_icon()
-	ItemManager.emit_signal("inventory_updated")
+	GameGlue.item.slots[GameGlue.item.cursor_slot] = item_id
+	GameGlue.item.slots[slot_index] = ""
+	GameGlue.item.update_cursor_icon()
+	GameGlue.item.emit_signal("inventory_updated")
 
 
 func end_drag(target_node = null):
@@ -257,20 +257,20 @@ func end_drag(target_node = null):
 	drag_consumed = true
 
 	if target_node:
-		ItemManager.use_item(target_node)
+		GameGlue.item.use_item(target_node)
 	else:
 		if drag_origin_index != -1:
-			ItemManager.slots[drag_origin_index] = selected_item
-			ItemManager.slots[ItemManager.cursor_slot] = ""
-			ItemManager.emit_signal("inventory_updated")
+			GameGlue.item.slots[drag_origin_index] = selected_item
+			GameGlue.item.slots[GameGlue.item.cursor_slot] = ""
+			GameGlue.item.emit_signal("inventory_updated")
 
 	end_selection()
 
 func end_selection():
 	print("[DEBUG] end_selection → selected_item:", selected_item, 
 		"dragging:", dragging, 
-		"cursor_slot:", ItemManager.slots[ItemManager.cursor_slot], 
-		"cursor_visible:", ItemManager.item_cursor.visible)
+		"cursor_slot:", GameGlue.item.slots[GameGlue.item.cursor_slot], 
+		"cursor_visible:", GameGlue.item.item_cursor.visible)
 	get_tree().paused = false
 	drag_origin_index = -1
 	selected_item = ""

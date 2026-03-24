@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cc3tdrg5uya2b"]
 
-[ext_resource type="Script" path="res://art_lanvender.gd" id="1_bo31l"]
+[ext_resource type="Script" path="res://Scripts/art_lanvender.gd" id="1_bo31l"]
 [ext_resource type="Texture2D" uid="uid://7gevcpu0oyo7" path="res://Art/Beta/Places/Art_Lavender.png" id="2_xscmp"]
 [ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_coaw4"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_3vypa"]
