@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://b085gy5n50xhi"]
+
+[ext_resource type="Texture2D" uid="uid://ch8jvqcrgwpf3" path="res://Art/Beta/TV/TV.png" id="1_laf7e"]
+[ext_resource type="Script" uid="uid://di0yion5kgj" path="res://Scenes/opening.gd" id="1_oofq6"]
+[ext_resource type="Texture2D" uid="uid://e4wy451eeug5" path="res://Art/Other/RC00.PNG" id="3_oofq6"]
+[ext_resource type="Texture2D" uid="uid://cur8tvhafd3a7" path="res://Art/Other/RC01.PNG" id="4_bc1fc"]
+[ext_resource type="Texture2D" uid="uid://bslta3hk5xk4q" path="res://Art/Other/RC02.PNG" id="5_tiuef"]
+[ext_resource type="Texture2D" uid="uid://yvnog6hhgxji" path="res://Art/Other/RC03.PNG" id="6_rb7h3"]
+[ext_resource type="Texture2D" uid="uid://h7n1o6twbphs" path="res://Art/Other/RC04.PNG" id="7_f5tn5"]
+[ext_resource type="Texture2D" uid="uid://d2rptdcc47j2j" path="res://Art/Other/RC05.PNG" id="8_37cfd"]
+[ext_resource type="Texture2D" uid="uid://dy3d5y8onkpkt" path="res://Art/Other/RC06.PNG" id="9_t0sc0"]
+[ext_resource type="Texture2D" uid="uid://d0qp4tvn33oo2" path="res://Art/Other/RC07.PNG" id="10_lfql2"]
+[ext_resource type="Texture2D" uid="uid://cb4sd7egrp21c" path="res://Art/Other/RC08.PNG" id="11_2dvk1"]
+[ext_resource type="Texture2D" uid="uid://gernuw37sby3" path="res://Art/Other/RC09.PNG" id="12_t7d3v"]
+[ext_resource type="Texture2D" uid="uid://klpfho6h01yd" path="res://Art/Other/RC10.PNG" id="13_0xnwj"]
+[ext_resource type="Texture2D" uid="uid://cl5sl7on1do5r" path="res://Art/Other/RC11.PNG" id="14_a8da7"]
+[ext_resource type="Texture2D" uid="uid://cnd6hkkfb4su2" path="res://Art/Other/RC12.PNG" id="15_t7gsn"]
+[ext_resource type="Texture2D" uid="uid://dac7pldax1adg" path="res://Art/Other/RC13.PNG" id="16_gtjq1"]
+[ext_resource type="Texture2D" uid="uid://2crvkj1torxx" path="res://Art/Other/RC14.PNG" id="17_v0gyp"]
+[ext_resource type="Texture2D" uid="uid://g1v7sqaps4h5" path="res://Art/Other/RC15.PNG" id="18_snfr6"]
+[ext_resource type="AudioStream" uid="uid://bqjbdl87w1n0a" path="res://Sounds/RC_Startup.wav" id="20_bc1fc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qf3e8"]
+animations = [{
+"frames": [{
+"duration": 8.0,
+"texture": ExtResource("3_oofq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bc1fc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tiuef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rb7h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f5tn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_37cfd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t0sc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lfql2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2dvk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t7d3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0xnwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_a8da7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_t7gsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gtjq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_v0gyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_snfr6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Opening" type="CanvasLayer" unique_id=240140624]
+layer = 4
+script = ExtResource("1_oofq6")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1675881110]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_laf7e")
+
+[node name="Full" type="Control" parent="TextureRect" unique_id=541630135]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureRect/Full" unique_id=1459023192]
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_qf3e8")
+autoplay = "default"
+frame = 15
+frame_progress = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/Full" unique_id=976343023]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 440.0
+offset_top = 680.0
+offset_right = 1440.0
+offset_bottom = 880.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[center]Radish Computer"
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1938081798]
+stream = ExtResource("20_bc1fc")

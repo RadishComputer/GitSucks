@@ -3,12 +3,15 @@ extends Panel
 @onready var records = $ScrollContainer/RichTextLabel
 
 func _ready():
-	GameGlue.KnowledgeManager.knowledge_learned.connect(on_knowledge_learned)
+	call_deferred("connect_records")
+
+func connect_records():
 	populate_records()
-	
+	GameGlue.KnowledgeManager.knowledge_learned.connect(on_knowledge_learned)
+
 func populate_records():
 	var knowledge: Array = GameGlue.KnowledgeManager.list_all()
-	var text := ""
+	var text = ""
 	for id in knowledge:
 		text += format_record(id) + "\n"
 	records.text = text

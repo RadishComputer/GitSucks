@@ -1,7 +1,5 @@
 extends Node2D
 
-#const _csv_reference = preload("res://Dialog/dialog.csv")
-
 var game_variant = 0
 var food_attributes = ["Salty", "Sour", "Spicy", "Sweet"]
 var all_permutations = []

@@ -1,20 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwlu64m8u7a3g"]
+[gd_scene format=3 uid="uid://cwlu64m8u7a3g"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_fk34i"]
+[ext_resource type="Script" uid="uid://p2ww2c58xpur" path="res://Scripts/menu.gd" id="1_fk34i"]
 [ext_resource type="Texture2D" uid="uid://uyuip3ractdl" path="res://Art/Beta/Places/Default_Backgroud.png" id="2_h62st"]
-[ext_resource type="Script" path="res://Scripts/summer.gd" id="3_no636"]
+[ext_resource type="Script" uid="uid://ccov87nlrucl8" path="res://Scripts/summer.gd" id="3_no636"]
 [ext_resource type="Texture2D" uid="uid://dslbfl3i3a1jx" path="res://Art/Beta/Places/Menu.png" id="3_ygbhk"]
 [ext_resource type="Texture2D" uid="uid://csiyxophd7v1x" path="res://Art/Beta/Characters/Summer_Menu.png" id="4_tq8re"]
 [ext_resource type="Texture2D" uid="uid://caob1q5lpdeim" path="res://Art/Beta/Characters/Eye.png" id="5_1kt8u"]
-[ext_resource type="Script" path="res://Scripts/inventory_panel.gd" id="5_7vvl4"]
-[ext_resource type="Script" path="res://Scripts/records_panel.gd" id="6_ivjpd"]
-[ext_resource type="Script" path="res://Scripts/options.gd" id="7_1wx7o"]
+[ext_resource type="Script" uid="uid://dtb7bm28p8ti4" path="res://Scripts/inventory_panel.gd" id="5_7vvl4"]
+[ext_resource type="Script" uid="uid://brqpcoo5a4wf4" path="res://Scripts/records_panel.gd" id="6_ivjpd"]
+[ext_resource type="Script" uid="uid://dpjj2mvaapj22" path="res://Scripts/options.gd" id="7_1wx7o"]
 [ext_resource type="ButtonGroup" uid="uid://dmmkjlwna4ssv" path="res://Elements/menu_buttons.tres" id="7_bpcci"]
 [ext_resource type="StyleBox" uid="uid://b87bfasw85xbo" path="res://Elements/Diary_Button.tres" id="7_k4j2c"]
 [ext_resource type="Texture2D" uid="uid://bvfsmgk4seesf" path="res://Art/Beta/Places/Buttons.png" id="7_o0myf"]
 [ext_resource type="Texture2D" uid="uid://c7qblqsn6stnx" path="res://Art/Beta/Places/Screen.png" id="8_6q7tj"]
-[ext_resource type="Shader" path="res://Elements/overlay.gdshader" id="8_vtr3u"]
-[ext_resource type="Script" path="res://Scripts/phone_panel.gd" id="9_kl3vl"]
+[ext_resource type="Shader" uid="uid://b4tkqp25wmbj7" path="res://Elements/overlay.gdshader" id="8_vtr3u"]
+[ext_resource type="Script" uid="uid://dx16f1wda1oc0" path="res://Scripts/phone_panel.gd" id="9_kl3vl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lqvom"]
 shader = ExtResource("8_vtr3u")
@@ -22,7 +22,7 @@ shader_parameter/grayscale_enabled = false
 shader_parameter/high_contrast_enabled = false
 shader_parameter/contrast_amount = 2.0
 
-[node name="Menu" type="Control" groups=["UI"]]
+[node name="Menu" type="Control" unique_id=1808203771 groups=["UI"]]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -32,9 +32,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fk34i")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=550802797]
 process_mode = 3
-z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,7 +46,23 @@ mouse_default_cursor_shape = 16
 texture = ExtResource("2_h62st")
 stretch_mode = 1
 
-[node name="Center" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=977489967]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Center" type="VBoxContainer" parent="." unique_id=675966937]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,21 +77,19 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Clock" type="RichTextLabel" parent="Center"]
+[node name="Clock" type="RichTextLabel" parent="Center" unique_id=1562177804]
 process_mode = 3
-visible = false
 z_index = 8
 layout_mode = 2
 bbcode_enabled = true
 text = "TIME"
 fit_content = true
 
-[node name="Window" type="CanvasLayer" parent="."]
+[node name="Window" type="CanvasLayer" parent="." unique_id=209611091]
 process_mode = 3
 layer = 10
-visible = false
 
-[node name="Summer" type="Control" parent="Window"]
+[node name="Summer" type="Control" parent="Window" unique_id=894801081]
 z_index = 5
 layout_mode = 3
 anchors_preset = 8
@@ -92,7 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_no636")
 
-[node name="Summer" type="TextureRect" parent="Window/Summer"]
+[node name="Summer" type="TextureRect" parent="Window/Summer" unique_id=1330636431]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -110,22 +123,22 @@ texture = ExtResource("4_tq8re")
 flip_h = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Eye1" type="Sprite2D" parent="Window/Summer/Summer"]
+[node name="Eye1" type="Sprite2D" parent="Window/Summer/Summer" unique_id=1996191717]
 z_index = -1
 position = Vector2(441, 476)
 texture = ExtResource("5_1kt8u")
 flip_h = true
 
-[node name="Eye2" type="Sprite2D" parent="Window/Summer/Summer"]
+[node name="Eye2" type="Sprite2D" parent="Window/Summer/Summer" unique_id=1409709579]
 z_index = -1
 position = Vector2(512, 474)
 texture = ExtResource("5_1kt8u")
 flip_h = true
 
-[node name="Dead_Zone" type="Node2D" parent="Window/Summer"]
+[node name="Dead_Zone" type="Node2D" parent="Window/Summer" unique_id=1737821287]
 position = Vector2(480, 474)
 
-[node name="Device" type="TextureRect" parent="Window"]
+[node name="Device" type="TextureRect" parent="Window" unique_id=565872394]
 process_mode = 3
 z_index = 1
 anchors_preset = 8
@@ -144,7 +157,7 @@ size_flags_vertical = 4
 mouse_filter = 0
 texture = ExtResource("3_ygbhk")
 
-[node name="Screen" type="TextureRect" parent="Window/Device"]
+[node name="Screen" type="TextureRect" parent="Window/Device" unique_id=1516481408]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -159,7 +172,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_6q7tj")
 
-[node name="Buttons" type="TextureRect" parent="Window"]
+[node name="Buttons" type="TextureRect" parent="Window" unique_id=1631573542]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -174,7 +187,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_o0myf")
 
-[node name="Click_Muncher" type="TextureRect" parent="Window"]
+[node name="Click_Muncher" type="TextureRect" parent="Window" unique_id=396902538]
 process_mode = 3
 z_index = 1
 anchors_preset = 8
@@ -192,7 +205,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 0
 
-[node name="Items" type="Button" parent="Window"]
+[node name="Items" type="Button" parent="Window" unique_id=667434779]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -205,21 +218,21 @@ offset_right = 598.0
 offset_bottom = -260.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = ExtResource("7_k4j2c")
-theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/disabled = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
-theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover = ExtResource("7_k4j2c")
-theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/pressed = ExtResource("7_k4j2c")
-theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
 theme_override_styles/normal = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/focus = ExtResource("7_k4j2c")
 toggle_mode = true
 button_group = ExtResource("7_bpcci")
 
-[node name="Diary" type="Button" parent="Window"]
+[node name="Diary" type="Button" parent="Window" unique_id=1386341877]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -232,21 +245,21 @@ offset_right = 598.0
 offset_bottom = -136.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = ExtResource("7_k4j2c")
-theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/disabled = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
-theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover = ExtResource("7_k4j2c")
-theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/pressed = ExtResource("7_k4j2c")
-theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
 theme_override_styles/normal = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/focus = ExtResource("7_k4j2c")
 toggle_mode = true
 button_group = ExtResource("7_bpcci")
 
-[node name="Phone" type="Button" parent="Window"]
+[node name="Phone" type="Button" parent="Window" unique_id=1313244826]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -259,21 +272,21 @@ offset_right = 598.0
 offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = ExtResource("7_k4j2c")
-theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/disabled = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
-theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover = ExtResource("7_k4j2c")
-theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/pressed = ExtResource("7_k4j2c")
-theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
 theme_override_styles/normal = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/focus = ExtResource("7_k4j2c")
 toggle_mode = true
 button_group = ExtResource("7_bpcci")
 
-[node name="Cats" type="Button" parent="Window"]
+[node name="Cats" type="Button" parent="Window" unique_id=1431382944]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -286,21 +299,21 @@ offset_right = 592.0
 offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = ExtResource("7_k4j2c")
-theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/disabled = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
-theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover = ExtResource("7_k4j2c")
-theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/pressed = ExtResource("7_k4j2c")
-theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
 theme_override_styles/normal = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/focus = ExtResource("7_k4j2c")
 toggle_mode = true
 button_group = ExtResource("7_bpcci")
 
-[node name="Tapes" type="Button" parent="Window"]
+[node name="Tapes" type="Button" parent="Window" unique_id=986778853]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -313,21 +326,21 @@ offset_right = 594.0
 offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = ExtResource("7_k4j2c")
-theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/disabled = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
-theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover = ExtResource("7_k4j2c")
-theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/pressed = ExtResource("7_k4j2c")
-theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
 theme_override_styles/normal = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/focus = ExtResource("7_k4j2c")
 toggle_mode = true
 button_group = ExtResource("7_bpcci")
 
-[node name="Options" type="Button" parent="Window"]
+[node name="Options" type="Button" parent="Window" unique_id=1791632182]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -340,21 +353,21 @@ offset_right = 594.0
 offset_bottom = 326.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = ExtResource("7_k4j2c")
-theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/disabled = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
-theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/hover = ExtResource("7_k4j2c")
-theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
-theme_override_styles/pressed = ExtResource("7_k4j2c")
-theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
 theme_override_styles/normal = ExtResource("7_k4j2c")
+theme_override_styles/normal_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/pressed = ExtResource("7_k4j2c")
+theme_override_styles/pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover = ExtResource("7_k4j2c")
+theme_override_styles/hover_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed = ExtResource("7_k4j2c")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/disabled = ExtResource("7_k4j2c")
+theme_override_styles/disabled_mirrored = ExtResource("7_k4j2c")
+theme_override_styles/focus = ExtResource("7_k4j2c")
 toggle_mode = true
 button_group = ExtResource("7_bpcci")
 
-[node name="InventoryPanel" type="Panel" parent="Window" groups=["UI"]]
+[node name="InventoryPanel" type="Panel" parent="Window" unique_id=767155365 groups=["UI"]]
 process_mode = 3
 z_index = 4
 anchors_preset = 8
@@ -372,7 +385,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("5_7vvl4")
 
-[node name="Details" type="RichTextLabel" parent="Window/InventoryPanel"]
+[node name="Details" type="RichTextLabel" parent="Window/InventoryPanel" unique_id=119916207]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 540.0
@@ -380,7 +393,7 @@ offset_right = 300.0
 offset_bottom = 600.0
 bbcode_enabled = true
 
-[node name="Tip" type="RichTextLabel" parent="Window/InventoryPanel"]
+[node name="Tip" type="RichTextLabel" parent="Window/InventoryPanel" unique_id=1840576417]
 z_index = 10
 layout_mode = 0
 offset_left = 100.0
@@ -389,7 +402,7 @@ offset_right = 580.0
 offset_bottom = 600.0
 bbcode_enabled = true
 
-[node name="GridContainer" type="GridContainer" parent="Window/InventoryPanel"]
+[node name="GridContainer" type="GridContainer" parent="Window/InventoryPanel" unique_id=541825785]
 process_mode = 3
 layout_mode = 1
 anchors_preset = -1
@@ -404,7 +417,7 @@ theme_type_variation = &"InventoryGrid"
 columns = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="Item_Slot1" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot1" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=558183468]
 process_mode = 3
 z_index = 5
 clip_contents = true
@@ -412,7 +425,7 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 stretch_mode = 3
 
-[node name="Item_Slot2" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot2" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=1910654793]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -420,7 +433,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 3
 
-[node name="Item_Slot3" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot3" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=515859037]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -428,7 +441,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot4" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot4" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=1793769915]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -436,7 +449,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot5" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot5" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=2080880584]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -445,7 +458,7 @@ size_flags_vertical = 4
 mouse_filter = 1
 stretch_mode = 0
 
-[node name="Item_Slot6" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot6" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=35902063]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -453,7 +466,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot7" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot7" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=1052226568]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -461,7 +474,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot8" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot8" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=322366300]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -469,7 +482,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot9" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot9" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=1815157147]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -477,7 +490,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot10" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot10" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=36846216]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -485,7 +498,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot11" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot11" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=454689969]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -493,7 +506,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot12" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot12" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=647698717]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -501,7 +514,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot13" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot13" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=994136160]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -509,7 +522,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot14" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot14" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=21748242]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -517,7 +530,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot15" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot15" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=647786347]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -525,7 +538,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="Item_Slot16" type="TextureButton" parent="Window/InventoryPanel/GridContainer"]
+[node name="Item_Slot16" type="TextureButton" parent="Window/InventoryPanel/GridContainer" unique_id=757186159]
 process_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -533,7 +546,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 stretch_mode = 0
 
-[node name="DiaryPanel" type="Panel" parent="Window" groups=["UI"]]
+[node name="DiaryPanel" type="Panel" parent="Window" unique_id=2027398874 groups=["UI"]]
 process_mode = 3
 visible = false
 z_index = 1
@@ -550,18 +563,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_ivjpd")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Window/DiaryPanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/DiaryPanel" unique_id=7015587]
 process_mode = 3
 clip_contents = false
 custom_minimum_size = Vector2(560, 560)
-layout_mode = 2
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 580.0
 offset_bottom = 580.0
 horizontal_scroll_mode = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Window/DiaryPanel/ScrollContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Window/DiaryPanel/ScrollContainer" unique_id=1110118756]
 process_mode = 3
 layout_mode = 2
 bbcode_enabled = true
@@ -570,7 +583,7 @@ autowrap_mode = 0
 tab_size = 1
 shortcut_keys_enabled = false
 
-[node name="PhonePanel" type="Panel" parent="Window" groups=["UI"]]
+[node name="PhonePanel" type="Panel" parent="Window" unique_id=74909794 groups=["UI"]]
 process_mode = 3
 visible = false
 z_index = 1
@@ -587,7 +600,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_kl3vl")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Window/PhonePanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/PhonePanel" unique_id=1793115358]
 process_mode = 3
 clip_contents = false
 custom_minimum_size = Vector2(560, 560)
@@ -598,7 +611,7 @@ offset_right = 580.0
 offset_bottom = 580.0
 horizontal_scroll_mode = 0
 
-[node name="Number_List" type="RichTextLabel" parent="Window/PhonePanel/ScrollContainer"]
+[node name="Number_List" type="RichTextLabel" parent="Window/PhonePanel/ScrollContainer" unique_id=1356082923]
 process_mode = 3
 layout_mode = 2
 bbcode_enabled = true
@@ -607,7 +620,7 @@ autowrap_mode = 0
 tab_size = 1
 shortcut_keys_enabled = false
 
-[node name="CatsPanel" type="Panel" parent="Window" groups=["UI"]]
+[node name="CatsPanel" type="Panel" parent="Window" unique_id=1971426671 groups=["UI"]]
 process_mode = 3
 visible = false
 z_index = 1
@@ -623,16 +636,16 @@ offset_bottom = 311.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Window/CatsPanel"]
+[node name="GridContainer" type="GridContainer" parent="Window/CatsPanel" unique_id=470738104]
 process_mode = 3
-layout_mode = 2
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 580.0
 offset_bottom = 580.0
 columns = 4
 
-[node name="TapesPanel" type="Panel" parent="Window" groups=["UI"]]
+[node name="TapesPanel" type="Panel" parent="Window" unique_id=560926858 groups=["UI"]]
 process_mode = 3
 visible = false
 z_index = 1
@@ -648,16 +661,16 @@ offset_bottom = 311.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Window/TapesPanel"]
+[node name="GridContainer" type="GridContainer" parent="Window/TapesPanel" unique_id=1305139974]
 process_mode = 3
-layout_mode = 2
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 580.0
 offset_bottom = 580.0
 columns = 4
 
-[node name="OptionsPanel" type="Panel" parent="Window" groups=["UI"]]
+[node name="OptionsPanel" type="Panel" parent="Window" unique_id=15378932 groups=["UI"]]
 process_mode = 3
 visible = false
 z_index = 1
@@ -674,7 +687,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_1wx7o")
 
-[node name="VBox" type="VBoxContainer" parent="Window/OptionsPanel"]
+[node name="VBox" type="VBoxContainer" parent="Window/OptionsPanel" unique_id=1430670853]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 10
@@ -685,10 +698,10 @@ offset_right = -20.0
 offset_bottom = 580.0
 grow_horizontal = 2
 
-[node name="HBox1" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+[node name="HBox1" type="HBoxContainer" parent="Window/OptionsPanel/VBox" unique_id=399874849]
 layout_mode = 2
 
-[node name="Item_Mode" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox1"]
+[node name="Item_Mode" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox1" unique_id=514269457]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -699,7 +712,7 @@ scroll_active = false
 autowrap_mode = 0
 tab_size = 1
 
-[node name="Switch" type="Button" parent="Window/OptionsPanel/VBox/HBox1"]
+[node name="Switch" type="Button" parent="Window/OptionsPanel/VBox/HBox1" unique_id=1253843601]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -707,17 +720,17 @@ toggle_mode = true
 button_pressed = true
 text = "Switch"
 
-[node name="Hold" type="Button" parent="Window/OptionsPanel/VBox/HBox1"]
+[node name="Hold" type="Button" parent="Window/OptionsPanel/VBox/HBox1" unique_id=1867795189]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Hold"
 
-[node name="HBox2" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+[node name="HBox2" type="HBoxContainer" parent="Window/OptionsPanel/VBox" unique_id=1900014062]
 layout_mode = 2
 
-[node name="Menu Style" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox2"]
+[node name="Menu Style" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox2" unique_id=1934485480]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -728,7 +741,7 @@ scroll_active = false
 autowrap_mode = 0
 tab_size = 1
 
-[node name="Plain" type="Button" parent="Window/OptionsPanel/VBox/HBox2"]
+[node name="Plain" type="Button" parent="Window/OptionsPanel/VBox/HBox2" unique_id=577762994]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -736,17 +749,17 @@ toggle_mode = true
 button_pressed = true
 text = "Plain"
 
-[node name="Pure" type="Button" parent="Window/OptionsPanel/VBox/HBox2"]
+[node name="Pure" type="Button" parent="Window/OptionsPanel/VBox/HBox2" unique_id=1201442559]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Pure"
 
-[node name="HBox3" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+[node name="HBox3" type="HBoxContainer" parent="Window/OptionsPanel/VBox" unique_id=1738502351]
 layout_mode = 2
 
-[node name="Contrast" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox3"]
+[node name="Contrast" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox3" unique_id=1998788890]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -757,7 +770,7 @@ scroll_active = false
 autowrap_mode = 0
 tab_size = 1
 
-[node name="Off" type="Button" parent="Window/OptionsPanel/VBox/HBox3"]
+[node name="Off" type="Button" parent="Window/OptionsPanel/VBox/HBox3" unique_id=672441784]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -765,17 +778,17 @@ toggle_mode = true
 button_pressed = true
 text = "Off"
 
-[node name="On" type="Button" parent="Window/OptionsPanel/VBox/HBox3"]
+[node name="On" type="Button" parent="Window/OptionsPanel/VBox/HBox3" unique_id=1811725465]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "On"
 
-[node name="HBox4" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+[node name="HBox4" type="HBoxContainer" parent="Window/OptionsPanel/VBox" unique_id=187566452]
 layout_mode = 2
 
-[node name="Grayscale" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox4"]
+[node name="Grayscale" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox4" unique_id=102884682]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -786,7 +799,7 @@ scroll_active = false
 autowrap_mode = 0
 tab_size = 1
 
-[node name="Off" type="Button" parent="Window/OptionsPanel/VBox/HBox4"]
+[node name="Off" type="Button" parent="Window/OptionsPanel/VBox/HBox4" unique_id=863809550]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -794,17 +807,17 @@ toggle_mode = true
 button_pressed = true
 text = "Off"
 
-[node name="On" type="Button" parent="Window/OptionsPanel/VBox/HBox4"]
+[node name="On" type="Button" parent="Window/OptionsPanel/VBox/HBox4" unique_id=235643941]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "On"
 
-[node name="HBox5" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+[node name="HBox5" type="HBoxContainer" parent="Window/OptionsPanel/VBox" unique_id=1888890008]
 layout_mode = 2
 
-[node name="Bounce" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox5"]
+[node name="Bounce" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox5" unique_id=1950954299]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -816,7 +829,7 @@ scroll_active = false
 autowrap_mode = 0
 tab_size = 1
 
-[node name="Off" type="Button" parent="Window/OptionsPanel/VBox/HBox5"]
+[node name="Off" type="Button" parent="Window/OptionsPanel/VBox/HBox5" unique_id=1383726669]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -824,17 +837,17 @@ toggle_mode = true
 button_pressed = true
 text = "Off"
 
-[node name="On" type="Button" parent="Window/OptionsPanel/VBox/HBox5"]
+[node name="On" type="Button" parent="Window/OptionsPanel/VBox/HBox5" unique_id=1531450453]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "On"
 
-[node name="HBox6" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+[node name="HBox6" type="HBoxContainer" parent="Window/OptionsPanel/VBox" unique_id=1986981953]
 layout_mode = 2
 
-[node name="Font_Size" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox6"]
+[node name="Font_Size" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBox6" unique_id=972882472]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -845,14 +858,14 @@ scroll_active = false
 autowrap_mode = 0
 tab_size = 1
 
-[node name="S" type="Button" parent="Window/OptionsPanel/VBox/HBox6"]
+[node name="S" type="Button" parent="Window/OptionsPanel/VBox/HBox6" unique_id=839899410]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "S"
 
-[node name="M" type="Button" parent="Window/OptionsPanel/VBox/HBox6"]
+[node name="M" type="Button" parent="Window/OptionsPanel/VBox/HBox6" unique_id=1313132172]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -860,17 +873,17 @@ toggle_mode = true
 button_pressed = true
 text = "M"
 
-[node name="L" type="Button" parent="Window/OptionsPanel/VBox/HBox6"]
+[node name="L" type="Button" parent="Window/OptionsPanel/VBox/HBox6" unique_id=1792396104]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "L"
 
-[node name="HBoxD" type="HBoxContainer" parent="Window/OptionsPanel/VBox"]
+[node name="HBoxD" type="HBoxContainer" parent="Window/OptionsPanel/VBox" unique_id=204398296]
 layout_mode = 2
 
-[node name="Display" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBoxD"]
+[node name="Display" type="RichTextLabel" parent="Window/OptionsPanel/VBox/HBoxD" unique_id=1455842695]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -881,14 +894,14 @@ scroll_active = false
 autowrap_mode = 0
 tab_size = 1
 
-[node name="Display0" type="Button" parent="Window/OptionsPanel/VBox/HBoxD"]
+[node name="Display0" type="Button" parent="Window/OptionsPanel/VBox/HBoxD" unique_id=1559733619]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "480"
 
-[node name="Display1" type="Button" parent="Window/OptionsPanel/VBox/HBoxD"]
+[node name="Display1" type="Button" parent="Window/OptionsPanel/VBox/HBoxD" unique_id=157201032]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -896,17 +909,17 @@ toggle_mode = true
 button_pressed = true
 text = "1080"
 
-[node name="Full" type="Button" parent="Window/OptionsPanel/VBox/HBoxD"]
+[node name="Full" type="Button" parent="Window/OptionsPanel/VBox/HBoxD" unique_id=1653402452]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Full"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1992597926]
 layer = 20
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1788005141]
 material = SubResource("ShaderMaterial_lqvom")
 anchors_preset = 15
 anchor_right = 1.0

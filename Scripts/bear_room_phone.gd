@@ -2,6 +2,23 @@
 
 extends Control
 
+@onready var PhoneAudio = GameGlue.PhoneAudio
+@onready var PhoneBook = GameGlue.PhoneBook
+@onready var DialogManager = GameGlue.DialogManager
+@onready var ItemDatabase = GameGlue.ItemDatabase
+@onready var ClockManager = GameGlue.ClockManager
+@onready var GameState = GameGlue.GameState
+@onready var NumberManager = GameGlue.NumberManager
+@onready var KnowledgeManager = GameGlue.KnowledgeManager
+@onready var SettingsManager = GameGlue.SettingsManager
+@onready var SequenceMachine = GameGlue.SequenceMachine
+@onready var Bouncer = GameGlue.Bouncer
+@onready var Menu = GameGlue.Menu
+@onready var InputManager = GameGlue.InputManager
+@onready var PortraitManager = GameGlue.PortraitManager
+@onready var ItemManager = GameGlue.ItemManager
+@onready var TextBox = GameGlue.TextBox
+
 var current_number = ""
 var last_key_release_time = 0
 var last_activity_time = 0
@@ -65,15 +82,11 @@ func _process(delta):
 			stop_all_audio()
 			PhoneAudio.start_howler_tone()
 
-func on_exit(viewport, event, shape_idx, scene_path: String, advance_time: bool):
+func on_exit(viewport, event, shape_idx, scene_path, advance_time):
 	if InputManager.click_release(event):
 		stop_all_audio()
 		ClockManager.next_scene_path = scene_path
-		if advance_time:
-			ClockManager.switch_scene(true)
-		else:
-			get_tree().change_scene_to_file(scene_path)
-		print("Going to %s" % scene_path)
+		ClockManager.switch_scene(advance_time)
 
 #Day Lighting
 

@@ -6,8 +6,11 @@ signal slot_created(index, button)
 @onready var grid = $GridContainer
 
 func _ready():
-	GameGlue.ItemManager.inventory_updated.connect(populate_inventory)
+	call_deferred("connect_inventory")
 	call_deferred("populate_inventory")
+
+func connect_inventory():
+	GameGlue.ItemManager.inventory_updated.connect(populate_inventory)
 
 func populate_inventory():
 	for child in grid.get_children():
@@ -20,7 +23,7 @@ func populate_inventory():
 		btn.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
 		btn.texture_normal = load("res://Art/Beta/Items/Empty_Slot.png")
 
-		if id != "" and GameGlue.ItemDatabase.item.has(id):
+		if id != "" and GameGlue.ItemDatabase.items.has(id):
 			btn.texture_normal = GameGlue.ItemDatabase.get_item_texture(id)
 		else:
 			pass
@@ -36,7 +39,7 @@ func populate_inventory():
 
 
 func _on_item_slot_mouse_entered(slot_index):
-	var id = GameGlue.item.slots[slot_index]
+	var id = GameGlue.ItemManager.slots[slot_index]
 
 	if id == "" or not GameGlue.ItemDatabase.items.has(id):
 		$Tip.visible = false

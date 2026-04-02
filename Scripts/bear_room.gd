@@ -2,6 +2,11 @@ extends Control
 
 @onready var intro_blocker = $Intro_Blocker
 
+@onready var ClockManager = GameGlue.ClockManager
+@onready var KnowledgeManager = GameGlue.KnowledgeManager
+@onready var SequenceMachine = GameGlue.SequenceMachine
+@onready var InputManager = GameGlue.InputManager
+
 func _ready():
 	ClockManager.distance_from_church = 8
 	ClockManager.update_chime_volume()
@@ -32,7 +37,7 @@ func _ready():
 	$Bear3.input_event.connect(bear3_clicked)
 	$Bear4.input_event.connect(bear4_clicked)
 	$Suitcase.input_event.connect(suitcase_clicked)
-	$Phone.input_event.connect(phone_clicked.bind("res://Scenes/Bear_Room_Phone.tscn", true))
+	$Phone.input_event.connect(phone_clicked.bind("res://Scenes/Bear_Room_Phone.tscn", false))
 	$Flower.input_event.connect(flower_clicked)
 	$Bed.input_event.connect(bed_clicked)
 	$Lamp.input_event.connect(lamp_clicked)
@@ -105,29 +110,15 @@ func drawer2_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:1043"], self)
 
-func drawer1_clicked(viewport, event, shape_idx, scene_path: String, advance_time: bool):
+func drawer1_clicked(viewport, event, shape_idx, scene_path, advance_time):
 	if InputManager.click_release(event):
 		ClockManager.next_scene_path = scene_path
-		if advance_time:
-			ClockManager.switch_scene(true)
-		else:
-			get_tree().change_scene_to_file(scene_path)
+		ClockManager.switch_scene(advance_time)
 
-func to_drawer():
-	ClockManager.next_scene_path = "res://Scenes/Bear_Room_Drawer.tscn"
-	ClockManager.switch_scene(true)
-
-func phone_clicked(viewport, event, shape_idx, scene_path: String, advance_time: bool):
+func phone_clicked(viewport, event, shape_idx, scene_path, advance_time):
 	if InputManager.click_release(event):
 		ClockManager.next_scene_path = scene_path
-		if advance_time:
-			ClockManager.switch_scene(true)
-		else:
-			get_tree().change_scene_to_file(scene_path)
-
-func go_to_phone():
-	ClockManager.next_scene_path = "res://Scenes/Bear_Room_Phone.tscn"
-	ClockManager.switch_scene(true)
+		ClockManager.switch_scene(advance_time)
 
 func update_time_of_day_shader():
 	var tint = ClockManager.get_time_of_day_tint()

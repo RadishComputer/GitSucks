@@ -102,7 +102,7 @@ func use_item(target: Node):
 	if slots.find(item_id) == -1:
 		slots[cursor_slot] = ""
 	else:
-		var origin = GameGlue.menu.drag_origin_index
+		var origin = GameGlue.Menu.drag_origin_index
 		if origin != -1:
 			slots[origin] = item_id
 		slots[cursor_slot] = ""

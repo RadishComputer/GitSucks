@@ -1,8 +1,12 @@
 extends Panel
 
 func _ready():
-	GameGlue.NumberManager.phonebook_update.connect(update)
+	call_deferred("connect_phone")
+
+
+func connect_phone():
 	update()
+	GameGlue.NumberManager.phonebook_update.connect(update)
 
 func update():
 	var list = GameGlue.NumberManager.get_numbers()

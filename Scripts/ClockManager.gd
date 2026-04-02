@@ -11,6 +11,7 @@ var last_hour_played = -1
 var time_pause = false
 var time_trigger: String = ""
 
+
 var time_event = {
 	9: "open_gate",
 	14: "phone_rings",
@@ -18,12 +19,15 @@ var time_event = {
 }
 
 func _ready():
-	GameGlue.KnowledgeManager.knowledge_learned.connect(on_knowledge_learned)
+	call_deferred("connect_knowledge")
 
 	for i in range(1, 13):
 		var path = "res://Sounds/church_%d.mp3" % i
 		chime_sounds[i] = load(path)
 	call_deferred("delayed_clock_update")
+
+func connect_knowledge():
+	GameGlue.KnowledgeManager.knowledge_learned.connect(on_knowledge_learned)
 
 func update_chime_volume():
 	var bell = get_node_or_null("ChurchBell")
@@ -56,27 +60,24 @@ func switch_scene(advance_time = false):
 		minutes = 0
 		time_pause = true
 		time_trigger = "Met_Dave"
-		print("Time locked at 12:00 PM until Met_Dave is known.")
 
 	if hours >= 13 and not GameGlue.KnowledgeManager.knows("Food_Received") and time_trigger == "":
 		hours = 13
 		minutes = 0
 		time_pause = true
 		time_trigger = "Food_Received"
-		print("Time locked at 1:00 PM until Mom receives food.")
 
 	if int(hours) != previous_hour:
 		play_church_bell()
 		check_time_event()
 
 	if next_scene_path != "":
-		#get_tree().change_scene_to_file(next_scene_path)
-		call_deferred("change_scene_safe", next_scene_path)
+		GameGlue.load_scene(next_scene_path)
 		next_scene_path = ""
 
 	await get_tree().process_frame
 	update_clock_display()
-	
+
 
 func event_trigger(event_name: String):
 	match event_name:
@@ -109,7 +110,7 @@ func update_clock_display():
 		display_hour = 12
 	var time_string = "[center]%02d:%02d %s[/center]" % [display_hour, minutes, am_pm]
 
-	var menu = get_tree().root.get_node_or_null("Menu")
+	var menu = GameGlue.Menu
 	if menu:
 		var label = menu.get_node_or_null("Center/Clock")
 		if label:

@@ -1,51 +1,63 @@
-extends Area2D
+extends TextureButton
+
+@onready var PhoneAudio = GameGlue.PhoneAudio
+@onready var PhoneBook = GameGlue.PhoneBook
+@onready var DialogManager = GameGlue.DialogManager
+@onready var ItemDatabase = GameGlue.ItemDatabase
+@onready var ClockManager = GameGlue.ClockManager
+@onready var GameState = GameGlue.GameState
+@onready var NumberManager = GameGlue.NumberManager
+@onready var KnowledgeManager = GameGlue.KnowledgeManager
+@onready var SettingsManager = GameGlue.SettingsManager
+@onready var SequenceMachine = GameGlue.SequenceMachine
+@onready var Bouncer = GameGlue.Bouncer
+@onready var Menu = GameGlue.Menu
+@onready var InputManager = GameGlue.InputManager
+@onready var PortraitManager = GameGlue.PortraitManager
+@onready var ItemManager = GameGlue.ItemManager
+@onready var TextBox = GameGlue.TextBox
 
 func _ready():
-	ItemManager.connect("item_used_on_target", Callable(self, "on_item_used"))
+	GameGlue.ItemManager.connect("item_used_on_target", Callable(self, "on_item_used"))
 	add_to_group("targets")
+	print("Door groups:", get_groups())
 
-func _input_event(viewport, event, shape_idx):
-	if InputManager.click_release(event):
-
-		if SettingsManager.item_mode == SettingsManager.ItemMode.HOLD and Menu.dragging:
-			Menu.end_drag(self)
+func _gui_input(event):
+	if GameGlue.InputManager.click_release(event):
+		if GameGlue.SettingsManager.item_mode == GameGlue.SettingsManager.ItemMode.HOLD and GameGlue.Menu.dragging:
+			GameGlue.Menu.end_drag(self)
 			return
 
-		if KnowledgeManager.knows("Bear_Room_Door_Opened"):
-			if ItemManager.slots[ItemManager.cursor_slot] == "":
-				call_deferred("on_exit")
+		if GameGlue.SettingsManager.item_mode == GameGlue.SettingsManager.ItemMode.SWITCH \
+		and GameGlue.Menu.selected_item != "":
 			return
 
-		if ItemManager.slots[ItemManager.cursor_slot] != "":
-			ItemManager.use_item(self)
-			Menu.selected_item = ""
-			Menu.drag_origin_index = -1
-			ItemManager.update_cursor_icon()
+		if GameGlue.KnowledgeManager.knows("Bear_Room_Door_Opened"):
+			call_deferred("on_exit")
 			return
 
-		if not KnowledgeManager.secretly_knows("Door_Tried"):
-			SequenceMachine.run_sequence([
+		if not GameGlue.KnowledgeManager.secretly_knows("Door_Tried"):
+			GameGlue.SequenceMachine.run_sequence([
 				"dialog:1026",
 				"action:secretly_learn:Door_Tried"
 			], self)
 		else:
-			SequenceMachine.run_sequence([
+			GameGlue.SequenceMachine.run_sequence([
 				"dialog:1027"
 			], self)
-
 
 func on_item_used(target: Node, item_id: String):
 	if target == self:
 		if item_id == "pocket_knife":
-			SequenceMachine.run_sequence([
+			GameGlue.SequenceMachine.run_sequence([
 				"note:[center]Bear Room Door Opened.[/center]",
 				"action:learn:Bear_Room_Door_Opened"
 			], self)
 		else:
-			SequenceMachine.run_sequence([
+			GameGlue.SequenceMachine.run_sequence([
 				"note:[center]That item doesn't work here.[/center]"
 			], self)
 
 func on_exit():
-	ClockManager.next_scene_path = "res://Scenes/Upstairs.tscn"
-	ClockManager.switch_scene(true)
+	GameGlue.ClockManager.next_scene_path = "res://Scenes/Upstairs.tscn"
+	GameGlue.ClockManager.switch_scene(true)

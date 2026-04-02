@@ -1,37 +1,18 @@
 extends Panel
 
 func _ready():
+	call_deferred("connect_options")
+
+func connect_options():
 	GameGlue.SettingsManager.load_settings()
 	GameGlue.SettingsManager.apply_display_settings()
-	
-	$VBox/HBox1/Switch.pressed.connect(on_item_mode_pressed.bind(GameGlue.SettingsManager.ItemMode.SWITCH))
-	$VBox/HBox1/Hold.pressed.connect(on_item_mode_pressed.bind(GameGlue.SettingsManager.ItemMode.HOLD))
+
 	update_item_mode_visual()
-
-	$VBox/HBox2/Plain.pressed.connect(on_menu_style_pressed.bind(GameGlue.SettingsManager.MenuStyle.PLAIN))
-	$VBox/HBox2/Pure.pressed.connect(on_menu_style_pressed.bind(GameGlue.SettingsManager.MenuStyle.PURE))
 	update_menu_style_visual()
-
-	$VBox/HBox3/Off.pressed.connect(on_high_contrast_pressed.bind(false))
-	$VBox/HBox3/On.pressed.connect(on_high_contrast_pressed.bind(true))
 	update_high_contrast_visual()
-
-	$VBox/HBox4/Off.pressed.connect(on_grayscale_pressed.bind(false))
-	$VBox/HBox4/On.pressed.connect(on_grayscale_pressed.bind(true))
 	update_grayscale_visual()
-
-	$VBox/HBox5/Off.pressed.connect(on_bounce_pressed.bind(false))
-	$VBox/HBox5/On.pressed.connect(on_bounce_pressed.bind(true))
 	update_bounce_visual()
-
-	$VBox/HBox6/S.pressed.connect(on_size_pressed.bind("S"))
-	$VBox/HBox6/M.pressed.connect(on_size_pressed.bind("M"))
-	$VBox/HBox6/L.pressed.connect(on_size_pressed.bind("L"))
 	update_size_visual()
-
-	$VBox/HBoxD/Display0.pressed.connect(on_display_pressed.bind(0))
-	$VBox/HBoxD/Display1.pressed.connect(on_display_pressed.bind(1))
-	$VBox/HBoxD/Full.pressed.connect(on_full_pressed)
 	update_resolution_visual()
 
 #Item Mode

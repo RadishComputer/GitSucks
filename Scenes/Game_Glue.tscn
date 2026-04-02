@@ -1,24 +1,1411 @@
 [gd_scene format=3 uid="uid://bmkvaf4tfo7ob"]
 
 [ext_resource type="Script" uid="uid://c101two1f75sy" path="res://Scripts/game_glue.gd" id="1_6ojyx"]
+[ext_resource type="Script" uid="uid://cf8esg2hso7ms" path="res://Scripts/phone_audio.gd" id="2_0yvnd"]
+[ext_resource type="Script" uid="uid://vtan87sqlkqo" path="res://Scripts/phone_book.gd" id="3_248qg"]
+[ext_resource type="Script" uid="uid://d0hs27o361s3u" path="res://Scripts/DialogManager.gd" id="4_3es44"]
+[ext_resource type="Script" uid="uid://dh1o4lcwl1fq8" path="res://Scripts/item_database.gd" id="5_y3yky"]
+[ext_resource type="Script" uid="uid://c8ihyevnv0vx" path="res://Scripts/ClockManager.gd" id="6_f1ls7"]
+[ext_resource type="PackedScene" uid="uid://c26m3np3qbsip" path="res://Scenes/Game_State.tscn" id="6_x6npy"]
+[ext_resource type="Script" uid="uid://m0xtormngkl1" path="res://Scripts/number_manager.gd" id="8_ewaln"]
+[ext_resource type="Script" uid="uid://cy780ex7jwqet" path="res://Scripts/KnowledgeManager.gd" id="9_5wyvg"]
+[ext_resource type="Script" uid="uid://dc4cp5rrn0yaj" path="res://Scripts/settings_manager.gd" id="10_g8kpr"]
+[ext_resource type="Script" uid="uid://c01n51mhagj85" path="res://Scripts/sequence_machine.gd" id="11_t0m48"]
+[ext_resource type="Script" uid="uid://cjx3svo54a5ty" path="res://Scripts/bouncer.gd" id="12_johvy"]
+[ext_resource type="Script" uid="uid://p2ww2c58xpur" path="res://Scripts/menu.gd" id="13_slqqu"]
+[ext_resource type="Texture2D" uid="uid://uyuip3ractdl" path="res://Art/Beta/Places/Default_Backgroud.png" id="14_fg7fi"]
+[ext_resource type="Script" uid="uid://ccov87nlrucl8" path="res://Scripts/summer.gd" id="15_0b1rp"]
+[ext_resource type="Texture2D" uid="uid://csiyxophd7v1x" path="res://Art/Beta/Characters/Summer_Menu.png" id="16_xo3e3"]
+[ext_resource type="Texture2D" uid="uid://caob1q5lpdeim" path="res://Art/Beta/Characters/Eye.png" id="17_ihlfi"]
+[ext_resource type="Texture2D" uid="uid://dslbfl3i3a1jx" path="res://Art/Beta/Places/Menu.png" id="18_osnt8"]
+[ext_resource type="Texture2D" uid="uid://c7qblqsn6stnx" path="res://Art/Beta/Places/Screen.png" id="19_65naj"]
+[ext_resource type="Texture2D" uid="uid://bvfsmgk4seesf" path="res://Art/Beta/Places/Buttons.png" id="20_2abq0"]
+[ext_resource type="StyleBox" uid="uid://b87bfasw85xbo" path="res://Elements/Diary_Button.tres" id="21_cm0or"]
+[ext_resource type="Script" uid="uid://dtb7bm28p8ti4" path="res://Scripts/inventory_panel.gd" id="22_3asq3"]
+[ext_resource type="Script" uid="uid://brqpcoo5a4wf4" path="res://Scripts/records_panel.gd" id="23_wb44v"]
+[ext_resource type="Script" uid="uid://dx16f1wda1oc0" path="res://Scripts/phone_panel.gd" id="24_ecsl5"]
+[ext_resource type="Script" uid="uid://dpjj2mvaapj22" path="res://Scripts/options.gd" id="25_a18bi"]
+[ext_resource type="Shader" uid="uid://b4tkqp25wmbj7" path="res://Elements/overlay.gdshader" id="26_f6bg7"]
+[ext_resource type="Script" uid="uid://b17hdk3fjinoo" path="res://Scripts/input_manager.gd" id="27_vkrfo"]
+[ext_resource type="Script" uid="uid://b38mxyci85nli" path="res://Scripts/portrait_manager.gd" id="28_ltw13"]
+[ext_resource type="Script" uid="uid://b8ujt033fe14p" path="res://Scripts/item_manager.gd" id="29_4gvh1"]
+[ext_resource type="Script" uid="uid://bp6obe4y8k6uy" path="res://Scripts/text_box.gd" id="30_17cka"]
+[ext_resource type="Texture2D" uid="uid://dlw35i6fvskrc" path="res://Art/Beta/Places/Bear_Room.png" id="31_hiwk0"]
+[ext_resource type="Script" uid="uid://dop4wsngx0xp4" path="res://Scripts/bounce_effect.gd" id="32_g2foy"]
+[ext_resource type="AudioStream" uid="uid://bf5pmkvcfov52" path="res://Sounds/Note.wav" id="33_h2xce"]
+[ext_resource type="AudioStream" uid="uid://d1x4t8gscl4pn" path="res://Sounds/beep.wav" id="34_y74wx"]
 
-[node name="GameGlue" type="Node" unique_id=1955828861]
+[sub_resource type="ButtonGroup" id="ButtonGroup_d36k6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqvom"]
+shader = ExtResource("26_f6bg7")
+shader_parameter/grayscale_enabled = false
+shader_parameter/high_contrast_enabled = false
+shader_parameter/contrast_amount = 2.0
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_fcjjs"]
+script = ExtResource("32_g2foy")
+
+[node name="GameGlue" type="Control" unique_id=1432973535]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_6ojyx")
 
-[node name="Back" type="Control" parent="." unique_id=1609370771]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Back" type="CanvasLayer" parent="." unique_id=1007357886]
 
-[node name="Middle" type="Control" parent="." unique_id=1788280234]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PhoneAudio" type="AudioStreamPlayer" parent="Back" unique_id=466986892]
+script = ExtResource("2_0yvnd")
 
-[node name="Front" type="Control" parent="." unique_id=527582702]
+[node name="PhoneBook" type="Node" parent="Back" unique_id=753294072]
+script = ExtResource("3_248qg")
+
+[node name="DialogManager" type="Node2D" parent="Back" unique_id=993108585]
+script = ExtResource("4_3es44")
+
+[node name="ItemDatabase" type="Node" parent="Back" unique_id=322105]
+script = ExtResource("5_y3yky")
+
+[node name="ClockManager" type="Node2D" parent="Back" unique_id=1884531397]
+script = ExtResource("6_f1ls7")
+
+[node name="ChurchBell" type="AudioStreamPlayer" parent="Back/ClockManager" unique_id=1664491351]
+
+[node name="GameState" parent="Back" unique_id=1221963941 instance=ExtResource("6_x6npy")]
+
+[node name="NumberManager" type="Node" parent="Back" unique_id=1412969685]
+script = ExtResource("8_ewaln")
+
+[node name="KnowledgeManager" type="Node2D" parent="Back" unique_id=970071921]
+script = ExtResource("9_5wyvg")
+
+[node name="SettingsManager" type="Node2D" parent="Back" unique_id=610669213]
+script = ExtResource("10_g8kpr")
+
+[node name="SequenceMachine" type="Node2D" parent="Back" unique_id=1328117872]
+script = ExtResource("11_t0m48")
+
+[node name="Bouncer" type="Node" parent="Back" unique_id=2086339652]
+script = ExtResource("12_johvy")
+
+[node name="Menu" type="Control" parent="Back" unique_id=1808203771 groups=["UI"]]
+process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_slqqu")
+
+[node name="Background" type="TextureRect" parent="Back/Menu" unique_id=550802797]
+process_mode = 3
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 16
+texture = ExtResource("14_fg7fi")
+stretch_mode = 1
+
+[node name="Center" type="VBoxContainer" parent="Back/Menu" unique_id=675966937]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 760.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Clock" type="RichTextLabel" parent="Back/Menu/Center" unique_id=1562177804]
+process_mode = 3
+z_index = 1
+layout_mode = 2
+bbcode_enabled = true
+text = "TIME"
+fit_content = true
+
+[node name="Window" type="CanvasLayer" parent="Back/Menu" unique_id=209611091]
+process_mode = 3
+layer = 3
+visible = false
+
+[node name="Summer" type="Control" parent="Back/Menu/Window" unique_id=894801081]
+z_index = 5
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -932.0
+offset_top = -704.0
+offset_right = -932.0
+offset_bottom = -704.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_0b1rp")
+
+[node name="Summer" type="TextureRect" parent="Back/Menu/Window/Summer" unique_id=1330636431]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -10.0
+offset_right = 881.0
+offset_bottom = 1215.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_xo3e3")
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Eye1" type="Sprite2D" parent="Back/Menu/Window/Summer/Summer" unique_id=1996191717]
+z_index = -1
+position = Vector2(441, 476)
+texture = ExtResource("17_ihlfi")
+flip_h = true
+
+[node name="Eye2" type="Sprite2D" parent="Back/Menu/Window/Summer/Summer" unique_id=1409709579]
+z_index = -1
+position = Vector2(512, 474)
+texture = ExtResource("17_ihlfi")
+flip_h = true
+
+[node name="Dead_Zone" type="Node2D" parent="Back/Menu/Window/Summer" unique_id=1737821287]
+position = Vector2(480, 474)
+
+[node name="Device" type="TextureRect" parent="Back/Menu/Window" unique_id=565872394]
+process_mode = 3
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("18_osnt8")
+
+[node name="Screen" type="TextureRect" parent="Back/Menu/Window/Device" unique_id=1516481408]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.0
+offset_top = -360.0
+offset_right = 442.0
+offset_bottom = 390.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_65naj")
+
+[node name="Buttons" type="TextureRect" parent="Back/Menu/Window" unique_id=1631573542]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 440.0
+offset_top = -375.0
+offset_right = 640.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_2abq0")
+
+[node name="Click_Muncher" type="TextureRect" parent="Back/Menu/Window" unique_id=396902538]
+process_mode = 3
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+
+[node name="Items" type="Button" parent="Back/Menu/Window" unique_id=667434779]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 458.0
+offset_top = -360.0
+offset_right = 598.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("21_cm0or")
+theme_override_styles/normal_mirrored = ExtResource("21_cm0or")
+theme_override_styles/pressed = ExtResource("21_cm0or")
+theme_override_styles/pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover = ExtResource("21_cm0or")
+theme_override_styles/hover_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/disabled = ExtResource("21_cm0or")
+theme_override_styles/disabled_mirrored = ExtResource("21_cm0or")
+theme_override_styles/focus = ExtResource("21_cm0or")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_d36k6")
+
+[node name="Diary" type="Button" parent="Back/Menu/Window" unique_id=1386341877]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 458.0
+offset_top = -236.0
+offset_right = 598.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("21_cm0or")
+theme_override_styles/normal_mirrored = ExtResource("21_cm0or")
+theme_override_styles/pressed = ExtResource("21_cm0or")
+theme_override_styles/pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover = ExtResource("21_cm0or")
+theme_override_styles/hover_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/disabled = ExtResource("21_cm0or")
+theme_override_styles/disabled_mirrored = ExtResource("21_cm0or")
+theme_override_styles/focus = ExtResource("21_cm0or")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_d36k6")
+
+[node name="Phone" type="Button" parent="Back/Menu/Window" unique_id=1313244826]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 458.0
+offset_top = -124.0
+offset_right = 598.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("21_cm0or")
+theme_override_styles/normal_mirrored = ExtResource("21_cm0or")
+theme_override_styles/pressed = ExtResource("21_cm0or")
+theme_override_styles/pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover = ExtResource("21_cm0or")
+theme_override_styles/hover_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/disabled = ExtResource("21_cm0or")
+theme_override_styles/disabled_mirrored = ExtResource("21_cm0or")
+theme_override_styles/focus = ExtResource("21_cm0or")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_d36k6")
+
+[node name="Cats" type="Button" parent="Back/Menu/Window" unique_id=1431382944]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 452.0
+offset_top = -6.0
+offset_right = 592.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("21_cm0or")
+theme_override_styles/normal_mirrored = ExtResource("21_cm0or")
+theme_override_styles/pressed = ExtResource("21_cm0or")
+theme_override_styles/pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover = ExtResource("21_cm0or")
+theme_override_styles/hover_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/disabled = ExtResource("21_cm0or")
+theme_override_styles/disabled_mirrored = ExtResource("21_cm0or")
+theme_override_styles/focus = ExtResource("21_cm0or")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_d36k6")
+
+[node name="Tapes" type="Button" parent="Back/Menu/Window" unique_id=986778853]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 454.0
+offset_top = 113.0
+offset_right = 594.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("21_cm0or")
+theme_override_styles/normal_mirrored = ExtResource("21_cm0or")
+theme_override_styles/pressed = ExtResource("21_cm0or")
+theme_override_styles/pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover = ExtResource("21_cm0or")
+theme_override_styles/hover_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/disabled = ExtResource("21_cm0or")
+theme_override_styles/disabled_mirrored = ExtResource("21_cm0or")
+theme_override_styles/focus = ExtResource("21_cm0or")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_d36k6")
+
+[node name="Options" type="Button" parent="Back/Menu/Window" unique_id=1791632182]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 454.0
+offset_top = 226.0
+offset_right = 594.0
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("21_cm0or")
+theme_override_styles/normal_mirrored = ExtResource("21_cm0or")
+theme_override_styles/pressed = ExtResource("21_cm0or")
+theme_override_styles/pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover = ExtResource("21_cm0or")
+theme_override_styles/hover_mirrored = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed = ExtResource("21_cm0or")
+theme_override_styles/hover_pressed_mirrored = ExtResource("21_cm0or")
+theme_override_styles/disabled = ExtResource("21_cm0or")
+theme_override_styles/disabled_mirrored = ExtResource("21_cm0or")
+theme_override_styles/focus = ExtResource("21_cm0or")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_d36k6")
+
+[node name="InventoryPanel" type="Panel" parent="Back/Menu/Window" unique_id=767155365 groups=["UI"]]
+process_mode = 3
+z_index = 4
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("22_3asq3")
+
+[node name="Details" type="RichTextLabel" parent="Back/Menu/Window/InventoryPanel" unique_id=119916207]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 540.0
+offset_right = 300.0
+offset_bottom = 600.0
+bbcode_enabled = true
+
+[node name="Tip" type="RichTextLabel" parent="Back/Menu/Window/InventoryPanel" unique_id=1840576417]
+z_index = 10
+layout_mode = 0
+offset_left = 100.0
+offset_top = 540.0
+offset_right = 580.0
+offset_bottom = 600.0
+bbcode_enabled = true
+
+[node name="GridContainer" type="GridContainer" parent="Back/Menu/Window/InventoryPanel" unique_id=541825785]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 562.0
+offset_bottom = 542.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_type_variation = &"InventoryGrid"
+columns = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Item_Slot1" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=558183468]
+process_mode = 3
+z_index = 5
+clip_contents = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Item_Slot2" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=1910654793]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 3
+
+[node name="Item_Slot3" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=515859037]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot4" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=1793769915]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot5" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=2080880584]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+stretch_mode = 0
+
+[node name="Item_Slot6" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=35902063]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot7" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=1052226568]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot8" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=322366300]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot9" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=1815157147]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot10" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=36846216]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot11" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=454689969]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot12" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=647698717]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot13" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=994136160]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot14" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=21748242]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot15" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=647786347]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="Item_Slot16" type="TextureButton" parent="Back/Menu/Window/InventoryPanel/GridContainer" unique_id=757186159]
+process_mode = 3
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 0
+
+[node name="DiaryPanel" type="Panel" parent="Back/Menu/Window" unique_id=2027398874 groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("23_wb44v")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Back/Menu/Window/DiaryPanel" unique_id=7015587]
+process_mode = 3
+clip_contents = false
+custom_minimum_size = Vector2(560, 560)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 580.0
+offset_bottom = 580.0
+horizontal_scroll_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Back/Menu/Window/DiaryPanel/ScrollContainer" unique_id=1110118756]
+process_mode = 3
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+tab_size = 1
+shortcut_keys_enabled = false
+
+[node name="PhonePanel" type="Panel" parent="Back/Menu/Window" unique_id=74909794 groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("24_ecsl5")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Back/Menu/Window/PhonePanel" unique_id=1793115358]
+process_mode = 3
+clip_contents = false
+custom_minimum_size = Vector2(560, 560)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 580.0
+offset_bottom = 580.0
+horizontal_scroll_mode = 0
+
+[node name="Number_List" type="RichTextLabel" parent="Back/Menu/Window/PhonePanel/ScrollContainer" unique_id=1356082923]
+process_mode = 3
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+tab_size = 1
+shortcut_keys_enabled = false
+
+[node name="CatsPanel" type="Panel" parent="Back/Menu/Window" unique_id=1971426671 groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Back/Menu/Window/CatsPanel" unique_id=470738104]
+process_mode = 3
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 580.0
+offset_bottom = 580.0
+columns = 4
+
+[node name="TapesPanel" type="Panel" parent="Back/Menu/Window" unique_id=560926858 groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Back/Menu/Window/TapesPanel" unique_id=1305139974]
+process_mode = 3
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 580.0
+offset_bottom = 580.0
+columns = 4
+
+[node name="OptionsPanel" type="Panel" parent="Back/Menu/Window" unique_id=15378932 groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -289.0
+offset_right = 367.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("25_a18bi")
+
+[node name="VBox" type="VBoxContainer" parent="Back/Menu/Window/OptionsPanel" unique_id=1430670853]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 580.0
+grow_horizontal = 2
+
+[node name="HBox1" type="HBoxContainer" parent="Back/Menu/Window/OptionsPanel/VBox" unique_id=399874849]
+layout_mode = 2
+
+[node name="Item_Mode" type="RichTextLabel" parent="Back/Menu/Window/OptionsPanel/VBox/HBox1" unique_id=514269457]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Item Mode      "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Switch" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox1" unique_id=1253843601]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Switch"
+
+[node name="Hold" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox1" unique_id=1867795189]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Hold"
+
+[node name="HBox2" type="HBoxContainer" parent="Back/Menu/Window/OptionsPanel/VBox" unique_id=1900014062]
+layout_mode = 2
+
+[node name="Menu Style" type="RichTextLabel" parent="Back/Menu/Window/OptionsPanel/VBox/HBox2" unique_id=1934485480]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Menu Style"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Plain" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox2" unique_id=577762994]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Plain"
+
+[node name="Pure" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox2" unique_id=1201442559]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Pure"
+
+[node name="HBox3" type="HBoxContainer" parent="Back/Menu/Window/OptionsPanel/VBox" unique_id=1738502351]
+layout_mode = 2
+
+[node name="Contrast" type="RichTextLabel" parent="Back/Menu/Window/OptionsPanel/VBox/HBox3" unique_id=1998788890]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "High Contrast"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Off" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox3" unique_id=672441784]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Off"
+
+[node name="On" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox3" unique_id=1811725465]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "On"
+
+[node name="HBox4" type="HBoxContainer" parent="Back/Menu/Window/OptionsPanel/VBox" unique_id=187566452]
+layout_mode = 2
+
+[node name="Grayscale" type="RichTextLabel" parent="Back/Menu/Window/OptionsPanel/VBox/HBox4" unique_id=102884682]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Grayscale"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Off" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox4" unique_id=863809550]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Off"
+
+[node name="On" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox4" unique_id=235643941]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "On"
+
+[node name="HBox5" type="HBoxContainer" parent="Back/Menu/Window/OptionsPanel/VBox" unique_id=1888890008]
+layout_mode = 2
+
+[node name="Bounce" type="RichTextLabel" parent="Back/Menu/Window/OptionsPanel/VBox/HBox5" unique_id=1950954299]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Bounce
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Off" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox5" unique_id=1383726669]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Off"
+
+[node name="On" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox5" unique_id=1531450453]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "On"
+
+[node name="HBox6" type="HBoxContainer" parent="Back/Menu/Window/OptionsPanel/VBox" unique_id=1986981953]
+layout_mode = 2
+
+[node name="Font_Size" type="RichTextLabel" parent="Back/Menu/Window/OptionsPanel/VBox/HBox6" unique_id=972882472]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Font Size"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="S" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox6" unique_id=839899410]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "S"
+
+[node name="M" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox6" unique_id=1313132172]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "M"
+
+[node name="L" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBox6" unique_id=1792396104]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "L"
+
+[node name="HBoxD" type="HBoxContainer" parent="Back/Menu/Window/OptionsPanel/VBox" unique_id=204398296]
+layout_mode = 2
+
+[node name="Display" type="RichTextLabel" parent="Back/Menu/Window/OptionsPanel/VBox/HBoxD" unique_id=1455842695]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Display   "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Display0" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBoxD" unique_id=1559733619]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "480"
+
+[node name="Display1" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBoxD" unique_id=157201032]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "1080"
+
+[node name="Full" type="Button" parent="Back/Menu/Window/OptionsPanel/VBox/HBoxD" unique_id=1653402452]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Full"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Back/Menu" unique_id=1992597926]
+layer = 20
+
+[node name="ColorRect" type="ColorRect" parent="Back/Menu/CanvasLayer" unique_id=1788005141]
+material = SubResource("ShaderMaterial_lqvom")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Middle" type="CanvasLayer" parent="." unique_id=240191574]
+layer = 2
+
+[node name="Front" type="CanvasLayer" parent="." unique_id=1229740323]
+layer = 3
+
+[node name="InputManager" type="Node" parent="Front" unique_id=1841090238]
+script = ExtResource("27_vkrfo")
+
+[node name="PortraitManager" type="Control" parent="Front" unique_id=258836222]
+z_index = 9
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("28_ltw13")
+
+[node name="Mask" type="Control" parent="Front/PortraitManager" unique_id=899874093]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -738.0
+offset_top = -438.0
+offset_right = 738.0
+offset_bottom = 438.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dialog_Portrait" type="TextureRect" parent="Front/PortraitManager/Mask" unique_id=56968778]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -374.0
+offset_right = 960.0
+offset_bottom = 706.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 3
+
+[node name="Shop_Portrait" type="TextureRect" parent="Front/PortraitManager/Mask" unique_id=2093867692]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -738.0
+offset_top = -438.0
+offset_right = 12.0
+offset_bottom = 642.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 3
+
+[node name="Perception" type="TextureRect" parent="Front/PortraitManager/Mask" unique_id=974119525]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -706.0
+offset_right = 960.0
+offset_bottom = 374.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 3
+
+[node name="ItemManager" type="CanvasLayer" parent="Front" unique_id=1843774313]
+process_mode = 3
+layer = 12
+script = ExtResource("29_4gvh1")
+
+[node name="ItemCursor" type="TextureRect" parent="Front/ItemManager" unique_id=1802598656]
+process_mode = 3
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextBox" type="Control" parent="Front" unique_id=786724942 groups=["UI"]]
+process_mode = 3
+z_index = 100
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("30_17cka")
+
+[node name="TextureRect" type="TextureRect" parent="Front/TextBox" unique_id=1559425978]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("31_hiwk0")
+expand_mode = 1
+
+[node name="Back_Blocker" type="TextureRect" parent="Front/TextBox" unique_id=1822913814]
+process_mode = 3
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="DialogBox" type="Panel" parent="Front/TextBox" unique_id=1251407055]
+process_mode = 3
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = 160.0
+offset_right = 700.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="VBoxContainer" parent="Front/TextBox/DialogBox" unique_id=1422384495]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_right = -50.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+alignment = 1
+
+[node name="Speaker" type="RichTextLabel" parent="Front/TextBox/DialogBox/Center" unique_id=1575672411]
+layout_mode = 2
+theme_type_variation = &"BiggerLabel"
+bbcode_enabled = true
+fit_content = true
+
+[node name="Dialog" type="RichTextLabel" parent="Front/TextBox/DialogBox" unique_id=2144373818]
+process_mode = 3
+z_index = 10
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -680.0
+offset_top = -60.0
+offset_right = 680.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_fcjjs")]
+visible_characters_behavior = 1
+
+[node name="Choices" type="HBoxContainer" parent="Front/TextBox/DialogBox" unique_id=1960052803]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -690.0
+offset_top = 40.0
+offset_right = 690.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_type_variation = &"Choice"
+alignment = 1
+
+[node name="Arrow" type="Label" parent="Front/TextBox/DialogBox" unique_id=2092658144]
+process_mode = 3
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "▼"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Choice_Arrow" type="Label" parent="Front/TextBox/DialogBox" unique_id=1234504116]
+process_mode = 3
+visible = false
+z_index = 10
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 960.0
+offset_top = 260.0
+offset_right = 990.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "▶"
+vertical_alignment = 1
+
+[node name="NoteBox" type="Panel" parent="Front/TextBox" unique_id=2101533078]
+process_mode = 3
+visible = false
+z_index = 10
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -30.0
+offset_right = 300.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="VBoxContainer" parent="Front/TextBox/NoteBox" unique_id=1075994300]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Note" type="RichTextLabel" parent="Front/TextBox/NoteBox/Center" unique_id=1616662319]
+process_mode = 3
+z_index = 10
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="ShopBox" type="Panel" parent="Front/TextBox" unique_id=1728402690]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -400.0
+offset_right = 700.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="VBoxContainer" parent="Front/TextBox/ShopBox" unique_id=203232163]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_right = -50.0
+offset_bottom = -730.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+alignment = 1
+
+[node name="Speaker" type="RichTextLabel" parent="Front/TextBox/ShopBox/Center" unique_id=1252242688]
+layout_mode = 2
+theme_type_variation = &"BiggerLabel"
+bbcode_enabled = true
+fit_content = true
+
+[node name="Dialog" type="RichTextLabel" parent="Front/TextBox/ShopBox" unique_id=1595313427]
+process_mode = 3
+z_index = 10
+clip_contents = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 630.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_fcjjs")]
+visible_characters_behavior = 1
+
+[node name="Choices" type="VBoxContainer" parent="Front/TextBox/ShopBox" unique_id=166525821]
+process_mode = 3
+layout_mode = 0
+offset_left = 50.0
+offset_top = 160.0
+offset_right = 640.0
+offset_bottom = 790.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Choice_Arrow" type="Label" parent="Front/TextBox/ShopBox" unique_id=866143637]
+process_mode = 3
+visible = false
+z_index = 10
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 585.0
+offset_top = 540.0
+offset_right = 615.0
+offset_bottom = 570.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "▶"
+vertical_alignment = 1
+
+[node name="Front_Blocker" type="TextureRect" parent="Front/TextBox" unique_id=2041091289]
+process_mode = 3
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Note" type="AudioStreamPlayer" parent="Front/TextBox" unique_id=548385998]
+stream = ExtResource("33_h2xce")
+
+[node name="Type" type="AudioStreamPlayer" parent="Front/TextBox" unique_id=505295332]
+stream = ExtResource("34_y74wx")
+
+[connection signal="gui_input" from="Back/Menu/Window/Click_Muncher" to="Back/Menu" method="_on_click_muncher_gui_input"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot1" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_1_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot2" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_2_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot3" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_3_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot4" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_4_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot5" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_5_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot6" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_6_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot7" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_7_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot8" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_8_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot9" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_9_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot10" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_10_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot11" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_11_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot12" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_12_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot13" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_13_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot14" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_14_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot15" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_15_mouse_entered"]
+[connection signal="mouse_entered" from="Back/Menu/Window/InventoryPanel/GridContainer/Item_Slot16" to="Back/Menu/Window/InventoryPanel" method="_on_item_slot_16_mouse_entered"]
+[connection signal="gui_input" from="Front/TextBox/Front_Blocker" to="Front/TextBox" method="front_blocker_click"]

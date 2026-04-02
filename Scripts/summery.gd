@@ -7,6 +7,23 @@ extends Control
 @onready var light_sound = $Light
 @onready var outro_sound = $Outro
 
+@onready var PhoneAudio = GameGlue.PhoneAudio
+@onready var PhoneBook = GameGlue.PhoneBook
+@onready var DialogManager = GameGlue.DialogManager
+@onready var ItemDatabase = GameGlue.ItemDatabase
+@onready var ClockManager = GameGlue.ClockManager
+@onready var GameState = GameGlue.GameState
+@onready var NumberManager = GameGlue.NumberManager
+@onready var KnowledgeManager = GameGlue.KnowledgeManager
+@onready var SettingsManager = GameGlue.SettingsManager
+@onready var SequenceMachine = GameGlue.SequenceMachine
+@onready var Bouncer = GameGlue.Bouncer
+@onready var Menu = GameGlue.Menu
+@onready var InputManager = GameGlue.InputManager
+@onready var PortraitManager = GameGlue.PortraitManager
+@onready var ItemManager = GameGlue.ItemManager
+@onready var TextBox = GameGlue.TextBox
+
 var first_click = false
 var flashing = false
 
@@ -14,34 +31,32 @@ func _ready():
 	GameGlue.DialogManager.reset_dialog_state()
 	await get_tree().process_frame
 
-	$IrisMask.material.set("shader_parameter/center", Vector2(0, -130))
-
-	$IrisMask.z_index = 8
+	$IrisMask.material.set("shader_parameter/center", Vector2(0, 0))
 	$IrisMask.visible = true
-	$Self.visible = false
-	
 
 	await wait_for_click()
 
 	#Reveal
 	await iris_open()
+	$Self.visible = true
+
 
 	await wait_for_click()
 
 	#Standup
-	await GameGlue.SequenceMachine.run_sequence([
+	await SequenceMachine.run_sequence([
 		"dialog:1019",
 		"action:finish_scene"
 	], self)
 
 func finish_scene():
 	await iris_expand_to_blue()
-	$IrisMask.z_index = 10
+	$IrisMask.z_index = 5
 	await iris_close()
 	await get_tree().create_timer(1.0).timeout
 	GameGlue.load_scene("res://Scenes/Bear_Room.tscn")
 
-func fade_out_overlay() -> void:
+func fade_out_overlay():
 	var tween = create_tween()
 	tween.tween_property(fade_layer, "modulate:a", 0.0, 1.5)\
 		.set_trans(Tween.TRANS_SINE)\
@@ -53,8 +68,8 @@ func iris_open():
 	await get_tree().create_timer(0.1).timeout
 	$Self.visible = true
 	$IrisMask.visible = true
-	$IrisMask.material.set("shader_parameter/radius", 300)
-	GameGlue.Bouncer.bounce($Self)
+	$IrisMask.material.set("shader_parameter/radius", 340)
+	Bouncer.bounce($Self)
 
 func iris_close():
 	var tween = create_tween()

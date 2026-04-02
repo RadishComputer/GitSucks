@@ -1,14 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bw4hn3l33j6tk"]
+[gd_scene format=3 uid="uid://bw4hn3l33j6tk"]
 
-[ext_resource type="Script" path="res://Scripts/bear_room_drawer.gd" id="1_rs7tw"]
+[ext_resource type="Script" uid="uid://b8xi4cj5d2tgf" path="res://Scripts/bear_room_drawer.gd" id="1_rs7tw"]
 [ext_resource type="Texture2D" uid="uid://ct07b175p7ss7" path="res://Art/Beta/Places/Bear_Room_Drawer.png" id="2_latnk"]
 [ext_resource type="Texture2D" uid="uid://bputqrcp4lp71" path="res://Art/Beta/Items/Pocket_Knife.png" id="3_dc3g3"]
-[ext_resource type="Script" path="res://Scripts/pocket_knife.gd" id="4_f4nyl"]
+[ext_resource type="Script" uid="uid://cngtmk8skyxst" path="res://Scripts/pocket_knife.gd" id="4_f4nyl"]
 [ext_resource type="Texture2D" uid="uid://b7wnwajilicq0" path="res://Art/Beta/Items/Red_Key.png" id="5_sjumu"]
-[ext_resource type="Script" path="res://Scripts/red_key.gd" id="6_wts4n"]
-[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="7_wwl6o"]
+[ext_resource type="Script" uid="uid://dd7qb7t66vbd5" path="res://Scripts/red_key.gd" id="6_wts4n"]
+[ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="7_wwl6o"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="8_7spq6"]
-[ext_resource type="Shader" path="res://Elements/house_lamp.gdshader" id="9_re16d"]
+[ext_resource type="Shader" uid="uid://bulu3ey2odblq" path="res://Elements/house_lamp.gdshader" id="9_re16d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ouxb6"]
 shader = ExtResource("7_wwl6o")
@@ -21,7 +21,7 @@ shader_parameter/light_color = Color(1, 0.95, 0.7, 1)
 shader_parameter/light_strength = 1.0
 shader_parameter/light_mask = ExtResource("8_7spq6")
 
-[node name="Bear_Room_Drawer" type="Control"]
+[node name="Bear_Room_Drawer" type="Control" unique_id=1144947615]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,7 +35,7 @@ size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("1_rs7tw")
 
-[node name="Bear_Room_Drawer" type="TextureRect" parent="."]
+[node name="Bear_Room_Drawer" type="TextureRect" parent="." unique_id=853249612]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,7 +54,7 @@ texture = ExtResource("2_latnk")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="Pocket_Knife" type="TextureButton" parent="."]
+[node name="Pocket_Knife" type="TextureButton" parent="." unique_id=41249255]
 z_index = 8
 layout_mode = 1
 anchors_preset = 8
@@ -75,7 +75,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("4_f4nyl")
 
-[node name="Red_Key" type="TextureButton" parent="."]
+[node name="Red_Key" type="TextureButton" parent="." unique_id=1029401601]
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -96,7 +96,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_wts4n")
 
-[node name="Time_of_Day" type="TextureRect" parent="."]
+[node name="Time_of_Day" type="TextureRect" parent="." unique_id=905939396]
 material = SubResource("ShaderMaterial_ouxb6")
 layout_mode = 1
 anchors_preset = 8
@@ -113,7 +113,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("8_7spq6")
 
-[node name="Lamp_Light" type="TextureRect" parent="."]
+[node name="Lamp_Light" type="TextureRect" parent="." unique_id=165065948]
 material = SubResource("ShaderMaterial_y1ttw")
 layout_mode = 1
 anchors_preset = 8
@@ -130,19 +130,19 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("8_7spq6")
 
-[node name="Back" type="Area2D" parent="."]
+[node name="Back" type="Area2D" parent="." unique_id=2131761897]
 position = Vector2(-427, -240)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=967617392]
 position = Vector2(-348, -204)
 polygon = PackedVector2Array(40, 8, 614, 6, 232, 310, 834, 618, 1429, 245, 1276, 3, 1512, 3, 1515, 885, 36, 882)
 
-[node name="Book" type="Area2D" parent="."]
+[node name="Book" type="Area2D" parent="." unique_id=2113026901]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Book"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Book" unique_id=142431556]
 polygon = PackedVector2Array(-178, -401, -57, -440, 112, -441, 119, -330, 290, -195, 517, -274, 579, -238, 579, -176, 296, -12, -178, -316)
 
-[node name="Lamp" type="Area2D" parent="."]
+[node name="Lamp" type="Area2D" parent="." unique_id=1356253101]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lamp"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lamp" unique_id=1751446369]
 polygon = PackedVector2Array(115, -441, 496, -441, 513, -359, 443, -252, 331, -214, 256, -225, 122, -332)

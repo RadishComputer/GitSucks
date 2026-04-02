@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://jy17mybtkxb4"]
+[gd_scene format=3 uid="uid://jy17mybtkxb4"]
 
-[ext_resource type="Script" path="res://Scripts/art_abstract.gd" id="1_4i156"]
+[ext_resource type="Script" uid="uid://dsdyobo5dq2ne" path="res://Scripts/art_abstract.gd" id="1_4i156"]
 [ext_resource type="Texture2D" uid="uid://shd1d8wcpnq4" path="res://Art/Beta/Places/Art_Abstract.png" id="2_0cun0"]
-[ext_resource type="Shader" path="res://Elements/time_of_day.gdshader" id="3_cj11d"]
+[ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_cj11d"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_83mp1"]
-[ext_resource type="Shader" path="res://Elements/dim_lamp.gdshader" id="5_fw7ah"]
+[ext_resource type="Shader" uid="uid://5t5yoleuvy1f" path="res://Elements/dim_lamp.gdshader" id="5_fw7ah"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7p5fx"]
 shader = ExtResource("3_cj11d")
@@ -16,7 +16,7 @@ shader_parameter/light_enabled = false
 shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
 shader_parameter/light_strength = 1.0
 
-[node name="Art_Abstract" type="Control"]
+[node name="Art_Abstract" type="Control" unique_id=1799485291]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,7 +28,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_4i156")
 
-[node name="Abstract" type="TextureRect" parent="."]
+[node name="Abstract" type="TextureRect" parent="." unique_id=217567148]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -43,7 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_0cun0")
 
-[node name="Time_of_Day" type="TextureRect" parent="."]
+[node name="Time_of_Day" type="TextureRect" parent="." unique_id=1086223207]
 material = SubResource("ShaderMaterial_7p5fx")
 layout_mode = 1
 anchors_preset = 8
@@ -60,7 +60,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_83mp1")
 
-[node name="Lamp_Light" type="TextureRect" parent="."]
+[node name="Lamp_Light" type="TextureRect" parent="." unique_id=1659943484]
 material = SubResource("ShaderMaterial_h013y")
 layout_mode = 1
 anchors_preset = 8
@@ -77,12 +77,12 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_83mp1")
 
-[node name="Art" type="Area2D" parent="."]
+[node name="Art" type="Area2D" parent="." unique_id=77557908]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Art"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Art" unique_id=886822527]
 polygon = PackedVector2Array(-260, -362, 261, -358, 260, 364, -267, 367)
 
-[node name="Back" type="Area2D" parent="."]
+[node name="Back" type="Area2D" parent="." unique_id=1333467901]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=550943298]
 polygon = PackedVector2Array(-743, -442, 740, -440, 739, 438, 266, 438, 268, -372, -272, -368, -270, 442, -742, 438)

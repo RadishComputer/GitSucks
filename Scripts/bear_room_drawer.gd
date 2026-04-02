@@ -2,6 +2,23 @@
 
 extends Control
 
+@onready var PhoneAudio = GameGlue.PhoneAudio
+@onready var PhoneBook = GameGlue.PhoneBook
+@onready var DialogManager = GameGlue.DialogManager
+@onready var ItemDatabase = GameGlue.ItemDatabase
+@onready var ClockManager = GameGlue.ClockManager
+@onready var GameState = GameGlue.GameState
+@onready var NumberManager = GameGlue.NumberManager
+@onready var KnowledgeManager = GameGlue.KnowledgeManager
+@onready var SettingsManager = GameGlue.SettingsManager
+@onready var SequenceMachine = GameGlue.SequenceMachine
+@onready var Bouncer = GameGlue.Bouncer
+@onready var Menu = GameGlue.Menu
+@onready var InputManager = GameGlue.InputManager
+@onready var PortraitManager = GameGlue.PortraitManager
+@onready var ItemManager = GameGlue.ItemManager
+@onready var TextBox = GameGlue.TextBox
+
 func _ready():
 	ClockManager.distance_from_church = 8
 	ClockManager.update_chime_volume()
@@ -22,20 +39,20 @@ func _ready():
 		$Red_Key.visible = true
 
 func book_clicked(viewport, event, shape_idx):
-	if InputManager.click_release(event):
-		if not KnowledgeManager.secretly_knows("Book_Look"):
-			SequenceMachine.run_sequence([
+	if GameGlue.InputManager.click_release(event):
+		if not GameGlue.KnowledgeManager.secretly_knows("Book_Look"):
+			GameGlue.SequenceMachine.run_sequence([
 				"action:secretly_learn:Book_Look",
 				"dialog:1035"
 			], self)
 		else:
-			SequenceMachine.run_sequence(["dialog:1036"], self)
+			GameGlue.SequenceMachine.run_sequence(["dialog:1036"], self)
 
 func on_exit(viewport, event, shape_idx, scene_path: String, advance_time: bool):
-	if InputManager.click_release(event):
-		ClockManager.next_scene_path = scene_path
+	if GameGlue.InputManager.click_release(event):
+		GameGlue.ClockManager.next_scene_path = scene_path
 		if advance_time:
-			ClockManager.switch_scene(true)
+			GameGlue.ClockManager.switch_scene(true)
 		else:
 			get_tree().change_scene_to_file(scene_path)
 		print("Going to %s" % scene_path)
@@ -43,8 +60,8 @@ func on_exit(viewport, event, shape_idx, scene_path: String, advance_time: bool)
 #Day Lighting
 
 func update_time_of_day_shader():
-	var tint = ClockManager.get_time_of_day_tint()
-	var strength = ClockManager.get_time_of_day_strength()
+	var tint = GameGlue.ClockManager.get_time_of_day_tint()
+	var strength = GameGlue.ClockManager.get_time_of_day_strength()
 
 	$Time_of_Day.material.set_shader_parameter("tint_color", tint)
 	$Time_of_Day.material.set_shader_parameter("strength", strength)
@@ -52,13 +69,13 @@ func update_time_of_day_shader():
 #Lamp Lighting
 
 func lamp_clicked(viewport, event, shape_idx):
-	if InputManager.click_release(event):
-		if KnowledgeManager.secretly_knows("Lamp_On"):
-			KnowledgeManager.secretly_forget("Lamp_On")
+	if GameGlue.InputManager.click_release(event):
+		if GameGlue.KnowledgeManager.secretly_knows("Lamp_On"):
+			GameGlue.KnowledgeManager.secretly_forget("Lamp_On")
 		else:
-			KnowledgeManager.secretly_learn("Lamp_On")
+			GameGlue.KnowledgeManager.secretly_learn("Lamp_On")
 		update_light_shader()
 
 func update_light_shader():
-	var enabled = KnowledgeManager.secretly_knows("Lamp_On")
+	var enabled = GameGlue.KnowledgeManager.secretly_knows("Lamp_On")
 	$Lamp_Light.material.set_shader_parameter("light_enabled", enabled)

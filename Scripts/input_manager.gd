@@ -13,3 +13,7 @@ static func click_release(event: InputEvent):
 
 static func right_click_release(event: InputEvent):
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed:
+		print("InputManager _input fired")

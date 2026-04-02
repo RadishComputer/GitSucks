@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Nothing to do Summer Vacation"
-run/main_scene="uid://bmkvaf4tfo7ob"
+run/main_scene="uid://b085gy5n50xhi"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [audio]
