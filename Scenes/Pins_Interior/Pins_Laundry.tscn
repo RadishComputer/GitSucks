@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://df86i203v2w64"]
+
+[ext_resource type="Script" uid="uid://db3o2hktf08vh" path="res://Scenes/Pins_Interior/pins_laundry.gd" id="1_tmgf8"]
+[ext_resource type="Texture2D" uid="uid://xaaa2ij3in0q" path="res://Art/Beta/Places/Laundry.png" id="3_cyorv"]
+
+[node name="Pins_Laundry" type="Control" unique_id=995350508]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_tmgf8")
+
+[node name="Laundry" type="TextureRect" parent="." unique_id=524599042]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cyorv")
+
+[node name="To_Lockers" type="Area2D" parent="." unique_id=756649142]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lockers" unique_id=841741702]
+polygon = PackedVector2Array(421, -218, 570, -213, 573, 103, 483, 199, 411, 155)
+
+[node name="Soap_Despenser" type="Area2D" parent="." unique_id=1127604113]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Soap_Despenser" unique_id=1113004692]
+polygon = PackedVector2Array(200, -197, 324, -192, 324, -2, 204, -2)
+
+[node name="Painting" type="Area2D" parent="." unique_id=378799592]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Painting" unique_id=1873310235]
+polygon = PackedVector2Array(627, -309, 736, -306, 739, -2, 628, -35)
+
+[node name="Detergent" type="Area2D" parent="." unique_id=1838485314]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Detergent" unique_id=1348231775]
+polygon = PackedVector2Array(-672, 181, -633, 181, -563, 278, -597, 393, -713, 396, -714, 238)
+
+[node name="Basket" type="Area2D" parent="." unique_id=1801797587]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basket" unique_id=392050972]
+polygon = PackedVector2Array(-286, 204, -95, 204, -116, 399, -274, 397)
+
+[node name="Seats" type="Area2D" parent="." unique_id=1406909688]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Seats" unique_id=823062651]
+polygon = PackedVector2Array(593, 84, 737, 114, 737, 330, 466, 224)
+
+[node name="Washing_Machine" type="Area2D" parent="." unique_id=2033690994]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Washing_Machine" unique_id=1217246110]
+polygon = PackedVector2Array(-743, -298, 154, -297, 153, 156, -741, 160)
+
+[node name="Coin0" type="Area2D" parent="." unique_id=1011194925]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin0" unique_id=847720943]
+polygon = PackedVector2Array(-622, -100, -597, -101, -596, -68, -622, -67)
+
+[node name="Coin1" type="Area2D" parent="." unique_id=827455444]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin1" unique_id=1233104231]
+polygon = PackedVector2Array(-434, -94, -412, -92, -411, -64, -436, -64)
+
+[node name="Coin2" type="Area2D" parent="." unique_id=663812301]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin2" unique_id=440064815]
+polygon = PackedVector2Array(-245, -97, -223, -96, -223, -65, -249, -65)
+
+[node name="Coin3" type="Area2D" parent="." unique_id=2006435182]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin3" unique_id=1666228928]
+polygon = PackedVector2Array(-70, -90, -43, -88, -44, -59, -71, -59)
+
+[node name="Coin4" type="Area2D" parent="." unique_id=634693214]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin4" unique_id=775439905]
+polygon = PackedVector2Array(113, -88, 139, -88, 140, -58, 114, -60)
+
+[node name="Coin5" type="Area2D" parent="." unique_id=1042974904]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin5" unique_id=166589724]
+polygon = PackedVector2Array(-618, -20, -593, -20, -596, 7, -620, 7)
+
+[node name="Coin6" type="Area2D" parent="." unique_id=813065389]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin6" unique_id=1487489169]
+polygon = PackedVector2Array(-429, -19, -406, -20, -404, 9, -431, 9)
+
+[node name="Coin7" type="Area2D" parent="." unique_id=2010028093]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin7" unique_id=15173919]
+polygon = PackedVector2Array(-249, -19, -225, -19, -223, 5, -249, 5)
+
+[node name="Coin8" type="Area2D" parent="." unique_id=1019114450]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin8" unique_id=287213258]
+polygon = PackedVector2Array(-65, -20, -41, -20, -42, 7, -65, 6)
+
+[node name="Coin9" type="Area2D" parent="." unique_id=696863080]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin9" unique_id=1541811543]
+polygon = PackedVector2Array(116, -15, 140, -15, 140, 9, 113, 9)
+
+[node name="Coin10" type="Area2D" parent="." unique_id=72532563]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin10" unique_id=1289440214]
+polygon = PackedVector2Array(237, -47, 264, -48, 267, -25, 232, -26)
+
+[node name="Coin11" type="Area2D" parent="." unique_id=1980259494]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin11" unique_id=1314132746]
+polygon = PackedVector2Array(288, -47, 317, -48, 319, -28, 287, -29)

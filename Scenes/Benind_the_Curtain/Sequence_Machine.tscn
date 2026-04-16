@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://w143a87i72g3"]
+
+[ext_resource type="Script" uid="uid://c01n51mhagj85" path="res://Scenes/Benind_the_Curtain/sequence_machine.gd" id="1_mw8j6"]
+
+[node name="SequenceMachine" type="Node2D" unique_id=1503869142]
+script = ExtResource("1_mw8j6")

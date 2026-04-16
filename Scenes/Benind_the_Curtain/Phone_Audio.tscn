@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cj2mt7t0om1ma"]
+
+[ext_resource type="Script" uid="uid://cf8esg2hso7ms" path="res://Scenes/Benind_the_Curtain/phone_audio.gd" id="1_tllk2"]
+
+[node name="Phone_Audio" type="AudioStreamPlayer" unique_id=197580121]
+script = ExtResource("1_tllk2")

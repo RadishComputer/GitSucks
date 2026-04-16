@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://ciy7ngxqn2pjb"]
+
+[ext_resource type="Script" uid="uid://b2ikwsyo7nnib" path="res://Scenes/Winter_House/Art/art_mom.gd" id="1_em58w"]
+[ext_resource type="Texture2D" uid="uid://cu08st6qnhkby" path="res://Art/Beta/Places/Art_Mom.png" id="2_x32sh"]
+[ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_0yvl2"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_mracn"]
+[ext_resource type="Shader" uid="uid://5t5yoleuvy1f" path="res://Elements/dim_lamp.gdshader" id="5_5xo4m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1bee"]
+shader = ExtResource("3_0yvl2")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_swc5v"]
+shader = ExtResource("5_5xo4m")
+shader_parameter/light_enabled = false
+shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
+shader_parameter/light_strength = 1.0
+
+[node name="Art_Mom" type="Control" unique_id=726679589]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_em58w")
+
+[node name="Mom" type="TextureRect" parent="." unique_id=1156767015]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x32sh")
+
+[node name="Time_of_Day" type="TextureRect" parent="." unique_id=1991108698]
+material = SubResource("ShaderMaterial_i1bee")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_mracn")
+
+[node name="Lamp_Light" type="TextureRect" parent="." unique_id=971902369]
+material = SubResource("ShaderMaterial_swc5v")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_mracn")
+
+[node name="Art" type="Area2D" parent="." unique_id=1326256614]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Art" unique_id=1021776854]
+polygon = PackedVector2Array(-212, -333, 247, -343, 252, 301, -206, 302)
+
+[node name="Back" type="Area2D" parent="." unique_id=1418218148]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=634148458]
+polygon = PackedVector2Array(-743, -442, 740, -440, 739, 438, 262, 441, 259, -350, -222, -343, -212, 436, -742, 438)

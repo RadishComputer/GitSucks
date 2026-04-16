@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dfo8v12rqy586"]
+
+[ext_resource type="Script" uid="uid://bc18q5snsjlex" path="res://Scenes/Pins_Interior/pins_desk.gd" id="1_0dd5t"]
+[ext_resource type="Texture2D" uid="uid://drwptoww87l3p" path="res://Art/Beta/Places/Pins_Desk.png" id="2_8vtge"]
+[ext_resource type="Texture2D" uid="uid://ci8oum36xqmex" path="res://Art/Beta/Characters/Max.png" id="3_741yu"]
+[ext_resource type="Script" uid="uid://bfyhn5gmahoid" path="res://Scenes/People/max.gd" id="4_sl5r3"]
+
+[node name="Pins_Desk" type="Control" unique_id=2079303433]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_0dd5t")
+
+[node name="Pins_Desk" type="TextureRect" parent="." unique_id=266319797]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8vtge")
+
+[node name="To_Arcade" type="Area2D" parent="." unique_id=1021387530]
+position = Vector2(-750, -450)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Arcade" unique_id=1791392870]
+position = Vector2(891, -12)
+polygon = PackedVector2Array(606, 15, 399, 301, 605, 607)
+
+[node name="To_Lanes" type="Area2D" parent="." unique_id=175594350]
+position = Vector2(-750, -450)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lanes" unique_id=1129452733]
+position = Vector2(890, 410)
+polygon = PackedVector2Array(410, 190, 608, 189, 608, 491, 410, 489)
+
+[node name="To_Lockers" type="Area2D" parent="." unique_id=116602976]
+position = Vector2(-750, -450)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lockers" unique_id=1792990505]
+position = Vector2(-34, -10)
+polygon = PackedVector2Array(41, 12, 227, 14, 227, 647, 37, 648)
+
+[node name="Exit" type="Area2D" parent="." unique_id=1976137452]
+position = Vector2(-750, -450)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Exit" unique_id=2134903819]
+position = Vector2(784, 528)
+polygon = PackedVector2Array(-776, 373, -784, 262, 505, 243, 509, 371)
+
+[node name="Phone" type="Area2D" parent="." unique_id=2079248342]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Phone" unique_id=1657079083]
+polygon = PackedVector2Array(-752, 203, -575, 203, -572, 283, -752, 316)
+
+[node name="Max" type="TextureButton" parent="." unique_id=1067815713]
+visible = false
+layout_mode = 0
+offset_left = -224.0
+offset_top = -224.0
+offset_right = 103.0
+offset_bottom = 817.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_741yu")
+script = ExtResource("4_sl5r3")

@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bx8r54ss6blck"
+uid="uid://c1io02fhxlo85"
 path="res://.godot/imported/Kik.wav-44c5a880162811afe9eab4b19bdfb7bb.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2
