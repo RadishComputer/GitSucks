@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_ny0qq"]
 [ext_resource type="Texture2D" uid="uid://dsskaslrn5hwn" path="res://Art/Beta/Characters/Perla.png" id="3_xldpu"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_3bt5m"]
+[ext_resource type="Script" uid="uid://gvuy65vcaruv" path="res://Scenes/People/perla.gd" id="4_7doma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6bo2"]
 size = Vector2(1481, 875.5)
@@ -55,6 +56,7 @@ offset_right = 579.0
 offset_bottom = 717.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("3_xldpu")
+script = ExtResource("4_7doma")
 
 [node name="Time_of_Day" type="TextureRect" parent="." unique_id=1484600904]
 material = SubResource("ShaderMaterial_hkv3a")

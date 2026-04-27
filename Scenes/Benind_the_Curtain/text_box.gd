@@ -30,8 +30,13 @@ var speaker_sounds = {
 	"Jessica": preload("res://Sounds/Tap.wav"),
 	"Jimmy": preload("res://Sounds/Type2.wav"),
 	"Roberta": preload("res://Sounds/Kick.wav"),
-	"Evie": preload("res://Sounds/Wind.wav"),
+	"Evie": preload("res://Sounds/Buzz.wav"),
 	"Dave": preload("res://Sounds/Bub.wav"),
+	"Sammy": preload("res://Sounds/Squawk.wav"),
+	"Max": preload("res://Sounds/Piano.wav"),
+	"Gina": preload("res://Sounds/Fizz.wav"),
+	"Perla": preload("res://Sounds/Harp.wav"),
+	"Maria": preload("res://Sounds/Bong.wav"),
 }
 
 var default_type_sound = preload("res://Sounds/beep.wav")
@@ -197,6 +202,12 @@ func show_dialog_text(text: String, speaker: String = ""):
 	start_time = Time.get_ticks_msec() / 1000.0
 
 	active_speaker_label.text = speaker
+	if speaker == "Summer":
+		active_label.add_theme_color_override("default_color", Color("#FEA9AC"))
+		active_speaker_label.add_theme_color_override("default_color", Color("#FEA9AC"))
+	else:
+		active_label.remove_theme_color_override("default_color")
+		active_speaker_label.remove_theme_color_override("default_color")
 
 	if speaker_sounds.has(speaker):
 		type_sound.stream = speaker_sounds[speaker]
@@ -246,7 +257,7 @@ func typewriter(text: String):
 	var current_text = ""
 
 	while i < text.length():
-		# Skip instantly
+
 		if skip_typewriter:
 			displayed_text = text
 
@@ -314,7 +325,6 @@ func typewriter(text: String):
 
 	is_typing = false
 
-
 func wrap_text_simple(text: String, max_chars_per_line: int) -> String:
 	var lines = text.split("\n")
 	var result = ""
@@ -346,7 +356,8 @@ func show_choice_buttons(choice_map: Dictionary):
 	waiting_for_input = false
 
 	for child in active_choices_container.get_children():
-		child.queue_free()
+		if child != active_choice_arrow:
+			child.queue_free()
 
 	current_highlighted_button = null
 	last_hovered_button = null

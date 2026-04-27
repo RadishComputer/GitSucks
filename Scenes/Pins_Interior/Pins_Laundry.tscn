@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://db3o2hktf08vh" path="res://Scenes/Pins_Interior/pins_laundry.gd" id="1_tmgf8"]
 [ext_resource type="Texture2D" uid="uid://xaaa2ij3in0q" path="res://Art/Beta/Places/Laundry.png" id="3_cyorv"]
+[ext_resource type="Texture2D" uid="uid://dn8r6mtmrjihl" path="res://Art/Beta/Characters/Sammy.png" id="3_ipvy1"]
+[ext_resource type="Script" uid="uid://3qq2bxe3r7y6" path="res://Scenes/People/sammy.gd" id="4_cor8k"]
 
 [node name="Pins_Laundry" type="Control" unique_id=995350508]
 layout_mode = 3
@@ -124,3 +126,13 @@ polygon = PackedVector2Array(237, -47, 264, -48, 267, -25, 232, -26)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coin11" unique_id=1314132746]
 polygon = PackedVector2Array(288, -47, 317, -48, 319, -28, 287, -29)
+
+[node name="Sammy" type="TextureButton" parent="." unique_id=1639399204]
+layout_mode = 0
+offset_left = 290.0
+offset_top = -66.0
+offset_right = 675.0
+offset_bottom = 890.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_ipvy1")
+script = ExtResource("4_cor8k")

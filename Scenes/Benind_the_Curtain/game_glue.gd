@@ -1,3 +1,5 @@
+#Game Glue
+
 extends Control
 
 var PhoneAudio
@@ -48,11 +50,13 @@ func enter_tree():
 	print("ENTER TREE:", self)
 
 func load_scene(path: String):
+	print("GameGlue: load_scene called with path = ", path)
 	for child in $Middle.get_children():
 		child.call_deferred("free")
-	call_deferred("_finish_load_scene", path)
+	call_deferred("finish_load_scene", path)
 
-func _finish_load_scene(path: String):
+func finish_load_scene(path: String):
+	print("GameGlue: _finish_load_scene - loading ", path)
 	var scene = load(path).instantiate()
 	scene.name = "Scene"
 	$Middle.add_child(scene)

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://iop2u7md8od7"]
-
-[ext_resource type="Script" uid="uid://dc4cp5rrn0yaj" path="res://Scenes/Benind_the_Curtain/settings_manager.gd" id="1_oetjb"]
-
-[node name="SettingsManager" type="Node2D" unique_id=1000138699]
-script = ExtResource("1_oetjb")

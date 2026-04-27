@@ -1,3 +1,5 @@
+#Rodneys Door Scene
+
 extends Control
 
 @onready var PhoneAudio = GameGlue.PhoneAudio
@@ -36,6 +38,7 @@ func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
+
 
 func porch_plant_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):

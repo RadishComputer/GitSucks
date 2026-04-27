@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://6l4rcsmypnue"]
-
-[ext_resource type="Script" uid="uid://c8ihyevnv0vx" path="res://Scripts/ClockManager.gd" id="1_hwks3"]
-
-[node name="ClockManager" type="Node2D" unique_id=1884531397]
-script = ExtResource("1_hwks3")
-
-[node name="ChurchBell" type="AudioStreamPlayer" parent="." unique_id=1664491351]

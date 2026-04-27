@@ -1,5 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://lgqdqeskpsgs"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wki37"]
+bg_color = Color(0, 0, 0, 1)
+
 [resource]
 BiggerButton/base_type = &"Button"
 BiggerButton/font_sizes/font_size = 50
@@ -9,6 +12,8 @@ BiggerLabel/font_sizes/bold_italics_font_size = 50
 BiggerLabel/font_sizes/italics_font_size = 50
 BiggerLabel/font_sizes/mono_font_size = 50
 BiggerLabel/font_sizes/normal_font_size = 50
+BlackPanel/base_type = &"Panel"
+BlackPanel/styles/panel = SubResource("StyleBoxFlat_wki37")
 Button/font_sizes/font_size = 40
 Choice/base_type = &"HBoxContainer"
 Choice/constants/separation = 80

@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://cc3dsk3cjgmvs"]
 
-[ext_resource type="Script" uid="uid://d3kkh6iulfrn6" path="res://Scripts/bear_room_phone.gd" id="1_cs2lt"]
-[ext_resource type="Texture2D" uid="uid://cubn5jgta6nlc" path="res://Art/Beta/Places/Bear_Room_Phone.png" id="2_cbk8h"]
-[ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_aypep"]
-[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_xrybl"]
-[ext_resource type="Shader" uid="uid://bulu3ey2odblq" path="res://Elements/house_lamp.gdshader" id="5_h1p4m"]
+[ext_resource type="Script" uid="uid://d3kkh6iulfrn6" path="res://Scenes/Zone_Another/phone_booth.gd" id="1_fgw17"]
+[ext_resource type="Texture2D" uid="uid://cubn5jgta6nlc" path="res://Art/Beta/Places/Bear_Room_Phone.png" id="2_m3i0k"]
+[ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_hy6ge"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_lban5"]
+[ext_resource type="Shader" uid="uid://bulu3ey2odblq" path="res://Elements/house_lamp.gdshader" id="5_kywub"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aqc85"]
-shader = ExtResource("3_aypep")
+shader = ExtResource("3_hy6ge")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_15auf"]
-shader = ExtResource("5_h1p4m")
+shader = ExtResource("5_kywub")
 shader_parameter/light_enabled = false
 shader_parameter/light_color = Color(1, 0.95, 0.7, 1)
 shader_parameter/light_strength = 1.0
-shader_parameter/light_mask = ExtResource("4_xrybl")
+shader_parameter/light_mask = ExtResource("4_lban5")
 
-[node name="Bear_Room_Phone" type="Control" unique_id=1988434829]
+[node name="Phone_Booth" type="Control" unique_id=1988434829]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -27,7 +27,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("1_cs2lt")
+script = ExtResource("1_fgw17")
 
 [node name="Bear_Room_Phone" type="TextureRect" parent="." unique_id=2071771049]
 layout_mode = 1
@@ -42,7 +42,7 @@ offset_right = 320.0
 offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_cbk8h")
+texture = ExtResource("2_m3i0k")
 
 [node name="Time_of_Day" type="TextureRect" parent="." unique_id=397347195]
 material = SubResource("ShaderMaterial_aqc85")
@@ -59,7 +59,7 @@ offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_xrybl")
+texture = ExtResource("4_lban5")
 
 [node name="Lamp_Light" type="TextureRect" parent="." unique_id=1634203627]
 material = SubResource("ShaderMaterial_15auf")
@@ -76,7 +76,7 @@ offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_xrybl")
+texture = ExtResource("4_lban5")
 
 [node name="Back" type="Area2D" parent="." unique_id=839934591]
 position = Vector2(-429, -240)

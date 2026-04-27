@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://unfuw8tmkirw" path="res://Scenes/Pins_Interior/pins_lanes.gd" id="1_s5hxh"]
 [ext_resource type="Texture2D" uid="uid://oi02yjo41cjf" path="res://Art/Beta/Places/Pins_Lanes.png" id="2_kk45r"]
+[ext_resource type="Texture2D" uid="uid://bggwf7khj1gph" path="res://Art/Beta/Characters/Jeff.png" id="3_jmqyw"]
+[ext_resource type="Script" uid="uid://ckbfjtayi1yhs" path="res://Scenes/People/jeff.gd" id="4_0fyld"]
 
 [node name="Pins_Lanes" type="Control" unique_id=372672584]
 layout_mode = 3
@@ -34,3 +36,13 @@ texture = ExtResource("2_kk45r")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Pins_Desk" unique_id=1424050975]
 polygon = PackedVector2Array(753, -443, -739, -445, -744, 444, -6, -415, 749, 444)
+
+[node name="Jeff" type="TextureButton" parent="." unique_id=365614306]
+layout_mode = 0
+offset_left = -226.0
+offset_top = -146.0
+offset_right = 101.0
+offset_bottom = 946.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_jmqyw")
+script = ExtResource("4_0fyld")

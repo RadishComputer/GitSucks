@@ -1,38 +1,40 @@
 [gd_scene format=3 uid="uid://bmkvaf4tfo7ob"]
 
-[ext_resource type="Script" uid="uid://c101two1f75sy" path="res://Scripts/game_glue.gd" id="1_6ojyx"]
-[ext_resource type="Script" uid="uid://cf8esg2hso7ms" path="res://Scripts/phone_audio.gd" id="2_0yvnd"]
-[ext_resource type="Script" uid="uid://vtan87sqlkqo" path="res://Scripts/phone_book.gd" id="3_248qg"]
-[ext_resource type="Script" uid="uid://d0hs27o361s3u" path="res://Scripts/DialogManager.gd" id="4_3es44"]
-[ext_resource type="Script" uid="uid://dh1o4lcwl1fq8" path="res://Scripts/item_database.gd" id="5_y3yky"]
-[ext_resource type="Script" uid="uid://c8ihyevnv0vx" path="res://Scripts/ClockManager.gd" id="6_f1ls7"]
-[ext_resource type="PackedScene" uid="uid://c26m3np3qbsip" path="res://Scenes/Game_State.tscn" id="6_x6npy"]
-[ext_resource type="Script" uid="uid://m0xtormngkl1" path="res://Scripts/number_manager.gd" id="8_ewaln"]
-[ext_resource type="Script" uid="uid://cy780ex7jwqet" path="res://Scripts/KnowledgeManager.gd" id="9_5wyvg"]
-[ext_resource type="Script" uid="uid://dc4cp5rrn0yaj" path="res://Scripts/settings_manager.gd" id="10_g8kpr"]
-[ext_resource type="Script" uid="uid://c01n51mhagj85" path="res://Scripts/sequence_machine.gd" id="11_t0m48"]
-[ext_resource type="Script" uid="uid://cjx3svo54a5ty" path="res://Scripts/bouncer.gd" id="12_johvy"]
-[ext_resource type="Script" uid="uid://p2ww2c58xpur" path="res://Scripts/menu.gd" id="13_slqqu"]
+[ext_resource type="Script" uid="uid://c101two1f75sy" path="res://Scenes/Benind_the_Curtain/game_glue.gd" id="1_6ojyx"]
+[ext_resource type="Script" uid="uid://cf8esg2hso7ms" path="res://Scenes/Benind_the_Curtain/phone_audio.gd" id="2_0yvnd"]
+[ext_resource type="Script" uid="uid://vtan87sqlkqo" path="res://Scenes/Benind_the_Curtain/phone_book.gd" id="3_248qg"]
+[ext_resource type="Script" uid="uid://d0hs27o361s3u" path="res://Scenes/Benind_the_Curtain/DialogManager.gd" id="4_3es44"]
+[ext_resource type="Script" uid="uid://dh1o4lcwl1fq8" path="res://Scenes/Benind_the_Curtain/item_database.gd" id="5_y3yky"]
+[ext_resource type="Script" uid="uid://c8ihyevnv0vx" path="res://Scenes/Benind_the_Curtain/ClockManager.gd" id="6_f1ls7"]
+[ext_resource type="Script" uid="uid://b6wxosejt1vq6" path="res://Scenes/Benind_the_Curtain/game_state.gd" id="7_xq0su"]
+[ext_resource type="Script" uid="uid://m0xtormngkl1" path="res://Scenes/Benind_the_Curtain/number_manager.gd" id="8_ewaln"]
+[ext_resource type="Script" uid="uid://cy780ex7jwqet" path="res://Scenes/Benind_the_Curtain/KnowledgeManager.gd" id="9_5wyvg"]
+[ext_resource type="Script" uid="uid://dc4cp5rrn0yaj" path="res://Scenes/Benind_the_Curtain/settings_manager.gd" id="10_g8kpr"]
+[ext_resource type="Script" uid="uid://c01n51mhagj85" path="res://Scenes/Benind_the_Curtain/sequence_machine.gd" id="11_t0m48"]
+[ext_resource type="Script" uid="uid://cjx3svo54a5ty" path="res://Scenes/Benind_the_Curtain/bouncer.gd" id="12_johvy"]
+[ext_resource type="Script" uid="uid://p2ww2c58xpur" path="res://Scenes/Benind_the_Curtain/menu.gd" id="13_slqqu"]
 [ext_resource type="Texture2D" uid="uid://uyuip3ractdl" path="res://Art/Beta/Places/Default_Backgroud.png" id="14_fg7fi"]
-[ext_resource type="Script" uid="uid://ccov87nlrucl8" path="res://Scripts/summer.gd" id="15_0b1rp"]
+[ext_resource type="Script" uid="uid://ccov87nlrucl8" path="res://Scenes/People/summer.gd" id="15_0b1rp"]
 [ext_resource type="Texture2D" uid="uid://csiyxophd7v1x" path="res://Art/Beta/Characters/Summer_Menu.png" id="16_xo3e3"]
 [ext_resource type="Texture2D" uid="uid://caob1q5lpdeim" path="res://Art/Beta/Characters/Eye.png" id="17_ihlfi"]
 [ext_resource type="Texture2D" uid="uid://dslbfl3i3a1jx" path="res://Art/Beta/Places/Menu.png" id="18_osnt8"]
 [ext_resource type="Texture2D" uid="uid://c7qblqsn6stnx" path="res://Art/Beta/Places/Screen.png" id="19_65naj"]
 [ext_resource type="Texture2D" uid="uid://bvfsmgk4seesf" path="res://Art/Beta/Places/Buttons.png" id="20_2abq0"]
 [ext_resource type="StyleBox" uid="uid://b87bfasw85xbo" path="res://Elements/Diary_Button.tres" id="21_cm0or"]
-[ext_resource type="Script" uid="uid://dtb7bm28p8ti4" path="res://Scripts/inventory_panel.gd" id="22_3asq3"]
-[ext_resource type="Script" uid="uid://brqpcoo5a4wf4" path="res://Scripts/records_panel.gd" id="23_wb44v"]
-[ext_resource type="Script" uid="uid://dx16f1wda1oc0" path="res://Scripts/phone_panel.gd" id="24_ecsl5"]
-[ext_resource type="Script" uid="uid://dpjj2mvaapj22" path="res://Scripts/options.gd" id="25_a18bi"]
+[ext_resource type="Script" uid="uid://dtb7bm28p8ti4" path="res://Scenes/Benind_the_Curtain/inventory_panel.gd" id="22_3asq3"]
+[ext_resource type="Script" uid="uid://brqpcoo5a4wf4" path="res://Scenes/Benind_the_Curtain/records_panel.gd" id="23_wb44v"]
+[ext_resource type="Script" uid="uid://dx16f1wda1oc0" path="res://Scenes/Benind_the_Curtain/phone_panel.gd" id="24_ecsl5"]
+[ext_resource type="Script" uid="uid://dpjj2mvaapj22" path="res://Scenes/Benind_the_Curtain/options.gd" id="25_a18bi"]
 [ext_resource type="Shader" uid="uid://b4tkqp25wmbj7" path="res://Elements/overlay.gdshader" id="26_f6bg7"]
-[ext_resource type="PackedScene" uid="uid://bufvpa5lhn2p7" path="res://Scenes/test.tscn" id="27_248qg"]
-[ext_resource type="Script" uid="uid://b17hdk3fjinoo" path="res://Scripts/input_manager.gd" id="27_vkrfo"]
-[ext_resource type="Script" uid="uid://b38mxyci85nli" path="res://Scripts/portrait_manager.gd" id="28_ltw13"]
-[ext_resource type="Script" uid="uid://b8ujt033fe14p" path="res://Scripts/item_manager.gd" id="29_4gvh1"]
-[ext_resource type="Script" uid="uid://bp6obe4y8k6uy" path="res://Scripts/text_box.gd" id="30_17cka"]
+[ext_resource type="Script" uid="uid://chtq0sv370na3" path="res://Scenes/Benind_the_Curtain/test.gd" id="27_pmkm1"]
+[ext_resource type="Script" uid="uid://b17hdk3fjinoo" path="res://Scenes/Benind_the_Curtain/input_manager.gd" id="27_vkrfo"]
+[ext_resource type="Script" uid="uid://b38mxyci85nli" path="res://Scenes/Benind_the_Curtain/portrait_manager.gd" id="28_ltw13"]
+[ext_resource type="Texture2D" uid="uid://bmru535x4sy2" path="res://Art/Beta/Places/Pioneer_At_Caramel_Day.png" id="28_vk0sc"]
+[ext_resource type="Script" uid="uid://b8ujt033fe14p" path="res://Scenes/Benind_the_Curtain/item_manager.gd" id="29_4gvh1"]
+[ext_resource type="Texture2D" uid="uid://dyloxwoqco5aa" path="res://Art/Beta/Places/Meeting_Place_Mask.png" id="29_hce05"]
+[ext_resource type="Script" uid="uid://bp6obe4y8k6uy" path="res://Scenes/Benind_the_Curtain/text_box.gd" id="30_17cka"]
 [ext_resource type="Texture2D" uid="uid://dlw35i6fvskrc" path="res://Art/Beta/Places/Bear_Room.png" id="31_hiwk0"]
-[ext_resource type="Script" uid="uid://dop4wsngx0xp4" path="res://Scripts/bounce_effect.gd" id="32_g2foy"]
+[ext_resource type="Script" uid="uid://dop4wsngx0xp4" path="res://Scenes/Benind_the_Curtain/bounce_effect.gd" id="32_g2foy"]
 [ext_resource type="AudioStream" uid="uid://bf5pmkvcfov52" path="res://Sounds/Note.wav" id="33_h2xce"]
 [ext_resource type="AudioStream" uid="uid://d1x4t8gscl4pn" path="res://Sounds/Beep.wav" id="34_y74wx"]
 
@@ -43,6 +45,11 @@ shader = ExtResource("26_f6bg7")
 shader_parameter/grayscale_enabled = false
 shader_parameter/high_contrast_enabled = false
 shader_parameter/contrast_amount = 2.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1gra2"]
+blend_mode = 3
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m30yh"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_fcjjs"]
 script = ExtResource("32_g2foy")
@@ -75,7 +82,8 @@ script = ExtResource("6_f1ls7")
 
 [node name="ChurchBell" type="AudioStreamPlayer" parent="Back/ClockManager" unique_id=1664491351]
 
-[node name="GameState" parent="Back" unique_id=1221963941 instance=ExtResource("6_x6npy")]
+[node name="GameState" type="Node2D" parent="Back" unique_id=1221963941]
+script = ExtResource("7_xq0su")
 
 [node name="NumberManager" type="Node" parent="Back" unique_id=1412969685]
 script = ExtResource("8_ewaln")
@@ -984,8 +992,139 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Test" parent="Back" unique_id=1860205508 instance=ExtResource("27_248qg")]
+[node name="Test" type="Control" parent="Back" unique_id=1860205508]
 z_index = 100
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("27_pmkm1")
+
+[node name="TextureRect" type="TextureRect" parent="Back/Test" unique_id=1728739026]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("28_vk0sc")
+
+[node name="TintMask" type="TextureRect" parent="Back/Test/TextureRect" unique_id=908995007]
+self_modulate = Color(0.463739, 0.44796598, 1, 1)
+material = SubResource("CanvasItemMaterial_1gra2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -169.0
+offset_right = 290.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("29_hce05")
+expand_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="Back/Test" unique_id=1624709142]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 81.0
+offset_top = 45.9999
+offset_right = 715.0
+offset_bottom = 1059.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture_normal = SubResource("CompressedTexture2D_m30yh")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Back/Test" unique_id=2033739909]
+visible = false
+
+[node name="Day" type="Button" parent="Back/Test" unique_id=2027456166]
+layout_mode = 0
+offset_left = -409.0
+offset_top = -226.0
+offset_right = -345.0
+offset_bottom = -162.0
+
+[node name="Evening" type="Button" parent="Back/Test" unique_id=655440374]
+layout_mode = 0
+offset_left = -402.0
+offset_top = -148.0
+offset_right = -338.0
+offset_bottom = -84.0
+
+[node name="Night" type="Button" parent="Back/Test" unique_id=1538039366]
+layout_mode = 0
+offset_left = -403.0
+offset_top = -74.0
+offset_right = -339.0
+offset_bottom = -10.0
+
+[node name="Morning" type="Button" parent="Back/Test" unique_id=255510660]
+layout_mode = 0
+offset_left = -402.0
+offset_top = 7.0
+offset_right = -338.0
+offset_bottom = 71.0
+
+[node name="Label" type="Label" parent="Back/Test" unique_id=82294054]
+layout_mode = 0
+offset_left = -63.0
+offset_top = -217.0
+offset_right = 275.0
+offset_bottom = -194.0
+
+[node name="Button_Play" type="Button" parent="Back/Test" unique_id=59148215]
+layout_mode = 0
+offset_left = -240.0
+offset_top = -222.0
+offset_right = -188.0
+offset_bottom = -190.0
+text = "Play"
+
+[node name="Button_Next" type="Button" parent="Back/Test" unique_id=246387625]
+layout_mode = 0
+offset_left = -180.0
+offset_top = -222.0
+offset_right = -128.0
+offset_bottom = -190.0
+text = "Next
+"
+
+[node name="Button_Prev" type="Button" parent="Back/Test" unique_id=2113711036]
+layout_mode = 0
+offset_left = -310.0
+offset_top = -223.0
+offset_right = -258.0
+offset_bottom = -191.0
+text = "Prev
+
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Back/Test" unique_id=919351897]
 
 [node name="Middle" type="CanvasLayer" parent="." unique_id=240191574]
 layer = 2
@@ -1162,6 +1301,7 @@ offset_right = 700.0
 offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"BlackPanel"
 
 [node name="Center" type="VBoxContainer" parent="Front/TextBox/DialogBox" unique_id=1422384495]
 layout_mode = 1
@@ -1198,6 +1338,7 @@ offset_right = 680.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"RichTextLabel"
 bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
@@ -1277,6 +1418,7 @@ offset_right = 300.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"BlackPanel"
 
 [node name="Center" type="VBoxContainer" parent="Front/TextBox/NoteBox" unique_id=1075994300]
 layout_mode = 1
@@ -1310,6 +1452,7 @@ offset_right = 700.0
 offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"BlackPanel"
 
 [node name="Center" type="VBoxContainer" parent="Front/TextBox/ShopBox" unique_id=203232163]
 layout_mode = 1

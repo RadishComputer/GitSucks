@@ -1,6 +1,6 @@
 #Dialog Manager
 
-extends Node
+extends Node2D
 
 var dialog_active = false
 var dialog_table = {}
@@ -43,6 +43,15 @@ func load_csv_from_text(csv_text: String):
 			continue
 
 		var cells = parse_csv_line(line)
+		var expected_columns = 8
+		if cells.size() < expected_columns:
+			push_error("Dialog CSV ERROR: Row '%s' has only %s columns (expected %s)" %
+				[cells[0], str(cells.size()), str(expected_columns)])
+
+		if cells.size() > expected_columns:
+			push_error("Dialog CSV WARNING: Row '%s' has extra columns (%s > %s). Trailing commas?" %
+				[cells[0], str(cells.size()), str(expected_columns)])
+
 
 		if first:
 			header = cells
@@ -124,12 +133,14 @@ func condition_is_true(condition: String) -> bool:
 
 		if part.begins_with("knows:"):
 			var key = part.substr(6)
-			if not GameGlue.KnowledgeManager.secretly_knows(key):
+			if not (GameGlue.KnowledgeManager.knows(key) \
+				or GameGlue.KnowledgeManager.secretly_knows(key)):
 				return false
 
 		elif part.begins_with("not_knows:"):
 			var key = part.substr(10)
-			if GameGlue.KnowledgeManager.secretly_knows(key):
+			if GameGlue.KnowledgeManager.knows(key) \
+				or GameGlue.KnowledgeManager.secretly_knows(key):
 				return false
 
 		elif part.begins_with("has_type:"):
@@ -141,6 +152,20 @@ func condition_is_true(condition: String) -> bool:
 			var type = part.substr(13)
 			if GameGlue.ItemManager.inventory_has_type(type):
 				return false
+
+
+
+		elif part.begins_with("has_item:"):
+			var id = part.substr(9)
+			if not GameGlue.ItemManager.inventory_has_item(id):
+				return false
+
+		elif part.begins_with("not_has_item:"):
+			var id = part.substr(13)
+			if GameGlue.ItemManager.inventory_has_item(id):
+				return false
+
+
 
 		elif part.begins_with("has_money:"):
 			var amount = float(part.substr("has_money:".length()))
@@ -205,9 +230,11 @@ func start_dialog(id: String, finished_callback: Callable):
 	dialog_finished_callback = finished_callback
 	dialog_active = true
 	current_id = id
+	await get_tree().process_frame
+	GameGlue.ItemManager.clear_cursor_item()
 	GameGlue.TextBox.set_skin(false)
 	GameGlue.PortraitManager.set_mode("dialog")
-	GameGlue.PortraitManager.clear_portrait()
+	GameGlue.PortraitManager.bounce_on_dialog_start()
 	show_current_line()
 
 func show_current_line():
@@ -220,24 +247,8 @@ func show_current_line():
 		end_dialog()
 		return
 
-	if not condition_is_true(entry["condition"]):
-		var next_id = get_next_row_id(current_id)
-		while next_id != "":
-			var next_entry = dialog_table[current_language].get(next_id, null)
-			if next_entry and condition_is_true(next_entry["condition"]):
-				current_id = next_id
-				show_current_line()
-				return
-			next_id = get_next_row_id(next_id)
-		end_dialog()
-		return
-
-	var raw = entry["text"]
+	var text = substitutions(entry["text"])
 	var speaker = entry["speaker"]
-	var portrait = entry["portrait"]
-	var text = entry["text"]
-
-	text = substitutions(text)
 
 	GameGlue.PortraitManager.apply_visuals(
 		entry.get("portrait", ""),
@@ -245,8 +256,10 @@ func show_current_line():
 	)
 
 	GameGlue.TextBox.show_dialog_text(text, speaker)
+	GameGlue.PortraitManager.bounce_on_speaker(speaker)
 	GameGlue.TextBox.waiting_for_input = true
 
+	# Choices
 	if entry["choice"] != "":
 		var labels = entry["choice"].split("|")
 		var next_ids = entry["next"].split("|")
@@ -266,10 +279,8 @@ func show_current_line():
 		GameGlue.TextBox.show_choice_buttons(choice_map)
 		return
 
+	# Actions
 	run_action(entry["action"])
-
-	if entry["next"] == "END":
-		return
 
 func start_shop_dialog(id: String, finished_callback: Callable):
 	dialog_finished_callback = finished_callback
@@ -316,9 +327,9 @@ func run_action(action: String):
 				var id = arg
 				if GameGlue.ItemDatabase.items.has(id):
 					var price = float(GameGlue.ItemDatabase.items[id].get("value", 0.0))
-					if GameGlue.item.cash >= price:
-						GameGlue.item.spend_currency(price)
-						GameGlue.item.add_item(id)
+					if GameGlue.ItemManager.cash >= price:
+						GameGlue.ItemManager.spend_currency(price)
+						GameGlue.ItemManager.add_item(id)
 					else:
 						print("Not enough money to buy:", id)
 			return
@@ -357,7 +368,7 @@ func substitutions(text: String) -> String:
 			var item_id = match.get_string(1)
 			if GameGlue.ItemDatabase.items.has(item_id):
 				var price = float(GameGlue.ItemDatabase.items[item_id].get("value", 0.00))
-				var formatted = GameGlue.item.format_money(price)
+				var formatted = GameGlue.ItemManager.format_money(price)
 				text = text.replace("{price:" + item_id + "}", formatted)
 
 	return text
@@ -376,29 +387,21 @@ func advance_dialog():
 
 	var next_id = lang_table[current_id]["next"].strip_edges()
 
-	if next_id == "" or next_id == "END":
+	if next_id == "END":
 		end_dialog()
 		return
 
-	var entry = lang_table.get(next_id, null)
+	var candidate_id = next_id if next_id != "" else get_next_row_id(current_id)
 
-	if entry and not condition_is_true(entry["condition"]):
-		var fallback = get_next_row_id(next_id)
-		while fallback != "":
-			var fallback_entry = lang_table.get(fallback, null)
-			if fallback_entry and condition_is_true(fallback_entry["condition"]):
-				current_id = fallback
-				show_current_line()
-				return
-			fallback = get_next_row_id(fallback)
-		end_dialog()
-		return
+	while candidate_id != "":
+		var entry = lang_table.get(candidate_id, null)
+		if entry and condition_is_true(entry["condition"]):
+			# Found a valid line → show it
+			current_id = candidate_id
+			show_current_line()
+			return
 
-	if entry:
-		current_id = next_id
-		show_current_line()
-		return
-
+		candidate_id = get_next_row_id(candidate_id)
 	end_dialog()
 
 func end_dialog():

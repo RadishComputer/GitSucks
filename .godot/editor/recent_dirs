@@ -1,4 +1,6 @@
 res://Scenes/People/
+res://Scenes/Objects/
+res://Elements/
 res://Scenes/Benind_the_Curtain/
 res://Scenes/Pins_Interior/
 res://Scenes/Zone_Another/
@@ -6,8 +8,6 @@ res://Scenes/Zone_Commecial/
 res://Scenes/Zone_Residential/
 res://Scenes/Winter_House/Art/
 res://Scenes/Winter_House/
-res://Scenes/Objects/
-res://Elements/
 res://Scenes/
 res://Sounds/
 res://Art/Other/

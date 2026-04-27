@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_adsa5"]
 [ext_resource type="Texture2D" uid="uid://klifsco0udqm" path="res://Art/Beta/Places/Uncle_Sams.png" id="3_nm5ii"]
 [ext_resource type="Texture2D" uid="uid://chcde1x708jfl" path="res://Art/Beta/Characters/Gina.png" id="3_p46se"]
+[ext_resource type="Script" uid="uid://bq4ekh778qmm1" path="res://Scenes/People/gina.gd" id="4_mx1qr"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_ne5oe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8rl4"]
@@ -62,6 +63,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("3_p46se")
+script = ExtResource("4_mx1qr")
 
 [node name="Time_of_Day" type="TextureRect" parent="." unique_id=1540408229]
 material = SubResource("ShaderMaterial_bx87n")

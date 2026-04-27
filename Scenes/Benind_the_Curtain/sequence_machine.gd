@@ -1,6 +1,6 @@
 #Sequence  Machine
 
-extends Node
+extends Node2D
 
 signal sequence_finished(target)
 
@@ -69,6 +69,9 @@ func run_next_step():
 					GameGlue.KnowledgeManager.secretly_forget(arg)
 				"add_number":
 					GameGlue.NumberManager.add_number(arg)
+				"remove_item":
+					GameGlue.ItemManager.remove_item(arg)
+					GameGlue.ItemManager.update_cursor_icon()
 				_:
 					if action_target != null and action_target.has_method(action_name):
 						action_target.call(action_name, arg)

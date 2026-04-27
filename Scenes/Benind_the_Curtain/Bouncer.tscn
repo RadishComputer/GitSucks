@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://deuuhtp2c6cjp"]
-
-[ext_resource type="Script" uid="uid://cjx3svo54a5ty" path="res://Scenes/Benind_the_Curtain/bouncer.gd" id="1_8sstq"]
-
-[node name="Bouncer" type="Node" unique_id=1748202498]
-script = ExtResource("1_8sstq")

@@ -31,7 +31,7 @@ func clicked():
 
 	if not KnowledgeManager.knows("Met_Rodney"):
 		SequenceMachine.run_sequence([
- 			"dialog:1301",
+ 			"dialog:1299",
 			"action:go_back",
 		], self)
 		return

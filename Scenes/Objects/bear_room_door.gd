@@ -19,8 +19,6 @@ extends TextureButton
 
 func _ready():
 	GameGlue.ItemManager.connect("item_used_on_target", Callable(self, "on_item_used"))
-	add_to_group("targets")
-	print("Door groups:", get_groups())
 
 func _gui_input(event):
 	if GameGlue.InputManager.click_release(event):
@@ -66,4 +64,4 @@ func on_item_used(target: Node, item_id: String):
 
 func on_exit():
 	GameGlue.ClockManager.next_scene_path = "res://Scenes/Winter_House/Upstairs.tscn"
-	GameGlue.ClockManager.switch_scene(true)
+	GameGlue.ClockManager.switch_scene(false)

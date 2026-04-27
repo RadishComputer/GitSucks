@@ -1,6 +1,6 @@
 #Clock Manager
 
-extends Node
+extends Node2D
 
 var minutes = 0
 var hours = 11
@@ -10,13 +10,22 @@ var chime_sounds = {}
 var last_hour_played = -1
 var time_pause = false
 var time_trigger: String = ""
-
+var phone_return_path: String = ""
+var phone_return_advance = false
 
 var time_event = {
 	9: "open_gate",
 	14: "phone_rings",
 	20: "lanterns_light"
 }
+
+var rodney_schedule = {
+	"arcade1":	[11, 11.50],
+	"arcade2":	[14, 15.50],
+	"home":	[12, 13.50],
+	"home_too":	[16, 21.00],
+}
+
 
 func _ready():
 	call_deferred("connect_knowledge")
@@ -45,6 +54,7 @@ func on_knowledge_learned(id: String):
 
 
 func switch_scene(advance_time = false):
+	print("ClockManager.switch_scene called - next_scene_path = ", next_scene_path)
 	var previous_hour = int(hours)
 
 	if advance_time and not time_pause:
@@ -78,6 +88,13 @@ func switch_scene(advance_time = false):
 	await get_tree().process_frame
 	update_clock_display()
 
+func go_to_phone(return_path: String, advance_time = false):
+	print("GOING TO PHONE. RETURN =", return_path)
+	print("Phone booth file exists =", FileAccess.file_exists("res://Scenes/Zone_Another/Phone_Booth.tscn"))
+	phone_return_path = return_path
+	phone_return_advance = advance_time
+	next_scene_path = "res://Scenes/Zone_Another/Phone_Booth.tscn"
+	switch_scene(false)
 
 func event_trigger(event_name: String):
 	match event_name:
@@ -215,6 +232,22 @@ func set_front_lamp_default():
 		else:
 			GameGlue.KnowledgeManager.secretly_forget("Front_Lamp_On")
 
+#Rodney
+
+func rodney_here(location: String):
+	var hour = hours + float(minutes) / 60.0
+
+	if not rodney_schedule.has(location):
+		return false
+
+	for range in rodney_schedule[location]:
+		var start = range[0]
+		var end = range[1]
+		if hour >= start and hour <= end:
+			return true
+
+	return false
+	
 #Street Lights
 
 func street_lights():

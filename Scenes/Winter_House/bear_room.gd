@@ -1,3 +1,5 @@
+#Bear Room
+
 extends Control
 
 @onready var intro_blocker = $Intro_Blocker
@@ -37,7 +39,7 @@ func _ready():
 	$Bear3.input_event.connect(bear3_clicked)
 	$Bear4.input_event.connect(bear4_clicked)
 	$Suitcase.input_event.connect(suitcase_clicked)
-	$Phone.input_event.connect(phone_clicked.bind("res://Scenes/Winter_House/Bear_Room_Phone.tscn", false))
+	$Phone.input_event.connect(phone_clicked)
 	$Flower.input_event.connect(flower_clicked)
 	$Bed.input_event.connect(bed_clicked)
 	$Lamp.input_event.connect(lamp_clicked)
@@ -119,10 +121,23 @@ func drawer1_clicked(viewport, event, shape_idx, scene_path, advance_time):
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
 
-func phone_clicked(viewport, event, shape_idx, scene_path, advance_time):
+func phone_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		ClockManager.next_scene_path = scene_path
-		ClockManager.switch_scene(advance_time)
+		var middle = GameGlue.get_node_or_null("Middle")
+		var return_path = ""
+		
+		if middle:
+			for child in middle.get_children():
+				if child.name == "Scene":
+					return_path = child.get_meta("original_scene_path", child.scene_file_path)
+					break
+		#
+		#print("RETURN PATH captured =", return_path)
+		#
+		#if return_path == "":
+			#print("WARNING: Could not capture return path!")
+		#
+		ClockManager.go_to_phone(return_path)
 
 func update_time_of_day_shader():
 	var tint = ClockManager.get_time_of_day_tint()

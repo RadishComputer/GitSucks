@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://rvf1wk2qutk3"]
-
-[ext_resource type="Script" uid="uid://vtan87sqlkqo" path="res://Scenes/Benind_the_Curtain/phone_book.gd" id="1_o3pui"]
-
-[node name="PhoneBook" type="Node" unique_id=1260810174]
-script = ExtResource("1_o3pui")

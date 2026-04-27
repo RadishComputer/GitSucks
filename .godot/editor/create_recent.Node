@@ -1,3 +1,5 @@
+CollisionShape2D
+Area2D
 TextureButton
 CanvasModulate
 AudioStreamPlayer
@@ -11,4 +13,3 @@ Control
 AnimatedSprite2D
 RichTextLabel
 Node
-VBoxContainer

@@ -35,7 +35,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_25b3w")
 
-[node name="Rodneys" type="TextureRect" parent="." unique_id=1068974126]
+[node name="Background" type="TextureRect" parent="." unique_id=1068974126]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

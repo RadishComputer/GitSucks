@@ -48,7 +48,6 @@ func _ready():
 	$Window.input_event.connect(window_clicked)
 	$Pictures.input_event.connect(pictures_clicked)
 
-
 func dining_room_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:1078"], self)
@@ -76,6 +75,18 @@ func window_clicked(viewport, event, shape_idx):
 func pictures_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:1077"], self)
+
+func phone_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		var middle = GameGlue.get_node_or_null("Middle")
+		var return_path = ""
+		
+		if middle:
+			for child in middle.get_children():
+				if child.name == "Scene":
+					return_path = child.get_meta("original_scene_path", child.scene_file_path)
+					break
+		ClockManager.go_to_phone(return_path)
 
 func front_door_clicked(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
@@ -127,6 +138,3 @@ func lamp_clicked(viewport, event, shape_idx):
 func update_light_shader():
 	var enabled = KnowledgeManager.secretly_knows("Front_Lamp_On")
 	$Light.material.set_shader_parameter("light_enabled", enabled)
-
-func phone_clicked():
-	print ("WOW")

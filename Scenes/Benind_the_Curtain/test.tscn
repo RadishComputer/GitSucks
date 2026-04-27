@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bufvpa5lhn2p7"]
+[gd_scene format=3 uid="uid://c0cemantps57j"]
 
 [ext_resource type="Script" uid="uid://chtq0sv370na3" path="res://Scenes/Benind_the_Curtain/test.gd" id="1_nlrqn"]
 [ext_resource type="Texture2D" uid="uid://bmru535x4sy2" path="res://Art/Beta/Places/Pioneer_At_Caramel_Day.png" id="2_hvkao"]

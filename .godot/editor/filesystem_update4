@@ -1,5 +1,4 @@
-res://Scenes/Pins_Interior/Pins_Desk.tscn
-res://Dialog/dialog_data.gd
+res://Scenes/Zone_Residential/Rodneys_Door.tscn
 res://Elements/overlay.gdshader
 res://Elements/time_of_day.gdshader
 res://Elements/house_lamp.gdshader
@@ -7,10 +6,5 @@ res://Elements/outdoors.gdshader
 res://Elements/iris_mask.gdshader
 res://Elements/dim_lamp.gdshader
 res://Dialog/dialog_data.tres
-res://Scenes/People/max.gd
-res://Scenes/Pins_Interior/pins_desk.gd
-res://Scenes/Benind_the_Curtain/portrait_manager.gd
-res://Scenes/Benind_the_Curtain/game_glue.gd
-res://Scenes/Zone_Residential/Pioneer_At_Caramel.tscn
-res://Scenes/Benind_the_Curtain/DialogManager.gd
-res://Scenes/Benind_the_Curtain/Dialog_Manager.tscn
+res://Scenes/Objects/rodneys_door.gd
+res://Scenes/Zone_Residential/rodneys_door.gd

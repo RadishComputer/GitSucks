@@ -187,7 +187,7 @@ func handle_release():
 		end_selection()
 		return
 
-	if hovered and hovered.is_in_group("targets"):
+	if hovered:
 		GameGlue.ItemManager.use_item(hovered)
 		end_selection()
 		return

@@ -26,6 +26,8 @@ func _ready():
 
 	$To_Exit.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Arcade.tscn", false))
 
+	KnowledgeManager.secretly_learn("Queens")
+
 func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
 		ClockManager.next_scene_path = scene_path

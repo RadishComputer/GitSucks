@@ -1,4 +1,4 @@
-#Bear Room Phone
+#Phone Booth
 
 extends Control
 
@@ -34,6 +34,9 @@ var number_check_delay = 0.9
 var howler_delay = 5.0
 var waiting_for_howler = false
 
+var return_scene_path: String = ""
+var return_advance_time: bool = false
+
 
 func _ready():
 	ClockManager.distance_from_church = 8
@@ -45,7 +48,11 @@ func _ready():
 	update_light_shader()
 	play_dial_tone()
 
-	$Back.input_event.connect(on_exit.bind("res://Scenes/Winter_House/Bear_Room.tscn", false))
+	print("Phone Booth _ready() - ClockManager.phone_return_path =", ClockManager.phone_return_path)
+	setup(ClockManager.phone_return_path, ClockManager.phone_return_advance)
+	print("Phone Booth ready - return path set to:", return_scene_path)
+
+	$Back.input_event.connect(on_exit)
 
 	$Key1.input_event.connect(on_button_input.bind("Key1"))
 	$Key2.input_event.connect(on_button_input.bind("Key2"))
@@ -61,9 +68,10 @@ func _ready():
 	$Pound.input_event.connect(on_button_input.bind("Pound"))
 	$Hook.input_event.connect(on_hook_input)
 
+	print("Phone Booth ready - return path:", return_scene_path)
+
 func _process(delta):
 	var now = Time.get_ticks_msec() / 1000.0
-
 
 	if current_number.length() >= 3 and not phone_locked and not sit_playing:
 		if now - last_key_release_time >= number_check_delay:
@@ -82,11 +90,19 @@ func _process(delta):
 			stop_all_audio()
 			PhoneAudio.start_howler_tone()
 
-func on_exit(viewport, event, shape_idx, scene_path, advance_time):
+func setup(return_path: String, advance_time = false):
+	return_scene_path = return_path
+	return_advance_time = advance_time
+
+func on_exit(viewport, event, shape_idx):
 	if InputManager.click_release(event):
+		print("Exit clicked - return path =", return_scene_path)
+		if return_scene_path == "":
+			print("WARNING: No return path set!")
+			return
 		stop_all_audio()
-		ClockManager.next_scene_path = scene_path
-		ClockManager.switch_scene(advance_time)
+		ClockManager.next_scene_path = return_scene_path
+		ClockManager.switch_scene(return_advance_time)
 
 #Day Lighting
 
@@ -224,8 +240,8 @@ func trigger_call(steps: Array):
 	SequenceMachine.run_sequence(steps, self)
 
 	# Wait until the sequence finishes
-	while SequenceMachine.running:
-		await get_tree().process_frame #Error happened here
+	if SequenceMachine.running:
+		await SequenceMachine.sequence_finished
 
 	phone_locked = false
 	after_sit_played = Time.get_ticks_msec() / 1000.0

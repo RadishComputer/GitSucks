@@ -31,6 +31,9 @@ func format_money(amount: float) -> String:
 
 #Item
 
+func inventory_has_item(id: String) -> bool:
+	return id in slots
+
 func item_has_attribute(id: String, attr: String):
 	if not GameGlue.ItemDatabase.items.has(id):
 		return false
@@ -63,7 +66,18 @@ func remove_item(id: String):
 	var index = slots.find(id)
 	if index != -1:
 		slots[index] = empty_slot
-		emit_signal("inventory_updated")
+
+	if slots[cursor_slot] == id:
+		slots[cursor_slot] = empty_slot
+		update_cursor_icon()
+
+	emit_signal("inventory_updated")
+
+
+func clear_cursor_item():
+	slots[cursor_slot] = ""
+	update_cursor_icon()
+	emit_signal("inventory_updated")
 
 func pick_up_item(index: int):
 	if slots[index] != "":

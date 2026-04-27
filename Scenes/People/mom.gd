@@ -24,11 +24,9 @@ var requested = false
 var received = false
 
 func _ready():
-	add_to_group("targets")
 	ItemManager.connect("item_used_on_target", Callable(self, "on_item_used"))
 	received = KnowledgeManager.secretly_knows("Food_Received")
 	connect("pressed", Callable(self, "clicked"))
-
 
 func go_back():
 	self.visible = true
@@ -79,6 +77,7 @@ func on_item_used(target: Node, item_id: String):
 	if correct:
 		SequenceMachine.run_sequence([
 			"action:secretly_learn:Food_Received",
+			"action:remove_item:" + item_id,
 			"dialog:1009",
 			"action:go_back",
 		], self)
@@ -99,6 +98,7 @@ func on_item_used(target: Node, item_id: String):
 
 	SequenceMachine.run_sequence([
 		"action:secretly_learn:Food_Received",
+		"action:remove_item:" + item_id,
 		"dialog:1010",
 		"action:go_back",
 		"note:[center]Mom took $" + amount + "[/center]",

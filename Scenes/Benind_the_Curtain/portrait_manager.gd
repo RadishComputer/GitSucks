@@ -7,6 +7,7 @@ extends Control
 var current_portrait = ""
 var current_perception = ""
 var current_target_portrait: TextureRect = null
+var previous_speaker = ""
 
 var portraits = {
 	"mom_d": preload("res://Art/Beta/Characters/Susan.png"),
@@ -20,6 +21,9 @@ var portraits = {
 	"gina_d": preload("res://Art/Beta/Characters/Gina.png"),
 	"perla_d": preload("res://Art/Beta/Characters/Perla.png"),
 	"max_d": preload("res://Art/Beta/Characters/Max.png"),
+	"sammy_d": preload("res://Art/Beta/Characters/Sammy.png"),
+	"jeff_d": preload("res://Art/Beta/Characters/Jeff.png"),
+	"rodney_d": preload("res://Art/Beta/Characters/Rodney.png"),
 }
 
 var perceptions = {
@@ -31,7 +35,7 @@ var portrait_bounce_duration = 0.35
 var portrait_bounce_amplitude = 10.0
 
 
-func _process(_delta: float) -> void:
+func _process(_delta: float):
 	if not GameGlue.SettingsManager.bounce_mode:
 		return
 	if portrait_bounce_start_time < 0:
@@ -99,13 +103,7 @@ func apply_visuals(name: String, unused = ""):
 	if current_target_portrait == null:
 		set_mode("dialog")
 	
-	var previous = current_portrait
-
-	if name == "":
-		clear_portrait()
-		return
-
-	if name == "none":
+	if name == "" or name == "none":
 		clear_portrait()
 		return
 
@@ -113,13 +111,6 @@ func apply_visuals(name: String, unused = ""):
 		current_target_portrait.texture = portraits[name]
 		current_target_portrait.visible = true
 		perception.visible = false
-
-		if GameGlue.SettingsManager.bounce_mode and name != previous:
-			portrait_bounce_start_time = Time.get_ticks_msec() / 1000.0
-		else:
-			portrait_bounce_start_time = -1.0
-			current_target_portrait.position.y = 0
-
 		current_portrait = name
 		return
 
@@ -128,11 +119,18 @@ func apply_visuals(name: String, unused = ""):
 		show_perception(name)
 		current_portrait = ""
 		current_perception = name
-		portrait_bounce_start_time = -1.0
 		return
 
 	clear_portrait()
 
+func bounce_on_dialog_start():
+	if current_target_portrait and current_target_portrait.visible:
+		portrait_bounce_start_time = Time.get_ticks_msec() / 1000.0
+
+func bounce_on_speaker(speaker: String):
+	if speaker != "Summer":
+		if current_target_portrait and current_target_portrait.visible:
+			portrait_bounce_start_time = Time.get_ticks_msec() / 1000.0
 
 func bounce_portrait():
 	if current_target_portrait == null:
