@@ -29,25 +29,30 @@ func _ready():
 	$To_Pioneer.input_event.connect(move.bind("res://Scenes/Zone_Residential/Pioneer_At_Caramel.tscn", true))
 	$Door.input_event.connect(move.bind("res://Scenes/Zone_Residential/Rodneys_Door.tscn", true))
 
-	$Porch_Plant.input_event.connect(porch_plant_clicked)
-	$Hanging_Plant1.input_event.connect(hanging_plant1_clicked)
-	$Hanging_Plant2.input_event.connect(hanging_plant2_clicked)
+	$Fiddle.input_event.connect(fiddle_clicked)
+	$Pothos.input_event.connect(pothos_clicked)
+	$Boston.input_event.connect(boston_clicked)
 	$Car.input_event.connect(car_clicked)
+	$Pines.input_event.connect(pines_clicked)
+	$Fence.input_event.connect(fence_clicked)
+	$House.input_event.connect(house_clicked)
+	$Bushes.input_event.connect(bushes_clicked)
+	$Tree.input_event.connect(tree_clicked)
 
 func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
 
-func porch_plant_clicked(viewport, event, shape_idx):
+func fiddle_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:0000"], self)
 
-func hanging_plant1_clicked(viewport, event, shape_idx):
+func pothos_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:0000"], self)
 
-func hanging_plant2_clicked(viewport, event, shape_idx):
+func boston_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:0000"], self)
 
@@ -55,6 +60,25 @@ func car_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:0000"], self)
 
+func pines_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:0000"], self)
+
+func fence_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:0000"], self)
+
+func house_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:0000"], self)
+
+func bushes_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:0000"], self)
+
+func tree_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:0000"], self)
 
 #Lights
 

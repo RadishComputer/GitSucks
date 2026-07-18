@@ -30,9 +30,13 @@ func _ready():
 
 	$Back.input_event.connect(move.bind("res://Scenes/Zone_Residential/Rodneys_House.tscn", true))
 
-	$Porch_Plant.input_event.connect(porch_plant_clicked)
-	$Hanging_Plant1.input_event.connect(hanging_plant1_clicked)
-	$Hanging_Plant2.input_event.connect(hanging_plant2_clicked)
+	$Fiddle.input_event.connect(fiddle_clicked)
+	$Pothos.input_event.connect(pothos_clicked)
+	$Boston.input_event.connect(boston_clicked)
+	$Mat.input_event.connect(mat_clicked)
+	$Bushes.input_event.connect(bushes_clicked)
+	$Pot.input_event.connect(pot_clicked)
+	$Mailbox.input_event.connect(mailbox_clicked)
 
 func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
@@ -40,15 +44,31 @@ func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 		ClockManager.switch_scene(advance_time)
 
 
-func porch_plant_clicked(viewport, event, shape_idx):
+func fiddle_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:0000"], self)
 
-func hanging_plant1_clicked(viewport, event, shape_idx):
+func pothos_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:0000"], self)
 
-func hanging_plant2_clicked(viewport, event, shape_idx):
+func boston_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:0000"], self)
+
+func mat_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:0000"], self)
+
+func bushes_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:0000"], self)
+
+func pot_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:0000"], self)
+
+func mailbox_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:0000"], self)
 

@@ -7,9 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_3bt5m"]
 [ext_resource type="Script" uid="uid://gvuy65vcaruv" path="res://Scenes/People/perla.gd" id="4_7doma"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6bo2"]
-size = Vector2(1481, 875.5)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hkv3a"]
 shader = ExtResource("3_ny0qq")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
@@ -44,17 +41,17 @@ texture = ExtResource("2_r11ry")
 [node name="Exit" type="Area2D" parent="." unique_id=961374519]
 position = Vector2(-750, -450)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=547430460]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Exit" unique_id=1021911988]
 position = Vector2(749.5, 450.25)
-shape = SubResource("RectangleShape2D_d6bo2")
+polygon = PackedVector2Array(-703.5, -204.25, -598.5, -273.25, -596.5, 96.75, -704.5, 211.75)
 
 [node name="Perla" type="TextureButton" parent="." unique_id=917964594]
 layout_mode = 0
-offset_left = 285.0
-offset_top = -189.0
-offset_right = 579.0
-offset_bottom = 717.0
-scale = Vector2(0.5, 0.5)
+offset_left = -270.0
+offset_top = -251.00003
+offset_right = 24.0
+offset_bottom = 655.0
+scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("3_xldpu")
 script = ExtResource("4_7doma")
 

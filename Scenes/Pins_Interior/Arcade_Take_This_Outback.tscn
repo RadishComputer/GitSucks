@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://nd520kklabj2"]
 
 [ext_resource type="Script" uid="uid://c8ecca6ih15vw" path="res://Scenes/Pins_Interior/arcade_take_this_outback.gd" id="1_bfqac"]
-[ext_resource type="Texture2D" uid="uid://d3jvhw137455h" path="res://Art/Beta/Places/Take_This_Outback_A.png" id="2_6b4hm"]
+[ext_resource type="Texture2D" uid="uid://ddsixq73ipj1t" path="res://Art/Beta/Places/Outback_Brawl.png" id="2_bfqac"]
 
 [node name="Take_This_Outback" type="Control" unique_id=49156665]
 layout_mode = 3
@@ -28,10 +28,10 @@ offset_right = 750.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_6b4hm")
+texture = ExtResource("2_bfqac")
 metadata/_edit_use_anchors_ = true
 
 [node name="To_Exit" type="Area2D" parent="." unique_id=1949654370]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Exit" unique_id=929411625]
-polygon = PackedVector2Array(-746, -449, 749, -452, 746, 442, -742, 444)
+polygon = PackedVector2Array(-745, -441, 740, -446, 746, 442, 471, 443, 321, 230, 285, -369, -310, -356, -320, 240, -431, 443, -742, 444)

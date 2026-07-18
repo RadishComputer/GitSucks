@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://40xiddpww4dl"]
 
-[ext_resource type="Script" uid="uid://ckkc86si4ike3" path="res://Scenes/Pins_Interior/pins_lockers.gd" id="1_6l7hx"]
+[ext_resource type="Script" uid="uid://ckkc86si4ike3" path="res://Scenes/Pins_Interior/Lockers/pins_lockers.gd" id="1_6l7hx"]
 [ext_resource type="Texture2D" uid="uid://dcgbx7pmg4cr" path="res://Art/Beta/Places/Lockers.png" id="3_0sq1g"]
 
 [node name="Pins_Lockers" type="Control" unique_id=331749553]
@@ -29,6 +29,11 @@ offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_0sq1g")
+
+[node name="Time_of_Day" type="TextureRect" parent="." unique_id=1229677094]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="To_Laundry" type="Area2D" parent="." unique_id=205716301]
 
@@ -69,3 +74,127 @@ polygon = PackedVector2Array(274, 131, 433, 132, 434, 152, 271, 295, 202, 295, 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Light" unique_id=1811135729]
 polygon = PackedVector2Array(247, -439, 259, -439, 322, -326, 251, -293, 183, -321)
+
+[node name="Switch" type="Area2D" parent="." unique_id=1903605028]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Switch" unique_id=719723219]
+polygon = PackedVector2Array(304, -112, 324, -111, 323, -79, 304, -79)
+
+[node name="Locker_01" type="Area2D" parent="." unique_id=1149162563]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_01" unique_id=1559235038]
+polygon = PackedVector2Array(-739, -388, -608, -362, -608, -155, -743, -168)
+
+[node name="Locker_02" type="Area2D" parent="." unique_id=519230520]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_02" unique_id=1510725232]
+position = Vector2(114, -45)
+polygon = PackedVector2Array(-714, -314, -626, -294, -627, -110, -718, -113)
+
+[node name="Locker_03" type="Area2D" parent="." unique_id=1431357171]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_03" unique_id=1638271427]
+position = Vector2(181, 5)
+polygon = PackedVector2Array(-686, -341, -607, -322, -608, -155, -688, -159)
+
+[node name="Locker_04" type="Area2D" parent="." unique_id=1306523391]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_04" unique_id=777955088]
+position = Vector2(268, 13)
+polygon = PackedVector2Array(-683, -324, -602, -310, -608, -155, -686, -161)
+
+[node name="Locker_05" type="Area2D" parent="." unique_id=1872831618]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_05" unique_id=1135133444]
+position = Vector2(353, 24)
+polygon = PackedVector2Array(-674, -320, -603, -309, -608, -155, -681, -164)
+
+[node name="Locker_06" type="Area2D" parent="." unique_id=807339358]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_06" unique_id=1192673028]
+position = Vector2(-8, 177)
+polygon = PackedVector2Array(-725, -335, -610, -324, -608, -155, -728, -153)
+
+[node name="Locker_07" type="Area2D" parent="." unique_id=531882237]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_07" unique_id=62641065]
+position = Vector2(90, 168)
+polygon = PackedVector2Array(-693, -319, -607, -313, -608, -155, -693, -150)
+
+[node name="Locker_08" type="Area2D" parent="." unique_id=342491199]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_08" unique_id=1370004648]
+position = Vector2(181, 161)
+polygon = PackedVector2Array(-685, -304, -612, -297, -608, -155, -688, -150)
+
+[node name="Locker_09" type="Area2D" parent="." unique_id=1011526044]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_09" unique_id=619952060]
+position = Vector2(270, 160)
+polygon = PackedVector2Array(-686, -296, -609, -292, -608, -155, -687, -153)
+
+[node name="Locker_10" type="Area2D" parent="." unique_id=555378983]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_10" unique_id=456829114]
+position = Vector2(355, 156)
+polygon = PackedVector2Array(-686, -290, -608, -283, -608, -155, -682, -151)
+
+[node name="Locker_11" type="Area2D" parent="." unique_id=1717057273]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_11" unique_id=103396022]
+position = Vector2(-9, 364)
+polygon = PackedVector2Array(-724, -331, -610, -336, -608, -155, -728, -129)
+
+[node name="Locker_12" type="Area2D" parent="." unique_id=649736912]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_12" unique_id=1640831985]
+position = Vector2(91, 348)
+polygon = PackedVector2Array(-696, -321, -608, -325, -608, -155, -701, -141)
+
+[node name="Locker_13" type="Area2D" parent="." unique_id=850377860]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_13" unique_id=45723366]
+position = Vector2(184, 322)
+polygon = PackedVector2Array(-690, -300, -610, -305, -608, -155, -694, -134)
+
+[node name="Locker_14" type="Area2D" parent="." unique_id=1003546858]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_14" unique_id=978796249]
+position = Vector2(268, 304)
+polygon = PackedVector2Array(-682, -290, -604, -291, -608, -155, -682, -139)
+
+[node name="Locker_15" type="Area2D" parent="." unique_id=747012733]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_15" unique_id=1482822660]
+position = Vector2(341, 198)
+polygon = PackedVector2Array(-668, -188, -596, -190, -599, -61, -670, -49)
+
+[node name="Locker_16" type="Area2D" parent="." unique_id=121991889]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_16" unique_id=1143601046]
+position = Vector2(-6, 522)
+polygon = PackedVector2Array(-731, -275, -614, -304, -608, -155, -732, -111)
+
+[node name="Locker_17" type="Area2D" parent="." unique_id=2113710272]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_17" unique_id=1246066257]
+position = Vector2(50, 464)
+polygon = PackedVector2Array(-659, -251, -568, -264, -571, -127, -656, -100)
+
+[node name="Locker_18" type="Area2D" parent="." unique_id=637327874]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_18" unique_id=191298356]
+position = Vector2(137, 493)
+polygon = PackedVector2Array(-646, -298, -560, -315, -560, -187, -650, -161)
+
+[node name="Locker_19" type="Area2D" parent="." unique_id=473801887]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_19" unique_id=316549970]
+position = Vector2(189, 440)
+polygon = PackedVector2Array(-600, -267, -532, -278, -531, -160, -602, -135)
+
+[node name="Locker_20" type="Area2D" parent="." unique_id=99657746]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Locker_20" unique_id=112323761]
+position = Vector2(405, 448)
+polygon = PackedVector2Array(-740, -287, -661, -301, -662, -199, -741, -171)

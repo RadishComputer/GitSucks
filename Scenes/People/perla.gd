@@ -32,13 +32,13 @@ func clicked():
 	if not KnowledgeManager.knows("Met_Perla"):
 		SequenceMachine.run_sequence([
 			"action:learn:Met_Perla",
- 			"dialog:1278",
+ 			"dialog:1273",
 			"action:go_back",
 			"note:[center]Met Perla"
 		], self)
 		return
 	else:
 		SequenceMachine.run_sequence([
-			"shopdialog:1280",
+			"shopdialog:1274",
 			"action:go_back",
 		], self)

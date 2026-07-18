@@ -5,8 +5,53 @@ var food_attributes = ["Salty", "Sour", "Spicy", "Sweet"]
 var all_permutations = []
 var selected_order = []
 var current_day = 1
-
 var last_scene = null
+
+var locker_states = {
+	"locker_01": [0, 1, 2], #Max
+	"locker_02": [7, 1, 5],
+	"locker_03": [3, 0, 1],
+	"locker_04": [2, 8, 4],
+	"locker_05": [9, 3, 7], #Jeff
+	"locker_06": [2, 5, 8], #Dave
+	"locker_07": [1, 4, 0],
+	"locker_08": [0, 6, 7], #Wes
+	"locker_09": [1, 5, 4], #Roberta
+	"locker_10": [0, 4, 0],
+	"locker_11": [2, 1, 9],
+	"locker_12": [0, 0, 0],
+	"locker_13": [6, 6, 6],
+	"locker_14": [4, 7, 1], #Rodney (Buzz Off)
+	"locker_15": [1, 1, 4],
+	"locker_16": [5, 2, 9], #Jimmy
+	"locker_17": [4, 3, 8], #Jessia
+	"locker_18": [7, 7, 7], #Evie
+	"locker_19": [0, 0, 0],
+	"locker_20": [0, 0, 9],
+}
+
+var locker_solutions = {
+	"locker_01": [2, 3, 6], #Max
+	"locker_02": [0, 0, 0],
+	"locker_03": [0, 0, 0],
+	"locker_04": [0, 0, 0],
+	"locker_05": [3, 0, 0], #Jeff
+	"locker_06": [0, 0, 0], #Dave
+	"locker_07": [0, 0, 0],
+	"locker_08": [1, 5, 0], #Wes
+	"locker_09": [2, 4, 1], #Roberta
+	"locker_10": [0, 0, 0],
+	"locker_11": [0, 0, 0],
+	"locker_12": [0, 0, 0],
+	"locker_13": [0, 0, 0],
+	"locker_14": [3, 6, 0], #Rodney
+	"locker_15": [0, 0, 0],
+	"locker_16": [5, 4, 3], #Jimmy
+	"locker_17": [1, 0, 7], #Jessica
+	"locker_18": [4, 9, 9], #Evie
+	"locker_19": [0, 0, 0],
+	"locker_20": [0, 0, 0],
+}
 
 func _ready():
 	var rng = RandomNumberGenerator.new()
@@ -43,3 +88,14 @@ func permute(remaining: Array, current: Array, result: Array):
 			var next = remaining.duplicate()
 			next.remove_at(i)
 			permute(next, current + [item], result)
+
+#Lockers
+
+func get_locker_state(id: String):
+	return locker_states.get(id, [0, 0, 0])
+
+func save_locker_state(id: String, state: Array):
+	locker_states[id] = state
+
+func get_locker_solution(id: String):
+	return locker_solutions.get(id, [0, 0, 0])

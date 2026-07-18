@@ -74,52 +74,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_3xhck")
 
-[node name="MomButton" type="TextureButton" parent="." unique_id=183570136]
-layout_mode = 0
-offset_left = 460.0
-offset_top = -109.0
-offset_right = 779.0
-offset_bottom = 839.0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("3_ovrj4")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("6_3kgkk")
-
-[node name="Time_of_Day" type="TextureRect" parent="." unique_id=2048580267]
-material = SubResource("ShaderMaterial_ttdih")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("6_cn4d1")
-
-[node name="Light" type="TextureRect" parent="." unique_id=1975608512]
-material = SubResource("ShaderMaterial_e7rut")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("8_dvboy")
-
 [node name="Stairs" type="Area2D" parent="." unique_id=8362472]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stairs" unique_id=2110830665]
@@ -182,3 +136,49 @@ polygon = PackedVector2Array(-473, -234, -414, -222, -422, -83, -478, -104)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dials" unique_id=576809565]
 polygon = PackedVector2Array(-17, -13, 6, -12, 3, 27, -21, 26)
+
+[node name="MomButton" type="TextureButton" parent="." unique_id=183570136]
+layout_mode = 0
+offset_left = 460.0
+offset_top = -109.0
+offset_right = 779.0
+offset_bottom = 839.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_ovrj4")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_3kgkk")
+
+[node name="Time_of_Day" type="TextureRect" parent="." unique_id=2048580267]
+material = SubResource("ShaderMaterial_ttdih")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_cn4d1")
+
+[node name="Light" type="TextureRect" parent="." unique_id=1975608512]
+material = SubResource("ShaderMaterial_e7rut")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_dvboy")

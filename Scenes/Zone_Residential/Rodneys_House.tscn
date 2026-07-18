@@ -84,32 +84,63 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_251pc")
 
-[node name="Porch_Plant" type="Area2D" parent="." unique_id=1076066243]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porch_Plant" unique_id=546346399]
-polygon = PackedVector2Array(796, 427, 828, 427, 839, 512, 821, 582, 837, 614, 824, 647, 762, 544, 770, 452)
-
-[node name="Hanging_Plant1" type="Area2D" parent="." unique_id=2129980325]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hanging_Plant1" unique_id=980310730]
-polygon = PackedVector2Array(1114, 421, 1146, 422, 1184, 434, 1152, 479, 1103, 454)
-
-[node name="Hanging_Plant2" type="Area2D" parent="." unique_id=1917108585]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hanging_Plant2" unique_id=205264245]
-polygon = PackedVector2Array(1234, 409, 1278, 406, 1290, 431, 1271, 468, 1234, 468, 1227, 436)
-
 [node name="To_Pioneer" type="Area2D" parent="." unique_id=648676362]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Pioneer" unique_id=2093164314]
 polygon = PackedVector2Array(216, 844, 1702, 789, 1701, 980, 219, 979)
+
+[node name="Pines" type="Area2D" parent="." unique_id=1245560809]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pines" unique_id=1238315614]
+polygon = PackedVector2Array(275, 100, 345, 99, 424, 368, 501, 99, 574, 100, 577, 372, 219, 370)
+
+[node name="Fence" type="Area2D" parent="." unique_id=279329322]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fence" unique_id=1317066657]
+polygon = PackedVector2Array(221, 372, 579, 375, 580, 568, 221, 567)
+
+[node name="House" type="Area2D" parent="." unique_id=1006089495]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="House" unique_id=1783901583]
+polygon = PackedVector2Array(582, 230, 628, 172, 1699, 173, 1699, 692, 705, 724, 582, 568)
 
 [node name="Car" type="Area2D" parent="." unique_id=665566476]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Car" unique_id=199245015]
 polygon = PackedVector2Array(332, 533, 522, 530, 579, 605, 568, 704, 480, 776, 313, 772, 275, 663)
 
+[node name="Bushes" type="Area2D" parent="." unique_id=1430998779]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bushes" unique_id=748630865]
+polygon = PackedVector2Array(594, 613, 723, 553, 833, 587, 867, 665, 839, 738, 625, 737, 574, 697)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Bushes" unique_id=1913193359]
+polygon = PackedVector2Array(1072, 618, 1149, 593, 1218, 618, 1313, 590, 1377, 650, 1351, 710, 1078, 720)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Bushes" unique_id=109133092]
+polygon = PackedVector2Array(1419, 632, 1562, 546, 1634, 574, 1673, 633, 1699, 612, 1700, 699, 1421, 705)
+
+[node name="Fiddle" type="Area2D" parent="." unique_id=1076066243]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fiddle" unique_id=546346399]
+polygon = PackedVector2Array(796, 427, 844, 437, 854, 516, 852, 580, 826, 583, 764, 561, 770, 452)
+
+[node name="Pothos" type="Area2D" parent="." unique_id=2129980325]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pothos" unique_id=980310730]
+polygon = PackedVector2Array(1114, 421, 1146, 422, 1184, 434, 1152, 479, 1103, 454)
+
+[node name="Boston" type="Area2D" parent="." unique_id=1917108585]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boston" unique_id=205264245]
+polygon = PackedVector2Array(1234, 409, 1278, 406, 1290, 431, 1271, 468, 1234, 468, 1227, 436)
+
 [node name="Door" type="Area2D" parent="." unique_id=813532441]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door" unique_id=1055437436]
 polygon = PackedVector2Array(901, 483, 989, 482, 987, 634, 900, 635)
+
+[node name="Tree" type="Area2D" parent="." unique_id=683436184]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tree" unique_id=1357500396]
+polygon = PackedVector2Array(1010, 100, 1700, 99, 1703, 409, 1624, 403, 1617, 750, 1499, 751, 1527, 509, 1467, 364, 1140, 335, 982, 165)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cc3dsk3cjgmvs"]
 
 [ext_resource type="Script" uid="uid://d3kkh6iulfrn6" path="res://Scenes/Zone_Another/phone_booth.gd" id="1_fgw17"]
-[ext_resource type="Texture2D" uid="uid://cubn5jgta6nlc" path="res://Art/Beta/Places/Bear_Room_Phone.png" id="2_m3i0k"]
+[ext_resource type="Texture2D" uid="uid://cr6slifi5lj20" path="res://Art/Beta/Places/Phone_Call_Scene.png" id="2_fgw17"]
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_hy6ge"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_lban5"]
 [ext_resource type="Shader" uid="uid://bulu3ey2odblq" path="res://Elements/house_lamp.gdshader" id="5_kywub"]
@@ -42,7 +42,7 @@ offset_right = 320.0
 offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_m3i0k")
+texture = ExtResource("2_fgw17")
 
 [node name="Time_of_Day" type="TextureRect" parent="." unique_id=397347195]
 material = SubResource("ShaderMaterial_aqc85")
@@ -82,103 +82,103 @@ texture = ExtResource("4_lban5")
 position = Vector2(-429, -240)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=540833750]
-position = Vector2(-460, -264)
-polygon = PackedVector2Array(147, 66, 1634, 65, 1631, 945, 1166, 338, 615, 334, 148, 937)
+position = Vector2(-136, 252)
+polygon = PackedVector2Array(1010, 268, 1164, 268, 1166, 338, 1013, 338)
 
 [node name="Key1" type="Area2D" parent="." unique_id=199168186]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key1" unique_id=962476380]
-position = Vector2(-40, 29)
-polygon = PackedVector2Array(-23, 6, 25, 9, 23, 55, -29, 51)
+position = Vector2(208, -218)
+polygon = PackedVector2Array(-48, -7, 58, -7, 60, 85, -41, 89)
 
 [node name="Key2" type="Area2D" parent="." unique_id=687404490]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key2" unique_id=1473806742]
 position = Vector2(8, 34)
-polygon = PackedVector2Array(6, 7, 54, 8, 54, 50, 4, 51)
+polygon = PackedVector2Array(302, -261, 408, -264, 406, -168, 303, -165)
 
 [node name="Key3" type="Area2D" parent="." unique_id=1451633200]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key3" unique_id=339048007]
-position = Vector2(50, 32)
-polygon = PackedVector2Array(34, 7, 88, 9, 92, 55, 40, 54)
+position = Vector2(427, -221)
+polygon = PackedVector2Array(18, -8, 114, -7, 114, 84, 23, 84)
 
 [node name="Key4" type="Area2D" parent="." unique_id=579855418]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key4" unique_id=616628628]
-position = Vector2(-42, 68)
-polygon = PackedVector2Array(-24, 28, 35, 28, 31, 78, -30, 78)
+position = Vector2(205, -107)
+polygon = PackedVector2Array(-45, 9, 51, 11, 53, 101, -40, 101)
 
 [node name="Key5" type="Area2D" parent="." unique_id=1326754935]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key5" unique_id=1780116079]
-position = Vector2(6, 69)
-polygon = PackedVector2Array(7, 29, 59, 29, 63, 78, 6, 76)
+position = Vector2(318, -111)
+polygon = PackedVector2Array(-8, 10, 94, 8, 93, 103, -8, 103)
 
 [node name="Key6" type="Area2D" parent="." unique_id=1739844367]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key6" unique_id=999403665]
-position = Vector2(57, 68)
-polygon = PackedVector2Array(37, 28, 94, 29, 101, 72, 41, 71)
+position = Vector2(429, -112)
+polygon = PackedVector2Array(19, 13, 113, 17, 110, 103, 19, 105)
 
 [node name="Key7" type="Area2D" parent="." unique_id=665768556]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key7" unique_id=1293793012]
-position = Vector2(-50, 107)
-polygon = PackedVector2Array(-26, 52, 36, 56, 40, 103, -30, 98)
+position = Vector2(201, -13)
+polygon = PackedVector2Array(-39, 38, 61, 40, 60, 125, -36, 133)
 
 [node name="Key8" type="Area2D" parent="." unique_id=1635031478]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key8" unique_id=833266509]
-position = Vector2(9, 108)
-polygon = PackedVector2Array(8, 52, 68, 53, 68, 89, 8, 92)
+position = Vector2(318, -3)
+polygon = PackedVector2Array(-7, 26, 91, 25, 92, 120, -4, 128)
 
 [node name="Key9" type="Area2D" parent="." unique_id=279765524]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key9" unique_id=684156773]
-position = Vector2(65, 110)
-polygon = PackedVector2Array(42, 52, 98, 54, 106, 91, 41, 92)
+position = Vector2(424, -7)
+polygon = PackedVector2Array(26, 29, 121, 32, 120, 125, 29, 126)
 
 [node name="Key0" type="Area2D" parent="." unique_id=645056055]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Key0" unique_id=552218648]
-position = Vector2(15, 140)
-polygon = PackedVector2Array(12, 71, 63, 71, 71, 111, 12, 114)
+position = Vector2(316, 96)
+polygon = PackedVector2Array(-3, 46, 92, 48, 90, 144, -4, 141)
 
 [node name="Star" type="Area2D" parent="." unique_id=1383634772]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Star" unique_id=1040337545]
-position = Vector2(-49, 145)
-polygon = PackedVector2Array(-26, 74, 34, 78, 40, 118, -30, 120)
+position = Vector2(206, 92)
+polygon = PackedVector2Array(-43, 55, 62, 56, 60, 151, -41, 153)
 
 [node name="Pound" type="Area2D" parent="." unique_id=1625763244]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pound" unique_id=498656850]
-position = Vector2(105, 153)
-polygon = PackedVector2Array(9, 70, 64, 70, 68, 109, 8, 108)
+position = Vector2(458, 96)
+polygon = PackedVector2Array(-7, 50, 91, 50, 90, 142, -5, 145)
 
 [node name="Saves" type="Area2D" parent="." unique_id=207477837]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Saves" unique_id=1601422078]
-position = Vector2(-45, 186)
-polygon = PackedVector2Array(-23, 97, 216, 95, 221, 156, -19, 153)
+position = Vector2(299, 190)
+polygon = PackedVector2Array(-23, 97, 135, 94, 135, 161, -17, 162)
 
 [node name="Hook" type="Area2D" parent="." unique_id=1707090531]
 position = Vector2(0, -2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hook" unique_id=1775602186]
-position = Vector2(25, -37)
-polygon = PackedVector2Array(-41, -65, 4, -38, 34, -37, 91, -73, 136, -68, 168, -10, -116, -18, -91, -65)
+position = Vector2(200, 351)
+polygon = PackedVector2Array(66, -64, 67, 3, -88, 7, -91, -65)

@@ -20,12 +20,11 @@ var time_event = {
 }
 
 var rodney_schedule = {
-	"arcade1":	[11, 11.50],
-	"arcade2":	[14, 15.50],
-	"home":	[12, 13.50],
-	"home_too":	[16, 21.00],
+	"arcade_am":	[[1100, 1200]],
+	"lunch":		[[1200, 1400]],
+	"arcade_pm":	[[1400, 1600]],
+	"evening":		[[1600, 2100]],
 }
-
 
 func _ready():
 	call_deferred("connect_knowledge")
@@ -71,7 +70,7 @@ func switch_scene(advance_time = false):
 		time_pause = true
 		time_trigger = "Met_Dave"
 
-	if hours >= 13 and not GameGlue.KnowledgeManager.knows("Food_Received") and time_trigger == "":
+	if hours >= 13 and not GameGlue.KnowledgeManager.secretly_knows("Food_Received") and time_trigger == "":
 		hours = 13
 		minutes = 0
 		time_pause = true
@@ -235,19 +234,40 @@ func set_front_lamp_default():
 #Rodney
 
 func rodney_here(location: String):
-	var hour = hours + float(minutes) / 60.0
-
+	var current_time = (int(hours) * 100) + int(minutes)
 	if not rodney_schedule.has(location):
 		return false
 
-	for range in rodney_schedule[location]:
-		var start = range[0]
-		var end = range[1]
-		if hour >= start and hour <= end:
+	var data = rodney_schedule[location]
+	if data.size() > 0 and typeof(data[0]) != TYPE_ARRAY:
+		return current_time >= data[0] and current_time < data[1]
+
+	for time_range in data:
+		var start = time_range[0]
+		var end = time_range[1]
+		if current_time >= start and current_time < end:
 			return true
 
 	return false
-	
+
+#Sammy
+
+func wheres_sammy():
+	var hour = int(hours)
+	return hour >= 11 and hour <= 13
+
+#Jeff
+
+func wheres_jeff():
+	var hour = int(hours)
+	return hour >= 12 and hour <= 16
+
+#Day One Kids
+
+func day_one_kids():
+	var hour = int(hours)
+	return hour >= 10 and hour <= 17
+
 #Street Lights
 
 func street_lights():

@@ -21,6 +21,7 @@ func _ready():
 	ClockManager.distance_from_church = 5
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
+	laundry_day()
 	await get_tree().process_frame
 	ClockManager.check_and_play_chime()
 	
@@ -50,56 +51,79 @@ func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
 
-func soap_despenser_clicked():
-	print("hi")
+func soap_despenser_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1720"], self)
 
-func painting_clicked():
-	print("hi")
+func painting_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1721"], self)
 
-func detergent_clicked():
-	print("hi")
+func detergent_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1722"], self)
 
-func basket_clicked():
-	print("hi")
+func basket_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		if not KnowledgeManager.secretly_knows("Basket"):
+			SequenceMachine.run_sequence([
+				"dialog:1724",
+				"action:secretly_learn:Basket",
+			], self)
+		else:
+			SequenceMachine.run_sequence([
+				"dialog:1725",
+				"action:secretly_forget:Basket",
+			], self)
 
-func seats_clicked():
-	print("hi")
+func seats_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1726"], self)
 
-func washing_machine_clicked():
-	print("hi")
+func washing_machine_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1727"], self)
 
-func coin0_clicked():
-	print("hi")
+func coin0_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin1_clicked():
-	print("hi")
+func coin1_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin2_clicked():
-	print("hi")
+func coin2_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin3_clicked():
-	print("hi")
+func coin3_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin4_clicked():
-	print("hi")
+func coin4_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin5_clicked():
-	print("hi")
+func coin5_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin6_clicked():
-	print("hi")
+func coin6_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin7_clicked():
-	print("hi")
+func coin7_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin8_clicked():
-	print("hi")
+func coin8_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin9_clicked():
-	print("hi")
+func coin9_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin10_clicked():
-	print("hi")
+func coin10_clicked(viewport, event, shape_idx):
+	empty_coin(event)
 
-func coin11_clicked():
-	print("hi")
+func coin11_clicked(viewport, event, shape_idx):
+	empty_coin(event)
+
+func empty_coin(event):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1728"], self)
+
+func laundry_day():
+	var visible = ClockManager.wheres_sammy()
+	$Sammy.visible = visible

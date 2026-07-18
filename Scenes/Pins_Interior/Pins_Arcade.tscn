@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ds1dw7nfarpv2" path="res://Scenes/Pins_Interior/pins_arcade.gd" id="1_ft25k"]
 [ext_resource type="Texture2D" uid="uid://5js3y8cr2at1" path="res://Art/Beta/Places/Arcade.png" id="3_1k14t"]
+[ext_resource type="Script" uid="uid://brvk1roc60jjn" path="res://Scenes/People/rodney_at_arcade.gd" id="3_4mxlw"]
+[ext_resource type="Texture2D" uid="uid://daeh6f5k8s455" path="res://Art/Beta/Characters/Rodney.png" id="3_sx7nx"]
+[ext_resource type="Texture2D" uid="uid://dtficy0ddjw7c" path="res://Art/Beta/Items/Daves_Radio.png" id="5_uh14g"]
+[ext_resource type="Script" uid="uid://jg3sosrpabf" path="res://Scenes/Items/daves_radio.gd" id="6_4f0my"]
 
 [node name="Pins_Arcade" type="Control" unique_id=114185900]
 layout_mode = 3
@@ -15,7 +19,13 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_ft25k")
 
-[node name="Pins_Arcade_Day" type="TextureRect" parent="." unique_id=1722835761]
+[node name="Screens" type="TextureRect" parent="." unique_id=1046621680]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=1722835761]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,10 +40,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_1k14t")
 
-[node name="To_Desk" type="Area2D" parent="." unique_id=1614200485]
+[node name="Exit" type="Area2D" parent="." unique_id=1614200485]
 position = Vector2(-750, -456)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Desk" unique_id=1085981424]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Exit" unique_id=1085981424]
 position = Vector2(608, 60)
 polygon = PackedVector2Array(534, 116, 718, 114, 713, 382, 532, 387)
 
@@ -71,3 +81,62 @@ position = Vector2(-750, -456)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_AA" unique_id=113134517]
 position = Vector2(403, 308)
 polygon = PackedVector2Array(131, -77, 216, -72, 233, -35, 193, 9, 285, 166, 269, 296, 148, 331, 3, 302, -30, 13, 9, -29)
+
+[node name="Outlets" type="Area2D" parent="." unique_id=1032357973]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Outlets" unique_id=1085406024]
+polygon = PackedVector2Array(-401, 164, -316, 168, -347, 200, -434, 196)
+
+[node name="Wall" type="Area2D" parent="." unique_id=1914806595]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall" unique_id=92581522]
+polygon = PackedVector2Array(-741, -441, 742, -440, 743, -199, 575, -288, 391, -286, 352, -250, -620, -247, -629, -7, -687, -7, -739, 100)
+
+[node name="Carpet" type="Area2D" parent="." unique_id=1020257819]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Carpet" unique_id=1892795255]
+polygon = PackedVector2Array(-741, 117, -680, -2, -630, -1, -631, 71, -575, 162, -437, 205, -53, 206, 222, 3, 715, 3, 651, 57, 560, 61, 274, 307, 271, 437, -741, 440)
+
+[node name="Claw" type="Area2D" parent="." unique_id=1319301457]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Claw" unique_id=1200385156]
+polygon = PackedVector2Array(225, -241, 350, -239, 348, -4, 226, -1)
+
+[node name="Toy_Coin" type="Area2D" parent="." unique_id=444181271]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Toy_Coin" unique_id=1787384418]
+polygon = PackedVector2Array(700, -116, 716, -116, 716, -98, 700, -98)
+
+[node name="Toy" type="Area2D" parent="." unique_id=419596096]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Toy" unique_id=122762718]
+polygon = PackedVector2Array(597, -197, 723, -199, 722, -97, 597, -96)
+
+[node name="Game" type="Area2D" parent="." unique_id=442478603]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game" unique_id=89584147]
+polygon = PackedVector2Array(570, 63, 656, 60, 741, -18, 741, 438, 281, 441, 282, 310)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Game" unique_id=1868404202]
+polygon = PackedVector2Array(91, -230, 207, -230, 209, -13, 193, 3, 114, -89)
+
+[node name="Rodney_at_Arcade" type="TextureButton" parent="." unique_id=132615593]
+layout_mode = 0
+offset_left = -145.0
+offset_top = -136.0
+offset_right = 189.0
+offset_bottom = 798.0
+scale = Vector2(0.35, 0.35)
+texture_normal = ExtResource("3_sx7nx")
+script = ExtResource("3_4mxlw")
+
+[node name="Daves_Radio" type="TextureButton" parent="." unique_id=241606419]
+layout_mode = 0
+offset_left = -291.0
+offset_top = -254.0
+offset_right = -163.0
+offset_bottom = -126.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_uh14g")
+script = ExtResource("6_4f0my")

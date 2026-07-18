@@ -28,16 +28,56 @@ func go_back():
 
 func clicked():
 	self.visible = false
+	if KnowledgeManager.knows("Radio_Returned"):
+		end_dialog()
+		return
+	if ItemManager.inventory_has_item("daves_radio"):
+		radio_dialog()
+		return
+	if KnowledgeManager.knows("Met_Rodney"):
+		rodney_dialog()
+		return
+	if KnowledgeManager.knows("Met_Dave"):
+		dave_dialog()
+		return
+	if KnowledgeManager.knows("Met_Jessica"):
+		evie_dialog()
+		return
+	first_dialog()
 
-	if not KnowledgeManager.knows("Met_Jessica"):
+func end_dialog():
+	SequenceMachine.run_sequence([
+		"dialog:1799",
+	], self)
+
+func radio_dialog():
 		SequenceMachine.run_sequence([
-			"action:learn:Met_Jessica",
-			"dialog:1098",  # always start here
-			"action:go_back",
-			"note:[center]Met Jessica[/center]",
-		], self)
-	else:
-		SequenceMachine.run_sequence([
-			"dialog:1110",
-			"action:go_back",
-		], self)
+		"dialog:1800",
+		"action:go_back",
+	], self)
+
+func rodney_dialog():
+	SequenceMachine.run_sequence([
+		"dialog:1795",
+		"action:go_back",
+	], self)
+
+func dave_dialog():
+	SequenceMachine.run_sequence([
+		"dialog:1794",
+		"action:go_back",
+	], self)
+
+func evie_dialog():
+	SequenceMachine.run_sequence([
+		"dialog:1110",
+		"action:go_back",
+	], self)
+
+func first_dialog():
+	SequenceMachine.run_sequence([
+		"action:learn:Met_Jessica",
+		"dialog:1098",
+		"action:go_back",
+		"note:[center]Met Jessica[/center]",
+	], self)

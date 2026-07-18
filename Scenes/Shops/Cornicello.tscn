@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://fco4i7tgmnbn"]
 
-[ext_resource type="Texture2D" uid="uid://c2aqefa6yij22" path="res://Art/Beta/Places/Cornicello.png" id="1_41hes"]
 [ext_resource type="Script" uid="uid://ppgoavlxncwn" path="res://Scenes/Shops/cornicello.gd" id="1_iqflu"]
+[ext_resource type="Texture2D" uid="uid://bsxsx0cpqtjm" path="res://Art/Beta/Places/Cornicellos_Final.png" id="2_x615l"]
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_ljg5d"]
 [ext_resource type="Texture2D" uid="uid://dj4n0ee3dkf5f" path="res://Art/Beta/Characters/Maria.png" id="3_rc2dh"]
 [ext_resource type="Script" uid="uid://smhijirjec7f" path="res://Scenes/People/maria.gd" id="4_2vqlv"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_p8rcl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryptw"]
-size = Vector2(267, 282.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5760o"]
 shader = ExtResource("3_ljg5d")
@@ -39,22 +36,23 @@ offset_right = 750.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_41hes")
+texture = ExtResource("2_x615l")
 
 [node name="Exit" type="Area2D" parent="." unique_id=1250786771]
 
-[node name="CollisionShapeD2" type="CollisionShape2D" parent="Exit" unique_id=1775781300]
-position = Vector2(-20, -160)
-shape = SubResource("RectangleShape2D_ryptw")
+[node name="CollisionShapeD2" type="CollisionPolygon2D" parent="Exit" unique_id=1248105930]
+position = Vector2(-312.75, -189.875)
+polygon = PackedVector2Array(-124.25, -141.125, 127.75, -141.125, 128.75, 120.875, 20.75, 121.875, 17.75, 61.875, -122.25, 60.875)
 
 [node name="Maria" type="TextureButton" parent="." unique_id=244116731]
 layout_mode = 0
-offset_left = -482.0
-offset_top = -74.0
-offset_right = -77.0
-offset_bottom = 860.0
-scale = Vector2(0.5, 0.5)
+offset_left = 192.0
+offset_top = -213.0
+offset_right = 597.0
+offset_bottom = 721.0
+scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("3_rc2dh")
+flip_h = true
 script = ExtResource("4_2vqlv")
 
 [node name="Time_of_Day" type="TextureRect" parent="." unique_id=913491574]

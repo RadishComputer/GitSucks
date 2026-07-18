@@ -113,12 +113,19 @@ func use_item(target: Node):
 	if GameGlue.ItemDatabase.items.has(item_id) and target != null:
 		emit_signal("item_used_on_target", target, item_id)
 
+	
+
 	if slots.find(item_id) == -1:
 		slots[cursor_slot] = ""
 	else:
 		var origin = GameGlue.Menu.drag_origin_index
 		if origin != -1:
 			slots[origin] = item_id
+			slots[cursor_slot] = ""
+		else:
+			var fallback = slots.find("")
+			if fallback != -1 and fallback < inventory_size:
+				slots[fallback] = item_id
 		slots[cursor_slot] = ""
 
 	update_cursor_icon()

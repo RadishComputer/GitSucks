@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cikcq1ejg1jyp"]
 
 [ext_resource type="Script" uid="uid://masm1nyshmtu" path="res://Scenes/Pins_Interior/arcade_queens_of_egypt.gd" id="1_q2n3y"]
-[ext_resource type="Texture2D" uid="uid://dtdj15bgoymxh" path="res://Art/Beta/Places/Queens_Of_Egypt_A.png" id="2_vgh1h"]
+[ext_resource type="Texture2D" uid="uid://owx0mvap0dyh" path="res://Art/Beta/Places/Queens_Of_Egypt_Final.png" id="2_q2n3y"]
 
 [node name="Queens_Of_Egypt" type="Control" unique_id=1730995375]
 layout_mode = 3
@@ -28,7 +28,7 @@ offset_right = 750.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_vgh1h")
+texture = ExtResource("2_q2n3y")
 metadata/_edit_use_anchors_ = true
 
 [node name="To_Exit" type="Area2D" parent="." unique_id=460809802]

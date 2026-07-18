@@ -1,3 +1,5 @@
+#Pins Entrance (opens at 11am)
+
 extends Control
 
 @onready var PhoneAudio = GameGlue.PhoneAudio
@@ -23,17 +25,13 @@ func _ready():
 	ClockManager.update_clock_display()
 	await get_tree().process_frame
 	ClockManager.check_and_play_chime()
-	
+	max_here()
+
 	$To_Arcade.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Arcade.tscn", false))
 	$To_Lanes.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Lanes.tscn", false))
 	$To_Lockers.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Lockers.tscn", false))
-	$Exit.input_event.connect(move.bind("res://Scenes/Zone_Commecial/Pioneer_At_2nd.tscn", false))
+	$Exit.input_event.connect(move.bind("res://Scenes/Zone_Commecial/Pioneer_At_2nd.tscn", true))
 	$Phone.input_event.connect(phone_clicked)
-
-	if KnowledgeManager.knows("Met_Max"):
-		$Max.visible = true
-	else:
-		$Max.visible = false
 
 func go_back():
 	$Max.visible = true
@@ -41,12 +39,10 @@ func go_back():
 
 func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
-
 		if not KnowledgeManager.knows("Met_Max"):
-
 			SequenceMachine.run_sequence([
 				"action:learn:Met_Max",
-				"dialog:1298",
+				"dialog:1287",
 				"action:go_back",
 				"note:[center]Met Max[/center]",
 			], self)
@@ -72,3 +68,8 @@ func phone_clicked(viewport, event, shape_idx):
 						return_path = child.get_meta("original_scene_path", child.scene_file_path)
 						break
 			ClockManager.go_to_phone(return_path)
+
+func max_here():
+	var met_check = KnowledgeManager.knows("Met_Max")
+	var arcade_off = KnowledgeManager.secretly_knows("Arcade_Off")
+	$Max.visible = met_check and not arcade_off

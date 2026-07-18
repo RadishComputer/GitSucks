@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://foawotab0dpq"]
 
-[ext_resource type="Script" path="res://Scenes/Winter_House/upstairs.gd" id="1_tuxuh"]
+[ext_resource type="Script" uid="uid://da5p6clhnkk6y" path="res://Scenes/Winter_House/upstairs.gd" id="1_tuxuh"]
 [ext_resource type="Texture2D" uid="uid://dki5q4s30bcc3" path="res://Art/Beta/Places/Upstairs.png" id="2_vnfmh"]
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_n7yg8"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_io0k5"]

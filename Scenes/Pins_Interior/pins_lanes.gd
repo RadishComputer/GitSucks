@@ -21,6 +21,7 @@ func _ready():
 	ClockManager.distance_from_church = 5
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
+	bowling()
 	await get_tree().process_frame
 	ClockManager.check_and_play_chime()
 
@@ -30,3 +31,7 @@ func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
+
+func bowling():
+	var visible = ClockManager.wheres_jeff()
+	$Jeff.visible = visible

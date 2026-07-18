@@ -22,98 +22,64 @@ extends TextureButton
 func _ready():
 	connect("pressed", Callable(self, "clicked"))
 
+func rodney_arrives():
+	$"../Rodney_at_Home".visible = true
+	$".".visible = false
+	Bouncer.bounce($"../Rodney_at_Home")
+
 func go_back():
-	self.visible = true
-	Bouncer.bounce(self)
+	$"../Rodney_at_Home".visible = true
+	Bouncer.bounce($"../Rodney_at_Home")
 
 func clicked():
-	if ClockManager.rodney_here("lunch"):
-		lunch_dialog()
+	if not KnowledgeManager.secretly_knows("Dave_Anything"):
+		knock_loop()
+		return
+	if KnowledgeManager.secretly_knows("Show_Off"):
+		knock_loop()
+		return
+	if ClockManager.rodney_here("lunch") or ClockManager.rodney_here("evening"):
+		home_dialog()
 		return
 
-	if ClockManager.rodney_here("evening"):
-		evening_dialog()
-		return
+	knock_loop()
 
-	if not KnowledgeManager.secretly_knows("Rodney_Knock"):
-		SequenceMachine.run_sequence([
-			"dialog:1433",
-			"action:secretly_learn:Rodney_Knock",
-		], self)
-	else:
+func knock_loop():
+	if KnowledgeManager.secretly_knows("Rodney_Knock"):
 		SequenceMachine.run_sequence([
 			"dialog:1434",
 			"action:secretly_forget:Rodney_Knock",
 		], self)
+	else:
+		SequenceMachine.run_sequence([
+			"dialog:1433",
+			"action:secretly_learn:Rodney_Knock",
+		], self)
 
-func lunch_dialog():
-	if not KnowledgeManager.secretly_knows("Dave_Anything"):
-		if not KnowledgeManager.secretly_knows("Rodney_Knock"):
-			SequenceMachine.run_sequence([
-				"dialog:1433",
-				"action:secretly_learn:Rodney_Knock",
-			], self)
-		else:
-			SequenceMachine.run_sequence([
-				"dialog:1434",
-				"action:secretly_forget:Rodney_Knock",
-			], self)
-		
-	elif not KnowledgeManager.knows("Met_Rodney"):
+func home_dialog():
+	if not KnowledgeManager.knows("Met_Rodney"):
 		SequenceMachine.run_sequence([
 			"action:learn:Met_Rodney",
- 			"dialog:1435",
-			"note:[center]Met Rodney"
+			"dialog:1435",
+            "note:[center]Met Rodney"
 		], self)
 		return
-	elif not KnowledgeManager.knows("Got_Daves_Radio"):
-		SequenceMachine.run_sequence([
-			"dialog:1454",
-		], self)
-	elif not KnowledgeManager.secretly_knows("Show_Off"):
+
+	if not KnowledgeManager.knows("Got_Daves_Radio"):
+		if ClockManager.rodney_here("evening"):
+			SequenceMachine.run_sequence([
+				"dialog:1483",
+				"action:rodney_arrives",
+			], self)
+		if ClockManager.rodney_here("lunch"):
+			SequenceMachine.run_sequence([
+				"dialog:1454",
+			], self)
+		return
+
+	if not KnowledgeManager.secretly_knows("Show_Off"):
 		SequenceMachine.run_sequence([
 			"dialog:1460",
 			"action:secretly_learn:Show_Off",
 		], self)
-	else:
-		SequenceMachine.run_sequence([
-			"dialog:1072",
-		], self)
-
-func evening_dialog():
-	if not KnowledgeManager.secretly_knows("Dave_Anything"):
-		if not KnowledgeManager.secretly_knows("Rodney_Knock"):
-			SequenceMachine.run_sequence([
-				"dialog:1433",
-				"action:secretly_learn:Rodney_Knock",
-			], self)
-		else:
-			SequenceMachine.run_sequence([
-				"dialog:1434",
-				"action:secretly_forget:Rodney_Knock",
-			], self)
-		
-	elif not KnowledgeManager.knows("Met_Rodney"):
-		SequenceMachine.run_sequence([
-			"action:learn:Met_Rodney",
- 			"dialog:1435",
-			"note:[center]Met Rodney"
-		], self)
 		return
-	elif not KnowledgeManager.knows("Got_Daves_Radio"):
-		SequenceMachine.run_sequence([
-			"dialog:1483",
-			"action:secretly_learn:Ready_To_Trade",
-			
-		], self)
-	elif not KnowledgeManager.secretly_knows("Show_Off"):
-		SequenceMachine.run_sequence([
-			"dialog:1460",
-			"action:secretly_learn:Show_Off",
-		], self)
-	
-	
-	else:
-		SequenceMachine.run_sequence([
-			"dialog:1072",
-		], self)

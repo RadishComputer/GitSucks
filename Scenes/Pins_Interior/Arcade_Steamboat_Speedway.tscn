@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1bxfvpc80gsh"]
 
 [ext_resource type="Script" uid="uid://wywsk21cojrs" path="res://Scenes/Pins_Interior/arcade_steamboat_speedway.gd" id="1_2gtpy"]
-[ext_resource type="Texture2D" uid="uid://c1gqmuhnhj8p3" path="res://Art/Beta/Places/Steamboat_Speedway_A.png" id="2_gu2hh"]
+[ext_resource type="Texture2D" uid="uid://bmucfxq5pue8b" path="res://Art/Beta/Places/Steamboat_Speedway.png" id="2_2gtpy"]
 
 [node name="Steamboat_Speedway" type="Control" unique_id=1093723982]
 layout_mode = 3
@@ -28,11 +28,11 @@ offset_right = 750.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_gu2hh")
+texture = ExtResource("2_2gtpy")
 metadata/_edit_use_anchors_ = true
 
 [node name="To_Exit" type="Area2D" parent="." unique_id=1047408564]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Exit" unique_id=454154718]
 position = Vector2(-779, -453)
-polygon = PackedVector2Array(37, 9, 1522, 8, 1529, 899, 32, 897)
+polygon = PackedVector2Array(37, 9, 1522, 8, 1522, 894, 1235, 889, 1102, 681, 1066, 85, 470, 97, 465, 696, 319, 895, 32, 897)

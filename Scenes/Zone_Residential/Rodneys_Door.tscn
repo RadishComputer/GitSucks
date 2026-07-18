@@ -67,28 +67,28 @@ script = ExtResource("3_2u12d")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rodneys_Door" unique_id=1204725408]
 polygon = PackedVector2Array(-162, -268, 74, -261, 75, 163, -164, 160)
 
-[node name="Porch_Plant" type="Area2D" parent="." unique_id=2108616207]
+[node name="Fiddle" type="Area2D" parent="." unique_id=2108616207]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porch_Plant" unique_id=1236450986]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fiddle" unique_id=1236450986]
 position = Vector2(-1234, -741)
-polygon = PackedVector2Array(820, 343, 886, 389, 932, 616, 893, 787, 826, 788, 774, 616, 714, 511, 743, 405)
+polygon = PackedVector2Array(860, 334, 926, 399, 932, 616, 913, 784, 828, 783, 697, 501, 702, 424)
 
-[node name="Hanging_Plant1" type="Area2D" parent="." unique_id=96331900]
+[node name="Pothos" type="Area2D" parent="." unique_id=96331900]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hanging_Plant1" unique_id=160641632]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pothos" unique_id=160641632]
 position = Vector2(-773, -746)
-polygon = PackedVector2Array(1068, 343, 1197, 346, 1245, 391, 1263, 475, 1145, 526, 1029, 509, 1024, 415)
+polygon = PackedVector2Array(1090, 323, 1231, 363, 1233, 495, 1227, 629, 1166, 573, 1120, 666, 1053, 622, 1026, 541, 1024, 415)
 
-[node name="Hanging_Plant2" type="Area2D" parent="." unique_id=890703981]
+[node name="Boston" type="Area2D" parent="." unique_id=890703981]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hanging_Plant2" unique_id=40106302]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boston" unique_id=40106302]
 position = Vector2(-661, -735)
-polygon = PackedVector2Array(1203, 333, 1308, 322, 1362, 409, 1316, 489, 1260, 515, 1197, 483, 1168, 403)
+polygon = PackedVector2Array(1142, 317, 1327, 294, 1400, 297, 1381, 457, 1345, 519, 1240, 586, 1174, 600, 1131, 509)
 
 [node name="Back" type="Area2D" parent="." unique_id=2088432430]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=1497970133]
-polygon = PackedVector2Array(-281, 310, 197, 305, 205, 438, -317, 444)
+polygon = PackedVector2Array(-281, 310, 197, 305, 199, 442, -317, 444)
 
 [node name="Time_of_Day" type="TextureRect" parent="Back" unique_id=1648175033]
 material = SubResource("ShaderMaterial_qy6u1")
@@ -121,3 +121,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_fj2v0")
+
+[node name="Mat" type="Area2D" parent="." unique_id=1291521033]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mat" unique_id=1394102207]
+polygon = PackedVector2Array(-147, 169, 53, 172, 81, 234, -176, 233)
+
+[node name="Bushes" type="Area2D" parent="." unique_id=2007984172]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bushes" unique_id=1493154609]
+polygon = PackedVector2Array(-738, -302, -526, -209, -414, 45, -324, 257, -333, 442, -735, 438)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Bushes" unique_id=625813506]
+polygon = PackedVector2Array(211, 369, 379, 234, 737, 255, 736, 435, 207, 435)
+
+[node name="Pot" type="Area2D" parent="." unique_id=503530249]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pot" unique_id=280537314]
+polygon = PackedVector2Array(-292, 88, -292, 233, -315, 263, -396, 85)
+
+[node name="Mailbox" type="Area2D" parent="." unique_id=701701914]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mailbox" unique_id=1186458320]
+polygon = PackedVector2Array(-292, -153, -195, -153, -189, -54, -292, -58)

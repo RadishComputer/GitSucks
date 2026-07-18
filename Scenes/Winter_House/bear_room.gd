@@ -131,12 +131,6 @@ func phone_clicked(viewport, event, shape_idx):
 				if child.name == "Scene":
 					return_path = child.get_meta("original_scene_path", child.scene_file_path)
 					break
-		#
-		#print("RETURN PATH captured =", return_path)
-		#
-		#if return_path == "":
-			#print("WARNING: Could not capture return path!")
-		#
 		ClockManager.go_to_phone(return_path)
 
 func update_time_of_day_shader():

@@ -28,17 +28,77 @@ func go_back():
 
 func clicked():
 	self.visible = false
-	if not KnowledgeManager.knows("Met_Wes"):
+	if KnowledgeManager.knows("Radio_Returned"):
+		end_dialog()
+		return
+	if ItemManager.inventory_has_item("daves_radio"):
+		radio_dialog()
+		return
+	if KnowledgeManager.knows("Met_Rodney"):
+		rodney_dialog()
+		return
+	if KnowledgeManager.knows("Met_Dave"):
+		dave_dialog()
+		return
+	if KnowledgeManager.knows("Met_Wes"):
+		wes_dialog()
+		return
+	first_dialog()
+
+func end_dialog():
+	SequenceMachine.run_sequence([
+		"dialog:1791",
+	], self)
+
+func radio_dialog():
+		SequenceMachine.run_sequence([
+		"dialog:1792",
+		"action:go_back",
+	], self)
+
+func rodney_dialog():
+	SequenceMachine.run_sequence([
+		"dialog:1789",
+		"action:go_back",
+	], self)
+
+func dave_dialog():
+	SequenceMachine.run_sequence([
+		"dialog:1786",
+		"action:go_back",
+	], self)
+
+func wes_dialog():
+		SequenceMachine.run_sequence([
+			"dialog:1096",
+			"action:go_back",
+		], self)
+
+func first_dialog():
 		SequenceMachine.run_sequence([
 			"action:learn:Met_Wes",
  			"dialog:1091",
 			"action:go_back",
 			"note:[center]Met Wes[/center]",
 		], self)
-		return
 
-	else:
-		SequenceMachine.run_sequence([
-			"dialog:1096",
-			"action:go_back",
-		], self)
+func on_item_used(target: Node, item_id: String):
+	if target != self:
+		return
+	var item = ItemDatabase.items.get(item_id, {})
+	DialogManager.dialog_vars["item"] = item.get("name", "that")
+	SequenceMachine.run_sequence([
+		"dialog:1095",
+		"action:go_back",
+	], self)
+
+func _gui_input(event):
+	if InputManager.click_release(event):
+		if ItemManager.slots[ItemManager.cursor_slot] != "":
+			ItemManager.use_item(self)
+			
+			Menu.selected_item = ""
+			Menu.drag_origin_index = -1
+			ItemManager.update_cursor_icon()
+			get_viewport().set_input_as_handled()
+			return

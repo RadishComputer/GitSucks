@@ -57,33 +57,83 @@ texture = ExtResource("4_ewpex")
 position = Vector2(210, 90)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lolas" unique_id=977199120]
-position = Vector2(-714, -406)
-polygon = PackedVector2Array(209, 94, 330, 127, 322, 297, 209, 241)
+position = Vector2(-471, -275)
+polygon = PackedVector2Array(309, 53, 361, 53, 365, 158, 311, 157)
 
 [node name="To_Cornicello" type="Area2D" parent="." unique_id=594928732]
 position = Vector2(210, 90)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Cornicello" unique_id=204690604]
-position = Vector2(-571, -540)
-polygon = PackedVector2Array(508, 286, 572, 284, 575, 430, 504, 439)
+position = Vector2(-110, -204)
+polygon = PackedVector2Array(508, 286, 608, 319, 599, 533, 504, 477)
 
 [node name="To_Uncle_Sams" type="Area2D" parent="." unique_id=1935547416]
 position = Vector2(210, 90)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Uncle_Sams" unique_id=296974145]
-position = Vector2(-984, -267)
-polygon = PackedVector2Array(38, 179, 242, 156, 253, 338, 37, 395)
+position = Vector2(-883, -427)
+polygon = PackedVector2Array(89, 207, 138, 209, 143, 313, 88, 314)
 
 [node name="To_2nd" type="Area2D" parent="." unique_id=1688336370]
 position = Vector2(210, 90)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_2nd" unique_id=465383663]
-position = Vector2(-382, -334)
-polygon = PackedVector2Array(452, 141, 405, 131, 397, 280, 448, 369)
+position = Vector2(-966, -405)
+polygon = PackedVector2Array(566, 68, 401, 71, 397, 280, 567, 235)
 
 [node name="To_Caramel" type="Area2D" parent="." unique_id=2131546359]
 position = Vector2(210, 90)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Caramel" unique_id=802258662]
 position = Vector2(-984, 0)
-polygon = PackedVector2Array(42, 171, 245, 108, 446, 248, 238, 342, 34, 345)
+polygon = PackedVector2Array(426, 125, 923, 130, 1246, 350, 360, 349)
+
+[node name="To_The_Hitching_Post" type="Area2D" parent="." unique_id=882374220]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_The_Hitching_Post" unique_id=1668922870]
+polygon = PackedVector2Array(325, -147, 432, -149, 434, -38, 327, -34)
+
+[node name="Phone" type="Area2D" parent="." unique_id=2109401866]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Phone" unique_id=1674841353]
+polygon = PackedVector2Array(-575, 10, -426, 12, -423, 295, -574, 294)
+
+[node name="Uncle_Sams" type="Area2D" parent="." unique_id=513184703]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Uncle_Sams" unique_id=1988113420]
+polygon = PackedVector2Array(-741, -258, -361, -263, -363, -155, -741, -154)
+
+[node name="Ladder" type="Area2D" parent="." unique_id=649527343]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ladder" unique_id=1416850018]
+polygon = PackedVector2Array(-175, -224, -149, -222, -150, -52, -184, -64)
+
+[node name="Street_Sign" type="Area2D" parent="." unique_id=1079746315]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Street_Sign" unique_id=1281635614]
+polygon = PackedVector2Array(-115, -149, -52, -152, -52, -109, -113, -108)
+
+[node name="Lolas" type="Area2D" parent="." unique_id=1158760824]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lolas" unique_id=2117480713]
+polygon = PackedVector2Array(-24, -203, 50, -191, 49, -147, -27, -161)
+
+[node name="The_Hitching_Post" type="Area2D" parent="." unique_id=220016396]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="The_Hitching_Post" unique_id=293575355]
+polygon = PackedVector2Array(191, -230, 474, -233, 476, -159, 196, -153)
+
+[node name="Stop_Sign" type="Area2D" parent="." unique_id=1574060937]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stop_Sign" unique_id=2100223519]
+polygon = PackedVector2Array(195, -7, 228, -9, 250, 18, 255, 55, 231, 84, 195, 84, 170, 52, 169, 17)
+
+[node name="Cornicello" type="Area2D" parent="." unique_id=1748969693]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cornicello" unique_id=1586585475]
+polygon = PackedVector2Array(482, 67, 738, 156, 738, 210, 596, 163, 596, 360, 477, 292)
+
+[node name="Window" type="Area2D" parent="." unique_id=992777111]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Window" unique_id=1117574403]
+polygon = PackedVector2Array(542, -204, 624, -190, 623, -69, 543, -81)

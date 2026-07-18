@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dvq7miawwqy0c"]
 
 [ext_resource type="Script" uid="uid://c64f3br7gsikb" path="res://Scenes/Pins_Interior/arcade_travlin_banjo_man.gd" id="1_jf3is"]
-[ext_resource type="Texture2D" uid="uid://bnh83dism3qp3" path="res://Art/Beta/Places/Travlin_Banjo_Man_A.png" id="3_e3v2j"]
+[ext_resource type="Texture2D" uid="uid://bas5m8ulebhkc" path="res://Art/Beta/Places/Banjo_Frog.png" id="2_jf3is"]
 
 [node name="Travlin_Banjo_Man" type="Control" unique_id=1631631484]
 layout_mode = 3
@@ -28,10 +28,10 @@ offset_right = 750.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_e3v2j")
+texture = ExtResource("2_jf3is")
 metadata/_edit_use_anchors_ = true
 
 [node name="To_Exit" type="Area2D" parent="." unique_id=1479120268]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Exit" unique_id=1162486648]
-polygon = PackedVector2Array(-742, -450, 744, -444, 744, 444, -740, 448)
+polygon = PackedVector2Array(-742, -450, 744, -444, 744, 444, 492, 439, 258, 187, 254, -371, -310, -369, -310, 177, -541, 444, -740, 448)

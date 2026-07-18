@@ -57,10 +57,64 @@ texture = ExtResource("4_exy0u")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Pins" unique_id=741000578]
 position = Vector2(-586, -267)
-polygon = PackedVector2Array(168, 133, 318, 137, 316, 303, 167, 289)
+polygon = PackedVector2Array(292, 70, 452, 71, 452, 238, 293, 236)
 
 [node name="To_Main" type="Area2D" parent="." unique_id=612677771]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Main" unique_id=817974828]
-position = Vector2(-789, 104)
-polygon = PackedVector2Array(39, 342, 210, 178, 744, 217, 519, 343)
+position = Vector2(-496, 99)
+polygon = PackedVector2Array(39, 342, 348, 127, 848, 114, 914, 344)
+
+[node name="Monets_Door" type="Area2D" parent="." unique_id=311172882]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Monets_Door" unique_id=1238649639]
+polygon = PackedVector2Array(-740, -32, -608, -70, -608, 367, -739, 439)
+
+[node name="Monets_Sign" type="Area2D" parent="." unique_id=1251186811]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Monets_Sign" unique_id=997208726]
+polygon = PackedVector2Array(-564, -11, -447, -1, -449, 83, -562, 71)
+
+[node name="Pins_Sign" type="Area2D" parent="." unique_id=2090860873]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pins_Sign" unique_id=628900954]
+polygon = PackedVector2Array(-306, -383, -110, -379, -113, -268, -314, -272)
+
+[node name="Bucket" type="Area2D" parent="." unique_id=842963209]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket" unique_id=1925123779]
+polygon = PackedVector2Array(376, -371, 739, -364, 739, -132, 666, -118, 661, -199, 546, -198, 540, -114, 369, -158)
+
+[node name="Trashcan" type="Area2D" parent="." unique_id=1195755701]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Trashcan" unique_id=329296485]
+polygon = PackedVector2Array(522, 235, 616, 235, 607, 339, 529, 338)
+
+[node name="Flowers" type="Area2D" parent="." unique_id=534897977]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flowers" unique_id=896530835]
+polygon = PackedVector2Array(372, -155, 441, -136, 421, -10, 378, -10)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Flowers" unique_id=992640784]
+polygon = PackedVector2Array(483, -124, 541, -109, 529, -10, 494, -13)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Flowers" unique_id=253867932]
+polygon = PackedVector2Array(666, -114, 738, -130, 741, -67, 666, -68)
+
+[node name="Florist" type="Area2D" parent="." unique_id=1015748904]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Florist" unique_id=862686990]
+polygon = PackedVector2Array(550, -195, 657, -195, 656, -20, 548, -21)
+
+[node name="Ashtray" type="Area2D" parent="." unique_id=67206116]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ashtray" unique_id=1553218997]
+polygon = PackedVector2Array(-341, -87, -316, -87, -315, -28, -343, -28)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Ashtray" unique_id=945533732]
+polygon = PackedVector2Array(-117, -83, -86, -82, -88, -23, -119, -22)
+
+[node name="Bush" type="Area2D" parent="." unique_id=1728603324]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bush" unique_id=671411370]
+polygon = PackedVector2Array(-593, 207, -468, 210, -472, 375, -593, 371)

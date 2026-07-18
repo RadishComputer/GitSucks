@@ -253,6 +253,9 @@ func typewriter(text: String):
 	skip_typewriter = false
 
 	var delay = 0.02
+	if active_speaker_label.text == "Skip the Radio Ghost":
+		delay = 0.08
+	
 	var i = 0
 	var current_text = ""
 
@@ -474,8 +477,10 @@ func front_blocker_click(event):
 		
 	match current_mode:
 		Text_Mode.DIALOG:
+			var can_skip = active_speaker_label.text != "Skip the Radio Ghost"
 			if is_typing:
-				skip_typewriter = true
+				if can_skip:
+					skip_typewriter = true
 			elif waiting_for_input:
 				waiting_for_input = false
 				GameGlue.DialogManager.advance_dialog()

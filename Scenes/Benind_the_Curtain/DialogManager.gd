@@ -153,8 +153,6 @@ func condition_is_true(condition: String) -> bool:
 			if GameGlue.ItemManager.inventory_has_type(type):
 				return false
 
-
-
 		elif part.begins_with("has_item:"):
 			var id = part.substr(9)
 			if not GameGlue.ItemManager.inventory_has_item(id):
@@ -164,8 +162,6 @@ func condition_is_true(condition: String) -> bool:
 			var id = part.substr(13)
 			if GameGlue.ItemManager.inventory_has_item(id):
 				return false
-
-
 
 		elif part.begins_with("has_money:"):
 			var amount = float(part.substr("has_money:".length()))
@@ -181,20 +177,30 @@ func condition_is_true(condition: String) -> bool:
 			var id = part.substr("can_afford:".length())
 			if GameGlue.ItemDatabase.items.has(id):
 				var price = float(GameGlue.ItemDatabase.items[id].get("value", 0.0))
-				if GameGlue.item.cash < price:
+				if GameGlue.ItemManager.cash < price:
 					return false
 
 		elif part.begins_with("cannot_afford:"):
 			var id = part.substr("cannot_afford:".length())
 			if GameGlue.ItemDatabase.items.has(id):
 				var price = float(GameGlue.ItemDatabase.items[id].get("value", 0.0))
-				if GameGlue.item.cash >= price:
+				if GameGlue.ItemManager.cash >= price:
 					return false
 
+		elif part.begins_with("time:"):
+			var time_range = part.substr(5).split("-")
+			if time_range.size() == 2:
+				var start_time = int(time_range[0])
+				var end_time = int(time_range[1])
+				var current_time = (int(GameGlue.ClockManager.hours) * 100) + int(GameGlue.ClockManager.minutes)
+				if current_time < start_time or current_time >= end_time:
+					return false
+
+		#I need to write a note here about to use time: because I forgot.
 
 	return true
 
-func format_text(raw_text: String, values: Dictionary = {}) -> String:
+func format_text(raw_text: String, values: Dictionary = {}) -> String:                                  
 	if values.is_empty():
 		return raw_text
 	return raw_text.format(values)
@@ -245,6 +251,10 @@ func show_current_line():
 	if entry == null:
 		push_error("Dialog ID not found: " + current_id)
 		end_dialog()
+		return
+
+	if not condition_is_true(entry["condition"]):
+		advance_dialog(true)
 		return
 
 	var text = substitutions(entry["text"])
@@ -376,7 +386,7 @@ func substitutions(text: String) -> String:
 func set_dialog_var(key: String, value: String):
 	dialog_vars[key] = value
 
-func advance_dialog():
+func advance_dialog(skipped: bool = false):
 	if not dialog_active:
 		return
 
@@ -385,18 +395,21 @@ func advance_dialog():
 		end_dialog()
 		return
 
-	var next_id = lang_table[current_id]["next"].strip_edges()
+	var entry = lang_table[current_id]
+	var candidate_id = ""
 
-	if next_id == "END":
-		end_dialog()
-		return
-
-	var candidate_id = next_id if next_id != "" else get_next_row_id(current_id)
+	if skipped:
+		candidate_id = get_next_row_id(current_id)
+	else:
+		var next_id = entry["next"].strip_edges()
+		if next_id == "END":
+			end_dialog()
+			return
+		candidate_id = next_id if next_id != "" else get_next_row_id(current_id)
 
 	while candidate_id != "":
-		var entry = lang_table.get(candidate_id, null)
-		if entry and condition_is_true(entry["condition"]):
-			# Found a valid line → show it
+		var scan_entry = lang_table.get(candidate_id, null)
+		if scan_entry and condition_is_true(scan_entry["condition"]):
 			current_id = candidate_id
 			show_current_line()
 			return
