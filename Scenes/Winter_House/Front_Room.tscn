@@ -90,7 +90,7 @@ polygon = PackedVector2Array(256, -136, 339, -116, 332, 91, 250, 61)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lamp" unique_id=1711197453]
 position = Vector2(-476, -170)
-polygon = PackedVector2Array(-263, -98, -197, -97, -130, 117, -231, 123, -230, 297, -182, 522, -265, 528)
+polygon = PackedVector2Array(-263, -98, -197, -97, -130, 117, -196, 528, -265, 528)
 
 [node name="Phone" type="Area2D" parent="." unique_id=1886720266]
 
@@ -137,15 +137,29 @@ polygon = PackedVector2Array(-473, -234, -414, -222, -422, -83, -478, -104)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dials" unique_id=576809565]
 polygon = PackedVector2Array(-17, -13, 6, -12, 3, 27, -21, 26)
 
+[node name="Chair" type="Area2D" parent="." unique_id=501925144]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Chair" unique_id=1364153878]
+polygon = PackedVector2Array(376, 102, 486, -31, 687, -12, 689, 263, 380, 249)
+
+[node name="Rug" type="Area2D" parent="." unique_id=1381257785]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rug" unique_id=1396472205]
+polygon = PackedVector2Array(-472, 221, 22, 113, 596, 232, 138, 435, 38, 438)
+
+[node name="Mat" type="Area2D" parent="." unique_id=1906774345]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mat" unique_id=282417788]
+polygon = PackedVector2Array(-300, 37, -250, 27, -174, 66, -222, 88)
+
 [node name="MomButton" type="TextureButton" parent="." unique_id=183570136]
 layout_mode = 0
-offset_left = 460.0
-offset_top = -109.0
-offset_right = 779.0
-offset_bottom = 839.0
+offset_left = 399.0
+offset_top = -235.0
+offset_right = 718.0
+offset_bottom = 965.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("3_ovrj4")
-ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_3kgkk")
 

@@ -38,17 +38,17 @@ func on_item_used(target: Node, item_id: String):
 
 	requested_attribute = GameState.get_attribute_for_current_day()
 
-# Normalize item attributes
+#Attributes
 	var attributes = []
 	var item = ItemDatabase.items.get(item_id, {})
 	var cost = float(item.get("value", 0.0))
 	for a in item.get("attribute", []):
 		attributes.append(a.to_lower())
 
-# Normalize requested attribute for comparison
+#Comparison
 	var correct = requested_attribute.to_lower() in attributes
 
-# Set pretty display versions
+#Set pretty display versions
 	DialogManager.dialog_vars["requested_attribute"] = requested_attribute.capitalize()
 	DialogManager.dialog_vars["item"] = item.get("name", item_id)
 
@@ -74,12 +74,13 @@ func on_item_used(target: Node, item_id: String):
 		], self)
 		return
 
+	DialogManager.dialog_vars["mom_food_choice"] = item.get("name", item_id)
+
 	if correct:
 		SequenceMachine.run_sequence([
 			"action:secretly_learn:Food_Received",
 			"action:remove_item:" + item_id,
 			"dialog:1009",
-			"action:go_back",
 		], self)
 		return
 
@@ -100,7 +101,6 @@ func on_item_used(target: Node, item_id: String):
 		"action:secretly_learn:Food_Received",
 		"action:remove_item:" + item_id,
 		"dialog:1010",
-		"action:go_back",
 		"note:[center]Mom took $" + amount + "[/center]",
 	], self)
 
@@ -120,6 +120,9 @@ func clicked():
 		return
 
 	elif not KnowledgeManager.secretly_knows("Food_Received"):
+		if DialogManager.dialog_vars.has("mom_food_choice"):
+			DialogManager.dialog_vars["item"] = DialogManager.dialog_vars["mom_food_choice"]
+
 		SequenceMachine.run_sequence([
 			"dialog:1008",
 			"action:go_back",

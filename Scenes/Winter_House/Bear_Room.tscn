@@ -199,6 +199,11 @@ polygon = PackedVector2Array(85, -55, 139, -89, 327, -92, 491, 34, 491, 268, 246
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lamp" unique_id=820700429]
 polygon = PackedVector2Array(-29, -198, 15, -198, 36, -127, 18, -71, -19, -67, -37, -81, -48, -133)
 
+[node name="Rug" type="Area2D" parent="." unique_id=1133417534]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rug" unique_id=1341316670]
+polygon = PackedVector2Array(-469, 90, 64, 93, 222, 393, -653, 394)
+
 [node name="Door" type="TextureButton" parent="." unique_id=1344467989]
 z_index = 10
 layout_mode = 0

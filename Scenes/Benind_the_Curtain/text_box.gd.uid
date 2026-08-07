@@ -1,1 +1,292 @@
-uid://bp6obe4y8k6uy
+Met_Them, Met_Dave, Met_Rodney, Return_Radio, other
+
+>>>Evie
+
+
+
+>>>Wes
+
+You reckon you can find Dave's Radio?
+	I guess.
+	- Good luck.
+
+	What's the deal with Rodney.
+I'm suprised he's not hanggin out with us.
+
+You done good.
+
+>>>Jessica
+Let me know if you need any help finding the radio.
+
+	What's up with Rodney?
+If you're looking for him, he lives just down this street.
+Ugly blue house. You can't miss it.
+	Thanks.
+
+Welcome to the gang, Summer.
+
+>>>Jimmy
+
+Good luck Summer.
+
+If you need a partner; you can count on Jimmy the Fish.
+	Why 'Jimmy the Fish'?
+Becuase if you mess with me; you'll be sleeping with the fishes.
+	It sounds like you're a fish.
+Oh. Takes one to know one.
+	Does anyone call you 'Jimmy the Fish'?
+No.
+But you can.
+	Okay. (secretly learn Jimmy the Fish) 
+
+	Hey Jimmy the Fish.
+Hi there.
+	
+
+	Hey Jimmy the Fish.
+	Do you have any intel of Rodney?
+Oh yeah.
+He lives on this side street. There is a car parked in the yard.
+He's really good at video games and he has the top score on most of the games in the arcade.
+	Thanks for the deets.
+_
+Is Rodney one of your suspects?
+	Just between you and me, yes.
+	Don't let that information get out.
+	It could jeprodize the case and the chief is hounding me to solve this.
+Oh, okay.
+
+	Hey Jimmy.
+How's it going?
+	What can you tell me about Rodney?
+If you're looking for him; he's probably at his home on this side street or at the arcade in Pins.
+	Thanks.
+Don't mention it.
+
+(if secretly knows:Jimmys_Intel)
+Still working on the case?
+	Yep.
+
+Good work Detective Summer.	
+
+
+>>>Dave
+
+Thanks for getting my radio back.
+
+>>>Roberta
+
+I hope you can find Dave's radio.
+	That's nice of you.
+Well, otherwise well hear about this for months.
+
+Hey Summer.
+	What can you tell me about Rodney?
+He looks pretty tall but he's actually younger than all of us.
+And I recently passed him up in height. I think he's jelly.
+
+(if secretly knows:Robertas_Intel)
+Hey Summer.
+	Hey Roberta.
+
+You're pretty cool.
+	Thanks.
+
+
+
+
+XXXXXX If you have the radio but haven't given it back to Dave yet everyone else should respond with "..."
+
+XXXXXX Dave's Dialog for returning the radio:
+	If you talk to Dave:
+Dave - Any updates Kid Detective?
+Summer - Well, actually.
+Dave - What? No way. (proceed to the rest of the dialog)
+Dave - ...
+Dave- You found my radio.
+
+(AM)
+Dave - Guys, she found my radio!
+Wes - Really?
+Roberta - That's good news.
+Evie - Yeah. That's great.
+
+(ALL)
+Dave -  How did you find it?
+
+(if met Skip)
+Summer - I used my psychic powers.
+Dave - Oh come on. Be serious.
+Summer - I am. And be careful. Your radio is haunted.
+Dave - What? You're creeping me out.
+Summer - I'm just kidding.
+
+Summer - Rodney had it.
+
+(If you traded for it)
+Summer - I had to make a trade for it.
+
+(otherwise)
+Summer - I had to take it from him.
+
+Dave - I wonder why Rodney had my radio.
+Rodney - Uh...
+Rodney - Sorry about that.
+
+(AM)
+Jimmy - Hi Rodney.
+Rodney - Hey Jimmy.
+
+
+	(PM)
+	Dave- Hey Rodney. Long time no see.
+	Dave - So why did you have my radio.?
+
+Rodney - At first I didn't realize it was your radio, Dave.
+Rodney - Then this out out-of-towner started snooping around.
+Rodney - I came by to check if she was trustworthy.
+Rodney - I guess she is.
+
+(AM)
+Jessica - You should apologize to Summer.
+Rodney - ...
+Rodney - I'm sorry ... Summer.
+Summer - Apology accepted.
+Summer - At least I got five bucks out of all the hassle.
+Dave - Dang. I hoped that you forgot about that.
+Wes - A deal's a deal. You gotta pay up.
+Dave - Yeah, yeah.
+
+	(PM)
+	Dave - Yeah. Summer went out of her way to get my radio back.
+	Dave - She's cool with me.
+	Rodney - Well, I'm sorry for all the trouble.
+	Summer - What about that 5 bucks you promised?
+	Dave - I actually hoped you had forgot about that.
+	Dave - But, a deal's a deal.
+	Dave - Here you go.
+
+SPLIT THE SEQUENCE (give Summer the money and then go into another dialog line)
+
+Dave - So.
+Dave - Summer, how long are you in town?
+Summer - I leave on Sunday.
+
+(AM)
+Evie - You should hang out with us while you're here.
+Jessica - Yeah. You're cool.
+Jimmy - You can be part of the club.
+Summer - Do you guys have a club name?
+Roberta - No!
+Summer - Oh.
+Jimmy - Yeah. It's very un-cool to have a name for your very cool radio club.
+Evie - Do we have to have this conversation again?
+Wes - I hope not.
+Jimmy - No. Not now.
+
+	(PM)
+	Dave - You should hang out with us while you're here.
+	Summer - You want me to hang out with you guys?
+	Dave - You'll fit right in.
+	Dave - Everyone seems to like you.
+	Summer - Really?
+	Dave - Yeah.
+	Dave - We were talking about you behind your back.
+	Summer - What? 
+	Dave - We all think you're cool.
+	Dave - And they'll flip when they find out you found my radio.
+	Rodney - I would have given it back.
+	Dave - Yeah, yeah.
+
+Dave - So what do you say?
+Dave - Do you want to hang out with us while you are here?
+Summer - Sure. 
+
+(AM)
+Jessica - Great! 
+Wes - We could use a detective in the group.
+Evie - What for?
+Wes - In case Dave misplaces something again.
+Dave - Har, har.
+Rodney - Hehehe.
+Roberta - Hey Rodney. Are you going to actually hang out with us now?
+
+	(PM)
+	Dave - Awesome.
+	Dave - I'll let everyone know.
+	Dave - Hey Rodney. Maybe you could start hanging out with us again.
+
+Rodney - Maybe.
+Rodney - I don't know.
+Dave - You should.
+Rodney - I gotta go home.
+Rodney - See you later.
+Rodney - ...
+Rodney - Hey Summer.
+Rodney - Sorry again.
+Summer - All good.
+
+Add a pause here, I think that will be easy.
+
+(AM)
+Jessica - Hey Summer.
+Jessica - We have a certain something planned for tomorrow.
+Wes - Oh yeah.
+Wes - I forgot.
+Evie - How could you forget? We've been talking about it for weeks.
+Roberta - We should meet up at the library tomorrow morning to talk about it.
+Jimmy - What time does the library open?
+Roberta  - I think it opens at 9am but I won't be there right at open.
+
+	(PM)
+	Dave - Hey Summer.
+	Dave - I almost forgot that we have something planned for tommorow.
+	Dave - You can join us. I promise it will be cool.
+	Dave - Meet us in the Library tomorrow morning. We're finalizing our plans then.
+	Summer - I have to help my mom clean out the attic tomorrow morning, but after that; I can be there.
+	Dave - Great.
+	
+
+Dave - Sorry to keep you in the dark Summer, but you can find out our plans tomorrow in the study room.
+Summer - Okay. I'll see you tomorrow.
+Summer - Bye everyone.
+
+
+
+#Rodney's House/Door
+
+1205 Fiddle  - They call these violin plants in 
+1206 Pothos - Hangy downy plants are always a good choice.
+1207 Boston - Mom always kills these when she buys them.
+1208 Car (cat found here) - A red car with faded pink panels.
+1209	- What do we have here? (if you have food in inventory)
+???? Pines - (old pines dialog) Mat - No radio here.
+1211 Fence - This fence was once a forest.
+1212 House - A very blue house.
+1213 Bushes - I wonder if there is a radio hidding in the bushes.
+1214	- No radio here.
+1215 Tree - That's a BIG tree.
+1216 Mailbox - There isn't a radio in the mailbox.
+
+
+
+
+Things to do:
+Add a few more sound effects.
+Add Cursor and new scene art.
+Line up character portraits along the same bottom line.
+Fix the game's lighting. It's not quite working.
+Check dialog for errors.
+Make Summer Bounce in the intro Summery.
+Add the intro 
+Add a game menu
+Add a thank you screen (to be replaced by the end of the day Summery scene) 
+Add a thing that forces you into the bedroom at 12 if you're outside.
+
+
+1220-1221 Dodododo (Ape Achitect) 1984
+1222-1223 Nacho (Steamboat Speedway) 1985
+1224-1225 Eggs (Queens of Egypt) 1985
+1226-1228 Radcom (Take This: Outback) 1992
+1229-1230 Halfway (Travlin Banjo Man) 1991
+

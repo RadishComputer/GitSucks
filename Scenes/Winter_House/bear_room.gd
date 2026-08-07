@@ -13,10 +13,10 @@ func _ready():
 	ClockManager.distance_from_church = 8
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
-	update_time_of_day_shader()
+	ClockManager.update_lights(self)
 	update_light_shader()
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
+	ClockManager.church_bell()
 
 	if KnowledgeManager.knows("Start_The_Game_Already"):
 		intro_blocker.visible = false
@@ -43,8 +43,9 @@ func _ready():
 	$Flower.input_event.connect(flower_clicked)
 	$Bed.input_event.connect(bed_clicked)
 	$Lamp.input_event.connect(lamp_clicked)
+	$Rug.input_event.connect(rug_clicked)
 
-	GameGlue.play_ambience(preload("res://Sounds/Ambience.wav"))
+	#GameGlue.play_ambience(preload("res://Sounds/Ambience.wav"))
 
 func intro_finished():
 	KnowledgeManager.learn("Start_The_Game_Already")
@@ -121,6 +122,10 @@ func drawer1_clicked(viewport, event, shape_idx, scene_path, advance_time):
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
 
+func rug_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1046"], self)
+
 func phone_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		var middle = GameGlue.get_node_or_null("Middle")
@@ -132,12 +137,6 @@ func phone_clicked(viewport, event, shape_idx):
 					return_path = child.get_meta("original_scene_path", child.scene_file_path)
 					break
 		ClockManager.go_to_phone(return_path)
-
-func update_time_of_day_shader():
-	var tint = ClockManager.get_time_of_day_tint()
-	var strength = ClockManager.get_time_of_day_strength()
-	$Time_of_Day.material.set_shader_parameter("tint_color", tint)
-	$Time_of_Day.material.set_shader_parameter("strength", strength)
 
 func lamp_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):

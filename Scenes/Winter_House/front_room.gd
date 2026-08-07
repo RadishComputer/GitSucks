@@ -26,15 +26,14 @@ func _ready():
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
 	where_is_mom()
-	update_time_of_day_shader()
+	ClockManager.update_lights(self)
 	ClockManager.set_front_lamp_default()
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
+	ClockManager.church_bell()
 	ClockManager.set_front_lamp_default()
 	update_light_shader()
 
 	$Front_Door.input_event.connect(front_door_clicked.bind("res://Scenes/Zone_Residential/Pioneer_At_Riverside.tscn", true))
-
 	$Stairs.input_event.connect(stairs_clicked.bind("res://Scenes/Winter_House/Upstairs.tscn", false))
 	
 	$Phone.input_event.connect(phone_clicked)
@@ -47,6 +46,9 @@ func _ready():
 	$Movies.input_event.connect(movies_clicked)
 	$Window.input_event.connect(window_clicked)
 	$Pictures.input_event.connect(pictures_clicked)
+	$Rug.input_event.connect(rug_clicked)
+	$Mat.input_event.connect(mat_clicked)
+	$Chair.input_event.connect(chair_clicked)
 
 func dining_room_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
@@ -76,6 +78,18 @@ func pictures_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:1077"], self)
 
+func rug_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1054"], self)
+
+func mat_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1022"], self)
+
+func chair_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1023"], self)
+
 func phone_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		var middle = GameGlue.get_node_or_null("Middle")
@@ -103,19 +117,12 @@ func front_door_clicked(viewport, event, shape_idx, scene_path: String, advance_
 
 func stairs_clicked(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
-		if KnowledgeManager.secretly_knows("Food_Received"):
-			get_tree().change_scene_to_file("res://Scenes/Benind_the_Curtain/demo_end.tscn")
-		else:
+		#if KnowledgeManager.secretly_knows("Food_Received"):
+			#get_tree().change_scene_to_file("res://Scenes/Benind_the_Curtain/demo_end.tscn")
+		#else:
 			ClockManager.next_scene_path = scene_path
 			ClockManager.switch_scene(advance_time)
 			ClockManager.set_front_lamp_default()
-
-func update_time_of_day_shader():
-	var tint = ClockManager.get_time_of_day_tint()
-	var strength = ClockManager.get_time_of_day_strength()
-
-	$Time_of_Day.material.set_shader_parameter("tint_color", tint)
-	$Time_of_Day.material.set_shader_parameter("strength", strength)
 
 func where_is_mom():
 	var visible = ClockManager.mom_downstairs()

@@ -41,10 +41,10 @@ texture = ExtResource("2_1sobw")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door" unique_id=1811287768]
 polygon = PackedVector2Array(217, 96, 394, 167, 398, 909, 218, 985)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door/CollisionPolygon2D" unique_id=932944578]
-polygon = PackedVector2Array(247, 95, 1701, 97, 1701, 978, 289, 982, 401, 910, 1527, 914, 1527, 164, 399, 164)
-
 [node name="Back" type="Area2D" parent="." unique_id=1202641697]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Back" unique_id=932944578]
+polygon = PackedVector2Array(247, 95, 1701, 97, 1701, 978, 289, 982, 401, 910, 1527, 914, 1527, 164, 399, 164)
 
 [node name="Daves_Radio" type="TextureButton" parent="." unique_id=1257559775]
 layout_mode = 0

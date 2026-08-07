@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://db102bynh42m3"]
 
 [ext_resource type="Script" uid="uid://unfuw8tmkirw" path="res://Scenes/Pins_Interior/pins_lanes.gd" id="1_s5hxh"]
-[ext_resource type="Texture2D" uid="uid://oi02yjo41cjf" path="res://Art/Beta/Places/Pins_Lanes.png" id="2_kk45r"]
+[ext_resource type="Texture2D" uid="uid://tr3iuaoxvjsg" path="res://Art/Beta/Places/Lanes.png" id="2_jmqyw"]
 [ext_resource type="Texture2D" uid="uid://bggwf7khj1gph" path="res://Art/Beta/Characters/Jeff.png" id="3_jmqyw"]
 [ext_resource type="Script" uid="uid://ckbfjtayi1yhs" path="res://Scenes/People/jeff.gd" id="4_0fyld"]
 
@@ -17,7 +17,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_s5hxh")
 
-[node name="Pins_Lanes" type="TextureRect" parent="." unique_id=463076870]
+[node name="Background" type="TextureRect" parent="." unique_id=463076870]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,19 +30,43 @@ offset_right = 750.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_kk45r")
+texture = ExtResource("2_jmqyw")
 
 [node name="To_Pins_Desk" type="Area2D" parent="." unique_id=996095989]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Pins_Desk" unique_id=1424050975]
-polygon = PackedVector2Array(753, -443, -739, -445, -744, 444, -6, -415, 749, 444)
+polygon = PackedVector2Array(-645, -130, -740, -134, -741, 294, -643, 183)
+
+[node name="To_Lockers" type="Area2D" parent="." unique_id=431205433]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lockers" unique_id=265045855]
+position = Vector2(-7, 5)
+polygon = PackedVector2Array(-740, -440, -279, -444, -278, -235, -297, -216, -299, -350, -391, -301, -387, -111, -428, -65, -426, -259, -738, -263)
+
+[node name="Balls" type="Area2D" parent="." unique_id=1850468261]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Balls" unique_id=1796946084]
+polygon = PackedVector2Array(-615, -49, -453, -165, -450, -81, -614, 80)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Balls" unique_id=1125651373]
+polygon = PackedVector2Array(-371, -221, -312, -262, -311, -230, -370, -175)
+
+[node name="Mural" type="Area2D" parent="." unique_id=1536834119]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mural" unique_id=79137579]
+polygon = PackedVector2Array(-283, -439, 739, -439, 739, -260, -284, -263)
+
+[node name="Lanes" type="Area2D" parent="." unique_id=752977573]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lanes" unique_id=1451859038]
+polygon = PackedVector2Array(-741, 303, -248, -259, 26, -259, 737, 11, 738, 438, -739, 438)
 
 [node name="Jeff" type="TextureButton" parent="." unique_id=365614306]
 layout_mode = 0
-offset_left = -226.0
-offset_top = -146.0
-offset_right = 101.0
-offset_bottom = 946.0
+offset_left = 253.0
+offset_top = -184.0
+offset_right = 569.0
+offset_bottom = 1016.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("3_jmqyw")
 script = ExtResource("4_0fyld")

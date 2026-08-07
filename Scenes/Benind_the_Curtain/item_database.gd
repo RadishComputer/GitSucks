@@ -19,6 +19,18 @@ var items = {
 		"description": ".",
 		"value": 0
 	},
+		"acorn": {
+		"name": "Acorn",
+		"type": "toy",
+		"description": ".",
+		"value": 0
+	},
+		"sticker": {
+		"name": "Sticker",
+		"type": "toy",
+		"description": ".",
+		"value": 0
+	},
 	"daves_radio": {
 		"name": "Dave's Radio",
 		"type": "radio",

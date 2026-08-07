@@ -93,6 +93,7 @@ func on_item_used(target: Node, item_id: String):
 		SequenceMachine.run_sequence([
 			"dialog:1496",
 			"action:remove_item:pocket_knife",
+			"action:get_radio",
 			"action:secretly_learn:Rodney_the_Knife",
 			"action:learn:Dave's_Radio_Collected",
 			"note:[center]Got Dave's Radio",
@@ -110,6 +111,10 @@ func on_item_used(target: Node, item_id: String):
 		"dialog:1494",
 		"action:go_back",
 	], self)
+
+
+func get_radio():
+	ItemManager.add_item("daves_radio")
 
 func _gui_input(event):
 	if InputManager.click_release(event):

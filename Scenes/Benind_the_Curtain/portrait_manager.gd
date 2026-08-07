@@ -8,6 +8,8 @@ var current_portrait = ""
 var current_perception = ""
 var current_target_portrait: TextureRect = null
 var previous_speaker = ""
+var dialog_default_y: float = 0.0
+var shop_default_y: float = 0.0
 
 var portraits = {
 	"mom_d": preload("res://Art/Beta/Characters/Susan.png"),
@@ -24,6 +26,7 @@ var portraits = {
 	"sammy_d": preload("res://Art/Beta/Characters/Sammy.png"),
 	"jeff_d": preload("res://Art/Beta/Characters/Jeff.png"),
 	"rodney_d": preload("res://Art/Beta/Characters/Rodney.png"),
+	"rodney_b": preload("res://Art/Beta/Characters/Rodney_Back.png"),
 }
 
 var perceptions = {
@@ -34,6 +37,9 @@ var portrait_bounce_start_time = -1.0
 var portrait_bounce_duration = 0.35
 var portrait_bounce_amplitude = 10.0
 
+func _ready():
+	dialog_default_y = dialog_portrait.position.y
+	shop_default_y = shop_portrait.position.y
 
 func _process(_delta: float):
 	if not GameGlue.SettingsManager.bounce_mode:
@@ -50,7 +56,8 @@ func _process(_delta: float):
 
 	if t > portrait_bounce_duration:
 		portrait_bounce_start_time = -1.0
-		current_target_portrait.position.y = 0
+		var default_y = dialog_default_y if current_target_portrait == dialog_portrait else shop_default_y
+		current_target_portrait.position.y = default_y
 		return
 
 	var progress = t / portrait_bounce_duration
@@ -58,7 +65,8 @@ func _process(_delta: float):
 	var phase = t * 18.0
 
 	var offset = -sin(phase) * decay * portrait_bounce_amplitude
-	current_target_portrait.position.y = offset
+	var default_y = dialog_default_y if current_target_portrait == dialog_portrait else shop_default_y
+	current_target_portrait.position.y = default_y + offset
 
 
 func set_mode(mode: String):
@@ -98,7 +106,6 @@ func clear_portrait():
 
 	portrait_bounce_start_time = -1.0
 
-
 func apply_visuals(name: String, unused = ""):
 	if current_target_portrait == null:
 		set_mode("dialog")
@@ -108,10 +115,13 @@ func apply_visuals(name: String, unused = ""):
 		return
 
 	if portraits.has(name):
-		current_target_portrait.texture = portraits[name]
+		var texture = portraits[name]
+		current_target_portrait.texture = texture
 		current_target_portrait.visible = true
 		perception.visible = false
 		current_portrait = name
+		var default_y = dialog_default_y if current_target_portrait == dialog_portrait else shop_default_y
+		current_target_portrait.position.y = default_y
 		return
 
 	if perceptions.has(name):

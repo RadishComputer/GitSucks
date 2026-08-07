@@ -21,8 +21,9 @@ func _ready():
 	ClockManager.distance_from_church = 5
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
+	ClockManager.update_lights(self)
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
+	ClockManager.church_bell()
 	
 	$Side_Exit.input_event.connect(side_exit_clicked)
 	$Window.input_event.connect(window_clicked)

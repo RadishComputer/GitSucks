@@ -23,14 +23,31 @@ func _ready():
 	ClockManager.update_clock_display()
 	bowling()
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
+	ClockManager.church_bell()
+
+	$Balls.input_event.connect(balls_clicked)
+	$Mural.input_event.connect(mural_clicked)
+	$Lanes.input_event.connect(lanes_clicked)
 
 	$To_Pins_Desk.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Desk.tscn", false))
+	$To_Lockers.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Lockers.tscn", false))
 
 func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
+
+func balls_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1236"], self)
+
+func mural_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1231"], self)
+
+func lanes_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1235"], self)
 
 func bowling():
 	var visible = ClockManager.wheres_jeff()

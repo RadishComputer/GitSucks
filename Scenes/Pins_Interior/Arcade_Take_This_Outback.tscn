@@ -35,3 +35,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Exit" unique_id=929411625]
 polygon = PackedVector2Array(-745, -441, 740, -446, 746, 442, 471, 443, 321, 230, 285, -369, -310, -356, -320, 240, -431, 443, -742, 444)
+
+[node name="Cabinet" type="Area2D" parent="." unique_id=2033224380]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cabinet" unique_id=1394017081]
+polygon = PackedVector2Array(-294, -355, 283, -364, 319, 238, 442, 438, -438, 445, -311, 235)

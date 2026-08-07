@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b085gy5n50xhi"]
 
 [ext_resource type="Texture2D" uid="uid://ch8jvqcrgwpf3" path="res://Art/Beta/TV/TV.png" id="1_laf7e"]
-[ext_resource type="Script" uid="uid://di0yion5kgj" path="res://Scenes/opening.gd" id="1_oofq6"]
+[ext_resource type="Script" uid="uid://di0yion5kgj" path="res://Scenes/Benind_the_Curtain/opening.gd" id="1_oofq6"]
 [ext_resource type="Texture2D" uid="uid://e4wy451eeug5" path="res://Art/Other/RC00.PNG" id="3_oofq6"]
 [ext_resource type="Texture2D" uid="uid://cur8tvhafd3a7" path="res://Art/Other/RC01.PNG" id="4_bc1fc"]
 [ext_resource type="Texture2D" uid="uid://bslta3hk5xk4q" path="res://Art/Other/RC02.PNG" id="5_tiuef"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dac7pldax1adg" path="res://Art/Other/RC13.PNG" id="16_gtjq1"]
 [ext_resource type="Texture2D" uid="uid://2crvkj1torxx" path="res://Art/Other/RC14.PNG" id="17_v0gyp"]
 [ext_resource type="Texture2D" uid="uid://g1v7sqaps4h5" path="res://Art/Other/RC15.PNG" id="18_snfr6"]
+[ext_resource type="Texture2D" uid="uid://b08bggdjh4r5j" path="res://Art/Beta/Items/ScreenAustralia_mono_reversed.png" id="19_dsqys"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qf3e8"]
 animations = [{
@@ -95,8 +96,8 @@ texture = ExtResource("1_laf7e")
 
 [node name="Full" type="Control" parent="TextureRect" unique_id=541630135]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 mouse_filter = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureRect/Full" unique_id=1459023192]
@@ -114,10 +115,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 440.0
-offset_top = 680.0
-offset_right = 1440.0
-offset_bottom = 880.0
+offset_left = -500.0
+offset_top = 200.0
+offset_right = 500.0
+offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -125,3 +126,21 @@ theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 text = "[center]Radish Computer"
 vertical_alignment = 1
+
+[node name="Screen_Australia" type="TextureRect" parent="TextureRect" unique_id=1297244448]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1092.0
+offset_top = -336.0
+offset_right = 1092.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("19_dsqys")

@@ -3,7 +3,7 @@ extends CanvasLayer
 func _ready():
 	$TextureRect/Full/AnimatedSprite2D.animation_finished.connect(ani_fin)
 	$TextureRect/Full/AnimatedSprite2D.play("logo_loop")
-	await get_tree().create_timer(1.4).timeout
+	await get_tree().create_timer(0.5).timeout
 	GameGlue.FXPlayer.stream = preload("res://sounds/RC_Startup.wav")
 	GameGlue.FXPlayer.play()
 
@@ -25,8 +25,18 @@ func fade_to_black():
 	var tween = get_tree().create_tween()
 	full.modulate.a = 1.0
 	tween.tween_property(full, "modulate:a", 0.0, 1.5)
-	tween.finished.connect(opening_fin)
+	tween.tween_callback(Callable(self, "fade_to_aus"))
+
+func fade_to_aus():
+	var sa = $TextureRect/Screen_Australia
+	sa.modulate.a = 0.0
+	sa.show()
+	var tween = get_tree().create_tween()
+	tween.tween_property(sa, "modulate:a", 1.0, 5.0)
+	tween.tween_property(sa, "modulate:a", 0.0, 1.5)
+	tween.tween_callback(Callable(self, "opening_fin"))
 
 func opening_fin():
-	GameGlue.load_scene("res://Scenes/Benind_the_Curtain/Summery.tscn")
+	GameGlue.load_scene("res://Scenes/Benind_the_Curtain/Start_Screen.tscn")
+	#GameGlue.load_scene("res://Scenes/Benind_the_Curtain/Summery.tscn")
 	queue_free()

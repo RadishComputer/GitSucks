@@ -44,7 +44,7 @@ func clicked():
 
 	knock_loop()
 
-func knock_loop():
+func knock_loop():#No answer
 	if KnowledgeManager.secretly_knows("Rodney_Knock"):
 		SequenceMachine.run_sequence([
 			"dialog:1434",
@@ -68,12 +68,12 @@ func home_dialog():
 	if not KnowledgeManager.knows("Got_Daves_Radio"):
 		if ClockManager.rodney_here("evening"):
 			SequenceMachine.run_sequence([
-				"dialog:1483",
+				"dialog:1490",#What do you want no?
 				"action:rodney_arrives",
 			], self)
 		if ClockManager.rodney_here("lunch"):
 			SequenceMachine.run_sequence([
-				"dialog:1454",
+				"dialog:1454",#Buzz off
 			], self)
 		return
 

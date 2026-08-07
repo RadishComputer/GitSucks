@@ -145,24 +145,36 @@ position = Vector2(107, 60)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Caramel" unique_id=412671750]
 position = Vector2(-667, -246)
-polygon = PackedVector2Array(386, -1, 271, -1, 181, 68, 178, 271, 378, 282)
+polygon = PackedVector2Array(386, -1, 271, -1, 181, 68, 183, 226, 377, 226)
+
+[node name="Bush" type="Area2D" parent="." unique_id=831117274]
+process_priority = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bush" unique_id=404709456]
+polygon = PackedVector2Array(-646, 81, -607, 60, -533, 78, -538, 128, -644, 126)
 
 [node name="Neighbors" type="Area2D" parent="." unique_id=62420834]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Neighbors" unique_id=1916935692]
-polygon = PackedVector2Array(-740, -257, -578, -317, -381, -133, -383, 43, -498, 113, -740, 113)
+polygon = PackedVector2Array(-740, -257, -578, -317, -510.07813, -253.56027, -508, -288, -467, -287, -464, -218, -381, -133, -383, 43, -498, 113, -740, 113)
 
 [node name="GPS" type="Area2D" parent="." unique_id=1211976131]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GPS" unique_id=1112533683]
-polygon = PackedVector2Array(39, -303, 522, -295, 562, -148, 551, 136, 294, 136, 296, 18, 230, 16, 228, 137, -9, 128, -4, -168)
+polygon = PackedVector2Array(37, -335, 42, -302, 522, -295, 562, -148, 551, 136, 294, 136, 296, 18, 230, 16, 228, 137, -32, 127, -32, -337)
 
 [node name="Mountains" type="Area2D" parent="." unique_id=2093159846]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mountains" unique_id=1236715522]
-polygon = PackedVector2Array(-304, -242, -201, -260, -143, -233, -77, -244, -33, -234, -33, -195, -289, -190)
+polygon = PackedVector2Array(-296, -260, -35, -262, -31, -191, -98, -257, -151, -194, -289, -190)
 
 [node name="Tree" type="Area2D" parent="." unique_id=2082659895]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tree" unique_id=912353479]
 polygon = PackedVector2Array(572, -292, 742, -400, 744, 147, 700, 139, 663, -93, 572, -144)
+
+[node name="Nature" type="Area2D" parent="." unique_id=285777962]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Nature" unique_id=454182853]
+position = Vector2(2, 1)
+polygon = PackedVector2Array(-741, -439, 739, -441, 738, -404, 570, -300, 43, -307, 40, -339, -38, -339, -42, -269, -300, -264, -376, -136, -465, -292, -579, -326, -743, -265)

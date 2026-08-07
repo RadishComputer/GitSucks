@@ -59,6 +59,12 @@ func end_dialog():
 		"dialog:1836",
 	], self)
 
+func radio_dialog():
+		SequenceMachine.run_sequence([
+		"dialog:1837",
+		"action:go_back",
+	], self)
+
 func intel_dialog():
 	SequenceMachine.run_sequence([
 		"dialog:1834",

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ds1dw7nfarpv2" path="res://Scenes/Pins_Interior/pins_arcade.gd" id="1_ft25k"]
 [ext_resource type="Texture2D" uid="uid://5js3y8cr2at1" path="res://Art/Beta/Places/Arcade.png" id="3_1k14t"]
 [ext_resource type="Script" uid="uid://brvk1roc60jjn" path="res://Scenes/People/rodney_at_arcade.gd" id="3_4mxlw"]
-[ext_resource type="Texture2D" uid="uid://daeh6f5k8s455" path="res://Art/Beta/Characters/Rodney.png" id="3_sx7nx"]
+[ext_resource type="Texture2D" uid="uid://c1h2cumauohgq" path="res://Art/Beta/Characters/Rodney_Back.png" id="3_uh14g"]
 [ext_resource type="Texture2D" uid="uid://dtficy0ddjw7c" path="res://Art/Beta/Items/Daves_Radio.png" id="5_uh14g"]
 [ext_resource type="Script" uid="uid://jg3sosrpabf" path="res://Scenes/Items/daves_radio.gd" id="6_4f0my"]
 
@@ -50,9 +50,9 @@ polygon = PackedVector2Array(534, 116, 718, 114, 713, 382, 532, 387)
 [node name="To_QoE" type="Area2D" parent="." unique_id=160116351]
 position = Vector2(-750, -456)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_QoE" unique_id=188271327]
-position = Vector2(587, 85)
-polygon = PackedVector2Array(251, 190, 187, 198, 170, 222, 195, 308, 239, 351, 237, 440, 315, 427, 310, 328, 274, 289)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_QoE" unique_id=2029371890]
+position = Vector2(282, 184)
+polygon = PackedVector2Array(486, 52, 353, 82, 324, 133, 413, 290, 403, 369, 441, 389, 535, 360, 540, 256, 497, 207, 471, 123, 492, 93)
 
 [node name="To_SS" type="Area2D" parent="." unique_id=1732283622]
 position = Vector2(-750, -456)
@@ -64,9 +64,9 @@ polygon = PackedVector2Array(416, 211, 547, 207, 555, 388, 452, 416, 449, 522, 4
 [node name="To_TTO" type="Area2D" parent="." unique_id=702853033]
 position = Vector2(-750, -456)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_TTO" unique_id=2029371890]
-position = Vector2(282, 184)
-polygon = PackedVector2Array(486, 52, 364, 78, 324, 133, 413, 290, 403, 369, 441, 389, 535, 360, 540, 256, 497, 207, 471, 123, 492, 93)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_TTO" unique_id=113134517]
+position = Vector2(403, 308)
+polygon = PackedVector2Array(131, -77, 216, -72, 225, -34, 193, 9, 285, 166, 269, 296, 148, 331, 3, 302, -30, 13, 9, -29)
 
 [node name="To_TBM" type="Area2D" parent="." unique_id=610748782]
 position = Vector2(-750, -456)
@@ -78,9 +78,9 @@ polygon = PackedVector2Array(184, 82, 317, 57, 238, 152, 270, 423, 49, 445, 53, 
 [node name="To_AA" type="Area2D" parent="." unique_id=786445869]
 position = Vector2(-750, -456)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_AA" unique_id=113134517]
-position = Vector2(403, 308)
-polygon = PackedVector2Array(131, -77, 216, -72, 233, -35, 193, 9, 285, 166, 269, 296, 148, 331, 3, 302, -30, 13, 9, -29)
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="To_AA" unique_id=188271327]
+position = Vector2(587, 85)
+polygon = PackedVector2Array(251, 190, 187, 198, 170, 222, 195, 308, 239, 351, 237, 440, 315, 427, 310, 328, 274, 289)
 
 [node name="Outlets" type="Area2D" parent="." unique_id=1032357973]
 
@@ -90,7 +90,7 @@ polygon = PackedVector2Array(-401, 164, -316, 168, -347, 200, -434, 196)
 [node name="Wall" type="Area2D" parent="." unique_id=1914806595]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall" unique_id=92581522]
-polygon = PackedVector2Array(-741, -441, 742, -440, 743, -199, 575, -288, 391, -286, 352, -250, -620, -247, -629, -7, -687, -7, -739, 100)
+polygon = PackedVector2Array(-741, -441, 741, -439, 740, -202, 575, -288, 391, -286, 352, -250, -620, -247, -629, -7, -687, -7, -739, 100)
 
 [node name="Carpet" type="Area2D" parent="." unique_id=1020257819]
 
@@ -106,12 +106,13 @@ polygon = PackedVector2Array(225, -241, 350, -239, 348, -4, 226, -1)
 y_sort_enabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Toy_Coin" unique_id=1787384418]
-polygon = PackedVector2Array(700, -116, 716, -116, 716, -98, 700, -98)
+position = Vector2(1, 0)
+polygon = PackedVector2Array(700, -116, 721, -116, 721, -98, 700, -98)
 
 [node name="Toy" type="Area2D" parent="." unique_id=419596096]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Toy" unique_id=122762718]
-polygon = PackedVector2Array(597, -197, 723, -199, 722, -97, 597, -96)
+polygon = PackedVector2Array(597, -197, 723, -199, 722, -117, 700, -117, 700, -97, 597, -96)
 
 [node name="Game" type="Area2D" parent="." unique_id=442478603]
 
@@ -123,12 +124,12 @@ polygon = PackedVector2Array(91, -230, 207, -230, 209, -13, 193, 3, 114, -89)
 
 [node name="Rodney_at_Arcade" type="TextureButton" parent="." unique_id=132615593]
 layout_mode = 0
-offset_left = -145.0
-offset_top = -136.0
-offset_right = 189.0
-offset_bottom = 798.0
+offset_left = -207.0
+offset_top = -229.0
+offset_right = 177.0
+offset_bottom = 971.0
 scale = Vector2(0.35, 0.35)
-texture_normal = ExtResource("3_sx7nx")
+texture_normal = ExtResource("3_uh14g")
 script = ExtResource("3_4mxlw")
 
 [node name="Daves_Radio" type="TextureButton" parent="." unique_id=241606419]

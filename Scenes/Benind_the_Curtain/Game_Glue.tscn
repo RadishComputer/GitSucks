@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://bmru535x4sy2" path="res://Art/Beta/Places/Pioneer_At_Caramel_Day.png" id="28_vk0sc"]
 [ext_resource type="Script" uid="uid://b8ujt033fe14p" path="res://Scenes/Benind_the_Curtain/item_manager.gd" id="29_4gvh1"]
 [ext_resource type="Texture2D" uid="uid://dyloxwoqco5aa" path="res://Art/Beta/Places/Meeting_Place_Mask.png" id="29_hce05"]
-[ext_resource type="Script" uid="uid://bp6obe4y8k6uy" path="res://Scenes/Benind_the_Curtain/text_box.gd" id="30_17cka"]
+[ext_resource type="Script" path="res://Scenes/Benind_the_Curtain/text_box.gd" id="30_17cka"]
 [ext_resource type="Texture2D" uid="uid://dlw35i6fvskrc" path="res://Art/Beta/Places/Bear_Room.png" id="31_hiwk0"]
 [ext_resource type="Script" uid="uid://dop4wsngx0xp4" path="res://Scenes/Benind_the_Curtain/bounce_effect.gd" id="32_g2foy"]
 [ext_resource type="AudioStream" uid="uid://bf5pmkvcfov52" path="res://Sounds/Note.wav" id="33_h2xce"]
@@ -153,54 +153,55 @@ process_mode = 3
 layer = 3
 visible = false
 
-[node name="Summer" type="Control" parent="Back/Menu/Window" unique_id=894801081]
-z_index = 5
+[node name="Summer" type="Control" parent="Back/Menu/Window" unique_id=1097421552]
+z_index = 3
+z_as_relative = false
+clip_contents = true
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -932.0
-offset_top = -704.0
-offset_right = -932.0
-offset_bottom = -704.0
+offset_left = -738.0
+offset_top = -438.0
+offset_right = 738.0
+offset_bottom = 438.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("15_0b1rp")
 
-[node name="Summer" type="TextureRect" parent="Back/Menu/Window/Summer" unique_id=1330636431]
+[node name="Summer" type="TextureRect" parent="Back/Menu/Window/Summer" unique_id=1769900934]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 6.0
-offset_top = -10.0
-offset_right = 881.0
-offset_bottom = 1215.0
+offset_left = -688.0
+offset_top = -379.0
+offset_right = -326.0
+offset_bottom = 388.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 texture = ExtResource("16_xo3e3")
 flip_h = true
-metadata/_edit_use_anchors_ = true
 
-[node name="Eye1" type="Sprite2D" parent="Back/Menu/Window/Summer/Summer" unique_id=1996191717]
+[node name="Eye1" type="Sprite2D" parent="Back/Menu/Window/Summer/Summer" unique_id=1515775635]
 z_index = -1
-position = Vector2(441, 476)
+position = Vector2(174, 147.5)
 texture = ExtResource("17_ihlfi")
 flip_h = true
 
-[node name="Eye2" type="Sprite2D" parent="Back/Menu/Window/Summer/Summer" unique_id=1409709579]
+[node name="Eye2" type="Sprite2D" parent="Back/Menu/Window/Summer/Summer" unique_id=691131266]
 z_index = -1
-position = Vector2(512, 474)
+position = Vector2(245, 145.5)
 texture = ExtResource("17_ihlfi")
 flip_h = true
 
-[node name="Dead_Zone" type="Node2D" parent="Back/Menu/Window/Summer" unique_id=1737821287]
-position = Vector2(480, 474)
+[node name="Dead_Zone" type="Node2D" parent="Back/Menu/Window/Summer" unique_id=1412654059]
+position = Vector2(262.5, 202)
 
 [node name="Device" type="TextureRect" parent="Back/Menu/Window" unique_id=565872394]
 process_mode = 3
@@ -1175,10 +1176,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -374.0
-offset_right = 960.0
-offset_bottom = 706.0
+offset_left = -375.0
+offset_top = -540.0
+offset_right = 375.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -1192,9 +1193,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -738.0
-offset_top = -438.0
+offset_top = -540.0
 offset_right = 12.0
-offset_bottom = 642.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -1518,6 +1519,48 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "▶"
 vertical_alignment = 1
+
+[node name="IntroBox" type="Panel" parent="Front/TextBox" unique_id=1803677959]
+process_mode = 3
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -400.0
+offset_right = 700.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"BlackPanel"
+
+[node name="Dialog" type="RichTextLabel" parent="Front/TextBox/IntroBox" unique_id=762964041]
+process_mode = 3
+z_index = 10
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -680.0
+offset_top = -380.0
+offset_right = 680.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"RichTextLabel"
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_fcjjs")]
+visible_characters_behavior = 1
 
 [node name="Front_Blocker" type="TextureRect" parent="Front/TextBox" unique_id=2041091289]
 process_mode = 3

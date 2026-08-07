@@ -67,7 +67,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_wr7jl")
 
-[node name="Light" type="TextureRect" parent="." unique_id=307192985]
+[node name="Street_Light" type="TextureRect" parent="." unique_id=307192985]
 material = SubResource("ShaderMaterial_7cvu7")
 layout_mode = 1
 anchors_preset = 8
@@ -97,12 +97,12 @@ polygon = PackedVector2Array(275, 100, 345, 99, 424, 368, 501, 99, 574, 100, 577
 [node name="Fence" type="Area2D" parent="." unique_id=279329322]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fence" unique_id=1317066657]
-polygon = PackedVector2Array(221, 372, 579, 375, 580, 568, 221, 567)
+polygon = PackedVector2Array(221, 372, 579, 375, 580, 568, 522, 528, 331, 531, 221, 567)
 
 [node name="House" type="Area2D" parent="." unique_id=1006089495]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="House" unique_id=1783901583]
-polygon = PackedVector2Array(582, 230, 628, 172, 1699, 173, 1699, 692, 705, 724, 582, 568)
+polygon = PackedVector2Array(582, 230, 628, 172, 965, 171, 1123, 342, 1470, 381, 1520, 509, 1516, 569, 1380, 646, 1314, 587, 1221, 614, 1152, 590, 1153, 481, 1187, 432, 1225, 436, 1233, 469, 1272, 470, 1292, 431, 1281, 404, 1233, 406, 1224, 433, 1176, 429, 1116, 413, 1099, 458, 1151, 481, 1148, 591, 993, 615, 991, 479, 897, 478, 858, 438, 767, 418, 761, 561, 720, 548, 609, 602, 582, 568)
 
 [node name="Car" type="Area2D" parent="." unique_id=665566476]
 
@@ -118,7 +118,10 @@ polygon = PackedVector2Array(594, 613, 723, 553, 833, 587, 867, 665, 839, 738, 6
 polygon = PackedVector2Array(1072, 618, 1149, 593, 1218, 618, 1313, 590, 1377, 650, 1351, 710, 1078, 720)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Bushes" unique_id=109133092]
-polygon = PackedVector2Array(1419, 632, 1562, 546, 1634, 574, 1673, 633, 1699, 612, 1700, 699, 1421, 705)
+polygon = PackedVector2Array(1625, 571, 1673, 633, 1699, 612, 1700, 699, 1622, 701)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Bushes" unique_id=152636504]
+polygon = PackedVector2Array(1419, 632, 1516, 574, 1498, 703, 1411, 693)
 
 [node name="Fiddle" type="Area2D" parent="." unique_id=1076066243]
 
@@ -138,9 +141,11 @@ polygon = PackedVector2Array(1234, 409, 1278, 406, 1290, 431, 1271, 468, 1234, 4
 [node name="Door" type="Area2D" parent="." unique_id=813532441]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door" unique_id=1055437436]
-polygon = PackedVector2Array(901, 483, 989, 482, 987, 634, 900, 635)
+polygon = PackedVector2Array(901, 483, 989, 482, 992, 633, 1071, 716, 860, 722)
 
 [node name="Tree" type="Area2D" parent="." unique_id=683436184]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tree" unique_id=1357500396]
+process_priority = 1
+process_physics_priority = 1
 polygon = PackedVector2Array(1010, 100, 1700, 99, 1703, 409, 1624, 403, 1617, 750, 1499, 751, 1527, 509, 1467, 364, 1140, 335, 982, 165)

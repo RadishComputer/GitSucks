@@ -21,12 +21,9 @@ func _ready():
 	ClockManager.distance_from_church = 8
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
-	update_time_of_day_shader()
-	update_upstairs_shader()
-	ClockManager.set_front_lamp_default()
+	ClockManager.update_lights(self)
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
-	ClockManager.set_front_lamp_default()
+	ClockManager.church_bell()
 
 	$Back.input_event.connect(exit_clicked.bind("res://Scenes/Winter_House/Upstairs.tscn", false))
 
@@ -35,13 +32,6 @@ func exit_clicked(viewport, event, shape_idx, scene_path: String, advance_time: 
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
 		ClockManager.set_front_lamp_default()
-
-func update_time_of_day_shader():
-	var tint = ClockManager.get_time_of_day_tint()
-	var strength = ClockManager.get_time_of_day_strength()
-
-	$Time_of_Day.material.set_shader_parameter("tint_color", tint)
-	$Time_of_Day.material.set_shader_parameter("strength", strength)
 
 #Lamp Lighting
 

@@ -43,9 +43,7 @@ func _ready():
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
-	update_time_of_day_shader()
-	update_light_shader()
+	ClockManager.church_bell()
 	play_dial_tone()
 
 	print("Phone Booth _ready() - ClockManager.phone_return_path =", ClockManager.phone_return_path)
@@ -103,21 +101,6 @@ func on_exit(viewport, event, shape_idx):
 		stop_all_audio()
 		ClockManager.next_scene_path = return_scene_path
 		ClockManager.switch_scene(return_advance_time)
-
-#Day Lighting
-
-func update_time_of_day_shader():
-	var tint = ClockManager.get_time_of_day_tint()
-	var strength = ClockManager.get_time_of_day_strength()
-
-	$Time_of_Day.material.set_shader_parameter("tint_color", tint)
-	$Time_of_Day.material.set_shader_parameter("strength", strength)
-
-#Lamp Lighting
-
-func update_light_shader():
-	var enabled = KnowledgeManager.secretly_knows("Lamp_On")
-	$Lamp_Light.material.set_shader_parameter("light_enabled", enabled)
 
 #Phone
 

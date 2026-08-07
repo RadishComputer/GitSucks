@@ -23,10 +23,9 @@ func _ready():
 	ClockManager.distance_from_church = 6
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
-	update_time_of_day_shader()
-	update_light_shader()
+	ClockManager.update_lights(self)
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
+	ClockManager.church_bell()
 
 	$Back.input_event.connect(move.bind("res://Scenes/Zone_Residential/Rodneys_House.tscn", true))
 
@@ -46,41 +45,45 @@ func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 
 func fiddle_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		SequenceMachine.run_sequence(["dialog:0000"], self)
+		SequenceMachine.run_sequence(["dialog:1205"], self)
 
 func pothos_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		SequenceMachine.run_sequence(["dialog:0000"], self)
+		SequenceMachine.run_sequence(["dialog:1206"], self)
 
 func boston_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		SequenceMachine.run_sequence(["dialog:0000"], self)
+		SequenceMachine.run_sequence(["dialog:1207"], self)
 
 func mat_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		SequenceMachine.run_sequence(["dialog:0000"], self)
+		SequenceMachine.run_sequence(["dialog:1214"], self)
 
 func bushes_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		SequenceMachine.run_sequence(["dialog:0000"], self)
+		if not KnowledgeManager.secretly_knows("Bush"):
+			SequenceMachine.run_sequence([
+				"dialog:1213",
+				"action:secretly_learn:Bush",
+			], self)
+		else:
+			SequenceMachine.run_sequence([
+				"dialog:1214",
+				"action:secretly_forget:Bush",
+			], self)
 
 func pot_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		SequenceMachine.run_sequence(["dialog:0000"], self)
+		if not KnowledgeManager.secretly_knows("Pot"):
+			SequenceMachine.run_sequence([
+				"dialog:1217",
+				"action:secretly_learn:Pot",
+			], self)
+		else:
+			SequenceMachine.run_sequence([
+				"dialog:1218",
+			], self)
 
 func mailbox_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		SequenceMachine.run_sequence(["dialog:0000"], self)
-
-#Lights
-
-func update_time_of_day_shader():
-	var tint = ClockManager.get_time_of_day_tint()
-	var strength = ClockManager.get_time_of_day_strength()
-
-	$Time_of_Day.material.set_shader_parameter("tint_color", tint)
-	$Time_of_Day.material.set_shader_parameter("strength", strength)
-
-func update_light_shader():
-	var enabled = ClockManager.street_lights()
-	$Light.material.set_shader_parameter("light_enabled", enabled)
+		SequenceMachine.run_sequence(["dialog:1216"], self)

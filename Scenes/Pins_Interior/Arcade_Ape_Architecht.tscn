@@ -36,3 +36,8 @@ position = Vector2(-750, -450)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Exit" unique_id=269009776]
 polygon = PackedVector2Array(8, 10, 1490, 6, 1487, 888, 1200, 885, 1078, 679, 1041, 78, 449, 91, 429, 689, 306, 892, 8, 892)
+
+[node name="Cabinet" type="Area2D" parent="." unique_id=261267783]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cabinet" unique_id=768800572]
+polygon = PackedVector2Array(-294, -355, 283, -364, 319, 238, 442, 438, -438, 445, -311, 235)

@@ -23,7 +23,7 @@ func _ready():
 	ClockManager.update_clock_display()
 	laundry_day()
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
+	ClockManager.church_bell()
 	
 	$To_Lockers.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Lockers.tscn", false))
 

@@ -24,7 +24,7 @@ func _ready():
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
+	ClockManager.church_bell()
 	where_is_rodney()
 
 	KnowledgeManager.knowledge_learned.connect(on_knowledge_learned)
@@ -43,7 +43,6 @@ func _ready():
 	$To_TBM.input_event.connect(move.bind("res://Scenes/Pins_Interior/Arcade_Travlin_Banjo_Man.tscn", false))
 	$To_AA.input_event.connect(move.bind("res://Scenes/Pins_Interior/Arcade_Ape_Architecht.tscn", false))
 
-
 	$Carpet.input_event.connect(carpet_clicked)
 	$Wall.input_event.connect(wall_clicked)
 	$Claw.input_event.connect(claw_clicked)
@@ -54,7 +53,9 @@ func _ready():
 
 func exit_clicked(viewport, event, shape_idx, scene_path, advance_time):
 	if InputManager.click_release(event):
-		if not KnowledgeManager.secretly_knows("Rodney_Confrontation") and KnowledgeManager.knows("Dave's_Radio_Collected"):
+		if not KnowledgeManager.secretly_knows("Rodney_Confrontation")\
+		and KnowledgeManager.secretly_knows("Distract_Rodney")\
+		and KnowledgeManager.knows("Dave's_Radio_Collected"):
 				SequenceMachine.run_sequence([
 					"dialog:1500",
 					"action:secretly_learn:Rodney_Confrontation",
@@ -105,7 +106,7 @@ func toy_coin_clicked(viewport, event, shape_idx):
 			ItemManager.add_item("sticker")
 			SequenceMachine.run_sequence([
 				"dialog:1666",
-				"note:[center]Summer Found A Sticker[/center]",
+				"note:[center]Got A Sticker",
 				"action:learn:Sticker_Collected"
 			], self)
 		else:

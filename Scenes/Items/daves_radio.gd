@@ -32,6 +32,7 @@ func clicked():
 		GameGlue.SequenceMachine.run_sequence([
 			"note:[center]Got Dave's Radio[/center]",
 			"action:learn:Dave's_Radio_Collected",
+			"action:secretly_learn:Distract_Rodney",
 		], self)
 		self.visible = false
 		return

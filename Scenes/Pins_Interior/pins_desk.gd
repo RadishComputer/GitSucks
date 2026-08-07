@@ -24,14 +24,19 @@ func _ready():
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
+	ClockManager.church_bell()
 	max_here()
 
 	$To_Arcade.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Arcade.tscn", false))
 	$To_Lanes.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Lanes.tscn", false))
 	$To_Lockers.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Lockers.tscn", false))
 	$Exit.input_event.connect(move.bind("res://Scenes/Zone_Commecial/Pioneer_At_2nd.tscn", true))
+
 	$Phone.input_event.connect(phone_clicked)
+	$Mural.input_event.connect(mural_clicked)
+	$To_Backroom.input_event.connect(to_backroom_clicked)
+	$For_Sale.input_event.connect(for_sale_clicked)
+	$POS.input_event.connect(POS_clicked)
 
 func go_back():
 	$Max.visible = true
@@ -50,6 +55,22 @@ func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
+
+func mural_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1231"], self)
+
+func to_backroom_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1232"], self)
+
+func for_sale_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1233"], self)
+
+func POS_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1234"], self)
 
 func phone_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):

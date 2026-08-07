@@ -23,12 +23,11 @@ func _ready():
 	ClockManager.distance_from_church = 8
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
-	update_time_of_day_shader()
+	ClockManager.update_lights(self)
+	ClockManager.set_front_lamp_default()
 	update_upstairs_shader()
-	ClockManager.set_front_lamp_default()
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
-	ClockManager.set_front_lamp_default()
+	ClockManager.church_bell()
 
 	$Lamp.input_event.connect(lamp_clicked)
 	$Flower.input_event.connect(flower_clicked)
@@ -36,6 +35,8 @@ func _ready():
 	$Bedroom.input_event.connect(bedroom_clicked)
 	$Window.input_event.connect(window_clicked)
 	$Attic.input_event.connect(attic_clicked)
+	$Rug.input_event.connect(rug_clicked)
+	$Drawers.input_event.connect(drawers_clicked)
 
 	$Bear_Room.input_event.connect(move.bind("res://Scenes/Winter_House/Bear_Room.tscn", false))
 	$Down_Stairs.input_event.connect(move.bind("res://Scenes/Winter_House/Front_Room.tscn", false))
@@ -60,7 +61,7 @@ func drawer_clicked(viewport, event, shape_idx):
 			ItemManager.add_item("little_guy")
 			SequenceMachine.run_sequence([
 				"dialog:1076",
-				"note:[center]Summer Found A Little Guy[/center]",
+				"note:[center]Got A Little Guy[/center]",
 				"action:learn:Little_Guy_Collected"
 			], self)
 		else:
@@ -88,19 +89,29 @@ func attic_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:1056"], self)
 
+func rug_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		if not KnowledgeManager.secretly_knows("Rugalug"):
+			SequenceMachine.run_sequence([
+				"dialog:1047",
+				"action:secretly_learn:Rugalug",
+			], self)
+		else:
+			SequenceMachine.run_sequence([
+				"dialog:1048",
+				"action:secretly_forget:Rugalug",
+			], self)
+
+func drawers_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		SequenceMachine.run_sequence(["dialog:1043"], self)
+
 func move(viewport, event, shape_idx, scene_path, advance_time):
 	if InputManager.click_release(event):
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
 
 		ClockManager.set_front_lamp_default()
-
-func update_time_of_day_shader():
-	var tint = ClockManager.get_time_of_day_tint()
-	var strength = ClockManager.get_time_of_day_strength()
-
-	$Time_of_Day.material.set_shader_parameter("tint_color", tint)
-	$Time_of_Day.material.set_shader_parameter("strength", strength)
 
 #Lamp Lighting
 

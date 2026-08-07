@@ -12,10 +12,20 @@ var hover_time = 0
 var tab_buttons = {}
 var tab_panels = {}
 
+
+
+
 func _ready():
 	setup_tabs()
 	setup_background()
 	$Window/InventoryPanel.slot_created.connect(on_slot_created)
+
+	Input.set_custom_mouse_cursor(
+		load("res://Art/Beta/Items/Cursor_H.png"),
+		Input.CURSOR_HELP,
+	)
+
+	$Background.mouse_default_cursor_shape = Control.CURSOR_HELP
 
 func connect_menu():
 	GameGlue.SettingsManager.apply_text_theme()

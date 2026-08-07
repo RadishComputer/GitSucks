@@ -22,9 +22,23 @@ func _ready():
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
+	ClockManager.church_bell()
 
 	$To_Exit.input_event.connect(on_exit.bind("res://Scenes/Pins_Interior/Pins_Arcade.tscn", false))
+
+	$Cabinet.input_event.connect(cabinet_clicked)
+
+func cabinet_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		if not KnowledgeManager.secretly_knows("Ape"):
+			SequenceMachine.run_sequence([
+				"dialog:1220",
+				"action:secretly_learn:Ape",
+			], self)
+		else:
+			SequenceMachine.run_sequence([
+				"dialog:1221",
+			], self)
 
 func on_exit(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):

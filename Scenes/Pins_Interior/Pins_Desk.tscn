@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dfo8v12rqy586"]
 
 [ext_resource type="Script" uid="uid://bc18q5snsjlex" path="res://Scenes/Pins_Interior/pins_desk.gd" id="1_0dd5t"]
-[ext_resource type="Texture2D" uid="uid://drwptoww87l3p" path="res://Art/Beta/Places/Pins_Desk.png" id="2_8vtge"]
+[ext_resource type="Texture2D" uid="uid://cinsp6u4xdg8x" path="res://Art/Beta/Places/Front_Desk.png" id="2_sl5r3"]
 [ext_resource type="Texture2D" uid="uid://ci8oum36xqmex" path="res://Art/Beta/Characters/Max.png" id="3_741yu"]
 [ext_resource type="Script" uid="uid://bfyhn5gmahoid" path="res://Scenes/People/max.gd" id="4_sl5r3"]
+[ext_resource type="Texture2D" uid="uid://bfa2ib0qgnypy" path="res://Art/Beta/Items/Desk.png" id="5_sl5r3"]
 
 [node name="Pins_Desk" type="Control" unique_id=2079303433]
 layout_mode = 3
@@ -17,7 +18,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_0dd5t")
 
-[node name="Pins_Desk" type="TextureRect" parent="." unique_id=266319797]
+[node name="Background" type="TextureRect" parent="." unique_id=266319797]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,48 +31,79 @@ offset_right = 750.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_8vtge")
+texture = ExtResource("2_sl5r3")
+
+[node name="Max" type="TextureButton" parent="." unique_id=1067815713]
+layout_mode = 0
+offset_left = -108.0
+offset_top = -30.0
+offset_right = 218.0
+offset_bottom = 1170.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("3_741yu")
+script = ExtResource("4_sl5r3")
+
+[node name="Foreground" type="TextureRect" parent="." unique_id=903813703]
+layout_mode = 0
+offset_left = -265.0
+offset_top = 143.0
+offset_right = 255.0
+offset_bottom = 327.0
+texture = ExtResource("5_sl5r3")
 
 [node name="To_Arcade" type="Area2D" parent="." unique_id=1021387530]
 position = Vector2(-750, -450)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Arcade" unique_id=1791392870]
-position = Vector2(891, -12)
-polygon = PackedVector2Array(606, 15, 399, 301, 605, 607)
+position = Vector2(776, 214)
+polygon = PackedVector2Array(714, 302, 399, 301, 424, 680, 712, 676)
 
 [node name="To_Lanes" type="Area2D" parent="." unique_id=175594350]
 position = Vector2(-750, -450)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lanes" unique_id=1129452733]
-position = Vector2(890, 410)
-polygon = PackedVector2Array(410, 190, 608, 189, 608, 491, 410, 489)
+position = Vector2(563, 209)
+polygon = PackedVector2Array(354, 239, 773, 234, 876, 305, 609, 306, 608, 491, 438, 490, 436, 425, 394, 298)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="To_Lanes" unique_id=1172029570]
+polygon = PackedVector2Array(11, 444, 550, 448, 487, 634, 487, 695, 314, 696, 313, 510, 12, 512)
 
 [node name="To_Lockers" type="Area2D" parent="." unique_id=116602976]
 position = Vector2(-750, -450)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lockers" unique_id=1792990505]
 position = Vector2(-34, -10)
-polygon = PackedVector2Array(41, 12, 227, 14, 227, 647, 37, 648)
+polygon = PackedVector2Array(46, 525, 346, 522, 342, 901, 45, 900)
 
 [node name="Exit" type="Area2D" parent="." unique_id=1976137452]
 position = Vector2(-750, -450)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Exit" unique_id=2134903819]
 position = Vector2(784, 528)
-polygon = PackedVector2Array(-776, 373, -784, 262, 505, 243, 509, 371)
+polygon = PackedVector2Array(-301, 361, -250, 277, 132, 274, 168, 360)
 
 [node name="Phone" type="Area2D" parent="." unique_id=2079248342]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Phone" unique_id=1657079083]
-polygon = PackedVector2Array(-752, 203, -575, 203, -572, 283, -752, 316)
+position = Vector2(678, -90)
+polygon = PackedVector2Array(-671, 209, -608, 209, -603, 255, -668, 254)
 
-[node name="Max" type="TextureButton" parent="." unique_id=1067815713]
-visible = false
-layout_mode = 0
-offset_left = -224.0
-offset_top = -224.0
-offset_right = 103.0
-offset_bottom = 817.0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("3_741yu")
-script = ExtResource("4_sl5r3")
+[node name="Mural" type="Area2D" parent="." unique_id=1427345933]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mural" unique_id=1783792283]
+polygon = PackedVector2Array(-739, -126, 593, -127, 591, -11, -739, -8)
+
+[node name="To_Backroom" type="Area2D" parent="." unique_id=1014108467]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Backroom" unique_id=387120394]
+polygon = PackedVector2Array(605, -66, 640, -66, 642, 3, 606, 2)
+
+[node name="For_Sale" type="Area2D" parent="." unique_id=152992171]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="For_Sale" unique_id=88755178]
+polygon = PackedVector2Array(-14, 199, -11, 277, -247, 279, -247, 197)
+
+[node name="POS" type="Area2D" parent="." unique_id=241388428]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="POS" unique_id=1377425904]
+polygon = PackedVector2Array(87, 15, 132, 23, 175, 50, 179, 161, 80, 163, 77, 104)

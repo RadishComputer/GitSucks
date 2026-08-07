@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://btw0qscxm6rog"]
 
 [ext_resource type="Script" uid="uid://cgqm6n0ac1fts" path="res://Scenes/Benind_the_Curtain/locker.gd" id="1_uo871"]
-[ext_resource type="Texture2D" uid="uid://blsbdrhofhh35" path="res://Art/Beta/Places/Background.png" id="2_phkpx"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="2_ie5xs"]
 [ext_resource type="PackedScene" uid="uid://b6o584cj5q612" path="res://Scenes/Benind_the_Curtain/Number_Disk.tscn" id="3_bdfoi"]
+[ext_resource type="Texture2D" uid="uid://0oemjbrkital" path="res://Art/Beta/Places/Locker_Closed.png" id="3_sfaqp"]
 
-[node name="Locker01" type="Control" unique_id=2104065648]
+[node name="Locker05" type="Control" unique_id=2104065648]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -21,7 +22,7 @@ mouse_filter = 1
 script = ExtResource("1_uo871")
 locker_id = "locker_05"
 
-[node name="Background" type="TextureRect" parent="." unique_id=1159896675]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=661958879]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,36 +35,53 @@ offset_right = 750.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_phkpx")
+texture = ExtResource("2_ie5xs")
+expand_mode = 1
 
-[node name="Back" type="Area2D" parent="." unique_id=240155557]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=379937321]
-polygon = PackedVector2Array(217, 95, 1713, 95, 1713, 989, 1582, 203, 355, 209, 215, 987)
-
-[node name="Knob" type="Area2D" parent="." unique_id=247862672]
-position = Vector2(791, 36)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Knob" unique_id=18967799]
-polygon = PackedVector2Array(651, 543, 762, 540, 772, 656, 657, 656)
+[node name="Background" type="TextureRect" parent="." unique_id=1568661876]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_sfaqp")
 
 [node name="Number_Disk1" parent="." unique_id=4267333 instance=ExtResource("3_bdfoi")]
 layout_mode = 1
-offset_left = 353.0
+offset_left = 227.0
 offset_top = 31.0
-offset_right = 385.0
+offset_right = 259.0
 offset_bottom = 159.0
 
-[node name="Number_Disk2" parent="." unique_id=1110473577 instance=ExtResource("3_bdfoi")]
+[node name="Number_Disk2" parent="." unique_id=2080035158 instance=ExtResource("3_bdfoi")]
 layout_mode = 1
-offset_left = 389.0
+offset_left = 263.0
 offset_top = 31.0
-offset_right = 421.0
+offset_right = 295.0
 offset_bottom = 159.0
 
-[node name="Number_Disk3" parent="." unique_id=1264622637 instance=ExtResource("3_bdfoi")]
+[node name="Number_Disk3" parent="." unique_id=1843180337 instance=ExtResource("3_bdfoi")]
 layout_mode = 1
-offset_left = 425.0
+offset_left = 299.0
 offset_top = 31.0
-offset_right = 457.0
+offset_right = 331.0
 offset_bottom = 159.0
+
+[node name="Back" type="Area2D" parent="." unique_id=193662938]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=168734532]
+polygon = PackedVector2Array(217, 95, 1704, 94, 1704, 981, 1526, 980, 1527, 160, 396, 163, 396, 979, 219, 979)
+
+[node name="Knob" type="Area2D" parent="." unique_id=2081644874]
+position = Vector2(791, 36)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Knob" unique_id=36182601]
+position = Vector2(6, 8)
+polygon = PackedVector2Array(533, 598, 546, 569, 576, 552, 610, 569, 621, 602, 609, 631, 579, 643, 546, 630)

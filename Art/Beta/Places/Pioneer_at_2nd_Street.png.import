@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8a65o4d1iw1q"
-path="res://.godot/imported/Desk.png-4f3fdd3ba28021478bb9ac77e539ac73.ctex"
+uid="uid://8y4xhgmblwx0"
+path="res://.godot/imported/Pioneer_at_2nd_Street.png-2dc0e1b86ebd9a6ead08d1c3fc3eaad3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Beta/Places/Desk.png"
-dest_files=["res://.godot/imported/Desk.png-4f3fdd3ba28021478bb9ac77e539ac73.ctex"]
+source_file="res://Art/Beta/Places/Pioneer_at_2nd_Street.png"
+dest_files=["res://.godot/imported/Pioneer_at_2nd_Street.png-2dc0e1b86ebd9a6ead08d1c3fc3eaad3.ctex"]
 
 [params]
 

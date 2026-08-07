@@ -79,9 +79,9 @@ var tv_turn_off_image = preload("res://Art/Beta/TV/TV_Off.png")
 func _ready():
 	is_on = KnowledgeManager.secretly_knows("Front_Room_TV_On")
 	update_tv_image()
-	$"../Dials".input_event.connect(click)
+	$"../Dials".input_event.connect(clicked)
 
-func click(viewport, event, shape_idx):
+func clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		toggle_tv()
 

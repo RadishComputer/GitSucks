@@ -34,7 +34,10 @@ func _ready():
 	$IrisMask.material.set("shader_parameter/center", Vector2(0, 0))
 	$IrisMask.visible = true
 
-	await wait_for_click()
+	await get_tree().create_timer(1.0).timeout
+	GameGlue.TextBox.set_skin("intro")
+	GameGlue.TextBox.show_dialog_text("Three Days Later")
+	await GameGlue.TextBox.dialog_advanced
 
 	#Reveal
 	await iris_open()

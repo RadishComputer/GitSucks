@@ -2,6 +2,8 @@
 
 extends Control
 
+signal dialog_advanced
+
 enum Text_Mode {NONE, DIALOG, CHOICE, NOTE}
 
 @onready var dialog_panel = $DialogBox
@@ -22,6 +24,8 @@ enum Text_Mode {NONE, DIALOG, CHOICE, NOTE}
 @onready var shop_label = $ShopBox/Dialog
 @onready var shop_choices = $ShopBox/Choices
 @onready var shop_choice_arrow = $ShopBox/Choice_Arrow
+@onready var intro_panel = $IntroBox
+@onready var intro_label = $IntroBox/Dialog
 
 var speaker_sounds = {
 	"Summer": preload("res://Sounds/Bep.wav"),
@@ -71,6 +75,7 @@ var letter_pitches = {
 }
 
 var use_shop_skin = false
+var use_intro_skin = false
 
 var active_panel: Control
 var active_label: RichTextLabel
@@ -167,6 +172,7 @@ func hide_everything():
 	dialog_panel.visible = false
 	shop_panel.visible = false
 	note_panel.visible = false
+	intro_panel.visible = false
 	choices_container.visible = false
 	shop_choices.visible = false
 	arrow.visible = false
@@ -178,10 +184,26 @@ func hide_everything():
 	current_highlighted_button = null
 	last_hovered_button = null
 
-func set_skin(is_shop: bool):
-	use_shop_skin = is_shop
+func set_skin(skin_type):
+	var is_shop = false
+	var is_intro = false
 
-	if use_shop_skin:
+	if typeof(skin_type) == TYPE_BOOL:
+		is_shop = skin_type
+	elif typeof(skin_type) == TYPE_STRING:
+		is_shop = (skin_type == "shop")
+		is_intro = (skin_type == "intro")
+
+	use_shop_skin = is_shop
+	use_intro_skin = is_intro
+
+	if use_intro_skin:
+		active_panel = intro_panel
+		active_label = intro_label
+		active_speaker_label = null
+		active_choices_container = null
+		active_choice_arrow = null
+	elif use_shop_skin:
 		active_panel = shop_panel
 		active_label = shop_label
 		active_speaker_label = shop_speaker_label
@@ -201,13 +223,16 @@ func show_dialog_text(text: String, speaker: String = ""):
 	char_times.clear()
 	start_time = Time.get_ticks_msec() / 1000.0
 
-	active_speaker_label.text = speaker
-	if speaker == "Summer":
-		active_label.add_theme_color_override("default_color", Color("#FEA9AC"))
-		active_speaker_label.add_theme_color_override("default_color", Color("#FEA9AC"))
+	if active_speaker_label:
+		active_speaker_label.text = speaker
+		if speaker == "Summer":
+			active_label.add_theme_color_override("default_color", Color("#FEA9AC"))
+			active_speaker_label.add_theme_color_override("default_color", Color("#FEA9AC"))
+		else:
+			active_label.remove_theme_color_override("default_color")
+			active_speaker_label.remove_theme_color_override("default_color")
 	else:
 		active_label.remove_theme_color_override("default_color")
-		active_speaker_label.remove_theme_color_override("default_color")
 
 	if speaker_sounds.has(speaker):
 		type_sound.stream = speaker_sounds[speaker]
@@ -221,12 +246,23 @@ func show_dialog_text(text: String, speaker: String = ""):
 	await typewriter(wrapped)
 
 	waiting_for_input = true
-	if not active_choices_container.visible:
+	if active_choices_container and not active_choices_container.visible:
 		arrow.visible = true
-
+	elif not active_choices_container:
+		arrow.visible = false
 
 func get_wrap_width() -> int:
-	if use_shop_skin:
+	if use_intro_skin:
+		match GameGlue.SettingsManager.text_size:
+			"S":
+				return 100
+			"M":
+				return 90
+			"L":
+				return 70
+			_:
+				return 90
+	elif use_shop_skin:
 		match GameGlue.SettingsManager.text_size:
 			"S":
 				return 50
@@ -243,7 +279,7 @@ func get_wrap_width() -> int:
 			"M":
 				return 90
 			"L":
-				return 71
+				return 70
 			_:
 				return 90
 
@@ -253,7 +289,7 @@ func typewriter(text: String):
 	skip_typewriter = false
 
 	var delay = 0.02
-	if active_speaker_label.text == "Skip the Radio Ghost":
+	if active_speaker_label and active_speaker_label.text == "Skip the Radio Ghost":
 		delay = 0.08
 	
 	var i = 0
@@ -477,12 +513,15 @@ func front_blocker_click(event):
 		
 	match current_mode:
 		Text_Mode.DIALOG:
-			var can_skip = active_speaker_label.text != "Skip the Radio Ghost"
+			var can_skip = active_speaker_label == null or active_speaker_label.text != "Skip the Radio Ghost"
 			if is_typing:
 				if can_skip:
 					skip_typewriter = true
 			elif waiting_for_input:
 				waiting_for_input = false
+				if use_intro_skin:
+					hide_dialog()
+					dialog_advanced.emit()
 				GameGlue.DialogManager.advance_dialog()
 
 		Text_Mode.NOTE:

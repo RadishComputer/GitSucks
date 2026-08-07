@@ -23,10 +23,10 @@ func _ready():
 	ClockManager.distance_from_church = 8
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
-	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
-	update_time_of_day_shader()
+	ClockManager.update_lights(self)
 	update_light_shader()
+	await get_tree().process_frame
+	ClockManager.church_bell()
 
 	$Back.input_event.connect(on_exit.bind("res://Scenes/Winter_House/Bear_Room.tscn", false))
 	$Book.input_event.connect(book_clicked)
@@ -53,15 +53,6 @@ func on_exit(viewport, event, shape_idx, scene_path: String, advance_time: bool)
 		GameGlue.FXPlayer.play()
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
-
-#Day Lighting
-
-func update_time_of_day_shader():
-	var tint = GameGlue.ClockManager.get_time_of_day_tint()
-	var strength = GameGlue.ClockManager.get_time_of_day_strength()
-
-	$Time_of_Day.material.set_shader_parameter("tint_color", tint)
-	$Time_of_Day.material.set_shader_parameter("strength", strength)
 
 #Lamp Lighting
 

@@ -47,15 +47,16 @@ polygon = PackedVector2Array(-703.5, -204.25, -598.5, -273.25, -596.5, 96.75, -7
 
 [node name="Perla" type="TextureButton" parent="." unique_id=917964594]
 layout_mode = 0
-offset_left = -270.0
-offset_top = -251.00003
-offset_right = 24.0
-offset_bottom = 655.0
+offset_left = -292.0
+offset_top = -288.0
+offset_right = 2.0
+offset_bottom = 912.0
 scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("3_xldpu")
 script = ExtResource("4_7doma")
 
 [node name="Time_of_Day" type="TextureRect" parent="." unique_id=1484600904]
+visible = false
 material = SubResource("ShaderMaterial_hkv3a")
 layout_mode = 1
 anchors_preset = 8
@@ -71,3 +72,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_3bt5m")
+
+[node name="Menu" type="Area2D" parent="." unique_id=1297153433]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Menu" unique_id=362134123]
+polygon = PackedVector2Array(-444, -312, -326, -306, -324, -111, -444, -97)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Menu" unique_id=1362319459]
+polygon = PackedVector2Array(147, -306, 274, -304, 276, -102, 144, -111)
+
+[node name="Tables" type="Area2D" parent="." unique_id=339217353]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tables" unique_id=1775351779]
+polygon = PackedVector2Array(-485, 230, 277, 229, 425, 439, -630, 442)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Tables" unique_id=877026626]
+polygon = PackedVector2Array(561, 189, 738, 188, 739, 440, 542, 246)

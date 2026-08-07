@@ -183,3 +183,13 @@ polygon = PackedVector2Array(276, 41, 303, 44, 312, 99, 302, 137, 273, 131, 263,
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dad" unique_id=567860063]
 polygon = PackedVector2Array(366, 84, 469, 108, 477, 303, 372, 264)
+
+[node name="Rug" type="Area2D" parent="." unique_id=1600358182]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rug" unique_id=339789659]
+polygon = PackedVector2Array(-216, 145, -56, 148, -72, 437, -544, 435)
+
+[node name="Drawers" type="Area2D" parent="." unique_id=1133604930]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Drawers" unique_id=1642060750]
+polygon = PackedVector2Array(-175, 38, 159, 40, 161, 123, -178, 124)

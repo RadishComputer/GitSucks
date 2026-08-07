@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://i4rn7ytle6dt"]
 
 [ext_resource type="Script" uid="uid://o4mtrttm6b4p" path="res://Scenes/Pins_Interior/Lockers/locker_18_Evie.gd" id="1_d5w5a"]
-[ext_resource type="Texture2D" uid="uid://blsbdrhofhh35" path="res://Art/Beta/Places/Background.png" id="1_yj2vt"]
+[ext_resource type="Texture2D" uid="uid://ct8kf40r5gffk" path="res://Art/Beta/Places/Locker_Open.png" id="2_d5w5a"]
 
 [node name="Locker_18i" type="Control" unique_id=1945158808]
 layout_mode = 3
@@ -19,7 +19,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_d5w5a")
 
-[node name="Background" type="TextureRect" parent="." unique_id=1080782613]
+[node name="Background" type="TextureRect" parent="." unique_id=820644237]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,14 +32,14 @@ offset_right = 750.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_yj2vt")
+texture = ExtResource("2_d5w5a")
 
-[node name="Door" type="Area2D" parent="." unique_id=1780776266]
+[node name="Door" type="Area2D" parent="." unique_id=1974701116]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door" unique_id=168558715]
-polygon = PackedVector2Array(211, 95, 485, 328, 485, 821, 211, 987)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door" unique_id=294278432]
+polygon = PackedVector2Array(217, 96, 394, 167, 398, 909, 218, 985)
 
-[node name="Back" type="Area2D" parent="." unique_id=1202641697]
+[node name="Back" type="Area2D" parent="." unique_id=761877671]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=1741503462]
-polygon = PackedVector2Array(213, 93, 1713, 92, 1709, 988, 217, 988, 312, 934, 1652, 934, 1661, 142, 271, 136)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=1919725627]
+polygon = PackedVector2Array(247, 95, 1701, 97, 1701, 978, 289, 982, 401, 910, 1527, 914, 1527, 164, 399, 164)

@@ -24,9 +24,9 @@ func _ready():
 	ClockManager.distance_from_church = 6
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
-	update_time_of_day_shader()
+	ClockManager.update_lights(self)
 	await get_tree().process_frame
-	ClockManager.check_and_play_chime()
+	ClockManager.church_bell()
 
 	$Back.input_event.connect(on_exit.bind("res://Scenes/Zone_Residential/Pioneer_At_Caramel.tscn", true))
 	$Number.input_event.connect(number_clicked)
@@ -67,13 +67,3 @@ func number_clicked(viewport, event, shape_idx):
 		SequenceMachine.run_sequence([
 			"dialog:1110"
 		], self)
-
-
-#Lights
-
-func update_time_of_day_shader():
-	var tint = ClockManager.get_time_of_day_tint()
-	var strength = ClockManager.get_time_of_day_strength()
-
-	$Time_of_Day.material.set_shader_parameter("tint_color", tint)
-	$Time_of_Day.material.set_shader_parameter("strength", strength)

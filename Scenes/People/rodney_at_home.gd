@@ -1,5 +1,3 @@
-#Rodneys Door Object
-
 extends TextureButton
 
 @onready var PhoneAudio = GameGlue.PhoneAudio
@@ -26,21 +24,17 @@ func go_back():
 	self.visible = true
 	Bouncer.bounce(self)
 
-func clicked():
+func clicked(viewport, event, shape_idx):
 	self.visible = false
 	if not KnowledgeManager.knows("Got_Daves_Radio"):
 		SequenceMachine.run_sequence([
-			"dialog:1345", #This is the only change in the dialog tree in the evening
+			"dialog:1490",#What do you want now?
 			"action:go_back",
-		], self)
-	elif not KnowledgeManager.secretly_knows("Show_Off"):
-		SequenceMachine.run_sequence([
-			"dialog:1777",
-			"action:secretly_learn:Show_Off",
 		], self)
 	else:
 		SequenceMachine.run_sequence([
-			"dialog:1072",
+			"dialog:1460",
+			"action:secretly_learn:Show_Off",
 		], self)
 
 func on_item_used(target: Node, item_id: String):
@@ -53,19 +47,25 @@ func on_item_used(target: Node, item_id: String):
 
 	if name == "Pocket Knife":
 		SequenceMachine.run_sequence([
-			"dialog:1",
+			"dialog:1496",
 			"action:remove_item:pocket_knife",
+			"action:get_radio",
 			"action:secretly_learn:Rodney_the_Knife",
+			"action:learn:Dave's_Radio_Collected",
+			"note:[center]Got Dave's Radio",
 		], self)
 		return
 
 	if name == "Dave's Radio":
 		SequenceMachine.run_sequence([
-			"dialog:2",
+			"dialog:1498",
 		], self)
 		return
 
 	SequenceMachine.run_sequence([
-		"dialog:3",
+		"dialog:1494",
 		"action:go_back",
 	], self)
+
+func get_radio():
+	ItemManager.add_item("daves_radio")
