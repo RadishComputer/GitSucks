@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://3jntocc6u7qv" path="res://Art/Beta/Places/Pioneer_at_2nd.png" id="2_lhj0y"]
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_dbsa7"]
 [ext_resource type="Texture2D" uid="uid://bxx2e5wsfcvnu" path="res://Art/Beta/Places/Pioneer_at_2nd_Mask.png" id="4_86k4s"]
-[ext_resource type="Shader" uid="uid://b4xcybhttn4fb" path="res://Elements/outdoors.gdshader" id="5_re0f5"]
+[ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="5_re0f5"]
 [ext_resource type="Texture2D" uid="uid://d4c1sd21xlsvv" path="res://Art/Beta/Places/Pioneer_at_2nd_M_Light.png" id="6_rxm22"]
 [ext_resource type="Texture2D" uid="uid://kfh3datlygk0" path="res://Art/Beta/Places/Pioneer_at_2nd_P_Light.png" id="7_rg5qk"]
 [ext_resource type="Texture2D" uid="uid://dsc5rty56vtox" path="res://Art/Beta/Places/Pioneer_at_2nd_BF_Light.png" id="8_hpqpc"]
-[ext_resource type="Texture2D" uid="uid://8y4xhgmblwx0" path="res://Art/Beta/Places/Pioneer_at_2nd_Street.png" id="9_re0f5"]
+[ext_resource type="Texture2D" uid="uid://8y4xhgmblwx0" path="res://Art/Beta/Places/Pioneer_at_2nd_House_Light.png" id="9_re0f5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xmo0j"]
 shader = ExtResource("3_dbsa7")
@@ -17,33 +17,41 @@ shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o251f"]
 shader = ExtResource("5_re0f5")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("6_rxm22")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ydnu6"]
 shader = ExtResource("5_re0f5")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 0
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("7_rg5qk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h7ulj"]
 shader = ExtResource("5_re0f5")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 0
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("8_hpqpc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxm22"]
 shader = ExtResource("5_re0f5")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("9_re0f5")
 
 [node name="Pioneer_At_2nd" type="Control" unique_id=997496562]
@@ -90,6 +98,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_86k4s")
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Time_of_Day" unique_id=398413436]
+copy_mode = 2
+
 [node name="M_Light" type="TextureRect" parent="." unique_id=439539934]
 material = SubResource("ShaderMaterial_o251f")
 layout_mode = 1
@@ -106,6 +117,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_rxm22")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="M_Light" unique_id=278127937]
+copy_mode = 2
 
 [node name="P_Light" type="TextureRect" parent="." unique_id=551911209]
 material = SubResource("ShaderMaterial_ydnu6")
@@ -124,6 +138,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("7_rg5qk")
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="P_Light" unique_id=1777624350]
+copy_mode = 2
+
 [node name="BF_Light" type="TextureRect" parent="." unique_id=32529721]
 material = SubResource("ShaderMaterial_h7ulj")
 layout_mode = 1
@@ -141,6 +158,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("8_hpqpc")
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="BF_Light" unique_id=674938271]
+copy_mode = 2
+
 [node name="House_Light" type="TextureRect" parent="." unique_id=1062093293]
 material = SubResource("ShaderMaterial_rxm22")
 layout_mode = 1
@@ -157,6 +177,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("9_re0f5")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="House_Light" unique_id=1372712200]
+copy_mode = 2
 
 [node name="To_Pins" type="Area2D" parent="." unique_id=1455226807]
 

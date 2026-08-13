@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dj2wrvse5n32y"]
+
+[node name="Chloe" type="Control" unique_id=119585489]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

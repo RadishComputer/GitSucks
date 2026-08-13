@@ -36,6 +36,7 @@ window/size/viewport_height=1080
 window/size/initial_position_type=0
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/handheld/orientation=6
 mouse_cursor/custom_image="uid://dsvklcycssjg4"
 
 [global_group]
@@ -59,7 +60,6 @@ click={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 anti_aliasing/screen_space_roughness_limiter/enabled=false

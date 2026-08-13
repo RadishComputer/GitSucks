@@ -7,19 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://daeh6f5k8s455" path="res://Art/Beta/Characters/Rodney.png" id="3_q0ll8"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_7spce"]
 [ext_resource type="Script" uid="uid://c5jw5gekbnimj" path="res://Scenes/People/rodney_at_home.gd" id="4_hm0yl"]
-[ext_resource type="Shader" uid="uid://b4xcybhttn4fb" path="res://Elements/outdoors.gdshader" id="5_15u5b"]
 [ext_resource type="Texture2D" uid="uid://baha6w2l5ea2j" path="res://Art/Beta/Places/Rodney_Door_Light.png" id="6_fj2v0"]
+[ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="8_q0ll8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qy6u1"]
 shader = ExtResource("3_bmd4r")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7yp0"]
-shader = ExtResource("5_15u5b")
+shader = ExtResource("8_q0ll8")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("6_fj2v0")
 
 [node name="Rodneys_Door" type="Control" unique_id=555367797]
@@ -138,7 +140,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_7spce")
 
-[node name="Street_Light" type="TextureRect" parent="." unique_id=780585797]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Time_of_Day" unique_id=1299937102]
+copy_mode = 2
+
+[node name="House_Light" type="TextureRect" parent="." unique_id=780585797]
 material = SubResource("ShaderMaterial_g7yp0")
 layout_mode = 1
 anchors_preset = 8
@@ -154,3 +159,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_fj2v0")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="House_Light" unique_id=1409374226]
+copy_mode = 2

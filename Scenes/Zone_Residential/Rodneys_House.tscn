@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1q5novnstiwk" path="res://Art/Beta/Places/Rodney_House.png" id="2_35nvi"]
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_c1u7p"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_wr7jl"]
-[ext_resource type="Shader" uid="uid://b4xcybhttn4fb" path="res://Elements/outdoors.gdshader" id="5_xwpvk"]
+[ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="5_25b3w"]
 [ext_resource type="Texture2D" uid="uid://dt03i6hlwu3my" path="res://Art/Beta/Places/Rodney_House_Light.png" id="6_251pc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8vr5"]
@@ -12,11 +12,13 @@ shader = ExtResource("3_c1u7p")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cvu7"]
-shader = ExtResource("5_xwpvk")
+shader = ExtResource("5_25b3w")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("6_251pc")
 
 [node name="Rodneys_House" type="Control" unique_id=646087369]
@@ -67,7 +69,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_wr7jl")
 
-[node name="Street_Light" type="TextureRect" parent="." unique_id=307192985]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Time_of_Day" unique_id=321527966]
+copy_mode = 2
+
+[node name="House_Light" type="TextureRect" parent="." unique_id=307192985]
 material = SubResource("ShaderMaterial_7cvu7")
 layout_mode = 1
 anchors_preset = 8
@@ -83,6 +88,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_251pc")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="House_Light" unique_id=430117677]
+copy_mode = 2
 
 [node name="To_Pioneer" type="Area2D" parent="." unique_id=648676362]
 

@@ -56,7 +56,12 @@ func run_next_step():
 
 
 		if parts.size() > 2:
-			var arg = parts[2]
+			var arg = ""
+			for i in range(2, parts.size()):
+				if i > 2:
+					arg += ":"
+				arg += parts[i]
+
 
 			match action_name:
 				"learn":
@@ -72,6 +77,12 @@ func run_next_step():
 				"remove_item":
 					GameGlue.ItemManager.remove_item(arg)
 					GameGlue.ItemManager.update_cursor_icon()
+				"advance_scene":
+					GameGlue.ClockManager.next_scene_path = arg
+					GameGlue.ClockManager.switch_scene(true)
+				"switch_scene":
+					GameGlue.ClockManager.next_scene_path = arg
+					GameGlue.ClockManager.switch_scene(false)
 				_:
 					if action_target != null and action_target.has_method(action_name):
 						action_target.call(action_name, arg)

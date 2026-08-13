@@ -4,17 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://by3tcb6y4few4" path="res://Art/Beta/Places/Art_Couple.png" id="2_aabvr"]
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_fgqwy"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_7wodl"]
-[ext_resource type="Shader" uid="uid://5t5yoleuvy1f" path="res://Elements/dim_lamp.gdshader" id="5_fi5v0"]
+[ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="5_iiyog"]
+[ext_resource type="Texture2D" uid="uid://ctit5x5eyoywf" path="res://Art/Beta/Places/Upstairs_Art_Light.png" id="6_k4esb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_is74f"]
 shader = ExtResource("3_fgqwy")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7oosx"]
-shader = ExtResource("5_fi5v0")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tg6xo"]
+shader = ExtResource("5_iiyog")
 shader_parameter/light_enabled = false
-shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
-shader_parameter/light_strength = 1.0
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
+shader_parameter/strength = 1.0
+shader_parameter/light_mask = ExtResource("6_k4esb")
 
 [node name="Art_Couple" type="Control" unique_id=299144112]
 layout_mode = 3
@@ -60,22 +65,28 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_7wodl")
 
-[node name="Lamp_Light" type="TextureRect" parent="." unique_id=747531339]
-material = SubResource("ShaderMaterial_7oosx")
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Time_of_Day" unique_id=54944577]
+copy_mode = 2
+
+[node name="Lamp_Light" type="TextureRect" parent="." unique_id=260049715]
+material = SubResource("ShaderMaterial_tg6xo")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_7wodl")
+texture = ExtResource("6_k4esb")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Lamp_Light" unique_id=722020877]
+copy_mode = 2
 
 [node name="Art" type="Area2D" parent="." unique_id=731121008]
 

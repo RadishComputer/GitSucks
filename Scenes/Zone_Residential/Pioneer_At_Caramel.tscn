@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://d3c82b04rhomw" path="res://Scenes/People/wes.gd" id="12_0wscs"]
 [ext_resource type="Texture2D" uid="uid://jm3sekficnxb" path="res://Art/Beta/Characters/Dave.png" id="13_1k2qp"]
 [ext_resource type="Script" uid="uid://ci53nkwwwcc60" path="res://Scenes/People/dave.gd" id="14_ysibw"]
-[ext_resource type="Shader" uid="uid://b4xcybhttn4fb" path="res://Elements/outdoors.gdshader" id="17_58nep"]
+[ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="17_2vup7"]
 [ext_resource type="Texture2D" uid="uid://b2t388xitcv3q" path="res://Art/Beta/Places/Pioneer_at_Caramel_Light.png" id="18_5qu1n"]
 [ext_resource type="Texture2D" uid="uid://clhpxdsb6moey" path="res://Art/Beta/Places/Pioneer_at_Caramel_Street.png" id="19_mlg70"]
 
@@ -25,19 +25,23 @@ shader = ExtResource("9_18das")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_48vwo"]
-shader = ExtResource("17_58nep")
+shader = ExtResource("17_2vup7")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("18_5qu1n")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5r62j"]
-shader = ExtResource("17_58nep")
+shader = ExtResource("17_2vup7")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("19_mlg70")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yynlu"]
@@ -147,6 +151,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("10_3qtjb")
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Time_of_Day" unique_id=1179999863]
+copy_mode = 2
+
 [node name="House_Light" type="TextureRect" parent="." unique_id=1887105898]
 material = SubResource("ShaderMaterial_48vwo")
 layout_mode = 1
@@ -164,6 +171,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("18_5qu1n")
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="House_Light" unique_id=1303815341]
+copy_mode = 2
+
 [node name="Street_Light" type="TextureRect" parent="." unique_id=485502711]
 material = SubResource("ShaderMaterial_5r62j")
 layout_mode = 1
@@ -180,6 +190,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("19_mlg70")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Street_Light" unique_id=504131916]
+copy_mode = 2
 
 [node name="To_Riverside" type="Area2D" parent="." unique_id=2079038859]
 position = Vector2(-742, -451)

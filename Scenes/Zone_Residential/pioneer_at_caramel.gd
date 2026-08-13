@@ -63,7 +63,7 @@ func grass_clicked(viewport, event, shape_idx):
 			GameGlue.ItemManager.add_item("acorn")
 			GameGlue.SequenceMachine.run_sequence([
 				"note:[center]Got An Acorn",
-				"action:learn:Acorn_Collected"
+				"action:learn:Acorn_Collected",
 			], self)
 
 

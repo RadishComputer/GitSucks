@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dki5q4s30bcc3" path="res://Art/Beta/Places/Upstairs.png" id="2_vnfmh"]
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_n7yg8"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_io0k5"]
-[ext_resource type="Shader" uid="uid://5t5yoleuvy1f" path="res://Elements/dim_lamp.gdshader" id="5_ja6an"]
+[ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="5_tuxuh"]
 [ext_resource type="Texture2D" uid="uid://dninqi0akguau" path="res://Art/Beta/Places/Upstairs_Light.png" id="6_dqo81"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j8ptw"]
@@ -12,10 +12,13 @@ shader = ExtResource("3_n7yg8")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3k8p5"]
-shader = ExtResource("5_ja6an")
+shader = ExtResource("5_tuxuh")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
-shader_parameter/light_strength = 1.0
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
+shader_parameter/strength = 1.0
 shader_parameter/light_mask = ExtResource("6_dqo81")
 
 [node name="Upstairs" type="Control" unique_id=1418775700]
@@ -62,7 +65,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_io0k5")
 
-[node name="Lamp_Light" type="TextureRect" parent="." unique_id=441267680]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Time_of_Day" unique_id=1355913913]
+copy_mode = 2
+
+[node name="Upstairs_Lamp" type="TextureRect" parent="." unique_id=441267680]
 material = SubResource("ShaderMaterial_3k8p5")
 layout_mode = 1
 anchors_preset = 8
@@ -78,6 +84,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_dqo81")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Upstairs_Lamp" unique_id=972121549]
+copy_mode = 2
 
 [node name="Bear_Room" type="Area2D" parent="." unique_id=1835751012]
 

@@ -1,20 +1,25 @@
 [gd_scene format=3 uid="uid://jy17mybtkxb4"]
 
-[ext_resource type="Script" uid="uid://dsdyobo5dq2ne" path="res://Scripts/art_abstract.gd" id="1_4i156"]
+[ext_resource type="Script" uid="uid://dsdyobo5dq2ne" path="res://Scenes/Winter_House/Art/art_abstract.gd" id="1_4i156"]
 [ext_resource type="Texture2D" uid="uid://shd1d8wcpnq4" path="res://Art/Beta/Places/Art_Abstract.png" id="2_0cun0"]
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_cj11d"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_83mp1"]
-[ext_resource type="Shader" uid="uid://5t5yoleuvy1f" path="res://Elements/dim_lamp.gdshader" id="5_fw7ah"]
+[ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="5_hxkix"]
+[ext_resource type="Texture2D" uid="uid://ctit5x5eyoywf" path="res://Art/Beta/Places/Upstairs_Art_Light.png" id="6_5midy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7p5fx"]
 shader = ExtResource("3_cj11d")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h013y"]
-shader = ExtResource("5_fw7ah")
+shader = ExtResource("5_hxkix")
 shader_parameter/light_enabled = false
-shader_parameter/light_color = Color(1, 0.97, 0.92, 1)
-shader_parameter/light_strength = 1.0
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
+shader_parameter/strength = 1.0
+shader_parameter/light_mask = ExtResource("6_5midy")
 
 [node name="Art_Abstract" type="Control" unique_id=1799485291]
 layout_mode = 3
@@ -44,6 +49,7 @@ grow_vertical = 2
 texture = ExtResource("2_0cun0")
 
 [node name="Time_of_Day" type="TextureRect" parent="." unique_id=1086223207]
+visible = false
 material = SubResource("ShaderMaterial_7p5fx")
 layout_mode = 1
 anchors_preset = 8
@@ -60,6 +66,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_83mp1")
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Time_of_Day" unique_id=1147028379]
+copy_mode = 2
+
 [node name="Lamp_Light" type="TextureRect" parent="." unique_id=1659943484]
 material = SubResource("ShaderMaterial_h013y")
 layout_mode = 1
@@ -68,21 +77,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_83mp1")
+texture = ExtResource("6_5midy")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Lamp_Light" unique_id=1957951625]
+copy_mode = 2
 
 [node name="Art" type="Area2D" parent="." unique_id=77557908]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Art" unique_id=886822527]
 polygon = PackedVector2Array(-260, -362, 261, -358, 260, 364, -267, 367)
 
 [node name="Back" type="Area2D" parent="." unique_id=1333467901]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=550943298]
 polygon = PackedVector2Array(-743, -442, 740, -440, 739, 438, 266, 438, 268, -372, -272, -368, -270, 442, -742, 438)

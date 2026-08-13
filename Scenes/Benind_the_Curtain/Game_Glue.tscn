@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://brqpcoo5a4wf4" path="res://Scenes/Benind_the_Curtain/records_panel.gd" id="23_wb44v"]
 [ext_resource type="Script" uid="uid://dx16f1wda1oc0" path="res://Scenes/Benind_the_Curtain/phone_panel.gd" id="24_ecsl5"]
 [ext_resource type="Script" uid="uid://dpjj2mvaapj22" path="res://Scenes/Benind_the_Curtain/options.gd" id="25_a18bi"]
+[ext_resource type="Script" uid="uid://r2xcbm27k31j" path="res://Scenes/Benind_the_Curtain/cats_panel.gd" id="25_pmkm1"]
 [ext_resource type="Shader" uid="uid://b4tkqp25wmbj7" path="res://Elements/overlay.gdshader" id="26_f6bg7"]
 [ext_resource type="Script" uid="uid://chtq0sv370na3" path="res://Scenes/Benind_the_Curtain/test.gd" id="27_pmkm1"]
 [ext_resource type="Script" uid="uid://b17hdk3fjinoo" path="res://Scenes/Benind_the_Curtain/input_manager.gd" id="27_vkrfo"]
@@ -700,6 +701,7 @@ offset_right = 367.0
 offset_bottom = 311.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("25_pmkm1")
 
 [node name="GridContainer" type="GridContainer" parent="Back/Menu/Window/CatsPanel" unique_id=470738104]
 process_mode = 3

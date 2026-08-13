@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dy7lc2s088xvv"]
+
+[node name="Spock" type="Control" unique_id=1621828222]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

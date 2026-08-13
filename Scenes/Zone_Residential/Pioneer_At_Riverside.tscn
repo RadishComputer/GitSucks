@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://62p4ycj26nyu" path="res://Art/Beta/Places/Pioneer_at_Riverside.png" id="2_sqgc4"]
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_4qxk5"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_pog73"]
-[ext_resource type="Shader" uid="uid://b4xcybhttn4fb" path="res://Elements/outdoors.gdshader" id="5_y38nx"]
+[ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="5_a0uk1"]
 [ext_resource type="Texture2D" uid="uid://bqk2tpst56kkk" path="res://Art/Beta/Places/Pioneer_at_Riverside_Light.png" id="6_dx4t7"]
 [ext_resource type="Texture2D" uid="uid://38p5sy4xpv5n" path="res://Art/Beta/Places/Pioneer_at_Riverside_Street.png" id="7_2j82l"]
 [ext_resource type="Texture2D" uid="uid://de0q32nk02uo4" path="res://Art/Beta/Places/Pioneer_at_Riverside_Upstairs.png" id="8_k7v3t"]
@@ -14,27 +14,33 @@ shader = ExtResource("3_4qxk5")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lpjtf"]
-shader = ExtResource("5_y38nx")
+shader = ExtResource("5_a0uk1")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("6_dx4t7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r3b3g"]
-shader = ExtResource("5_y38nx")
+shader = ExtResource("5_a0uk1")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("8_k7v3t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o7knq"]
-shader = ExtResource("5_y38nx")
+shader = ExtResource("5_a0uk1")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.92, 0, 1)
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
 shader_parameter/strength = 1.0
-shader_parameter/tint_intensity = 1.0
 shader_parameter/light_mask = ExtResource("7_2j82l")
 
 [node name="Pioneer_At_Riverside" type="Control" unique_id=737838613]
@@ -81,7 +87,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_pog73")
 
-[node name="Light" type="TextureRect" parent="." unique_id=2092556288]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Time_of_Day" unique_id=1925203575]
+copy_mode = 2
+
+[node name="Front_Light" type="TextureRect" parent="." unique_id=2092556288]
 material = SubResource("ShaderMaterial_lpjtf")
 layout_mode = 1
 anchors_preset = 8
@@ -98,7 +107,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_dx4t7")
 
-[node name="Upstairs" type="TextureRect" parent="." unique_id=638428825]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Front_Light" unique_id=872626563]
+copy_mode = 2
+
+[node name="Upstairs_Lamp" type="TextureRect" parent="." unique_id=638428825]
 modulate = Color(1, 1, 1, 0.222)
 material = SubResource("ShaderMaterial_r3b3g")
 layout_mode = 1
@@ -116,7 +128,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("8_k7v3t")
 
-[node name="Street_Lights" type="TextureRect" parent="." unique_id=105023183]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Upstairs_Lamp" unique_id=653336745]
+copy_mode = 2
+
+[node name="Street_Light" type="TextureRect" parent="." unique_id=105023183]
 material = SubResource("ShaderMaterial_o7knq")
 layout_mode = 1
 anchors_preset = 8
@@ -133,6 +148,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("7_2j82l")
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Street_Light" unique_id=429395782]
+copy_mode = 2
+
 [node name="Door" type="Area2D" parent="." unique_id=1742161462]
 position = Vector2(107, 60)
 
@@ -148,7 +166,6 @@ position = Vector2(-667, -246)
 polygon = PackedVector2Array(386, -1, 271, -1, 181, 68, 183, 226, 377, 226)
 
 [node name="Bush" type="Area2D" parent="." unique_id=831117274]
-process_priority = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bush" unique_id=404709456]
 polygon = PackedVector2Array(-646, 81, -607, 60, -533, 78, -538, 128, -644, 126)
@@ -156,7 +173,7 @@ polygon = PackedVector2Array(-646, 81, -607, 60, -533, 78, -538, 128, -644, 126)
 [node name="Neighbors" type="Area2D" parent="." unique_id=62420834]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Neighbors" unique_id=1916935692]
-polygon = PackedVector2Array(-740, -257, -578, -317, -510.07813, -253.56027, -508, -288, -467, -287, -464, -218, -381, -133, -383, 43, -498, 113, -740, 113)
+polygon = PackedVector2Array(-740, -257, -578, -317, -510.07813, -253.56027, -508, -288, -467, -287, -464, -218, -381, -133, -383, 43, -498, 113, -535, 113, -532, 77, -607, 59, -647, 80, -646, 113, -740, 113)
 
 [node name="GPS" type="Area2D" parent="." unique_id=1211976131]
 

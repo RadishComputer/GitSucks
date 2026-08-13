@@ -1,3 +1,5 @@
+#Pioneer at Riverside
+
 extends Control
 
 @onready var PhoneAudio = GameGlue.PhoneAudio
@@ -21,10 +23,10 @@ func _ready():
 	ClockManager.distance_from_church = 7
 	ClockManager.update_chime_volume()
 	ClockManager.update_clock_display()
-	ClockManager.update_lights(self)
-	update_upstairs_shader()
 	await get_tree().process_frame
 	ClockManager.church_bell()
+	ClockManager.update_lights(self)
+	update_upstairs_shader()
 
 	$Door.input_event.connect(move.bind("res://Scenes/Winter_House/Front_Room.tscn", false))
 	$To_Caramel.input_event.connect(move.bind("res://Scenes/Zone_Residential/Pioneer_At_Caramel.tscn", true))
@@ -44,7 +46,10 @@ func move(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 
 func neighbors_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		SequenceMachine.run_sequence(["dialog:1086"], self)
+		if KnowledgeManager.knows("Found_Joey"):
+			SequenceMachine.run_sequence(["dialog:1969"], self)
+		else:
+			SequenceMachine.run_sequence(["dialog:1086"], self)
 
 func gps_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
@@ -67,17 +72,29 @@ func tree_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:1090"], self)
 
-func bush_clicked(viewport, event, shape_idx):
-	if ClockManager.hours >= 14 and ClockManager.hours < 16:
-		if InputManager.click_release(event):
-			SequenceMachine.run_sequence(["dialog:1090"], self)
-
 func nature_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:1049"], self)
+
+func bush_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		if KnowledgeManager.knows("Found_Joey"):
+			know_joey()
+		else:
+			no_joey()
+
+func know_joey():
+	SequenceMachine.run_sequence(["dialog:1969"], self)
+
+func no_joey():
+	if ClockManager.hours >= 14 and ClockManager.hours < 16:
+		GameGlue.ClockManager.next_scene_path = "res://Scenes/Cats/joey.tscn"
+		GameGlue.ClockManager.switch_scene(false)
+	else:
+		SequenceMachine.run_sequence(["dialog:1086"], self)
 
 #Lights
 
 func update_upstairs_shader():
 	var enabled = KnowledgeManager.secretly_knows("Upstairs_Lamp_On")
-	$Upstairs.material.set_shader_parameter("light_enabled", enabled)
+	$Upstairs_Lamp.material.set_shader_parameter("light_enabled", enabled)

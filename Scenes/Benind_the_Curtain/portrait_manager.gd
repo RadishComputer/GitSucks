@@ -30,7 +30,12 @@ var portraits = {
 }
 
 var perceptions = {
-	"gp": preload("res://Art/Beta/Characters/GP.png"),
+	"chloe": preload("res://Art/Beta/Characters/Cat_Chloe.png"),
+	"cleo": preload("res://Art/Beta/Characters/Cat_Cleo.png"),
+	"creamy_color": preload("res://Art/Beta/Characters/Cat_Creamy_Color.png"),
+	"felicia": preload("res://Art/Beta/Characters/Cat_Felicia.png"),
+	"joey": preload("res://Art/Beta/Characters/Cat_Joey.png"),
+	"spock": preload("res://Art/Beta/Characters/Cat_Spock.png"),
 }
 
 var portrait_bounce_start_time = -1.0

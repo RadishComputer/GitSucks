@@ -25,9 +25,9 @@ func _ready():
 	ClockManager.update_clock_display()
 	ClockManager.update_lights(self)
 	ClockManager.set_front_lamp_default()
-	update_upstairs_shader()
 	await get_tree().process_frame
 	ClockManager.church_bell()
+	update_upstairs_shader()
 
 	$Lamp.input_event.connect(lamp_clicked)
 	$Flower.input_event.connect(flower_clicked)
@@ -125,4 +125,4 @@ func lamp_clicked(viewport, event, shape_idx):
 
 func update_upstairs_shader():
 	var enabled = KnowledgeManager.secretly_knows("Upstairs_Lamp_On")
-	$Lamp_Light.material.set_shader_parameter("light_enabled", enabled)
+	$Upstairs_Lamp.material.set_shader_parameter("light_enabled", enabled)

@@ -144,4 +144,4 @@ func lamp_clicked(viewport, event, shape_idx):
 
 func update_light_shader():
 	var enabled = KnowledgeManager.secretly_knows("Front_Lamp_On")
-	$Light.material.set_shader_parameter("light_enabled", enabled)
+	$Front_Light.material.set_shader_parameter("light_enabled", enabled)

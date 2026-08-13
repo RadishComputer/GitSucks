@@ -12,13 +12,13 @@ void fragment() {
 
     vec3 color = base.rgb;
 
-    // --- Grayscale ---
+    // Grayscale
     if (grayscale_enabled) {
         float gray = dot(color, vec3(0.299, 0.587, 0.114));
         color = vec3(gray);
     }
 
-    // --- High Contrast ---
+    // High Contrast
 if (high_contrast_enabled) {
     color = pow(color, vec3(contrast_amount));
     color = clamp(color * 1.05, 0.0, 1.0);

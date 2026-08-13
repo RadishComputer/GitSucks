@@ -58,8 +58,8 @@ var location_schedule = {
 		"light_node": "M_Light"
 	},
 	"pins": {
-		"name": "Pins & Needles",
-		"open_hours": [[1100, 2000]],
+		"name": "Pins",
+		"open_hours": [[1100, 2400]],
 		"scene_path": "res://Scenes/Pins_Interior/Pins_Desk.tscn",
 		"closed_dialog": "dialog:1804",
 		"light_node": "P_Light"
@@ -300,14 +300,21 @@ func update_lights(scene_node: Node):
 			tod_node.material.set_shader_parameter("strength", get_time_of_day_strength())
 
 	var street_on = street_lights()
-	for street_node_name in ["Street_Light", "Street_Lights"]:
+	for street_node_name in ["Street_Light"]:
 		if scene_node.has_node(street_node_name):
 			var s_node = scene_node.get_node(street_node_name)
 			if s_node and s_node.material:
 				s_node.material.set_shader_parameter("light_enabled", street_on)
 
-	if scene_node.has_node("Light"):
-		var light_node = scene_node.get_node("Light")
+
+	if scene_node.has_node("Upstairs_Lamp"):
+		var light_node = scene_node.get_node("Upstairs_Lamp")
+		if light_node and light_node.material:
+			var enabled = GameGlue.KnowledgeManager.secretly_knows("Upstairs_Lamp_On")
+			light_node.material.set_shader_parameter("light_enabled", enabled)
+
+	if scene_node.has_node("Front_Light"):
+		var light_node = scene_node.get_node("Front_Light")
 		if light_node and light_node.material:
 			var enabled = GameGlue.KnowledgeManager.secretly_knows("Front_Lamp_On")
 			light_node.material.set_shader_parameter("light_enabled", enabled)

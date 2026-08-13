@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dlw35i6fvskrc" path="res://Art/Beta/Places/Bear_Room.png" id="2_rbgob"]
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_qc66t"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_87itd"]
-[ext_resource type="Shader" uid="uid://bulu3ey2odblq" path="res://Elements/house_lamp.gdshader" id="5_vyor5"]
-[ext_resource type="Texture2D" uid="uid://onb04atxnnll" path="res://Art/Beta/Places/Bear_Room_Light2.png" id="6_3mrkq"]
+[ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="5_f0f01"]
+[ext_resource type="Texture2D" uid="uid://kre6e5jg68bi" path="res://Art/Beta/Places/Bear_Room_Light.png" id="6_imeub"]
 [ext_resource type="Script" uid="uid://cbjdm1isb0ncr" path="res://Scenes/Objects/bear_room_door.gd" id="7_f0f01"]
 [ext_resource type="AudioStream" uid="uid://pkaxknbe3ayu" path="res://Sounds/Slide.wav" id="9_ihdxb"]
 
@@ -14,11 +14,14 @@ shader = ExtResource("3_qc66t")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1iply"]
-shader = ExtResource("5_vyor5")
+shader = ExtResource("5_f0f01")
 shader_parameter/light_enabled = true
-shader_parameter/light_color = Color(1, 0.95, 0.7, 1)
-shader_parameter/light_strength = 1.0
-shader_parameter/light_mask = ExtResource("6_3mrkq")
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
+shader_parameter/strength = 1.0
+shader_parameter/light_mask = ExtResource("6_imeub")
 
 [node name="Bear_Room" type="Control" unique_id=979736149]
 layout_mode = 3
@@ -64,6 +67,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_87itd")
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Time_of_Day" unique_id=45880713]
+copy_mode = 2
+
 [node name="Lamp_Light" type="TextureRect" parent="." unique_id=814079043]
 texture_filter = 1
 material = SubResource("ShaderMaterial_1iply")
@@ -80,7 +86,10 @@ offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("6_3mrkq")
+texture = ExtResource("6_imeub")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Lamp_Light" unique_id=1608020667]
+copy_mode = 2
 
 [node name="Intro_Blocker" type="TextureRect" parent="." unique_id=1707780943]
 process_mode = 3

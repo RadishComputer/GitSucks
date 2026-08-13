@@ -15,31 +15,24 @@ shader_parameter/time_accum = 0.0
 
 [node name="Start_Screen" type="Control" unique_id=286005195]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4dk23")
 
 [node name="Background" type="TextureRect" parent="." unique_id=41714533]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_fjl27")
+stretch_mode = 1
 
-[node name="Window" type="TextureRect" parent="." unique_id=66285225]
+[node name="Window" type="TextureRect" parent="Background" unique_id=66285225]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_4dk23")
 clip_contents = true
@@ -60,12 +53,19 @@ expand_mode = 1
 stretch_mode = 1
 script = ExtResource("3_j50fd")
 
-[node name="Title" type="TextureRect" parent="." unique_id=694616769]
-layout_mode = 0
-offset_left = -750.0
-offset_top = -451.0
-offset_right = 530.0
-offset_bottom = 391.0
+[node name="Title" type="TextureRect" parent="Background/Window" unique_id=694616769]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -751.0
+offset_top = -450.0
+offset_right = 529.0
+offset_bottom = 392.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_wq7eo")
 
 [node name="Control" type="HBoxContainer" parent="." unique_id=1816017939 groups=["UI"]]

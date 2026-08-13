@@ -45,8 +45,6 @@ func _ready():
 	$Lamp.input_event.connect(lamp_clicked)
 	$Rug.input_event.connect(rug_clicked)
 
-	#GameGlue.play_ambience(preload("res://Sounds/Ambience.wav"))
-
 func intro_finished():
 	KnowledgeManager.learn("Start_The_Game_Already")
 	intro_blocker.visible = false

@@ -8,18 +8,21 @@
 [ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="5_dbj5x"]
 [ext_resource type="Script" uid="uid://b5wu65g0n24ue" path="res://Scenes/People/mom.gd" id="6_3kgkk"]
 [ext_resource type="Texture2D" uid="uid://b1qrpfqipffn2" path="res://Art/Beta/Places/Front_Room_Mask.png" id="6_cn4d1"]
-[ext_resource type="Shader" uid="uid://bulu3ey2odblq" path="res://Elements/house_lamp.gdshader" id="7_qlq52"]
 [ext_resource type="Texture2D" uid="uid://bu2hnqfw5rs7g" path="res://Art/Beta/Places/Front_Room_Light.png" id="8_dvboy"]
+[ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="9_slkol"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ttdih"]
 shader = ExtResource("5_dbj5x")
 shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e7rut"]
-shader = ExtResource("7_qlq52")
-shader_parameter/light_enabled = false
-shader_parameter/light_color = Color(1, 0.95, 0.7, 1)
-shader_parameter/light_strength = 1.0
+shader = ExtResource("9_slkol")
+shader_parameter/light_enabled = true
+shader_parameter/light_mode = 1
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/warm_color = Color(1, 0.92, 0, 1)
+shader_parameter/custom_color = Color(1, 0.5, 0.2, 1)
+shader_parameter/strength = 1.0
 shader_parameter/light_mask = ExtResource("8_dvboy")
 
 [node name="Front_Room" type="Control" unique_id=165382624]
@@ -180,7 +183,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_cn4d1")
 
-[node name="Light" type="TextureRect" parent="." unique_id=1975608512]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Time_of_Day" unique_id=1296054486]
+copy_mode = 2
+
+[node name="Front_Light" type="TextureRect" parent="." unique_id=1975608512]
 material = SubResource("ShaderMaterial_e7rut")
 layout_mode = 1
 anchors_preset = 8
@@ -196,3 +202,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("8_dvboy")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Front_Light" unique_id=1855527081]
+copy_mode = 2
