@@ -49,7 +49,6 @@ grow_vertical = 2
 texture = ExtResource("2_0cun0")
 
 [node name="Time_of_Day" type="TextureRect" parent="." unique_id=1086223207]
-visible = false
 material = SubResource("ShaderMaterial_7p5fx")
 layout_mode = 1
 anchors_preset = 8
@@ -90,13 +89,11 @@ texture = ExtResource("6_5midy")
 copy_mode = 2
 
 [node name="Art" type="Area2D" parent="." unique_id=77557908]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Art" unique_id=886822527]
 polygon = PackedVector2Array(-260, -362, 261, -358, 260, 364, -267, 367)
 
 [node name="Back" type="Area2D" parent="." unique_id=1333467901]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=550943298]
 polygon = PackedVector2Array(-743, -442, 740, -440, 739, 438, 266, 438, 268, -372, -272, -368, -270, 442, -742, 438)

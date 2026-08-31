@@ -10,10 +10,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -34,12 +30,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_d5w5a")
 
-[node name="Door" type="Area2D" parent="." unique_id=1974701116]
+[node name="Door" type="Area2D" parent="." unique_id=577898298]
+position = Vector2(-960, -537)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door" unique_id=294278432]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door" unique_id=254932335]
 polygon = PackedVector2Array(217, 96, 394, 167, 398, 909, 218, 985)
 
-[node name="Back" type="Area2D" parent="." unique_id=761877671]
+[node name="Back" type="Area2D" parent="." unique_id=213672496]
+position = Vector2(-960, -537)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=1919725627]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Back" unique_id=845278189]
 polygon = PackedVector2Array(247, 95, 1701, 97, 1701, 978, 289, 982, 401, 910, 1527, 914, 1527, 164, 399, 164)

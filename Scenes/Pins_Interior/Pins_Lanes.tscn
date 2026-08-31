@@ -37,11 +37,15 @@ texture = ExtResource("2_jmqyw")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Pins_Desk" unique_id=1424050975]
 polygon = PackedVector2Array(-645, -130, -740, -134, -741, 294, -643, 183)
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="To_Pins_Desk" unique_id=265045855]
+position = Vector2(-7, 5)
+polygon = PackedVector2Array(-732, -294, -383, -297, -379, -118, -428, -65, -426, -259, -732, -263)
+
 [node name="To_Lockers" type="Area2D" parent="." unique_id=431205433]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="To_Lockers" unique_id=265045855]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="To_Lockers" unique_id=1018804627]
 position = Vector2(-7, 5)
-polygon = PackedVector2Array(-740, -440, -279, -444, -278, -235, -297, -216, -299, -350, -391, -301, -387, -111, -428, -65, -426, -259, -738, -263)
+polygon = PackedVector2Array(-279, -444, -278, -235, -292, -219, -295, -353, -391, -301, -733, -298, -731, -444)
 
 [node name="Balls" type="Area2D" parent="." unique_id=1850468261]
 

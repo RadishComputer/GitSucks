@@ -33,6 +33,7 @@ func go_back():
 	Bouncer.bounce(self)
 
 func on_item_used(target: Node, item_id: String):
+	self.visible = false
 	if target != self:
 		return
 
@@ -74,11 +75,10 @@ func on_item_used(target: Node, item_id: String):
 		], self)
 		return
 
-	DialogManager.dialog_vars["mom_food_choice"] = item.get("name", item_id)
-
 	if correct:
 		SequenceMachine.run_sequence([
 			"action:secretly_learn:Food_Received",
+			"action:secretly_learn:Gave_Mom_" + item_id,
 			"action:remove_item:" + item_id,
 			"dialog:1009",
 		], self)
@@ -99,16 +99,32 @@ func on_item_used(target: Node, item_id: String):
 
 	SequenceMachine.run_sequence([
 		"action:secretly_learn:Food_Received",
+		"action:secretly_learn:Gave_Mom_" + item_id,
 		"action:remove_item:" + item_id,
 		"dialog:1010",
 		"note:[center]Mom took $" + amount + "[/center]",
 	], self)
 
-func clicked():
-	self.visible = false
-	if not KnowledgeManager.secretly_knows("Requested_Food"):
-		requested_attribute = GameState.get_attribute_for_current_day()
+func food_given_to_mom() -> String:
+	for id in ItemDatabase.items.keys():
+		var item = ItemDatabase.items[id]
+		if item.get("type") != "food":
+			continue
+		if KnowledgeManager.secretly_knows("Gave_Mom_" + id):
+			return id
+	return ""
 
+func clicked():
+	if Menu.dragging:
+		return
+	if ItemManager.slots[ItemManager.cursor_slot] != "":
+		return
+	
+	self.visible = false
+	requested_attribute = GameState.get_attribute_for_current_day()
+	DialogManager.dialog_vars["requested_attribute"] = requested_attribute.capitalize()
+	
+	if not KnowledgeManager.secretly_knows("Requested_Food"):
 		SequenceMachine.run_sequence([
 			"action:learn:Mom_Requested_" + requested_attribute + "_Food",
 			"action:secretly_learn:Requested_Food",
@@ -119,16 +135,16 @@ func clicked():
 		], self)
 		return
 
-	elif not KnowledgeManager.secretly_knows("Food_Received"):
-		if DialogManager.dialog_vars.has("mom_food_choice"):
-			DialogManager.dialog_vars["item"] = DialogManager.dialog_vars["mom_food_choice"]
-
+	if not KnowledgeManager.secretly_knows("Food_Received"):
 		SequenceMachine.run_sequence([
 			"dialog:1008",
 			"action:go_back",
 		], self)
 		return
-	else:
+
+	var lunch = food_given_to_mom()
+	if lunch != "":
+		DialogManager.dialog_vars["item"] = ItemDatabase.items[lunch].get("name", lunch)
 		SequenceMachine.run_sequence([
 			"dialog:1011",
 			"action:go_back",
@@ -142,6 +158,7 @@ func _gui_input(event):
 	if InputManager.click_release(event):
 		if SettingsManager.item_mode == SettingsManager.ItemMode.HOLD and Menu.dragging:
 			Menu.end_drag(self)
+			accept_event()
 			return
 
 		if ItemManager.slots[ItemManager.cursor_slot] != "":
@@ -149,4 +166,5 @@ func _gui_input(event):
 			Menu.selected_item = ""
 			Menu.drag_origin_index = -1
 			ItemManager.update_cursor_icon()
+			accept_event()
 			return

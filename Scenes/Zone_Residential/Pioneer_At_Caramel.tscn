@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://d3c82b04rhomw" path="res://Scenes/People/wes.gd" id="12_0wscs"]
 [ext_resource type="Texture2D" uid="uid://jm3sekficnxb" path="res://Art/Beta/Characters/Dave.png" id="13_1k2qp"]
 [ext_resource type="Script" uid="uid://ci53nkwwwcc60" path="res://Scenes/People/dave.gd" id="14_ysibw"]
+[ext_resource type="Texture2D" uid="uid://bpqvvgk1kqeav" path="res://Art/Beta/Characters/Cat_Chloe.png" id="15_w6pvf"]
 [ext_resource type="Shader" uid="uid://fcmxtm3gns4s" path="res://Elements/light.gdshader" id="17_2vup7"]
 [ext_resource type="Texture2D" uid="uid://b2t388xitcv3q" path="res://Art/Beta/Places/Pioneer_at_Caramel_Light.png" id="18_5qu1n"]
 [ext_resource type="Texture2D" uid="uid://clhpxdsb6moey" path="res://Art/Beta/Places/Pioneer_at_Caramel_Street.png" id="19_mlg70"]
@@ -133,6 +134,15 @@ offset_bottom = 1142.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("13_1k2qp")
 script = ExtResource("14_ysibw")
+
+[node name="Chloe" type="TextureButton" parent="." unique_id=1020657178]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 102.0
+offset_right = 889.0
+offset_bottom = 614.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("15_w6pvf")
 
 [node name="Time_of_Day" type="TextureRect" parent="." unique_id=1958625351]
 material = SubResource("ShaderMaterial_s2i8h")

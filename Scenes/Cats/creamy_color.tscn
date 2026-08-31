@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dj84m2eyaonvg"]
+
+[ext_resource type="Texture2D" uid="uid://62gingp2nmbs" path="res://Art/Beta/Places/Cat_Creamy_Color_Scene.png" id="1_3mdgc"]
+[ext_resource type="Script" uid="uid://byb31pj2gjgb" path="res://Scenes/Cats/creamy_color.gd" id="2_1b32o"]
+[ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_fjli7"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_pg6h4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_623du"]
+shader = ExtResource("3_fjli7")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
+[node name="Creamy_Color" type="Control" unique_id=50973102]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=792221606]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+texture_normal = ExtResource("1_3mdgc")
+script = ExtResource("2_1b32o")
+
+[node name="Time_of_Day" type="TextureRect" parent="TextureButton" unique_id=1291779586]
+material = SubResource("ShaderMaterial_623du")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_pg6h4")

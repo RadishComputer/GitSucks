@@ -73,7 +73,18 @@ func window_clicked(viewport, event, shape_idx):
 
 func bed_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		SequenceMachine.run_sequence(["dialog:1034"], self)
+		if KnowledgeManager.knows("Radio_Returned"):
+			bed_time()
+		else:
+			SequenceMachine.run_sequence(["dialog:1034"], self)
+
+func bed_time():
+	SequenceMachine.run_sequence([
+		"dialog:1984",
+		"action:fade_to_black",
+		"await:2.0",
+		"action:quit_game",
+	], self)
 
 func book_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
@@ -115,7 +126,7 @@ func drawer2_clicked(viewport, event, shape_idx):
 
 func drawer1_clicked(viewport, event, shape_idx, scene_path, advance_time):
 	if InputManager.click_release(event):
-		GameGlue.FXPlayer.stream = preload("res://sounds/Slide.wav")
+		GameGlue.FXPlayer.stream = preload("res://Sounds/Slide.wav")
 		GameGlue.FXPlayer.play()
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
@@ -138,6 +149,8 @@ func phone_clicked(viewport, event, shape_idx):
 
 func lamp_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
+		GameGlue.FXPlayer.stream = preload("res://Sounds/LightChain.wav")
+		GameGlue.FXPlayer.play()
 		if KnowledgeManager.secretly_knows("Lamp_On"):
 			KnowledgeManager.secretly_forget("Lamp_On")
 		else:

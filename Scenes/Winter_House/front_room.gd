@@ -117,12 +117,9 @@ func front_door_clicked(viewport, event, shape_idx, scene_path: String, advance_
 
 func stairs_clicked(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
-		#if KnowledgeManager.secretly_knows("Food_Received"):
-			#get_tree().change_scene_to_file("res://Scenes/Benind_the_Curtain/demo_end.tscn")
-		#else:
-			ClockManager.next_scene_path = scene_path
-			ClockManager.switch_scene(advance_time)
-			ClockManager.set_front_lamp_default()
+		ClockManager.next_scene_path = scene_path
+		ClockManager.switch_scene(advance_time)
+		ClockManager.set_front_lamp_default()
 
 func where_is_mom():
 	var visible = ClockManager.mom_downstairs()
@@ -136,6 +133,8 @@ func go_back():
 
 func lamp_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
+		GameGlue.FXPlayer.stream = preload("res://Sounds/LightChain.wav")
+		GameGlue.FXPlayer.play()
 		if KnowledgeManager.secretly_knows("Front_Lamp_On"):
 			KnowledgeManager.secretly_forget("Front_Lamp_On")
 		else:

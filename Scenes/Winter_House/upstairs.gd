@@ -117,6 +117,8 @@ func move(viewport, event, shape_idx, scene_path, advance_time):
 
 func lamp_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
+		GameGlue.FXPlayer.stream = preload("res://Sounds/LightChain.wav")
+		GameGlue.FXPlayer.play()
 		if KnowledgeManager.secretly_knows("Upstairs_Lamp_On"):
 			KnowledgeManager.secretly_forget("Upstairs_Lamp_On")
 		else:

@@ -59,11 +59,11 @@ func number_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		if not "55011" in NumberManager.get_numbers():
 			SequenceMachine.run_sequence([
-				"dialog:1109",
+				"dialog:1116",
 				"action:add_number:55011",
 				"note:[center]Lost Cat: Cleo - 55011",
 			], self)
 			return
 		SequenceMachine.run_sequence([
-			"dialog:1110"
+			"dialog:1117"
 		], self)

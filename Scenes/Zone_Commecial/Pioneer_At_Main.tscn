@@ -82,6 +82,7 @@ grow_vertical = 2
 texture = ExtResource("2_tt77u")
 
 [node name="Time_of_Day" type="TextureRect" parent="." unique_id=1770651413]
+visible = false
 material = SubResource("ShaderMaterial_gmsby")
 layout_mode = 1
 anchors_preset = 8

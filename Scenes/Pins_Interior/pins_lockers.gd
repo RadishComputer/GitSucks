@@ -62,7 +62,21 @@ func side_exit_clicked(viewport, event, shape_idx):
 
 func window_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
+		if KnowledgeManager.knows("Found_Creamy_Color"):
+			know_cat()
+		else:
+			no_cat()
+
+func know_cat():
+	SequenceMachine.run_sequence(["dialog:1979"], self)
+
+func no_cat():
+	if ItemManager.cash >= 10.00:
+		GameGlue.ClockManager.next_scene_path = "res://Scenes/Cats/creamy_color.tscn"
+		GameGlue.ClockManager.switch_scene(false)
+	else:
 		SequenceMachine.run_sequence(["dialog:1671"], self)
+
 
 func bowling_ball_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):

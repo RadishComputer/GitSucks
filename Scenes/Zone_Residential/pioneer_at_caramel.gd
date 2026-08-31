@@ -27,6 +27,7 @@ func _ready():
 	ClockManager.church_bell()
 
 	$Dave.visible = KnowledgeManager.knows("Met_Dave") and not KnowledgeManager.knows("Radio_Returned")
+	$Chloe.visible = KnowledgeManager.knows("Radio_Returned") and not KnowledgeManager.knows("Found_Chloe")
 
 	$Oak_Tree.input_event.connect(oak_tree_clicked)
 	$Grass.input_event.connect(grass_clicked)
@@ -39,10 +40,36 @@ func _ready():
 	$To_Main.input_event.connect(move.bind("res://Scenes/Zone_Commecial/Pioneer_At_Main.tscn", true))
 	$Cat_Flyer.input_event.connect(move.bind("res://Scenes/Zone_Another/Cat_Flyer.tscn", false))
 	$To_Rodneys_House.input_event.connect(move.bind("res://Scenes/Zone_Residential/Rodneys_House.tscn", true))
+	$Chloe.connect("pressed", Callable(self, "chloe_clicked"))
 
 func dave_arrives():
 	$Dave.visible = true
 	Bouncer.bounce($Dave)
+
+func hide_street_kids():
+	$Evie.visible = false
+	$Jessica.visible = false
+	$Jimmy.visible = false
+	$Roberta.visible = false
+	$Wes.visible = false
+
+func all_back():
+	street_kids()
+	var kids = [
+		$Evie,
+		$Jessica,
+		$Jimmy,
+		$Roberta,
+		$Wes
+	]
+
+	for kid in kids:
+		if kid.visible:
+			Bouncer.bounce(kid)
+
+func chloe_clicked():
+	GameGlue.ClockManager.next_scene_path = "res://Scenes/Cats/chloe.tscn"
+	GameGlue.ClockManager.switch_scene(false)
 
 func oak_tree_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
@@ -65,7 +92,6 @@ func grass_clicked(viewport, event, shape_idx):
 				"note:[center]Got An Acorn",
 				"action:learn:Acorn_Collected",
 			], self)
-
 
 func town_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
@@ -92,6 +118,7 @@ func move(viewport, event, shape_idx, scene_path, advance_time):
 		and KnowledgeManager.knows("Met_Roberta") \
 		and KnowledgeManager.knows("Met_Wes"):
 
+			hide_street_kids()
 			SequenceMachine.run_sequence([
 				"action:learn:Met_Dave",
 				"action:learn:Find_the_Radio",
@@ -99,6 +126,7 @@ func move(viewport, event, shape_idx, scene_path, advance_time):
 				"action:dave_arrives",
 				"note:[center]Met Dave[/center]",
 				"note:[center]Find the Radio[/center]",
+				"action:all_back",
 			], self)
 
 			return 

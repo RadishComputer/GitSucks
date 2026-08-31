@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://oq662sj0vh8g"]
-
-[ext_resource type="Script" uid="uid://bryh3h57bdq1c" path="res://Scenes/Benind_the_Curtain/Tester.gd" id="1_iimdv"]
-[ext_resource type="PackedScene" uid="uid://bmkvaf4tfo7ob" path="res://Scenes/Benind_the_Curtain/Game_Glue.tscn" id="2_nwpgi"]
-
-[node name="Node" type="Node" unique_id=562462725]
-script = ExtResource("1_iimdv")
-
-[node name="GameGlue" parent="." unique_id=1432973535 instance=ExtResource("2_nwpgi")]

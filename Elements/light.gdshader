@@ -24,7 +24,7 @@ void fragment() {
 
     if (light_enabled && mask > 0.001) {
         float brightness = max(max(base.r, base.g), base.b);
-        float is_dark = smoothstep(0.0, 0.4, brightness);
+        float is_dark = smoothstep(0.2, 0.5, brightness);
         float amount = clamp(strength * mask, 0.0, 1.0);
 
         vec3 light_color = white_color;

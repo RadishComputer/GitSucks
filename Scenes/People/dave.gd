@@ -26,6 +26,35 @@ func go_back():
 	self.visible = true
 	Bouncer.bounce(self)
 
+func hide_street_kids():
+	$"../Evie".visible = false
+	$"../Jessica".visible = false
+	$"../Jimmy".visible = false
+	$"../Roberta".visible = false
+	$"../Wes".visible = false
+
+func street_kids():
+	var visible = ClockManager.day_one_kids()
+	$"../Evie".visible = visible
+	$"../Jessica".visible = visible
+	$"../Jimmy".visible = visible
+	$"../Roberta".visible = visible
+	$"../Wes".visible = visible
+
+func all_back():
+	street_kids()
+	var kids = [
+		$"../Evie",
+		$"../Jessica",
+		$"../Jimmy",
+		$"../Roberta",
+		$"../Wes",
+	]
+
+	for kid in kids:
+		if kid.visible:
+			Bouncer.bounce(kid)
+
 func clicked():
 	self.visible = false
 	if KnowledgeManager.knows("Radio_Returned"):
@@ -36,22 +65,25 @@ func clicked():
 		return
 	default_dialog()
 
-
 func end_dialog():
 	SequenceMachine.run_sequence([
 		"dialog:1854",  
 	], self)
 
 func radio_dialog():
+		hide_street_kids()
 		SequenceMachine.run_sequence([
 			"action:learn:Radio_Returned",
 			"action:remove_item:" + "daves_radio",
+			"action:dave_gives_money",
 			"dialog:1855",
-			"note:[center]Yes", 
+			"note:[center]Got Five Bucks", 
 			"dialog:1901",
-			"await:2.0",
+			"await:1.0",
 			"dialog:1950",
 			"action:go_back",
+			"action:all_back",
+			"note:[center]Radio Returned", 
 		], self)
 
 func default_dialog():
@@ -76,12 +108,14 @@ func on_item_used(target: Node, item_id: String):
 		SequenceMachine.run_sequence([
 			"action:learn:Radio_Returned",
 			"action:remove_item:" + item_id,
+			"action:dave_gives_money",
 			"dialog:1857",
-			"note:Yes",
+			"note:[center]Got Five Bucks",
 			"dialog:1901",
-			"await:2.0",
+			"await:1.0",
 			"dialog:1950",
 			"action:go_back",
+			"note:[center]Radio Returned", 
 		], self)
 
 func _gui_input(event):
@@ -96,3 +130,7 @@ func _gui_input(event):
 			Menu.drag_origin_index = -1
 			ItemManager.update_cursor_icon()
 			return
+
+func dave_gives_money():
+	ItemManager.cash += 5
+	ItemManager.emit_signal("inventory_updated")

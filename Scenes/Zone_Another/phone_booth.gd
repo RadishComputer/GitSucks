@@ -10,6 +10,7 @@ extends Control
 @onready var GameState = GameGlue.GameState
 @onready var NumberManager = GameGlue.NumberManager
 @onready var KnowledgeManager = GameGlue.KnowledgeManager
+@onready var SaveManager = GameGlue.SaveManager
 @onready var SettingsManager = GameGlue.SettingsManager
 @onready var SequenceMachine = GameGlue.SequenceMachine
 @onready var Bouncer = GameGlue.Bouncer
@@ -30,20 +31,17 @@ const SHORT_CODES = ["911", "0"]
 const FULL_LENGTH = 5
 
 var sit_playing = false
-var number_check_delay = 0.9
+var number_check_delay = 2.0
 var howler_delay = 5.0
 var waiting_for_howler = false
+var ring_playing = false
+var pending_number_check = false
 
 var return_scene_path: String = ""
 var return_advance_time: bool = false
 
 
 func _ready():
-	ClockManager.distance_from_church = 8
-	ClockManager.update_chime_volume()
-	ClockManager.update_clock_display()
-	await get_tree().process_frame
-	ClockManager.church_bell()
 	play_dial_tone()
 
 	print("Phone Booth _ready() - ClockManager.phone_return_path =", ClockManager.phone_return_path)
@@ -64,6 +62,7 @@ func _ready():
 	$Key0.input_event.connect(on_button_input.bind("Key0"))
 	$Star.input_event.connect(on_button_input.bind("Star"))
 	$Pound.input_event.connect(on_button_input.bind("Pound"))
+	$Saves.input_event.connect(saves_game)
 	$Hook.input_event.connect(on_hook_input)
 
 	print("Phone Booth ready - return path:", return_scene_path)
@@ -92,6 +91,17 @@ func setup(return_path: String, advance_time = false):
 	return_scene_path = return_path
 	return_advance_time = advance_time
 
+func saves_game(viewport, event, shape_idx):
+	if InputManager.click_release(event) and not phone_locked:
+		stop_all_audio()
+		current_number = ""
+
+		for d in "72837":
+			key_pressed("Key" + d)
+			dialed_digit(d)
+			await get_tree().create_timer(0.15).timeout
+			key_released("Key" + d)
+
 func on_exit(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		print("Exit clicked - return path =", return_scene_path)
@@ -103,6 +113,29 @@ func on_exit(viewport, event, shape_idx):
 		ClockManager.switch_scene(return_advance_time)
 
 #Phone
+
+func start_ring():
+	ring_playing = true
+	ring_loop()
+
+func stop_ring():
+	ring_playing = false
+	PhoneAudio.stop_dtmf()
+	PhoneAudio.stop_dial_tone()
+	PhoneAudio.stop_howler_tone()
+
+func ring_loop():
+	if not ring_playing:
+		return
+
+	PhoneAudio.start_ring_tone(440, 480)
+	await get_tree().create_timer(2.0).timeout
+
+	PhoneAudio.stop_ring_tone()
+	await get_tree().create_timer(2.0).timeout
+
+	if ring_playing:
+		ring_loop()
 
 func play_dial_tone():
 	PhoneAudio.play_dial_tone()
@@ -125,13 +158,25 @@ func key_pressed(key_name: String):
 	PhoneAudio.start_dtmf(key_name)
 	last_activity_time = Time.get_ticks_msec()
 
-func key_released(key: String):
+func key_released(key):
 	PhoneAudio.stop_dtmf()
 	last_key_release_time = Time.get_ticks_msec() / 1000.0
 	last_activity_time = Time.get_ticks_msec()
 
 	if current_number == "":
 		play_dial_tone()
+		return
+
+func start_random_number_check_delay():
+	var delay = randf_range(2.0, 8.0)  # random delay window
+	start_ring()
+
+	await get_tree().create_timer(delay).timeout
+
+	stop_ring()
+	pending_number_check = false
+
+	try_process_number()
 
 #Key
 
@@ -169,6 +214,14 @@ func hook_pressed():
 	current_number = ""
 	sit_playing = false
 	waiting_for_howler = false
+	phone_locked = false
+
+	# Force-stop any running sequence and dialog
+	if SequenceMachine.running:
+		SequenceMachine.running = false   # or add a proper abort() method
+	DialogManager.reset_dialog_state()
+	TextBox.hide_dialog()
+	PortraitManager.clear_portrait()
 
 func hook_released():
 	stop_all_audio()
@@ -202,8 +255,8 @@ func process_number(number: String):
 	var result = PhoneBook.lookup(number)
 
 	match result.type:
-
 		"call":
+			await start_ringback_delay()
 			await trigger_call(result.steps)
 
 		"event":
@@ -215,14 +268,22 @@ func process_number(number: String):
 			after_sit_played = Time.get_ticks_msec() / 1000.0
 			waiting_for_howler = true
 
+func start_ringback_delay():
+	var delay = randf_range(2.0, 8.0)
+
+	PhoneAudio.start_ring_tone()
+
+	await get_tree().create_timer(delay).timeout
+
+	PhoneAudio.stop_ring_tone()
+
+
 func trigger_call(steps: Array):
 	stop_all_audio()
 	phone_locked = true
 	current_number = ""
 
 	SequenceMachine.run_sequence(steps, self)
-
-	# Wait until the sequence finishes
 	if SequenceMachine.running:
 		await SequenceMachine.sequence_finished
 
@@ -238,7 +299,6 @@ func trigger_event(event_name: String):
 		"unlock_basement":
 			KnowledgeManager.learn("Basement_Unlocked")
 
-
 		"acoustic_coupler":
 			await PhoneAudio.play_coupler_sequence()
 
@@ -248,8 +308,3 @@ func trigger_event(event_name: String):
 	phone_locked = false
 	current_number = ""
 	play_dial_tone()
-
-func save_game():
-	print("Game saved (placeholder)")
-	TextBox.enter_mode(TextBox.Text_Mode.DIALOG)
-	DialogManager.advance_dialog()

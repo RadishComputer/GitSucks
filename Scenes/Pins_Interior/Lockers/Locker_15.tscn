@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://no4hmw6yb8nc"]
 
-[ext_resource type="Script" uid="uid://cgqm6n0ac1fts" path="res://Scenes/Benind_the_Curtain/locker.gd" id="1_d84mw"]
+[ext_resource type="Script" uid="uid://cgqm6n0ac1fts" path="res://Scenes/Behind_the_Curtain/locker.gd" id="1_d84mw"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="2_kei0i"]
-[ext_resource type="PackedScene" uid="uid://b6o584cj5q612" path="res://Scenes/Benind_the_Curtain/Number_Disk.tscn" id="3_htttf"]
+[ext_resource type="PackedScene" uid="uid://b6o584cj5q612" path="res://Scenes/Behind_the_Curtain/Number_Disk.tscn" id="3_htttf"]
 [ext_resource type="Texture2D" uid="uid://0oemjbrkital" path="res://Art/Beta/Places/Locker_Closed.png" id="3_qgsnw"]
 
 [node name="Locker15" type="Control" unique_id=2104065648]
@@ -12,10 +12,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -38,7 +34,7 @@ grow_vertical = 2
 texture = ExtResource("2_kei0i")
 expand_mode = 1
 
-[node name="Background" type="TextureRect" parent="." unique_id=1983128698]
+[node name="Background" type="TextureRect" parent="." unique_id=1402370392]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,28 +56,29 @@ offset_top = 31.0
 offset_right = 259.0
 offset_bottom = 159.0
 
-[node name="Number_Disk2" parent="." unique_id=1682450420 instance=ExtResource("3_htttf")]
+[node name="Number_Disk2" parent="." unique_id=1348539414 instance=ExtResource("3_htttf")]
 layout_mode = 1
 offset_left = 263.0
 offset_top = 31.0
 offset_right = 295.0
 offset_bottom = 159.0
 
-[node name="Number_Disk3" parent="." unique_id=313272018 instance=ExtResource("3_htttf")]
+[node name="Number_Disk3" parent="." unique_id=1679910261 instance=ExtResource("3_htttf")]
 layout_mode = 1
 offset_left = 299.0
 offset_top = 31.0
 offset_right = 331.0
 offset_bottom = 159.0
 
-[node name="Back" type="Area2D" parent="." unique_id=641851125]
+[node name="Back" type="Area2D" parent="." unique_id=1909035405]
+position = Vector2(-957, -538)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=1197922519]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=2049046630]
 polygon = PackedVector2Array(217, 95, 1704, 94, 1704, 981, 1526, 980, 1527, 160, 396, 163, 396, 979, 219, 979)
 
-[node name="Knob" type="Area2D" parent="." unique_id=1672247811]
-position = Vector2(791, 36)
+[node name="Knob" type="Area2D" parent="." unique_id=1123942748]
+position = Vector2(-166, -502)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Knob" unique_id=1115679741]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Knob" unique_id=2083635380]
 position = Vector2(6, 8)
 polygon = PackedVector2Array(533, 598, 546, 569, 576, 552, 610, 569, 621, 602, 609, 631, 579, 643, 546, 630)

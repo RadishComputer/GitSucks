@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dfh2ojge7wx0m"]
 
 [ext_resource type="Script" uid="uid://x6ipi4gctwsf" path="res://Scenes/Pins_Interior/arcade_ape_architecht.gd" id="1_0q60p"]
-[ext_resource type="Texture2D" uid="uid://1vydgg73x8jk" path="res://Art/Beta/Places/Ape_Architect.png" id="2_0q60p"]
+[ext_resource type="Texture2D" uid="uid://gm6p6svj1bwk" path="res://Art/Beta/Places/Ape_Architect_0.png" id="2_wcsqq"]
+[ext_resource type="Texture2D" uid="uid://17dhtd5sdaqn" path="res://Art/Beta/Places/Ape_Architect_1.png" id="3_tbh2w"]
 
 [node name="Ape Architecht" type="Control" unique_id=1235333732]
 layout_mode = 3
@@ -15,7 +16,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_0q60p")
 
-[node name="Apre_Architecht" type="TextureRect" parent="." unique_id=484285451]
+[node name="Ape_Architechtx" type="TextureRect" parent="." unique_id=1998314225]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,7 +29,23 @@ offset_right = 750.0
 offset_bottom = 450.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_0q60p")
+texture = ExtResource("3_tbh2w")
+metadata/_edit_use_anchors_ = true
+
+[node name="Ape_Architecht" type="TextureRect" parent="." unique_id=484285451]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wcsqq")
 metadata/_edit_use_anchors_ = true
 
 [node name="To_Exit" type="Area2D" parent="." unique_id=51783462]

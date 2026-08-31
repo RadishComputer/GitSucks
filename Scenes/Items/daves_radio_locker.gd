@@ -26,7 +26,7 @@ func _ready():
 
 func clicked():
 	ItemManager.add_item("daves_radio")
-	if KnowledgeManager.knows("Met_Rodney") and KnowledgeManager.knows("Met_Dave"):
+	if KnowledgeManager.knows("Met_Dave"):
 		SequenceMachine.run_sequence([
 			"note:[center]Got Dave's Radio",
 			"action:learn:Dave's_Radio_Collected",

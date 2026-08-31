@@ -35,14 +35,14 @@ func _gui_input(event):
 			return
 
 		if not GameGlue.KnowledgeManager.secretly_knows("Door_Tried"):
-			GameGlue.FXPlayer.stream = preload("res://sounds/Jiggle.wav")
+			GameGlue.FXPlayer.stream = preload("res://Sounds/Jiggle.wav")
 			GameGlue.FXPlayer.play()
 			GameGlue.SequenceMachine.run_sequence([
 				"dialog:1026",
 				"action:secretly_learn:Door_Tried"
 			], self)
 		else:
-			GameGlue.FXPlayer.stream = preload("res://sounds/Jiggle.wav")
+			GameGlue.FXPlayer.stream = preload("res://Sounds/Jiggle.wav")
 			GameGlue.FXPlayer.play()
 			GameGlue.SequenceMachine.run_sequence([
 				"dialog:1027"
@@ -51,7 +51,7 @@ func _gui_input(event):
 func on_item_used(target: Node, item_id: String):
 	if target == self:
 		if item_id == "pocket_knife":
-			GameGlue.FXPlayer.stream = preload("res://sounds/Unlock.wav")
+			GameGlue.FXPlayer.stream = preload("res://Sounds/Unlock.wav")
 			GameGlue.FXPlayer.play()
 			GameGlue.SequenceMachine.run_sequence([
 				"note:[center]Bear Room Door Opened.[/center]",
@@ -63,5 +63,8 @@ func on_item_used(target: Node, item_id: String):
 			], self)
 
 func on_exit():
-	GameGlue.ClockManager.next_scene_path = "res://Scenes/Winter_House/Upstairs.tscn"
-	GameGlue.ClockManager.switch_scene(false)
+	if GameGlue.KnowledgeManager.knows("Radio_Returned"):
+		SequenceMachine.run_sequence(["dialog:1982"], self)
+	else:
+		GameGlue.ClockManager.next_scene_path = "res://Scenes/Winter_House/Upstairs.tscn"
+		GameGlue.ClockManager.switch_scene(false)

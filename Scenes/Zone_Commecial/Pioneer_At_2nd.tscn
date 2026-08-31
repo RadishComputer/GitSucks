@@ -226,9 +226,6 @@ polygon = PackedVector2Array(372, -155, 441, -136, 421, -10, 378, -10)
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Flowers" unique_id=992640784]
 polygon = PackedVector2Array(483, -124, 541, -109, 529, -10, 494, -13)
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Flowers" unique_id=253867932]
-polygon = PackedVector2Array(666, -114, 738, -130, 741, -67, 666, -68)
-
 [node name="Florist" type="Area2D" parent="." unique_id=1015748904]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Florist" unique_id=862686990]
@@ -244,5 +241,10 @@ polygon = PackedVector2Array(-117, -83, -86, -82, -88, -23, -119, -22)
 
 [node name="Bush" type="Area2D" parent="." unique_id=1728603324]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bush" unique_id=671411370]
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Bush" unique_id=253867932]
+polygon = PackedVector2Array(666, -114, 738, -130, 741, -67, 666, -68)
+
+[node name="Shrub" type="Area2D" parent="." unique_id=999126550]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Shrub" unique_id=671411370]
 polygon = PackedVector2Array(-593, 207, -468, 210, -472, 375, -593, 371)

@@ -34,6 +34,7 @@ func _ready():
 	$Florist.input_event.connect(florist_clicked)
 	$Ashtray.input_event.connect(ashtray_clicked)
 	$Bush.input_event.connect(bush_clicked)
+	$Shrub.input_event.connect(shrub_clicked)
 
 	$To_Pins.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Desk.tscn", false))
 	$To_Main.input_event.connect(move.bind("res://Scenes/Zone_Commecial/Pioneer_At_Main.tscn", true))
@@ -66,16 +67,19 @@ func trashcan_clicked(viewport, event, shape_idx):
 
 func flowers_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
-		if not KnowledgeManager.secretly_knows("Flowers"):
-			SequenceMachine.run_sequence([
-				"dialog:1737",
-				"action:secretly_learn:Flowers",
-			], self)
-		else:
-			SequenceMachine.run_sequence([
-				"dialog:1738",
-				"action:secretly_forget:Flower",
-			], self)
+		smell_the_flowers(viewport, event, shape_idx)
+
+func smell_the_flowers(viewport, event, shape_idx):
+	if not KnowledgeManager.secretly_knows("Flowers"):
+		SequenceMachine.run_sequence([
+			"dialog:1737",
+			"action:secretly_learn:Flowers",
+		], self)
+	else:
+		SequenceMachine.run_sequence([
+			"dialog:1738",
+			"action:secretly_forget:Flower",
+		], self)
 
 func florist_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
@@ -91,9 +95,26 @@ func ashtray_clicked(viewport, event, shape_idx):
 		else:
 			SequenceMachine.run_sequence(["dialog:1741"], self)
 
-func bush_clicked(viewport, event, shape_idx):
+func shrub_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
 		SequenceMachine.run_sequence(["dialog:1742"], self)
+
+func bush_clicked(viewport, event, shape_idx):
+	if InputManager.click_release(event):
+		if KnowledgeManager.knows("Found_Felicia"):
+			know_cat(viewport, event, shape_idx)
+		else:
+			no_cat(viewport, event, shape_idx)
+
+func know_cat(viewport, event, shape_idx):
+	smell_the_flowers(viewport, event, shape_idx)
+
+func no_cat(viewport, event, shape_idx):
+	if GameGlue.ItemManager.inventory_has_item("sticker"):
+		GameGlue.ClockManager.next_scene_path = "res://Scenes/Cats/felicia.tscn"
+		GameGlue.ClockManager.switch_scene(false)
+	else:
+		smell_the_flowers(viewport, event, shape_idx)
 
 func move(viewport, event, shape_idx, scene_path, advance_time):
 	if InputManager.click_release(event):

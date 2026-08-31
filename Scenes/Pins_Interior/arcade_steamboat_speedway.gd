@@ -24,9 +24,15 @@ func _ready():
 	await get_tree().process_frame
 	ClockManager.church_bell()
 
-	$To_Exit.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Arcade.tscn", false))
+	attract_mode()
 
+	$To_Exit.input_event.connect(move.bind("res://Scenes/Pins_Interior/Pins_Arcade.tscn", false))
 	$Cabinet.input_event.connect(cabinet_clicked)
+
+func attract_mode():
+	while true:
+		await get_tree().create_timer(5.0).timeout
+		$Steamboat_Speedaway.visible = not $Steamboat_Speedaway.visible
 
 func cabinet_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):

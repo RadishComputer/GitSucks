@@ -1,7 +1,55 @@
 [gd_scene format=3 uid="uid://dy7lc2s088xvv"]
 
+[ext_resource type="Texture2D" uid="uid://ckb4smruxfto2" path="res://Art/Beta/Places/Cat_Spock_Scene.png" id="1_1wkfh"]
+[ext_resource type="Script" uid="uid://dnlgibestbsld" path="res://Scenes/Cats/spock.gd" id="2_tvru3"]
+[ext_resource type="Shader" uid="uid://dei58g0fa8hgg" path="res://Elements/time_of_day.gdshader" id="3_tvru3"]
+[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="4_ugwhx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_covf3"]
+shader = ExtResource("3_tvru3")
+shader_parameter/tint_color = Vector4(0.5, 0.6, 0.9, 1)
+
 [node name="Spock" type="Control" unique_id=1621828222]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1027530030]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+texture_normal = ExtResource("1_1wkfh")
+script = ExtResource("2_tvru3")
+
+[node name="Time_of_Day" type="TextureRect" parent="TextureButton" unique_id=508565833]
+material = SubResource("ShaderMaterial_covf3")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_ugwhx")

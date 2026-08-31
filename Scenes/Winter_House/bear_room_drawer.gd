@@ -49,7 +49,7 @@ func book_clicked(viewport, event, shape_idx):
 
 func on_exit(viewport, event, shape_idx, scene_path: String, advance_time: bool):
 	if InputManager.click_release(event):
-		GameGlue.FXPlayer.stream = preload("res://sounds/Slide.wav")
+		GameGlue.FXPlayer.stream = preload("res://Sounds/Slide.wav")
 		GameGlue.FXPlayer.play()
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
@@ -58,6 +58,8 @@ func on_exit(viewport, event, shape_idx, scene_path: String, advance_time: bool)
 
 func lamp_clicked(viewport, event, shape_idx):
 	if GameGlue.InputManager.click_release(event):
+		GameGlue.FXPlayer.stream = preload("res://Sounds/LightChain.wav")
+		GameGlue.FXPlayer.play()
 		if GameGlue.KnowledgeManager.secretly_knows("Lamp_On"):
 			GameGlue.KnowledgeManager.secretly_forget("Lamp_On")
 		else:

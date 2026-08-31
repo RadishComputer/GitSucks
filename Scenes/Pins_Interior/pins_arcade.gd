@@ -39,7 +39,7 @@ func _ready():
 	$Exit.input_event.connect(exit_clicked.bind("res://Scenes/Pins_Interior/Pins_Desk.tscn", false))
 	$To_QoE.input_event.connect(move.bind("res://Scenes/Pins_Interior/Arcade_Queens_Of_Egypt.tscn", false))
 	$To_SS.input_event.connect(move.bind("res://Scenes/Pins_Interior/Arcade_Steamboat_Speedway.tscn", false))
-	$To_TTO.input_event.connect(move.bind("res://Scenes/Pins_Interior/Arcade_Take_This_Outback.tscn", false))
+	$To_TTO.input_event.connect(tto_clicked.bind("res://Scenes/Pins_Interior/Arcade_Take_This_Outback.tscn", false))
 	$To_TBM.input_event.connect(move.bind("res://Scenes/Pins_Interior/Arcade_Travlin_Banjo_Man.tscn", false))
 	$To_AA.input_event.connect(move.bind("res://Scenes/Pins_Interior/Arcade_Ape_Architecht.tscn", false))
 
@@ -50,6 +50,10 @@ func _ready():
 	$Toy_Coin.input_event.connect(toy_coin_clicked)
 	$Game.input_event.connect(game_clicked)
 	$Outlets.input_event.connect(outlets_clicked)
+
+func go_back():
+	$Rodney_at_Arcade.visible = true
+	Bouncer.bounce($Rodney_at_Arcade)
 
 func exit_clicked(viewport, event, shape_idx, scene_path, advance_time):
 	if InputManager.click_release(event):
@@ -63,6 +67,60 @@ func exit_clicked(viewport, event, shape_idx, scene_path, advance_time):
 				return
 		ClockManager.next_scene_path = scene_path
 		ClockManager.switch_scene(advance_time)
+
+func tto_clicked(viewport, event, shape_idx, scene_path, advance_time):
+	if InputManager.click_release(event):
+		if $Rodney_at_Arcade.visible:
+			clicked()
+			return
+		else:
+			ClockManager.next_scene_path = scene_path
+			ClockManager.switch_scene(advance_time)
+
+func clicked():
+	if ItemManager.slots[ItemManager.cursor_slot] != "":
+		return
+
+	if ClockManager.rodney_here("arcade_am"):
+		rodney_arcade_am()
+		return
+
+	if ClockManager.rodney_here("arcade_pm"):
+		rodney_arcade_pm()
+		return
+
+func rodney_arcade_am():
+	$Rodney_at_Arcade.visible = false
+	if not KnowledgeManager.secretly_knows("Arcade_On"):
+		SequenceMachine.run_sequence([
+			"dialog:1423",
+			"action:go_back",
+		], self)
+		return
+	else:
+		SequenceMachine.run_sequence([
+			"dialog:1428",
+			"action:go_back",
+		], self)
+
+func rodney_arcade_pm():
+	$Rodney_at_Arcade.visible = false
+	if not KnowledgeManager.knows("Met_Rodney"):
+		SequenceMachine.run_sequence([
+			"action:learn:Met_Rodney",
+			"dialog:1470",
+			"action:go_back",
+            "note:[center]Met Rodney"
+		], self)
+		return
+
+	else:
+		SequenceMachine.run_sequence([
+			"dialog:1490",
+			"action:go_back",
+			"action:secretly_learn:Ready_To_Trade"
+		], self)
+		return
 
 func move(viewport, event, shape_idx, scene_path, advance_time):
 	if InputManager.click_release(event):

@@ -20,6 +20,13 @@ extends TextureButton
 @onready var TextBox = GameGlue.TextBox
 
 func _ready():
+	ClockManager.distance_from_church = 7
+	ClockManager.update_chime_volume()
+	ClockManager.update_clock_display()
+	ClockManager.update_lights(self)
+	await get_tree().process_frame
+	ClockManager.church_bell()
+
 	connect("pressed", Callable(self, "clicked"))
 
 func clicked():

@@ -57,6 +57,19 @@ func boston_clicked(viewport, event, shape_idx):
 
 func car_clicked(viewport, event, shape_idx):
 	if InputManager.click_release(event):
+		if KnowledgeManager.knows("Found_Spock"):
+			know_cat()
+		else:
+			no_cat()
+
+func know_cat():
+	SequenceMachine.run_sequence(["dialog:1208"], self)
+
+func no_cat():
+	if GameGlue.ItemManager.inventory_has_type("food"):
+		GameGlue.ClockManager.next_scene_path = "res://Scenes/Cats/spock.tscn"
+		GameGlue.ClockManager.switch_scene(false)
+	else:
 		SequenceMachine.run_sequence(["dialog:1208"], self)
 
 func pines_clicked(viewport, event, shape_idx):

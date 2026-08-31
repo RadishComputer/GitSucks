@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bsmmjbr8sd1fm"]
 
-[ext_resource type="Script" uid="uid://cgqm6n0ac1fts" path="res://Scenes/Benind_the_Curtain/locker.gd" id="1_e5gfi"]
-[ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="2_xoojq"]
-[ext_resource type="PackedScene" uid="uid://b6o584cj5q612" path="res://Scenes/Benind_the_Curtain/Number_Disk.tscn" id="3_tonx7"]
+[ext_resource type="Script" uid="uid://cgqm6n0ac1fts" path="res://Scenes/Behind_the_Curtain/locker.gd" id="1_e5gfi"]
+[ext_resource type="Texture2D" uid="uid://0habjfpws8qs" path="res://Art/Beta/Items/S_Roberta.png" id="2_xoojq"]
+[ext_resource type="PackedScene" uid="uid://b6o584cj5q612" path="res://Scenes/Behind_the_Curtain/Number_Disk.tscn" id="3_tonx7"]
 [ext_resource type="Texture2D" uid="uid://0oemjbrkital" path="res://Art/Beta/Places/Locker_Closed.png" id="3_xm57y"]
 
 [node name="Locker09" type="Control" unique_id=2104065648]
@@ -12,33 +12,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_e5gfi")
 locker_id = "locker_09"
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=357196636]
+[node name="Roberta" type="TextureRect" parent="." unique_id=357196636]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -750.0
-offset_top = -450.0
-offset_right = 750.0
-offset_bottom = 450.0
+offset_left = -268.0
+offset_top = -115.0
+offset_right = 244.0
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_xoojq")
-expand_mode = 1
 
-[node name="Background" type="TextureRect" parent="." unique_id=1549168356]
+[node name="Background" type="TextureRect" parent="." unique_id=1851141766]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,28 +55,29 @@ offset_top = 31.0
 offset_right = 259.0
 offset_bottom = 159.0
 
-[node name="Number_Disk2" parent="." unique_id=1144887994 instance=ExtResource("3_tonx7")]
+[node name="Number_Disk2" parent="." unique_id=1491962435 instance=ExtResource("3_tonx7")]
 layout_mode = 1
 offset_left = 263.0
 offset_top = 31.0
 offset_right = 295.0
 offset_bottom = 159.0
 
-[node name="Number_Disk3" parent="." unique_id=1639620760 instance=ExtResource("3_tonx7")]
+[node name="Number_Disk3" parent="." unique_id=1160855152 instance=ExtResource("3_tonx7")]
 layout_mode = 1
 offset_left = 299.0
 offset_top = 31.0
 offset_right = 331.0
 offset_bottom = 159.0
 
-[node name="Back" type="Area2D" parent="." unique_id=1342666708]
+[node name="Back" type="Area2D" parent="." unique_id=1771016774]
+position = Vector2(-957, -538)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=1568117428]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=1473266938]
 polygon = PackedVector2Array(217, 95, 1704, 94, 1704, 981, 1526, 980, 1527, 160, 396, 163, 396, 979, 219, 979)
 
-[node name="Knob" type="Area2D" parent="." unique_id=1029031999]
-position = Vector2(791, 36)
+[node name="Knob" type="Area2D" parent="." unique_id=1078927179]
+position = Vector2(-166, -502)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Knob" unique_id=460602974]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Knob" unique_id=1847995039]
 position = Vector2(6, 8)
 polygon = PackedVector2Array(533, 598, 546, 569, 576, 552, 610, 569, 621, 602, 609, 631, 579, 643, 546, 630)

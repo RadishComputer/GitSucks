@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://3m7oq8rcag15"]
 
-[ext_resource type="Script" uid="uid://cgqm6n0ac1fts" path="res://Scenes/Benind_the_Curtain/locker.gd" id="1_c2348"]
+[ext_resource type="Script" uid="uid://cgqm6n0ac1fts" path="res://Scenes/Behind_the_Curtain/locker.gd" id="1_c2348"]
 [ext_resource type="Texture2D" uid="uid://bow26nlxkadme" path="res://Art/Beta/Places/Basic_Mask.png" id="2_1201t"]
 [ext_resource type="Texture2D" uid="uid://0oemjbrkital" path="res://Art/Beta/Places/Locker_Closed.png" id="3_25hyy"]
-[ext_resource type="PackedScene" uid="uid://b6o584cj5q612" path="res://Scenes/Benind_the_Curtain/Number_Disk.tscn" id="3_uxlon"]
+[ext_resource type="PackedScene" uid="uid://b6o584cj5q612" path="res://Scenes/Behind_the_Curtain/Number_Disk.tscn" id="3_uxlon"]
 
 [node name="Locker03" type="Control" unique_id=2104065648]
 layout_mode = 3
@@ -12,17 +12,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_c2348")
 locker_id = "locker_03"
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=357624955]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1674847943]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -38,7 +34,7 @@ grow_vertical = 2
 texture = ExtResource("2_1201t")
 expand_mode = 1
 
-[node name="Background" type="TextureRect" parent="." unique_id=512534361]
+[node name="Background" type="TextureRect" parent="." unique_id=972439772]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,28 +56,29 @@ offset_top = 31.0
 offset_right = 259.0
 offset_bottom = 159.0
 
-[node name="Number_Disk2" parent="." unique_id=181841824 instance=ExtResource("3_uxlon")]
+[node name="Number_Disk2" parent="." unique_id=795208321 instance=ExtResource("3_uxlon")]
 layout_mode = 1
 offset_left = 263.0
 offset_top = 31.0
 offset_right = 295.0
 offset_bottom = 159.0
 
-[node name="Number_Disk3" parent="." unique_id=277028783 instance=ExtResource("3_uxlon")]
+[node name="Number_Disk3" parent="." unique_id=26001341 instance=ExtResource("3_uxlon")]
 layout_mode = 1
 offset_left = 299.0
 offset_top = 31.0
 offset_right = 331.0
 offset_bottom = 159.0
 
-[node name="Back" type="Area2D" parent="." unique_id=1991442942]
+[node name="Back" type="Area2D" parent="." unique_id=22691025]
+position = Vector2(-957, -538)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=1696905341]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back" unique_id=1923350797]
 polygon = PackedVector2Array(217, 95, 1704, 94, 1704, 981, 1526, 980, 1527, 160, 396, 163, 396, 979, 219, 979)
 
-[node name="Knob" type="Area2D" parent="." unique_id=1123666833]
-position = Vector2(791, 36)
+[node name="Knob" type="Area2D" parent="." unique_id=2089002451]
+position = Vector2(-166, -502)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Knob" unique_id=1731753413]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Knob" unique_id=1496900599]
 position = Vector2(6, 8)
 polygon = PackedVector2Array(533, 598, 546, 569, 576, 552, 610, 569, 621, 602, 609, 631, 579, 643, 546, 630)

@@ -1,0 +1,399 @@
+[gd_scene format=3 uid="uid://bc6sw6tx64m0b"]
+
+[ext_resource type="Script" uid="uid://dji21w37pblvl" path="res://Scenes/Behind_the_Curtain/start_screen.gd" id="1_4dk23"]
+[ext_resource type="Texture2D" uid="uid://bcrvk6d7vqhsu" path="res://Art/Beta/Items/Background_Black.png" id="1_fjl27"]
+[ext_resource type="Shader" uid="uid://cgrjmfqodvxdo" path="res://Elements/Start_Screen.gdshader" id="1_oolea"]
+[ext_resource type="Texture2D" uid="uid://c8e70megu8q4e" path="res://Art/Beta/Places/Start_Screen.png" id="2_fjl27"]
+[ext_resource type="Script" uid="uid://dh6wj7mkdcfcs" path="res://Scenes/Behind_the_Curtain/start_scroll.gd" id="3_j50fd"]
+[ext_resource type="Texture2D" uid="uid://bmy55csw8klh7" path="res://Art/Beta/Items/Title.png" id="6_slwq3"]
+[ext_resource type="Texture2D" uid="uid://c7qblqsn6stnx" path="res://Art/Beta/Places/Screen.png" id="7_slwq3"]
+[ext_resource type="Script" uid="uid://btyb1kw5xd4u6" path="res://Scenes/Behind_the_Curtain/options_start.gd" id="8_slwq3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4dk23"]
+shader = ExtResource("1_oolea")
+shader_parameter/scroll_speed = Vector2(50, 0)
+shader_parameter/time_accum = 0.0
+
+[sub_resource type="Theme" id="Theme_slwq3"]
+
+[sub_resource type="Theme" id="Theme_c07yf"]
+
+[sub_resource type="Theme" id="Theme_bw3qh"]
+
+[sub_resource type="Theme" id="Theme_4mgym"]
+
+[node name="Start_Screen" type="Control" unique_id=286005195]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4dk23")
+
+[node name="Background" type="TextureRect" parent="." unique_id=41714533]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fjl27")
+stretch_mode = 1
+
+[node name="Window" type="TextureRect" parent="Background" unique_id=66285225]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_4dk23")
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = 750.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fjl27")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("3_j50fd")
+
+[node name="Title" type="TextureRect" parent="Background/Window" unique_id=694616769]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -550.0
+offset_right = 750.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_slwq3")
+
+[node name="Control" type="HBoxContainer" parent="." unique_id=1816017939 groups=["UI"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = 400.0
+offset_right = 750.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start_New" type="Button" parent="Control" unique_id=1670395579]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_slwq3")
+theme_type_variation = &"FlatButton"
+text = "Start New"
+flat = true
+alignment = 0
+vertical_icon_alignment = 0
+
+[node name="Load" type="Button" parent="Control" unique_id=1466833968]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_c07yf")
+theme_type_variation = &"FlatButton"
+text = "Load
+"
+flat = true
+alignment = 0
+vertical_icon_alignment = 0
+
+[node name="Options" type="Button" parent="Control" unique_id=209392865]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_bw3qh")
+theme_type_variation = &"FlatButton"
+text = "Options"
+flat = true
+alignment = 0
+vertical_icon_alignment = 0
+
+[node name="Quit" type="Button" parent="Control" unique_id=728704436]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_bw3qh")
+theme_type_variation = &"FlatButton"
+text = "Quit"
+flat = true
+alignment = 0
+vertical_icon_alignment = 0
+
+[node name="Screen" type="TextureRect" parent="." unique_id=210603028]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -371.0
+offset_right = 375.0
+offset_bottom = 379.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_slwq3")
+
+[node name="OptionsPanel" type="Panel" parent="." unique_id=1509088492 groups=["UI"]]
+process_mode = 3
+visible = false
+z_index = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_4mgym")
+script = ExtResource("8_slwq3")
+color_rect_path = NodePath("/root/GameGlue/Back/Menu/CanvasLayer/ColorRect")
+
+[node name="VBox" type="VBoxContainer" parent="OptionsPanel" unique_id=1691851241]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 580.0
+grow_horizontal = 2
+
+[node name="HBox1" type="HBoxContainer" parent="OptionsPanel/VBox" unique_id=360824305]
+layout_mode = 2
+
+[node name="Item_Mode" type="RichTextLabel" parent="OptionsPanel/VBox/HBox1" unique_id=60235232]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Item Mode      "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Switch" type="Button" parent="OptionsPanel/VBox/HBox1" unique_id=950765658]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Switch"
+
+[node name="Hold" type="Button" parent="OptionsPanel/VBox/HBox1" unique_id=1317496552]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Hold"
+
+[node name="HBox2" type="HBoxContainer" parent="OptionsPanel/VBox" unique_id=1669535298]
+layout_mode = 2
+
+[node name="Menu Style" type="RichTextLabel" parent="OptionsPanel/VBox/HBox2" unique_id=1997344452]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Menu Style"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Plain" type="Button" parent="OptionsPanel/VBox/HBox2" unique_id=1386698221]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Plain"
+
+[node name="Pure" type="Button" parent="OptionsPanel/VBox/HBox2" unique_id=1679508715]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Pure"
+
+[node name="HBox3" type="HBoxContainer" parent="OptionsPanel/VBox" unique_id=805329908]
+layout_mode = 2
+
+[node name="Contrast" type="RichTextLabel" parent="OptionsPanel/VBox/HBox3" unique_id=1298942146]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "High Contrast"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Off" type="Button" parent="OptionsPanel/VBox/HBox3" unique_id=136192401]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Off"
+
+[node name="On" type="Button" parent="OptionsPanel/VBox/HBox3" unique_id=2077828060]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "On"
+
+[node name="HBox4" type="HBoxContainer" parent="OptionsPanel/VBox" unique_id=444944010]
+layout_mode = 2
+
+[node name="Grayscale" type="RichTextLabel" parent="OptionsPanel/VBox/HBox4" unique_id=1071639717]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Grayscale"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Off" type="Button" parent="OptionsPanel/VBox/HBox4" unique_id=1752115844]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Off"
+
+[node name="On" type="Button" parent="OptionsPanel/VBox/HBox4" unique_id=579658749]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "On"
+
+[node name="HBox5" type="HBoxContainer" parent="OptionsPanel/VBox" unique_id=2016138813]
+layout_mode = 2
+
+[node name="Bounce" type="RichTextLabel" parent="OptionsPanel/VBox/HBox5" unique_id=627339426]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Bounce
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Off" type="Button" parent="OptionsPanel/VBox/HBox5" unique_id=1751113088]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Off"
+
+[node name="On" type="Button" parent="OptionsPanel/VBox/HBox5" unique_id=1300912431]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "On"
+
+[node name="HBox6" type="HBoxContainer" parent="OptionsPanel/VBox" unique_id=984939834]
+layout_mode = 2
+
+[node name="Font_Size" type="RichTextLabel" parent="OptionsPanel/VBox/HBox6" unique_id=1587008922]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Font Size"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="S" type="Button" parent="OptionsPanel/VBox/HBox6" unique_id=2079677553]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "S"
+
+[node name="M" type="Button" parent="OptionsPanel/VBox/HBox6" unique_id=1083126373]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "M"
+
+[node name="L" type="Button" parent="OptionsPanel/VBox/HBox6" unique_id=668134859]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "L"
+
+[node name="HBoxD" type="HBoxContainer" parent="OptionsPanel/VBox" unique_id=2027221967]
+layout_mode = 2
+
+[node name="Display" type="RichTextLabel" parent="OptionsPanel/VBox/HBoxD" unique_id=999280320]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Display   "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Display0" type="Button" parent="OptionsPanel/VBox/HBoxD" unique_id=1660574151]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "480"
+
+[node name="Display1" type="Button" parent="OptionsPanel/VBox/HBoxD" unique_id=488581729]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "1080"
+
+[node name="Full" type="Button" parent="OptionsPanel/VBox/HBoxD" unique_id=1386817911]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Full"
